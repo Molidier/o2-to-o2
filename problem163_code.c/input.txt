@@ -1,0 +1,81 @@
+# problem163/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+                                        ## kill: def $edi killed $edi def $rdi
+	cmpl	%edi, %esi
+	movl	%edi, %r8d
+	cmovgl	%esi, %r8d
+	cmovll	%esi, %edi
+	movl	$0, (%rcx)
+	leal	1(%r8), %r9d
+	movl	%r9d, %eax
+	subl	%edi, %eax
+	movl	%edi, %esi
+	testb	$1, %al
+	je	LBB0_5
+## %bb.1:
+	cmpl	$9, %edi
+	jg	LBB0_4
+## %bb.2:
+	movl	%edi, %eax
+	andl	$1, %eax
+	jne	LBB0_4
+## %bb.3:
+	movslq	(%rcx), %rax
+	leal	1(%rax), %esi
+	movl	%esi, (%rcx)
+	movl	%edi, (%rdx,%rax,4)
+LBB0_4:
+	leal	1(%rdi), %esi
+LBB0_5:
+	cmpl	%edi, %r8d
+	jne	LBB0_6
+LBB0_14:
+	popq	%rbp
+	retq
+LBB0_6:
+	movl	%esi, %r8d
+	andl	$1, %r8d
+	jmp	LBB0_7
+	.p2align	4, 0x90
+LBB0_13:                                ##   in Loop: Header=BB0_7 Depth=1
+	addl	$2, %esi
+	cmpl	%esi, %r9d
+	je	LBB0_14
+LBB0_7:                                 ## =>This Inner Loop Header: Depth=1
+	cmpl	$9, %esi
+	jg	LBB0_10
+## %bb.8:                               ##   in Loop: Header=BB0_7 Depth=1
+	testl	%r8d, %r8d
+	jne	LBB0_10
+## %bb.9:                               ##   in Loop: Header=BB0_7 Depth=1
+	movslq	(%rcx), %rax
+	leal	1(%rax), %edi
+	movl	%edi, (%rcx)
+	movl	%esi, (%rdx,%rax,4)
+LBB0_10:                                ##   in Loop: Header=BB0_7 Depth=1
+	leal	1(%rsi), %eax
+	cmpl	$9, %eax
+	jg	LBB0_13
+## %bb.11:                              ##   in Loop: Header=BB0_7 Depth=1
+	testl	%r8d, %r8d
+	je	LBB0_13
+## %bb.12:                              ##   in Loop: Header=BB0_7 Depth=1
+	movslq	(%rcx), %r10
+	leal	1(%r10), %edi
+	movl	%edi, (%rcx)
+	movl	%eax, (%rdx,%r10,4)
+	jmp	LBB0_13
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

@@ -1,0 +1,46 @@
+# problem107/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	stp	x20, x19, [sp, #-32]!           ; 16-byte Folded Spill
+	.cfi_def_cfa_offset 32
+	stp	x29, x30, [sp, #16]             ; 16-byte Folded Spill
+	add	x29, sp, #16
+	.cfi_def_cfa w29, 16
+	.cfi_offset w30, -8
+	.cfi_offset w29, -16
+	.cfi_offset w19, -24
+	.cfi_offset w20, -32
+	mov	x19, x0
+	sbfiz	x0, x19, #2, #32
+	bl	_malloc
+	cmp	w19, #1
+	b.lt	LBB0_3
+; %bb.1:
+	mov	w8, #0
+	add	x9, x0, #4
+	mov	w10, #1
+	mov	w11, #1
+	mov	w12, w19
+LBB0_2:                                 ; =>This Inner Loop Header: Depth=1
+	sub	w13, w11, #1
+	add	w8, w13, w8
+	mul	w10, w10, w11
+	tst	w11, #0x1
+	csel	w8, w10, w8, eq
+	str	w8, [x9], #4
+	add	w11, w11, #1
+	subs	x12, x12, #1
+	b.ne	LBB0_2
+LBB0_3:
+	ldp	x29, x30, [sp, #16]             ; 16-byte Folded Reload
+	ldp	x20, x19, [sp], #32             ; 16-byte Folded Reload
+	ret
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols
+

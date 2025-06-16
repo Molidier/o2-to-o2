@@ -1,0 +1,94 @@
+# problem41/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r15
+	pushq	%r14
+	pushq	%r13
+	pushq	%r12
+	pushq	%rbx
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
+	testl	%esi, %esi
+	jle	LBB0_1
+## %bb.2:
+	movl	%esi, %r8d
+	movb	$1, %al
+	movl	$2, %r14d
+	movl	$1, %r15d
+	xorl	%r9d, %r9d
+LBB0_4:                                 ## =>This Loop Header: Depth=1
+                                        ##     Child Loop BB0_6 Depth 2
+                                        ##       Child Loop BB0_9 Depth 3
+	movl	%eax, %r10d
+	movq	%r9, %r11
+	incq	%r9
+	movq	%r15, %r12
+	movq	%r14, %r13
+	cmpq	%r8, %r9
+	setb	%al
+	jb	LBB0_6
+LBB0_3:                                 ##   in Loop: Header=BB0_4 Depth=1
+	incq	%r14
+	incq	%r15
+	cmpq	%r8, %r9
+	jne	LBB0_4
+	jmp	LBB0_11
+	.p2align	4, 0x90
+LBB0_5:                                 ##   in Loop: Header=BB0_6 Depth=2
+	incq	%r13
+	cmpq	%r8, %r12
+	je	LBB0_3
+LBB0_6:                                 ##   Parent Loop BB0_4 Depth=1
+                                        ## =>  This Loop Header: Depth=2
+                                        ##       Child Loop BB0_9 Depth 3
+	movq	%r12, %rcx
+	incq	%r12
+	cmpl	%esi, %r12d
+	jge	LBB0_5
+## %bb.7:                               ##   in Loop: Header=BB0_6 Depth=2
+	movl	(%rdi,%rcx,4), %ecx
+	addl	(%rdi,%r11,4), %ecx
+	movq	%r13, %rdx
+	.p2align	4, 0x90
+LBB0_9:                                 ##   Parent Loop BB0_4 Depth=1
+                                        ##     Parent Loop BB0_6 Depth=2
+                                        ## =>    This Inner Loop Header: Depth=3
+	movl	(%rdi,%rdx,4), %ebx
+	addl	%ecx, %ebx
+	je	LBB0_10
+## %bb.8:                               ##   in Loop: Header=BB0_9 Depth=3
+	incq	%rdx
+	cmpl	%esi, %edx
+	jl	LBB0_9
+	jmp	LBB0_5
+LBB0_10:
+	movl	%r10d, %eax
+	jmp	LBB0_11
+LBB0_1:
+	xorl	%eax, %eax
+LBB0_11:
+	andb	$1, %al
+                                        ## kill: def $al killed $al killed $eax
+	popq	%rbx
+	popq	%r12
+	popq	%r13
+	popq	%r14
+	popq	%r15
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

@@ -1,0 +1,73 @@
+# problem36/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.section	__TEXT,__literal4,4byte_literals
+	.p2align	2                               ## -- Begin function func0
+LCPI0_0:
+	.long	0xc61c4000                      ## float -1.0E+4
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	testl	%esi, %esi
+	jle	LBB0_1
+## %bb.2:
+	movl	%esi, %ecx
+	leaq	-1(%rcx), %rdx
+	movl	%ecx, %eax
+	andl	$3, %eax
+	cmpq	$3, %rdx
+	jae	LBB0_8
+## %bb.3:
+	movss	LCPI0_0(%rip), %xmm1            ## xmm1 = mem[0],zero,zero,zero
+	xorl	%edx, %edx
+	jmp	LBB0_4
+LBB0_1:
+	movss	LCPI0_0(%rip), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+	popq	%rbp
+	retq
+LBB0_8:
+	andl	$-4, %ecx
+	movss	LCPI0_0(%rip), %xmm1            ## xmm1 = mem[0],zero,zero,zero
+	xorl	%edx, %edx
+	.p2align	4, 0x90
+LBB0_9:                                 ## =>This Inner Loop Header: Depth=1
+	movss	(%rdi,%rdx,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+	maxss	%xmm1, %xmm0
+	movss	4(%rdi,%rdx,4), %xmm1           ## xmm1 = mem[0],zero,zero,zero
+	maxss	%xmm0, %xmm1
+	movss	8(%rdi,%rdx,4), %xmm0           ## xmm0 = mem[0],zero,zero,zero
+	maxss	%xmm1, %xmm0
+	movss	12(%rdi,%rdx,4), %xmm1          ## xmm1 = mem[0],zero,zero,zero
+	maxss	%xmm0, %xmm1
+	addq	$4, %rdx
+	cmpq	%rdx, %rcx
+	jne	LBB0_9
+LBB0_4:
+	movaps	%xmm1, %xmm0
+	testq	%rax, %rax
+	je	LBB0_7
+## %bb.5:
+	leaq	(%rdi,%rdx,4), %rcx
+	xorl	%edx, %edx
+	.p2align	4, 0x90
+LBB0_6:                                 ## =>This Inner Loop Header: Depth=1
+	movss	(%rcx,%rdx,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+	maxss	%xmm1, %xmm0
+	incq	%rdx
+	movaps	%xmm0, %xmm1
+	cmpq	%rdx, %rax
+	jne	LBB0_6
+LBB0_7:
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

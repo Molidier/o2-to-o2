@@ -1,0 +1,261 @@
+# problem148/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	stp	x26, x25, [sp, #-80]!           ; 16-byte Folded Spill
+	.cfi_def_cfa_offset 80
+	stp	x24, x23, [sp, #16]             ; 16-byte Folded Spill
+	stp	x22, x21, [sp, #32]             ; 16-byte Folded Spill
+	stp	x20, x19, [sp, #48]             ; 16-byte Folded Spill
+	stp	x29, x30, [sp, #64]             ; 16-byte Folded Spill
+	add	x29, sp, #64
+	.cfi_def_cfa w29, 16
+	.cfi_offset w30, -8
+	.cfi_offset w29, -16
+	.cfi_offset w19, -24
+	.cfi_offset w20, -32
+	.cfi_offset w21, -40
+	.cfi_offset w22, -48
+	.cfi_offset w23, -56
+	.cfi_offset w24, -64
+	.cfi_offset w25, -72
+	.cfi_offset w26, -80
+	mov	x22, x0
+	sbfiz	x0, x22, #2, #32
+	bl	_malloc
+	mov	x19, x0
+	add	w23, w22, #1
+	mov	x8, x23
+	sbfiz	x21, x8, #3, #32
+	mov	x0, x21
+	bl	_malloc
+	mov	x20, x0
+	mov	x0, x21
+	bl	_malloc
+	mov	x21, x0
+	tbnz	w22, #31, LBB0_4
+; %bb.1:
+	mov	x24, x20
+	mov	x25, x21
+	mov	x26, x23
+LBB0_2:                                 ; =>This Inner Loop Header: Depth=1
+	mov	w0, #3
+	mov	w1, #4
+	bl	_calloc
+	str	x0, [x24], #8
+	mov	w0, #3
+	mov	w1, #4
+	bl	_calloc
+	str	x0, [x25], #8
+	subs	x26, x26, #1
+	b.ne	LBB0_2
+; %bb.3:
+	ldr	x8, [x20]
+	ldr	x9, [x21]
+	b	LBB0_5
+LBB0_4:
+                                        ; implicit-def: $x9
+                                        ; implicit-def: $x8
+LBB0_5:
+	str	wzr, [x8, #8]
+	str	xzr, [x8]
+	str	wzr, [x9, #8]
+	str	xzr, [x9]
+	cmp	w22, #1
+	b.lt	LBB0_11
+; %bb.6:
+	mov	w10, #0
+	mov	w11, #1
+	mov	w12, #21846
+	movk	w12, #21845, lsl #16
+	mov	x13, x8
+LBB0_7:                                 ; =>This Inner Loop Header: Depth=1
+	madd	w14, w11, w11, w10
+	smull	x15, w14, w12
+	lsr	x16, x15, #63
+	lsr	x15, x15, #32
+	add	w15, w15, w16
+	add	w15, w15, w15, lsl #1
+	sub	w14, w14, w15
+	str	w14, [x19, x11, lsl #2]
+	ldr	x15, [x20, x11, lsl #3]
+	ldr	w16, [x13]
+	str	w16, [x15]
+	ldr	w16, [x13, #4]
+	str	w16, [x15, #4]
+	ldr	w13, [x13, #8]
+	str	w13, [x15, #8]
+	sbfiz	x16, x14, #2, #32
+	ldr	w17, [x15, x16]
+	add	w17, w17, #1
+	str	w17, [x15, x16]
+	add	x11, x11, #1
+	sub	w10, w10, #1
+	mov	x13, x15
+	cmp	x23, x11
+	b.ne	LBB0_7
+; %bb.8:
+	sub	x10, x23, #1
+	add	x11, x21, #8
+	mov	w12, #21846
+	movk	w12, #21845, lsl #16
+	mov	x13, x8
+LBB0_9:                                 ; =>This Inner Loop Header: Depth=1
+	ldr	x14, [x11], #8
+	ldr	w15, [x13]
+	str	w15, [x14]
+	ldr	w15, [x13, #4]
+	str	w15, [x14, #4]
+	ldr	w13, [x13, #8]
+	str	w13, [x14, #8]
+	ldrsw	x13, [x19]
+	mul	x15, x13, x12
+	lsr	x16, x15, #63
+	lsr	x15, x15, #32
+	add	w15, w15, w16
+	add	w15, w15, w15, lsl #1
+	add	w16, w13, #1
+	smull	x17, w16, w12
+	lsr	x0, x17, #63
+	lsr	x17, x17, #32
+	add	w17, w17, w0
+	add	w17, w17, w17, lsl #1
+	sub	w16, w16, w17
+	ldr	w17, [x8]
+	sbfiz	x16, x16, #2, #32
+	ldr	w0, [x14, x16]
+	add	w17, w0, w17
+	str	w17, [x14, x16]
+	ldr	w16, [x8, #4]
+	sbfiz	x17, x15, #2, #32
+	ldr	w0, [x14, x17]
+	add	w16, w0, w16
+	str	w16, [x14, x17]
+	add	w15, w13, #2
+	smull	x16, w15, w12
+	lsr	x17, x16, #63
+	lsr	x16, x16, #32
+	add	w16, w16, w17
+	add	w16, w16, w16, lsl #1
+	sub	w15, w15, w16
+	ldr	w16, [x8, #8]
+	sbfiz	x15, x15, #2, #32
+	ldr	w17, [x14, x15]
+	add	w16, w17, w16
+	str	w16, [x14, x15]
+	subs	x10, x10, #1
+	b.eq	LBB0_11
+; %bb.10:                               ;   in Loop: Header=BB0_9 Depth=1
+	ldr	x8, [x20, x11]
+	b	LBB0_9
+LBB0_11:
+	cmp	w22, #1
+	b.lt	LBB0_16
+; %bb.12:
+	sub	x10, x23, #1
+	add	x11, x21, #8
+	mov	w12, #21846
+	movk	w12, #21845, lsl #16
+	mov	x13, x8
+LBB0_13:                                ; =>This Inner Loop Header: Depth=1
+	ldr	x14, [x11], #8
+	ldr	w15, [x13]
+	str	w15, [x14]
+	ldr	w15, [x13, #4]
+	str	w15, [x14, #4]
+	ldr	w13, [x13, #8]
+	str	w13, [x14, #8]
+	ldrsw	x13, [x19]
+	mul	x15, x13, x12
+	lsr	x16, x15, #63
+	lsr	x15, x15, #32
+	add	w15, w15, w16
+	add	w15, w15, w15, lsl #1
+	add	w16, w13, #1
+	smull	x17, w16, w12
+	lsr	x0, x17, #63
+	lsr	x17, x17, #32
+	add	w17, w17, w0
+	add	w17, w17, w17, lsl #1
+	sub	w16, w16, w17
+	ldr	w17, [x8]
+	sbfiz	x16, x16, #2, #32
+	ldr	w0, [x14, x16]
+	add	w17, w0, w17
+	str	w17, [x14, x16]
+	ldr	w16, [x8, #4]
+	sbfiz	x17, x15, #2, #32
+	ldr	w0, [x14, x17]
+	add	w16, w0, w16
+	str	w16, [x14, x17]
+	add	w15, w13, #2
+	smull	x16, w15, w12
+	lsr	x17, x16, #63
+	lsr	x16, x16, #32
+	add	w16, w16, w17
+	add	w16, w16, w16, lsl #1
+	sub	w15, w15, w16
+	ldr	w16, [x8, #8]
+	sbfiz	x15, x15, #2, #32
+	ldr	w17, [x14, x15]
+	add	w16, w17, w16
+	str	w16, [x14, x15]
+	subs	x10, x10, #1
+	b.eq	LBB0_16
+; %bb.14:                               ;   in Loop: Header=BB0_13 Depth=1
+	ldr	x8, [x20, x11]
+	b	LBB0_13
+LBB0_15:                                ;   in Loop: Header=BB0_16 Depth=1
+	ldr	x8, [x20, x24]
+	ldr	x0, [x20, x25]
+	bl	_free
+	ldr	x0, [x21, x24]
+	bl	_free
+	add	x21, x21, #8
+	add	x20, x20, #8
+	subs	x23, x23, #1
+	b.eq	LBB0_18
+LBB0_16:                                ; =>This Inner Loop Header: Depth=1
+	ldr	x0, [x20]
+	bl	_free
+	ldr	x0, [x21]
+	bl	_free
+	b	LBB0_15
+LBB0_17:                                ;   in Loop: Header=BB0_18 Depth=1
+	ldr	x8, [x20, x24]
+	ldr	x0, [x20, x25]
+	bl	_free
+	ldr	x0, [x21, x24]
+	bl	_free
+	add	x21, x21, #8
+	add	x20, x20, #8
+	subs	x23, x23, #1
+	b.eq	LBB0_19
+LBB0_18:                                ; =>This Inner Loop Header: Depth=1
+	ldr	x0, [x20]
+	bl	_free
+	ldr	x0, [x21]
+	bl	_free
+	b	LBB0_17
+LBB0_19:
+	mov	x0, x20
+	bl	_free
+	mov	x0, x21
+	bl	_free
+	mov	x0, x19
+	bl	_free
+	mov	x0, x22
+	ldp	x29, x30, [sp, #64]             ; 16-byte Folded Reload
+	ldp	x20, x19, [sp, #48]             ; 16-byte Folded Reload
+	ldp	x22, x21, [sp, #32]             ; 16-byte Folded Reload
+	ldp	x24, x23, [sp, #16]             ; 16-byte Folded Reload
+	ldp	x26, x25, [sp], #80             ; 16-byte Folded Reload
+	ret
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols
+

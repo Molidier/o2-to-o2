@@ -1,0 +1,69 @@
+# problem91/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	movl	$-1, %eax
+	cmpl	$2, %esi
+	jl	LBB0_6
+## %bb.1:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	movl	%esi, %r8d
+	leaq	(,%r8,4), %r9
+	andq	$-8, %r9
+	movl	$2147483647, %ecx               ## imm = 0x7FFFFFFF
+	xorl	%r10d, %r10d
+	movl	$2147483647, %eax               ## imm = 0x7FFFFFFF
+	.p2align	4, 0x90
+LBB0_2:                                 ## =>This Inner Loop Header: Depth=1
+	movl	(%rdi,%r10), %edx
+	cmpl	%eax, %edx
+	movl	%edx, %esi
+	cmovel	%ecx, %esi
+	cmpl	%ecx, %edx
+	cmovgel	%ecx, %esi
+	cmpl	%eax, %edx
+	cmovgel	%eax, %edx
+	cmovll	%eax, %esi
+	movl	4(%rdi,%r10), %eax
+	cmpl	%edx, %eax
+	movl	%eax, %ecx
+	cmovel	%esi, %ecx
+	cmpl	%esi, %eax
+	cmovgel	%esi, %ecx
+	cmpl	%edx, %eax
+	cmovgel	%edx, %eax
+	cmovll	%edx, %ecx
+	addq	$8, %r10
+	cmpq	%r10, %r9
+	jne	LBB0_2
+## %bb.3:
+	testb	$1, %r8b
+	je	LBB0_5
+## %bb.4:
+	movl	(%rdi,%r10), %edx
+	cmpl	%eax, %edx
+	movl	%edx, %esi
+	cmovel	%ecx, %esi
+	cmpl	%ecx, %edx
+	cmovgel	%ecx, %esi
+	cmpl	%eax, %edx
+	cmovll	%eax, %esi
+	movl	%esi, %ecx
+LBB0_5:
+	cmpl	$2147483647, %ecx               ## imm = 0x7FFFFFFF
+	movl	$-1, %eax
+	cmovnel	%ecx, %eax
+	popq	%rbp
+LBB0_6:
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

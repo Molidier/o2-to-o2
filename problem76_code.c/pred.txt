@@ -1,0 +1,44 @@
+# problem76/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	cmp	w0, #2
+	b.ge	LBB0_2
+; %bb.1:
+	mov	w0, #0
+	ret
+LBB0_2:
+	cmp	w0, #4
+	b.hs	LBB0_4
+; %bb.3:
+	mov	w8, #0
+	b	LBB0_8
+LBB0_4:
+	mov	w8, #0
+	mov	w9, #2
+	b	LBB0_6
+LBB0_5:                                 ;   in Loop: Header=BB0_6 Depth=1
+	add	w9, w9, #1
+	mul	w10, w9, w9
+	cmp	w10, w0
+	b.gt	LBB0_8
+LBB0_6:                                 ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB0_7 Depth 2
+	mov	x10, x0
+LBB0_7:                                 ;   Parent Loop BB0_6 Depth=1
+                                        ; =>  This Inner Loop Header: Depth=2
+	sdiv	w11, w10, w9
+	msub	w11, w11, w9, w10
+	cbnz	w11, LBB0_5
+; %bb.8:                                ;   in Loop: Header=BB0_7 Depth=2
+	sdiv	w0, w0, w9
+	add	w8, w8, #1
+	b	LBB0_7
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols
+

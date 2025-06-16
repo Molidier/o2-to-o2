@@ -1,0 +1,91 @@
+# problem112/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	subq	$112, %rsp
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rax
+	movq	(%rax), %rax
+	movq	%rax, -8(%rbp)
+	xorps	%xmm0, %xmm0
+	movaps	%xmm0, -32(%rbp)
+	movaps	%xmm0, -48(%rbp)
+	movaps	%xmm0, -64(%rbp)
+	movaps	%xmm0, -80(%rbp)
+	movaps	%xmm0, -96(%rbp)
+	movaps	%xmm0, -112(%rbp)
+	movq	$0, -16(%rbp)
+	xorl	%r9d, %r9d
+	jmp	LBB0_1
+	.p2align	4, 0x90
+LBB0_12:                                ##   in Loop: Header=BB0_1 Depth=1
+	incq	%rdi
+LBB0_1:                                 ## =>This Inner Loop Header: Depth=1
+	movsbq	(%rdi), %rax
+	cmpq	$32, %rax
+	je	LBB0_12
+## %bb.2:                               ##   in Loop: Header=BB0_1 Depth=1
+	testb	%al, %al
+	je	LBB0_3
+## %bb.11:                              ##   in Loop: Header=BB0_1 Depth=1
+	movl	-500(%rbp,%rax,4), %r8d
+	leal	1(%r8), %r10d
+	movl	%r10d, -500(%rbp,%rax,4)
+	cmpl	%r9d, %r8d
+	cmovgel	%r10d, %r9d
+	jmp	LBB0_12
+LBB0_3:
+	xorl	%edi, %edi
+	xorl	%r8d, %r8d
+	jmp	LBB0_4
+	.p2align	4, 0x90
+LBB0_8:                                 ##   in Loop: Header=BB0_4 Depth=1
+	addq	$2, %rdi
+	cmpq	$26, %rdi
+	je	LBB0_9
+LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+	movl	-112(%rbp,%rdi,4), %eax
+	movl	%eax, (%rsi,%rdi,4)
+	cmpl	%r9d, %eax
+	jne	LBB0_6
+## %bb.5:                               ##   in Loop: Header=BB0_4 Depth=1
+	movslq	%r8d, %r10
+	incl	%r8d
+	leal	97(%rdi), %eax
+	movb	%al, (%rcx,%r10)
+LBB0_6:                                 ##   in Loop: Header=BB0_4 Depth=1
+	movl	-108(%rbp,%rdi,4), %eax
+	movl	%eax, 4(%rsi,%rdi,4)
+	cmpl	%r9d, %eax
+	jne	LBB0_8
+## %bb.7:                               ##   in Loop: Header=BB0_4 Depth=1
+	movslq	%r8d, %r10
+	incl	%r8d
+	leal	98(%rdi), %eax
+	movb	%al, (%rcx,%r10)
+	jmp	LBB0_8
+LBB0_9:
+	movl	%r9d, (%rdx)
+	movslq	%r8d, %rax
+	movb	$0, (%rcx,%rax)
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rax
+	movq	(%rax), %rax
+	cmpq	-8(%rbp), %rax
+	jne	LBB0_13
+## %bb.10:
+	addq	$112, %rsp
+	popq	%rbp
+	retq
+LBB0_13:
+	callq	___stack_chk_fail
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

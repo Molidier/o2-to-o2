@@ -1,0 +1,36 @@
+# problem91/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	cmp	w1, #2
+	b.lt	LBB0_4
+; %bb.1:
+	mov	w9, w1
+	mov	w8, #2147483647
+	mov	w10, #2147483647
+LBB0_2:                                 ; =>This Inner Loop Header: Depth=1
+	ldr	w11, [x0], #4
+	cmp	w11, w10
+	ccmp	w11, w8, #0, ne
+	csel	w12, w8, w11, ge
+	cmp	w11, w10
+	csel	w11, w11, w10, lt
+	csel	w10, w10, w12, lt
+	subs	x9, x9, #1
+	b.ne	LBB0_2
+; %bb.3:
+	mov	w9, #2147483647
+	cmp	w10, w9
+	csinv	w0, w10, wzr, ne
+	ret
+LBB0_4:
+	mov	w0, #-1
+	ret
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols
+

@@ -1,0 +1,94 @@
+# problem68/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r14
+	pushq	%rbx
+	subq	$48, %rsp
+	.cfi_offset %rbx, -32
+	.cfi_offset %r14, -24
+	movl	%esi, %r14d
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rax
+	movq	(%rax), %rax
+	movq	%rax, -24(%rbp)
+	movw	$0, -32(%rbp)
+	movq	$0, -40(%rbp)
+	movw	$0, -48(%rbp)
+	movq	$0, -56(%rbp)
+	movb	(%rdi), %bl
+	testb	%bl, %bl
+	je	LBB0_5
+## %bb.1:
+	incq	%rdi
+	xorl	%r8d, %r8d
+	movl	$1, %ecx
+	xorl	%esi, %esi
+	xorl	%edx, %edx
+	jmp	LBB0_2
+	.p2align	4, 0x90
+LBB0_8:                                 ##   in Loop: Header=BB0_2 Depth=1
+	testl	%edx, %edx
+	sete	%al
+	testl	%esi, %esi
+	setg	%bl
+	testb	%bl, %al
+	cmovnel	%ecx, %edx
+	cmovnel	%r8d, %esi
+	movl	%esi, %eax
+LBB0_9:                                 ##   in Loop: Header=BB0_2 Depth=1
+	movzbl	(%rdi), %ebx
+	incq	%rdi
+	movl	%eax, %esi
+	testb	%bl, %bl
+	je	LBB0_5
+LBB0_2:                                 ## =>This Inner Loop Header: Depth=1
+	movsbl	%bl, %eax
+	addl	$-48, %eax
+	cmpl	$9, %eax
+	ja	LBB0_8
+## %bb.3:                               ##   in Loop: Header=BB0_2 Depth=1
+	leal	1(%rsi), %eax
+	movslq	%esi, %rsi
+	testl	%edx, %edx
+	je	LBB0_4
+## %bb.7:                               ##   in Loop: Header=BB0_2 Depth=1
+	movb	%bl, -56(%rbp,%rsi)
+	movl	$1, %edx
+	jmp	LBB0_9
+LBB0_4:                                 ##   in Loop: Header=BB0_2 Depth=1
+	movb	%bl, -40(%rbp,%rsi)
+	xorl	%edx, %edx
+	jmp	LBB0_9
+LBB0_5:
+	leaq	-40(%rbp), %rdi
+	callq	_atoi
+	movl	%eax, %ebx
+	leaq	-56(%rbp), %rdi
+	callq	_atoi
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rcx
+	movq	(%rcx), %rcx
+	cmpq	-24(%rbp), %rcx
+	jne	LBB0_10
+## %bb.6:
+	addl	%eax, %ebx
+	subl	%ebx, %r14d
+	movl	%r14d, %eax
+	addq	$48, %rsp
+	popq	%rbx
+	popq	%r14
+	popq	%rbp
+	retq
+LBB0_10:
+	callq	___stack_chk_fail
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

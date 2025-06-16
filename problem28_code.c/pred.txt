@@ -1,0 +1,113 @@
+# problem28/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	stp	x20, x19, [sp, #-32]!           ; 16-byte Folded Spill
+	.cfi_def_cfa_offset 32
+	stp	x29, x30, [sp, #16]             ; 16-byte Folded Spill
+	add	x29, sp, #16
+	.cfi_def_cfa w29, 16
+	.cfi_offset w30, -8
+	.cfi_offset w29, -16
+	.cfi_offset w19, -24
+	.cfi_offset w20, -32
+	mov	x19, x1
+	mov	x20, x0
+	bl	_strlen
+                                        ; kill: def $w0 killed $w0 def $x0
+	cmp	w0, #1
+	b.lt	LBB0_10
+; %bb.1:
+	mov	x9, #0
+	and	x8, x0, #0xffffffff
+	cmp	x8, #8
+	b.lo	LBB0_9
+; %bb.2:
+	sub	x10, x19, x20
+	cmp	x10, #64
+	b.lo	LBB0_9
+; %bb.3:
+	cmp	x8, #64
+	b.hs	LBB0_5
+; %bb.4:
+	mov	x9, #0
+	b	LBB0_8
+LBB0_5:
+	and	x10, x0, #0x3f
+	sub	x9, x8, x10
+	add	x11, x19, #32
+	add	x12, x20, #32
+	movi.16b	v0, #133
+	movi.16b	v1, #229
+	movi.16b	v2, #191
+	movi.16b	v3, #25
+	movi.16b	v4, #32
+	movi.16b	v5, #224
+	mov	x13, x9
+LBB0_6:                                 ; =>This Inner Loop Header: Depth=1
+	ldp	q6, q7, [x12, #-32]
+	ldp	q16, q17, [x12], #64
+	add.16b	v18, v6, v0
+	add.16b	v19, v7, v0
+	add.16b	v20, v16, v0
+	add.16b	v21, v17, v0
+	cmhi.16b	v18, v1, v18
+	cmhi.16b	v19, v1, v19
+	cmhi.16b	v20, v1, v20
+	cmhi.16b	v21, v1, v21
+	add.16b	v22, v6, v2
+	add.16b	v23, v7, v2
+	add.16b	v24, v16, v2
+	add.16b	v25, v17, v2
+	cmhi.16b	v22, v3, v22
+	cmhi.16b	v23, v3, v23
+	cmhi.16b	v24, v3, v24
+	cmhi.16b	v25, v3, v25
+	add.16b	v6, v6, v4
+	add.16b	v7, v7, v4
+	add.16b	v16, v16, v4
+	add.16b	v17, v17, v4
+	bit.16b	v6, v22, v18
+	bit.16b	v7, v23, v19
+	bit.16b	v16, v24, v20
+	stp	q6, q7, [x11, #-32]
+	mov.16b	v6, v25
+	bsl.16b	v6, v17, v16
+	stp	q6, q21, [x11], #64
+	subs	x13, x13, #64
+	b.ne	LBB0_6
+; %bb.7:
+	cbz	x10, LBB0_10
+LBB0_8:                                 ; =>This Inner Loop Header: Depth=1
+	ldrb	w10, [x20, x9]
+	sub	w11, w10, #97
+	sub	w12, w10, #32
+	cmp	w11, #25
+	csel	w10, w12, w10, lo
+	strb	w10, [x19, x9]
+	add	x9, x9, #1
+	cmp	x8, x9
+	b.ne	LBB0_8
+LBB0_9:                                 ; =>This Inner Loop Header: Depth=1
+	ldrb	w10, [x20, x9]
+	sub	w11, w10, #97
+	sub	w12, w10, #32
+	cmp	w11, #25
+	csel	w10, w12, w10, lo
+	strb	w10, [x19, x9]
+	add	x9, x9, #1
+	cmp	x8, x9
+	b.ne	LBB0_9
+LBB0_10:
+	strb	wzr, [x19, w0, sxtw]
+	ldp	x29, x30, [sp, #16]             ; 16-byte Folded Reload
+	ldp	x20, x19, [sp], #32             ; 16-byte Folded Reload
+	ret
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols
+

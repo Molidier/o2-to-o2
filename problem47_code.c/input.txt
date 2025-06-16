@@ -1,0 +1,96 @@
+# problem47/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.section	__TEXT,__literal16,16byte_literals
+	.p2align	4                               ## -- Begin function func0
+LCPI0_0:
+	.long	0                               ## 0x0
+	.long	0                               ## 0x0
+	.long	2                               ## 0x2
+	.long	0                               ## 0x0
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	subq	$416, %rsp                      ## imm = 0x1A0
+                                        ## kill: def $edi killed $edi def $rdi
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rax
+	movq	(%rax), %rax
+	movq	%rax, -8(%rbp)
+	movaps	LCPI0_0(%rip), %xmm0            ## xmm0 = [0,0,2,0]
+	movaps	%xmm0, -416(%rbp)
+	cmpl	$4, %edi
+	jl	LBB0_7
+## %bb.1:
+	leal	1(%rdi), %eax
+	movl	$2, -400(%rbp)
+	cmpl	$5, %eax
+	je	LBB0_7
+## %bb.2:
+	movl	%edi, %r8d
+	cmpl	$6, %eax
+	jne	LBB0_9
+## %bb.3:
+	movl	$4, %edx
+	movl	$2, %ecx
+	movl	$5, %eax
+	movl	$2, %esi
+	testb	$1, %r8b
+	jne	LBB0_6
+	jmp	LBB0_7
+LBB0_9:
+	leaq	-4(%r8), %r9
+	andq	$-2, %r9
+	negq	%r9
+	movl	$2, %ecx
+	movl	$4, %edx
+	movl	$2, %esi
+	.p2align	4, 0x90
+LBB0_10:                                ## =>This Inner Loop Header: Depth=1
+	movl	-420(%rbp,%rdx,4), %eax
+	addl	%eax, %ecx
+	addl	%esi, %ecx
+	movl	-416(%rbp,%rdx,4), %esi
+	addl	-428(%rbp,%rdx,4), %ecx
+	movl	%ecx, -412(%rbp,%rdx,4)
+	addl	%esi, %ecx
+	addl	%eax, %ecx
+	addl	-424(%rbp,%rdx,4), %ecx
+	movl	%ecx, -408(%rbp,%rdx,4)
+	leaq	(%r9,%rdx), %rax
+	addq	$2, %rax
+	addq	$2, %rdx
+	cmpq	$4, %rax
+	jne	LBB0_10
+## %bb.4:
+	leaq	1(%rdx), %rax
+	testb	$1, %r8b
+	je	LBB0_7
+LBB0_6:
+	addl	-420(%rbp,%rdx,4), %ecx
+	addl	%esi, %ecx
+	addl	-428(%rbp,%rdx,4), %ecx
+	movl	%ecx, -416(%rbp,%rax,4)
+LBB0_7:
+	movslq	%edi, %rax
+	movl	-416(%rbp,%rax,4), %eax
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rcx
+	movq	(%rcx), %rcx
+	cmpq	-8(%rbp), %rcx
+	jne	LBB0_11
+## %bb.8:
+	addq	$416, %rsp                      ## imm = 0x1A0
+	popq	%rbp
+	retq
+LBB0_11:
+	callq	___stack_chk_fail
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

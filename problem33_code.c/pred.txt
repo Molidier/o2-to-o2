@@ -1,0 +1,130 @@
+# problem33/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	ldr	d1, [x0]
+	mov	w8, w1
+	fmov	d2, d1
+	cmp	w1, #2
+	b.lt	LBB0_5
+; %bb.1:
+	mov	x9, #0
+	mov	w10, #1
+	fmov	d0, #1.00000000
+	fmov	d2, d1
+LBB0_2:                                 ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB0_3 Depth 2
+                                        ;     Child Loop BB0_4 Depth 2
+	fmov	d3, #1.00000000
+	mov	x11, x10
+LBB0_3:                                 ;   Parent Loop BB0_2 Depth=1
+                                        ; =>  This Inner Loop Header: Depth=2
+	fmul	d3, d3, d0
+	subs	x11, x11, #1
+	b.ne	LBB0_3
+LBB0_4:                                 ;   Parent Loop BB0_2 Depth=1
+                                        ; =>  This Inner Loop Header: Depth=2
+	ldr	d4, [x0, x10, lsl #3]
+	fmadd	d2, d3, d4, d2
+	add	x10, x10, #1
+	add	x9, x9, #1
+	cmp	x10, x8
+	b.ne	LBB0_2
+LBB0_5:
+	fabs	d3, d2
+	mov	x9, #60813
+	movk	x9, #41141, lsl #16
+	movk	x9, #50935, lsl #32
+	movk	x9, #16048, lsl #48
+	fmov	d4, x9
+	fcmp	d3, d4
+	b.le	LBB0_20
+; %bb.6:
+	movi	d3, #0000000000000000
+	fmov	d4, #1.00000000
+	mov	x9, #60813
+	movk	x9, #41141, lsl #16
+	movk	x9, #50935, lsl #32
+	movk	x9, #16048, lsl #48
+	mov	x10, #-9223372036854775808
+	b	LBB0_9
+LBB0_7:                                 ;   in Loop: Header=BB0_9 Depth=1
+	fmov	d2, d1
+LBB0_8:                                 ;   in Loop: Header=BB0_9 Depth=1
+	fabs	d5, d2
+	fmov	d6, x9
+	fcmp	d5, d6
+	b.le	LBB0_20
+LBB0_9:                                 ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB0_12 Depth 2
+                                        ;       Child Loop BB0_14 Depth 3
+                                        ;       Child Loop BB0_17 Depth 3
+	cmp	w1, #2
+	b.lt	LBB0_18
+; %bb.10:                               ;   in Loop: Header=BB0_9 Depth=1
+	mov	x11, #0
+	movi	d5, #0000000000000000
+	mov	w12, #1
+	b	LBB0_12
+LBB0_11:                                ;   in Loop: Header=BB0_12 Depth=2
+	ldr	d6, [x0, x12, lsl #3]
+	scvtf	d7, w12
+	fmul	d6, d7, d6
+	fmadd	d5, d6, d5, d5
+	add	x12, x12, #1
+	add	x11, x11, #1
+	cmp	x12, x8
+	b.eq	LBB0_19
+LBB0_12:                                ;   Parent Loop BB0_9 Depth=1
+                                        ; =>  This Loop Header: Depth=2
+                                        ;       Child Loop BB0_14 Depth 3
+                                        ;       Child Loop BB0_17 Depth 3
+	fmov	d6, #1.00000000
+	cmp	x12, #2
+	b.lo	LBB0_11
+; %bb.13:                               ;   in Loop: Header=BB0_12 Depth=2
+	mov	x13, x11
+LBB0_14:                                ;   Parent Loop BB0_9 Depth=1
+                                        ;     Parent Loop BB0_12 Depth=2
+                                        ; =>    This Inner Loop Header: Depth=3
+	fmul	d6, d6, d3
+	subs	x13, x13, #1
+	b.ne	LBB0_14
+; %bb.15:                               ;   in Loop: Header=BB0_12 Depth=2
+	add	x13, x11, #1
+LBB0_16:                                ;   in Loop: Header=BB0_12 Depth=2
+	scvtf	d6, w13
+	ldr	d7, [x0, x13, lsl #3]
+	fmul	d6, d6, d7
+	fmadd	d5, d6, d5, d5
+	add	x12, x12, #1
+	add	x11, x11, #1
+	cmp	x12, x8
+	b.ne	LBB0_12
+LBB0_17:                                ;   Parent Loop BB0_9 Depth=1
+                                        ;     Parent Loop BB0_12 Depth=2
+                                        ; =>    This Inner Loop Header: Depth=3
+	ldr	d6, [x0, x12, lsl #3]
+	fmadd	d2, d6, d5, d2
+	add	x12, x12, #1
+	add	x11, x11, #1
+	cmp	x12, x8
+	b.ne	LBB0_17
+	b	LBB0_7
+LBB0_18:                                ;   in Loop: Header=BB0_9 Depth=1
+	fmov	d2, d1
+	b	LBB0_7
+LBB0_19:                                ;   in Loop: Header=BB0_9 Depth=1
+	fdiv	d2, d2, d5
+	fsub	d3, d3, d2
+	b	LBB0_7
+LBB0_20:
+	ret
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols
+

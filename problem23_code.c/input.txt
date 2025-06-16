@@ -1,0 +1,116 @@
+# problem23/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r15
+	pushq	%r14
+	pushq	%r13
+	pushq	%r12
+	pushq	%rbx
+	pushq	%rax
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
+	movq	%rsi, %r15
+	movb	(%rdi), %al
+	testb	%al, %al
+	je	LBB0_1
+## %bb.2:
+	movq	%rdi, %rbx
+	xorl	%r12d, %r12d
+	leaq	-48(%rbp), %r14
+	leaq	_func0.out(%rip), %r13
+	jmp	LBB0_3
+	.p2align	4, 0x90
+LBB0_11:                                ##   in Loop: Header=BB0_3 Depth=1
+	movslq	%r12d, %rdx
+	incl	%r12d
+	movl	%eax, (%r13,%rdx,4)
+	movb	(%rcx), %al
+LBB0_16:                                ##   in Loop: Header=BB0_3 Depth=1
+	movq	%rcx, %rbx
+	testb	%al, %al
+	je	LBB0_17
+LBB0_3:                                 ## =>This Loop Header: Depth=1
+                                        ##     Child Loop BB0_4 Depth 2
+                                        ##     Child Loop BB0_12 Depth 2
+	movsbl	%al, %ecx
+	addl	$-48, %ecx
+	cmpl	$10, %ecx
+	jb	LBB0_7
+	.p2align	4, 0x90
+LBB0_4:                                 ##   Parent Loop BB0_3 Depth=1
+                                        ## =>  This Inner Loop Header: Depth=2
+	testb	%al, %al
+	je	LBB0_17
+## %bb.5:                               ##   in Loop: Header=BB0_4 Depth=2
+	cmpb	$45, %al
+	je	LBB0_8
+## %bb.6:                               ##   in Loop: Header=BB0_4 Depth=2
+	movzbl	1(%rbx), %eax
+	incq	%rbx
+	movsbl	%al, %ecx
+	addl	$-48, %ecx
+	cmpl	$9, %ecx
+	ja	LBB0_4
+LBB0_7:                                 ##   in Loop: Header=BB0_3 Depth=1
+	testb	%al, %al
+	je	LBB0_17
+LBB0_8:                                 ##   in Loop: Header=BB0_3 Depth=1
+	movq	%rbx, %rdi
+	movq	%r14, %rsi
+	movl	$10, %edx
+	callq	_strtol
+	movq	-48(%rbp), %rcx
+	cmpq	%rcx, %rbx
+	je	LBB0_12
+## %bb.9:                               ##   in Loop: Header=BB0_3 Depth=1
+	movb	(%rcx), %dl
+	cmpb	$44, %dl
+	je	LBB0_11
+## %bb.10:                              ##   in Loop: Header=BB0_3 Depth=1
+	testb	%dl, %dl
+	je	LBB0_11
+	jmp	LBB0_12
+	.p2align	4, 0x90
+LBB0_14:                                ##   in Loop: Header=BB0_12 Depth=2
+	incq	%rcx
+LBB0_12:                                ##   Parent Loop BB0_3 Depth=1
+                                        ## =>  This Inner Loop Header: Depth=2
+	movzbl	(%rcx), %eax
+	testb	%al, %al
+	je	LBB0_15
+## %bb.13:                              ##   in Loop: Header=BB0_12 Depth=2
+	cmpb	$44, %al
+	jne	LBB0_14
+LBB0_15:                                ##   in Loop: Header=BB0_3 Depth=1
+	movq	%rcx, -48(%rbp)
+	jmp	LBB0_16
+LBB0_1:
+	xorl	%r12d, %r12d
+LBB0_17:
+	movl	%r12d, (%r15)
+	leaq	_func0.out(%rip), %rax
+	addq	$8, %rsp
+	popq	%rbx
+	popq	%r12
+	popq	%r13
+	popq	%r14
+	popq	%r15
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.zerofill __DATA,__bss,_func0.out,1024,4 ## @func0.out
+.subsections_via_symbols

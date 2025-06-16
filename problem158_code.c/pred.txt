@@ -1,0 +1,55 @@
+# problem158/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	fmul	s1, s1, s1
+	fmul	s0, s0, s0
+	fadd	s3, s0, s1
+	fmsub	s3, s2, s2, s3
+	fabs	s3, s3
+	fcvt	d3, s3
+	mov	x8, #17197
+	movk	x8, #60188, lsl #16
+	movk	x8, #14050, lsl #32
+	movk	x8, #16154, lsl #48
+	fmov	d4, x8
+	fcmp	d3, d4
+	b.mi	LBB0_3
+; %bb.1:
+	fadd	s3, s0, s2
+	fsub	s3, s3, s1
+	fabs	s3, s3
+	fcvt	d3, s3
+	mov	x8, #17197
+	movk	x8, #60188, lsl #16
+	movk	x8, #14050, lsl #32
+	movk	x8, #16154, lsl #48
+	fmov	d4, x8
+	fcmp	d3, d4
+	b.mi	LBB0_3
+; %bb.2:
+	fadd	s1, s1, s2
+	fsub	s0, s1, s0
+	fabs	s0, s0
+	fcvt	d0, s0
+	mov	x8, #17197
+	movk	x8, #60188, lsl #16
+	movk	x8, #14050, lsl #32
+	movk	x8, #16154, lsl #48
+	fmov	d1, x8
+	fcmp	d0, d1
+	b.pl	LBB0_4
+LBB0_3:
+	mov	w0, #1
+	ret
+LBB0_4:
+	mov	w0, #0
+	ret
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols
+

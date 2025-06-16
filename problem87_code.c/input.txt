@@ -1,0 +1,152 @@
+# problem87/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r15
+	pushq	%r14
+	pushq	%r13
+	pushq	%r12
+	pushq	%rbx
+	subq	$88, %rsp
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
+	movq	%rdi, %r14
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rax
+	movq	(%rax), %rax
+	movq	%rax, -48(%rbp)
+	callq	_strlen
+	movq	%rax, %rbx
+	addl	$2, %eax
+	movslq	%eax, %rdi
+	callq	_malloc
+	movq	%rax, -120(%rbp)                ## 8-byte Spill
+	xorl	%r13d, %r13d
+	movq	%rbx, -128(%rbp)                ## 8-byte Spill
+	testl	$-2147483648, %ebx              ## imm = 0x80000000
+	jne	LBB0_15
+## %bb.1:
+	movq	%r14, %r11
+	movq	-128(%rbp), %rax                ## 8-byte Reload
+	incl	%eax
+	movq	%rax, -128(%rbp)                ## 8-byte Spill
+	xorl	%r12d, %r12d
+	xorl	%r13d, %r13d
+	xorl	%r14d, %r14d
+	jmp	LBB0_2
+	.p2align	4, 0x90
+LBB0_17:                                ##   in Loop: Header=BB0_2 Depth=1
+	movslq	%r14d, %rcx
+	incl	%r14d
+	movb	%al, -112(%rbp,%rcx)
+	movl	%r14d, %r15d
+LBB0_18:                                ##   in Loop: Header=BB0_2 Depth=1
+	incq	%r12
+	movl	%r15d, %r14d
+	cmpq	-128(%rbp), %r12                ## 8-byte Folded Reload
+	je	LBB0_15
+LBB0_2:                                 ## =>This Loop Header: Depth=1
+                                        ##     Child Loop BB0_5 Depth 2
+                                        ##       Child Loop BB0_7 Depth 3
+	movb	(%r11,%r12), %al
+	testb	$-33, %al
+	jne	LBB0_17
+## %bb.3:                               ##   in Loop: Header=BB0_2 Depth=1
+	cmpl	$2, %r14d
+	jl	LBB0_11
+## %bb.4:                               ##   in Loop: Header=BB0_2 Depth=1
+	leal	-1(%r14), %r8d
+	movl	%r14d, %r9d
+	leaq	-1(%r9), %rdx
+	leaq	-111(%rbp), %rsi
+	xorl	%r10d, %r10d
+	jmp	LBB0_5
+	.p2align	4, 0x90
+LBB0_10:                                ##   in Loop: Header=BB0_5 Depth=2
+	incq	%rsi
+	decq	%rdx
+	cmpq	%r8, %r10
+	je	LBB0_11
+LBB0_5:                                 ##   Parent Loop BB0_2 Depth=1
+                                        ## =>  This Loop Header: Depth=2
+                                        ##       Child Loop BB0_7 Depth 3
+	movq	%r10, %rdi
+	incq	%r10
+	cmpq	%r9, %r10
+	jae	LBB0_10
+## %bb.6:                               ##   in Loop: Header=BB0_5 Depth=2
+	xorl	%eax, %eax
+	jmp	LBB0_7
+	.p2align	4, 0x90
+LBB0_9:                                 ##   in Loop: Header=BB0_7 Depth=3
+	incq	%rax
+	cmpq	%rax, %rdx
+	je	LBB0_10
+LBB0_7:                                 ##   Parent Loop BB0_2 Depth=1
+                                        ##     Parent Loop BB0_5 Depth=2
+                                        ## =>    This Inner Loop Header: Depth=3
+	movzbl	-112(%rbp,%rdi), %ecx
+	movzbl	(%rsi,%rax), %ebx
+	cmpb	%bl, %cl
+	jle	LBB0_9
+## %bb.8:                               ##   in Loop: Header=BB0_7 Depth=3
+	movb	%bl, -112(%rbp,%rdi)
+	movb	%cl, (%rsi,%rax)
+	jmp	LBB0_9
+	.p2align	4, 0x90
+LBB0_11:                                ##   in Loop: Header=BB0_2 Depth=1
+	testl	%r13d, %r13d
+	jle	LBB0_13
+## %bb.12:                              ##   in Loop: Header=BB0_2 Depth=1
+	movl	%r13d, %eax
+	incl	%r13d
+	movq	-120(%rbp), %rcx                ## 8-byte Reload
+	movb	$32, (%rcx,%rax)
+LBB0_13:                                ##   in Loop: Header=BB0_2 Depth=1
+	xorl	%r15d, %r15d
+	testl	%r14d, %r14d
+	jle	LBB0_18
+## %bb.14:                              ##   in Loop: Header=BB0_2 Depth=1
+	movslq	%r13d, %r13
+	movq	-120(%rbp), %rax                ## 8-byte Reload
+	leaq	(%rax,%r13), %rdi
+	movl	%r14d, %edx
+	leaq	-112(%rbp), %rsi
+	movq	%r11, %rbx
+	callq	_memcpy
+	movq	%rbx, %r11
+	addl	%r14d, %r13d
+	jmp	LBB0_18
+LBB0_15:
+	movslq	%r13d, %rcx
+	movq	-120(%rbp), %rax                ## 8-byte Reload
+	movb	$0, (%rax,%rcx)
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rcx
+	movq	(%rcx), %rcx
+	cmpq	-48(%rbp), %rcx
+	jne	LBB0_19
+## %bb.16:
+	addq	$88, %rsp
+	popq	%rbx
+	popq	%r12
+	popq	%r13
+	popq	%r14
+	popq	%r15
+	popq	%rbp
+	retq
+LBB0_19:
+	callq	___stack_chk_fail
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

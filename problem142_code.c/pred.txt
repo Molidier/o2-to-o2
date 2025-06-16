@@ -1,0 +1,259 @@
+# problem142/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	stp	x22, x21, [sp, #-48]!           ; 16-byte Folded Spill
+	.cfi_def_cfa_offset 48
+	stp	x20, x19, [sp, #16]             ; 16-byte Folded Spill
+	stp	x29, x30, [sp, #32]             ; 16-byte Folded Spill
+	add	x29, sp, #32
+	.cfi_def_cfa w29, 16
+	.cfi_offset w30, -8
+	.cfi_offset w29, -16
+	.cfi_offset w19, -24
+	.cfi_offset w20, -32
+	.cfi_offset w21, -40
+	.cfi_offset w22, -48
+	mov	x19, x0
+	bl	_strlen
+	cmp	w0, #5
+	b.lt	LBB0_4
+; %bb.1:
+	ldrsb	w22, [x19]
+	cmp	w22, #65
+	b.lt	LBB0_4
+; %bb.2:
+	and	w8, w22, #0xff
+	sub	w9, w8, #91
+	cmp	w9, #36
+	mov	w10, #1
+	lsl	x9, x10, x9
+	mov	x10, #63
+	movk	x10, #31, lsl #32
+	and	x9, x9, x10
+	ccmp	x9, #0, #4, ls
+	b.eq	LBB0_6
+; %bb.3:
+Lloh0:
+	adrp	x21, l_.str@PAGE
+Lloh1:
+	add	x21, x21, l_.str@PAGEOFF
+	b	LBB0_5
+LBB0_4:
+Lloh2:
+	adrp	x21, l_.str@PAGE
+Lloh3:
+	add	x21, x21, l_.str@PAGEOFF
+LBB0_5:
+	mov	x0, x21
+	ldp	x29, x30, [sp, #32]             ; 16-byte Folded Reload
+	ldp	x20, x19, [sp, #16]             ; 16-byte Folded Reload
+	ldp	x22, x21, [sp], #48             ; 16-byte Folded Reload
+	ret
+LBB0_6:
+	mov	x20, x0
+	add	x8, x19, w0, sxtw
+	sub	x21, x8, #4
+Lloh4:
+	adrp	x1, l_.str.1@PAGE
+Lloh5:
+	add	x1, x1, l_.str.1@PAGEOFF
+	mov	x0, x21
+	bl	_strcmp
+	cbz	w0, LBB0_9
+; %bb.7:
+Lloh6:
+	adrp	x1, l_.str.2@PAGE
+Lloh7:
+	add	x1, x1, l_.str.2@PAGEOFF
+	mov	x0, x21
+	bl	_strcmp
+	cbz	w0, LBB0_9
+; %bb.8:
+Lloh8:
+	adrp	x1, l_.str.3@PAGE
+Lloh9:
+	add	x1, x1, l_.str.3@PAGEOFF
+	mov	x0, x21
+	bl	_strcmp
+	cbnz	w0, LBB0_4
+LBB0_9:
+	and	x8, x20, #0xffffffff
+	sub	w9, w22, #48
+	cmp	w9, #10
+	cset	w9, lo
+	cmp	w22, #46
+	cset	w10, eq
+	subs	x11, x8, #1
+	b.eq	LBB0_13
+; %bb.10:
+	cmp	x11, #8
+	b.hs	LBB0_14
+; %bb.11:
+	mov	w12, #1
+LBB0_12:                                ; =>This Inner Loop Header: Depth=1
+	ldrb	w13, [x19, x12]
+	sub	w14, w13, #48
+	cmp	w14, #10
+	cinc	w9, w9, lo
+	cmp	w13, #46
+	cinc	w10, w10, eq
+	add	x12, x12, #1
+	cmp	x8, x12
+	b.ne	LBB0_12
+	b	LBB0_13
+LBB0_13:
+Lloh10:
+	adrp	x8, l_.str.4@PAGE
+Lloh11:
+	add	x8, x8, l_.str.4@PAGEOFF
+	cmp	w10, #1
+	ccmp	w9, #4, #2, eq
+	csel	x21, x8, x21, lo
+	b	LBB0_5
+LBB0_14:
+	cmp	x11, #32
+	b.hs	LBB0_16
+; %bb.15:
+	mov	w9, #0
+	mov	w10, #0
+	mov	x12, #0
+	b	LBB0_19
+LBB0_16:
+	and	x12, x11, #0xffffffffffffffe0
+	movi.2d	v0, #0000000000000000
+	movi.2d	v1, #0000000000000000
+	mov.s	v1[0], w10
+	movi.2d	v2, #0000000000000000
+	mov.s	v2[0], w9
+	movi.2d	v3, #0000000000000000
+	add	x9, x19, #17
+	movi.2d	v4, #0000000000000000
+	mov	x10, x12
+	movi.2d	v5, #0000000000000000
+	movi.2d	v6, #0000000000000000
+	movi.2d	v7, #0000000000000000
+	movi.2d	v16, #0000000000000000
+	movi.2d	v17, #0000000000000000
+	movi.2d	v18, #0000000000000000
+	movi.2d	v19, #0000000000000000
+	movi.2d	v20, #0000000000000000
+	movi.2d	v21, #0000000000000000
+	movi.2d	v22, #0000000000000000
+	movi.2d	v23, #0000000000000000
+	movi.2d	v24, #0000000000000000
+	movi.2d	v25, #0000000000000000
+	movi.2d	v26, #0000000000000000
+	movi.2d	v27, #0000000000000000
+	movi.2d	v28, #0000000000000000
+	movi.2d	v29, #0000000000000000
+	movi.2d	v30, #0000000000000000
+	movi.2d	v31, #0000000000000000
+LBB0_17:                                ; =>This Inner Loop Header: Depth=1
+	ldp	q32, q33, [x9, #-16]
+	add.16b	v34, v32, v23
+	add.16b	v35, v33, v23
+	cmhi.16b	v34, v23, v34
+	ushll.8h	v36, v34, #0
+	ushll.4s	v37, v36, #0
+	and.16b	v37, v37, v24
+	ushll2.4s	v36, v36, #0
+	and.16b	v36, v36, v24
+	ushll2.8h	v34, v34, #0
+	ushll.4s	v38, v34, #0
+	and.16b	v38, v38, v24
+	ushll2.4s	v34, v34, #0
+	and.16b	v34, v34, v24
+	cmhi.16b	v35, v23, v35
+	ushll.8h	v39, v35, #0
+	ushll.4s	v40, v39, #0
+	and.16b	v40, v40, v24
+	ushll2.4s	v39, v39, #0
+	and.16b	v39, v39, v24
+	ushll2.8h	v35, v35, #0
+	ushll.4s	v41, v35, #0
+	and.16b	v41, v41, v24
+	ushll2.4s	v35, v35, #0
+	and.16b	v35, v35, v24
+	add.4s	v5, v5, v34
+	add.4s	v3, v3, v38
+	add.4s	v2, v2, v36
+	add.4s	v0, v0, v37
+	add.4s	v29, v29, v35
+	add.4s	v31, v31, v41
+	add.4s	v28, v28, v40
+	add.4s	v27, v27, v39
+	add.4s	v26, v26, v34
+	add.4s	v25, v25, v38
+	add.4s	v24, v24, v36
+	add.4s	v23, v23, v37
+	add	x9, x9, #32
+	subs	x10, x10, #32
+	b.ne	LBB0_17
+; %bb.18:
+	add.4s	v2, v25, v2
+	add.4s	v3, v29, v3
+	add.4s	v0, v27, v0
+	add.4s	v1, v28, v1
+	add.4s	v1, v26, v1
+	add.4s	v0, v24, v0
+	add.4s	v3, v25, v3
+	add.4s	v2, v23, v2
+	add.4s	v2, v26, v2
+	add.4s	v3, v28, v3
+	add.4s	v0, v27, v0
+	add.4s	v1, v24, v1
+	add.4s	v0, v0, v1
+	add.4s	v1, v3, v2
+	add.4s	v0, v0, v1
+	addv.4s	s0, v0
+	fmov	w10, s0
+	add.4s	v1, v2, v3
+	add.4s	v0, v0, v1
+	addv.4s	s0, v0
+	fmov	w9, s0
+	cmp	x11, x12
+	b.eq	LBB0_13
+LBB0_19:
+	sub	x8, x8, x12
+	add	x11, x19, x12
+LBB0_20:                                ; =>This Inner Loop Header: Depth=1
+	ldrb	w12, [x11], #1
+	sub	w13, w12, #48
+	cmp	w13, #10
+	cinc	w9, w9, lo
+	cmp	w12, #46
+	cinc	w10, w10, eq
+	subs	x8, x8, #1
+	b.ne	LBB0_20
+	b	LBB0_13
+	.loh AdrpAdd	Lloh0, Lloh1
+	.loh AdrpAdd	Lloh2, Lloh3
+	.loh AdrpAdd	Lloh4, Lloh5
+	.loh AdrpAdd	Lloh6, Lloh7
+	.loh AdrpAdd	Lloh8, Lloh9
+	.loh AdrpAdd	Lloh10, Lloh11
+	.cfi_endproc
+                                        ; -- End function
+	.section	__TEXT,__cstring,cstring_literals
+l_.str:                                 ; @.str
+	.asciz	"No"
+
+l_.str.1:                               ; @.str.1
+	.asciz	".txt"
+
+l_.str.2:                               ; @.str.2
+	.asciz	".exe"
+
+l_.str.3:                               ; @.str.3
+	.asciz	".dll"
+
+l_.str.4:                               ; @.str.4
+	.asciz	"Yes"
+
+.subsections_via_symbols
+

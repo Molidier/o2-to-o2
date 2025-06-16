@@ -1,0 +1,116 @@
+# problem125/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%rbx
+	pushq	%rax
+	.cfi_offset %rbx, -24
+	movq	%rdi, %rbx
+	callq	_strlen
+	movq	%rax, %rcx
+	xorl	%eax, %eax
+	cmpq	$10, %rcx
+	jne	LBB0_16
+## %bb.1:
+	movb	(%rbx), %cl
+	leal	-58(%rcx), %edx
+	cmpb	$-10, %dl
+	jb	LBB0_16
+## %bb.2:
+	movb	1(%rbx), %r9b
+	leal	-58(%r9), %esi
+	cmpb	$-10, %sil
+	jb	LBB0_16
+## %bb.3:
+	cmpb	$45, 2(%rbx)
+	jne	LBB0_16
+## %bb.4:
+	movb	3(%rbx), %sil
+	leal	-58(%rsi), %edi
+	cmpb	$-10, %dil
+	jb	LBB0_16
+## %bb.5:
+	movb	4(%rbx), %r8b
+	leal	-58(%r8), %edi
+	cmpb	$-10, %dil
+	jb	LBB0_16
+## %bb.6:
+	cmpb	$45, 5(%rbx)
+	jne	LBB0_16
+## %bb.7:
+	movb	6(%rbx), %dl
+	addb	$-58, %dl
+	cmpb	$-10, %dl
+	jb	LBB0_16
+## %bb.8:
+	movb	7(%rbx), %dl
+	addb	$-58, %dl
+	cmpb	$-10, %dl
+	jb	LBB0_16
+## %bb.9:
+	movb	8(%rbx), %dl
+	addb	$-58, %dl
+	cmpb	$-10, %dl
+	jb	LBB0_16
+## %bb.10:
+	movb	9(%rbx), %dl
+	addb	$-58, %dl
+	cmpb	$-10, %dl
+	jb	LBB0_16
+## %bb.11:
+	movb	%cl, -14(%rbp)
+	movb	%r9b, -13(%rbp)
+	movb	$0, -12(%rbp)
+	movb	%sil, -11(%rbp)
+	movb	%r8b, -10(%rbp)
+	movb	$0, -9(%rbp)
+	leaq	-14(%rbp), %rdi
+	callq	_atoi
+	movl	%eax, %ebx
+	leaq	-11(%rbp), %rdi
+	callq	_atoi
+	movl	%eax, %ecx
+	leal	-13(%rbx), %edx
+	xorl	%eax, %eax
+	cmpl	$-12, %edx
+	jb	LBB0_16
+## %bb.12:
+	leal	-32(%rcx), %edx
+	cmpl	$-31, %edx
+	jb	LBB0_16
+## %bb.13:
+	movl	%ebx, %edx
+	andl	$-3, %edx
+	cmpl	$4, %edx
+	setne	%sil
+	cmpl	$9, %edx
+	setne	%dl
+	testb	%sil, %dl
+	jne	LBB0_15
+## %bb.14:
+	cmpl	$31, %ecx
+	je	LBB0_16
+LBB0_15:
+	cmpl	$2, %ebx
+	setne	%al
+	cmpl	$30, %ecx
+	setb	%cl
+	orb	%al, %cl
+	movzbl	%cl, %eax
+LBB0_16:
+	addq	$8, %rsp
+	popq	%rbx
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

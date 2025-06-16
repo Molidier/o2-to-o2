@@ -1,0 +1,114 @@
+# problem45/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	sub	sp, sp, #64
+	.cfi_def_cfa_offset 64
+	stp	x29, x30, [sp, #48]             ; 16-byte Folded Spill
+	add	x29, sp, #48
+	.cfi_def_cfa w29, 16
+	.cfi_offset w30, -8
+	.cfi_offset w29, -16
+Lloh0:
+	adrp	x8, ___stack_chk_guard@GOTPAGE
+Lloh1:
+	ldr	x8, [x8, ___stack_chk_guard@GOTPAGEOFF]
+Lloh2:
+	ldr	x8, [x8]
+	stur	x8, [x29, #-8]
+	cmp	w0, #1
+	b.lt	LBB0_10
+; %bb.1:
+	mov	x8, #0
+	add	x9, sp, #7
+LBB0_2:                                 ; =>This Inner Loop Header: Depth=1
+	sdiv	w10, w0, w1
+	msub	w11, w10, w1, w0
+	add	w11, w11, #48
+	strb	w11, [x9, x8]
+	add	x8, x8, #1
+	mov	x0, x10
+	cmp	w10, #0
+	b.gt	LBB0_2
+; %bb.3:
+	cmp	w8, #1
+	b.lt	LBB0_10
+; %bb.4:
+	and	x9, x8, #0xffffffff
+	cmp	x9, #8
+	b.hs	LBB0_13
+; %bb.5:
+	mov	x10, #0
+LBB0_6:
+	mov	x11, x9
+LBB0_7:
+	sub	x11, x11, #1
+	add	x12, x2, x10
+	sub	x9, x9, x10
+	add	x10, sp, #7
+LBB0_8:                                 ; =>This Inner Loop Header: Depth=1
+	ldrb	w13, [x10, w11, uxtw]
+	strb	w13, [x12], #1
+	sub	x11, x11, #1
+	subs	x9, x9, #1
+	b.ne	LBB0_8
+LBB0_9:
+	and	x8, x8, #0xffffffff
+	b	LBB0_11
+LBB0_10:
+	mov	x8, #0
+LBB0_11:
+	strb	wzr, [x2, x8]
+	ldur	x8, [x29, #-8]
+Lloh3:
+	adrp	x9, ___stack_chk_guard@GOTPAGE
+Lloh4:
+	ldr	x9, [x9, ___stack_chk_guard@GOTPAGEOFF]
+Lloh5:
+	ldr	x9, [x9]
+	cmp	x9, x8
+	b.ne	LBB0_18
+; %bb.12:
+	ldp	x29, x30, [sp, #48]             ; 16-byte Folded Reload
+	add	sp, sp, #64
+	ret
+LBB0_13:
+	mov	x10, #0
+	sub	x11, x9, #1
+	sub	w12, w8, #1
+	cmp	w12, w11
+	b.lo	LBB0_6
+; %bb.14:
+	lsr	x12, x11, #32
+	mov	x11, x9
+	cbnz	x12, LBB0_7
+; %bb.15:
+	and	x11, x8, #0x7
+	sub	x10, x9, x11
+	sub	x13, x11, w8, uxtw
+	add	x14, sp, #7
+	mov	x15, x2
+LBB0_16:                                ; =>This Inner Loop Header: Depth=1
+	add	w16, w8, w12
+	sub	w16, w16, #1
+	add	x16, x14, x16
+	ldur	d0, [x16, #-7]
+	rev64.8b	v0, v0
+	str	d0, [x15], #8
+	sub	x12, x12, #8
+	cmp	x13, x12
+	b.ne	LBB0_16
+; %bb.17:
+	cbnz	x11, LBB0_7
+	b	LBB0_9
+LBB0_18:
+	bl	___stack_chk_fail
+	.loh AdrpLdrGotLdr	Lloh0, Lloh1, Lloh2
+	.loh AdrpLdrGotLdr	Lloh3, Lloh4, Lloh5
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols

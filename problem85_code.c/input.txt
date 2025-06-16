@@ -1,0 +1,123 @@
+# problem85/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%rbx
+	pushq	%rax
+	.cfi_offset %rbx, -24
+	movl	%edi, %r8d
+	leaq	L_.str(%rip), %rcx
+	xorl	%ebx, %ebx
+	leaq	-14(%rbp), %rdi
+	movl	$6, %edx
+	xorl	%esi, %esi
+	xorl	%eax, %eax
+	callq	___sprintf_chk
+	movb	-14(%rbp), %al
+	testb	%al, %al
+	je	LBB0_10
+## %bb.1:
+	leaq	-13(%rbp), %rcx
+	.p2align	4, 0x90
+LBB0_2:                                 ## =>This Inner Loop Header: Depth=1
+	movsbl	%al, %eax
+	addl	%eax, %ebx
+	addl	$-48, %ebx
+	movzbl	(%rcx), %eax
+	incq	%rcx
+	testb	%al, %al
+	jne	LBB0_2
+## %bb.3:
+	movl	$33, %edi
+	callq	_malloc
+	testl	%ebx, %ebx
+	je	LBB0_11
+## %bb.4:
+	jle	LBB0_14
+## %bb.5:
+	xorl	%esi, %esi
+	movl	%ebx, %edx
+	.p2align	4, 0x90
+LBB0_6:                                 ## =>This Inner Loop Header: Depth=1
+	movl	%ebx, %ecx
+	andb	$1, %cl
+	orb	$48, %cl
+	movb	%cl, (%rax,%rsi)
+	incq	%rsi
+	shrl	%edx
+	cmpl	$2, %ebx
+	movl	%edx, %ebx
+	jae	LBB0_6
+## %bb.7:
+	movb	$0, (%rax,%rsi)
+	testl	$-2, %esi
+	je	LBB0_13
+## %bb.8:
+	movq	%rsi, %r8
+	shrq	%r8
+	cmpq	$1, %r8
+	jne	LBB0_15
+## %bb.9:
+	xorl	%edx, %edx
+	jmp	LBB0_17
+LBB0_10:
+	movl	$33, %edi
+	callq	_malloc
+LBB0_11:
+	movb	$48, (%rax)
+	movl	$1, %ecx
+LBB0_12:
+	movb	$0, (%rax,%rcx)
+LBB0_13:
+	addq	$8, %rsp
+	popq	%rbx
+	popq	%rbp
+	retq
+LBB0_14:
+	xorl	%ecx, %ecx
+	jmp	LBB0_12
+LBB0_15:
+	leaq	-1(%rsi), %rdi
+	andq	$-2, %r8
+	xorl	%edx, %edx
+	.p2align	4, 0x90
+LBB0_16:                                ## =>This Inner Loop Header: Depth=1
+	movzbl	(%rax,%rdx), %ebx
+	movzbl	(%rax,%rdi), %ecx
+	movb	%cl, (%rax,%rdx)
+	movb	%bl, (%rax,%rdi)
+	movzbl	1(%rax,%rdx), %ecx
+	movzbl	-1(%rax,%rdi), %ebx
+	movb	%bl, 1(%rax,%rdx)
+	movb	%cl, -1(%rax,%rdi)
+	addq	$2, %rdx
+	addq	$-2, %rdi
+	cmpq	%rdx, %r8
+	jne	LBB0_16
+LBB0_17:
+	testb	$2, %sil
+	je	LBB0_13
+## %bb.18:
+	movb	(%rax,%rdx), %cl
+	movq	%rax, %rdi
+	subq	%rdx, %rdi
+	movb	-1(%rdi,%rsi), %bl
+	movb	%bl, (%rax,%rdx)
+	movb	%cl, -1(%rdi,%rsi)
+	jmp	LBB0_13
+	.cfi_endproc
+                                        ## -- End function
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	"%d"
+
+.subsections_via_symbols

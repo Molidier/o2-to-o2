@@ -1,0 +1,86 @@
+# problem64/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	sub	sp, sp, #448
+	.cfi_def_cfa_offset 448
+	stp	x28, x27, [sp, #416]            ; 16-byte Folded Spill
+	stp	x29, x30, [sp, #432]            ; 16-byte Folded Spill
+	add	x29, sp, #432
+	.cfi_def_cfa w29, 16
+	.cfi_offset w30, -8
+	.cfi_offset w29, -16
+	.cfi_offset w27, -24
+	.cfi_offset w28, -32
+Lloh0:
+	adrp	x8, ___stack_chk_guard@GOTPAGE
+Lloh1:
+	ldr	x8, [x8, ___stack_chk_guard@GOTPAGEOFF]
+Lloh2:
+	ldr	x8, [x8]
+	stur	x8, [x29, #-24]
+	movi.2d	v0, #0000000000000000
+	stp	q0, q0, [sp, #368]
+	stp	q0, q0, [sp, #336]
+	stp	q0, q0, [sp, #304]
+	stp	q0, q0, [sp, #272]
+	stp	q0, q0, [sp, #240]
+	stp	q0, q0, [sp, #208]
+	stp	q0, q0, [sp, #176]
+	stp	q0, q0, [sp, #144]
+	stp	q0, q0, [sp, #112]
+	stp	q0, q0, [sp, #80]
+	stp	q0, q0, [sp, #48]
+	stp	q0, q0, [sp, #16]
+	str	q0, [sp]
+	mov	w8, #1
+	str	w8, [sp, #8]
+	cmp	w0, #3
+	b.lt	LBB0_4
+; %bb.1:
+	add	w10, w0, #1
+	ldr	w8, [sp]
+	add	w8, w8, #1
+	str	w8, [sp, #12]
+	cmp	w10, #4
+	b.eq	LBB0_4
+; %bb.2:
+	mov	x9, sp
+	orr	x9, x9, #0x8
+	sub	x10, x10, #4
+LBB0_3:                                 ; =>This Inner Loop Header: Depth=1
+	ldp	w12, w11, [x9, #-4]
+	add	w8, w11, w8
+	add	w8, w8, w12
+	str	w8, [x9, #8]
+	add	x9, x9, #4
+	subs	x10, x10, #1
+	b.ne	LBB0_3
+LBB0_4:
+	mov	x8, sp
+	ldr	w0, [x8, w0, sxtw #2]
+	ldur	x8, [x29, #-24]
+Lloh3:
+	adrp	x9, ___stack_chk_guard@GOTPAGE
+Lloh4:
+	ldr	x9, [x9, ___stack_chk_guard@GOTPAGEOFF]
+Lloh5:
+	ldr	x9, [x9]
+	cmp	x9, x8
+	b.ne	LBB0_6
+; %bb.5:
+	ldp	x29, x30, [sp, #432]            ; 16-byte Folded Reload
+	ldp	x28, x27, [sp, #416]            ; 16-byte Folded Reload
+	add	sp, sp, #448
+	ret
+LBB0_6:
+	bl	___stack_chk_fail
+	.loh AdrpLdrGotLdr	Lloh0, Lloh1, Lloh2
+	.loh AdrpLdrGotLdr	Lloh3, Lloh4, Lloh5
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols

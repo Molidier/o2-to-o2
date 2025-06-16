@@ -1,0 +1,128 @@
+# problem113/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r15
+	pushq	%r14
+	pushq	%r13
+	pushq	%r12
+	pushq	%rbx
+	pushq	%rax
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
+	movq	%rcx, -48(%rbp)                 ## 8-byte Spill
+	movq	%rdx, %r15
+	movq	%rsi, %r13
+	movq	%rdi, %r14
+	callq	_strlen
+	incl	%eax
+	movslq	%eax, %rdi
+	callq	_malloc
+	movq	%rax, %r12
+	movb	(%r14), %dl
+	testb	%dl, %dl
+	je	LBB0_1
+## %bb.4:
+	movb	(%r13), %bl
+	incq	%r13
+	xorl	%esi, %esi
+	xorl	%ecx, %ecx
+	jmp	LBB0_5
+	.p2align	4, 0x90
+LBB0_6:                                 ##   in Loop: Header=BB0_5 Depth=1
+	movslq	%ecx, %rax
+	incl	%ecx
+	movb	%dl, (%r12,%rax)
+LBB0_9:                                 ##   in Loop: Header=BB0_5 Depth=1
+	movb	1(%r14,%rsi), %dl
+	incq	%rsi
+	testb	%dl, %dl
+	je	LBB0_2
+LBB0_5:                                 ## =>This Loop Header: Depth=1
+                                        ##     Child Loop BB0_8 Depth 2
+	movq	%r13, %rdi
+	movl	%ebx, %eax
+	testb	%bl, %bl
+	je	LBB0_6
+	.p2align	4, 0x90
+LBB0_8:                                 ##   Parent Loop BB0_5 Depth=1
+                                        ## =>  This Inner Loop Header: Depth=2
+	cmpb	%al, %dl
+	je	LBB0_9
+## %bb.7:                               ##   in Loop: Header=BB0_8 Depth=2
+	movzbl	(%rdi), %eax
+	incq	%rdi
+	testb	%al, %al
+	jne	LBB0_8
+	jmp	LBB0_6
+LBB0_1:
+	xorl	%ecx, %ecx
+LBB0_2:
+	movslq	%ecx, %rax
+	movb	$0, (%r12,%rax)
+	movq	%r12, %rdi
+	callq	_strlen
+	leaq	L_.str(%rip), %r14
+	cmpl	$2, %eax
+	jl	LBB0_13
+## %bb.3:
+	movabsq	$-4294967296, %rcx              ## imm = 0xFFFFFFFF00000000
+	movl	%eax, %edx
+	shrl	%edx
+	shlq	$32, %rax
+	addq	%rcx, %rax
+	xorl	%esi, %esi
+	leaq	L_.str.1(%rip), %r8
+	.p2align	4, 0x90
+LBB0_11:                                ## =>This Inner Loop Header: Depth=1
+	movzbl	(%r12,%rsi), %ebx
+	movq	%rax, %rdi
+	sarq	$32, %rdi
+	cmpb	(%r12,%rdi), %bl
+	jne	LBB0_12
+## %bb.10:                              ##   in Loop: Header=BB0_11 Depth=1
+	incq	%rsi
+	addq	%rcx, %rax
+	cmpq	%rsi, %rdx
+	jne	LBB0_11
+	jmp	LBB0_13
+LBB0_12:
+	movq	%r8, %r14
+LBB0_13:
+	movq	%r15, %rdi
+	movq	%r12, %rsi
+	callq	_strcpy
+	movq	-48(%rbp), %rdi                 ## 8-byte Reload
+	movq	%r14, %rsi
+	callq	_strcpy
+	movq	%r12, %rdi
+	addq	$8, %rsp
+	popq	%rbx
+	popq	%r12
+	popq	%r13
+	popq	%r14
+	popq	%r15
+	popq	%rbp
+	jmp	_free                           ## TAILCALL
+	.cfi_endproc
+                                        ## -- End function
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	"True"
+
+L_.str.1:                               ## @.str.1
+	.asciz	"False"
+
+.subsections_via_symbols

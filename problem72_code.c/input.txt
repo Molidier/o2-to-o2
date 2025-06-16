@@ -1,0 +1,78 @@
+# problem72/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.section	__TEXT,__literal4,4byte_literals
+	.p2align	2                               ## -- Begin function func0
+LCPI0_0:
+	.long	0xbf800000                      ## float -1
+LCPI0_1:
+	.long	0x3f000000                      ## float 0.5
+LCPI0_2:
+	.long	0x42c80000                      ## float 100
+	.section	__TEXT,__literal16,16byte_literals
+	.p2align	4
+LCPI0_3:
+	.long	0x80000000                      ## float -0
+	.long	0x80000000                      ## float -0
+	.long	0x80000000                      ## float -0
+	.long	0x80000000                      ## float -0
+LCPI0_4:
+	.long	0x3effffff                      ## float 0.49999997
+	.long	0x3effffff                      ## float 0.49999997
+	.long	0x3effffff                      ## float 0.49999997
+	.long	0x3effffff                      ## float 0.49999997
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	movaps	%xmm0, %xmm3
+	movaps	%xmm1, %xmm0
+	addss	%xmm2, %xmm0
+	ucomiss	%xmm0, %xmm3
+	movss	LCPI0_0(%rip), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+	jae	LBB0_4
+## %bb.1:
+	movaps	%xmm3, %xmm4
+	addss	%xmm1, %xmm4
+	ucomiss	%xmm4, %xmm2
+	jae	LBB0_4
+## %bb.2:
+	movaps	%xmm3, %xmm5
+	addss	%xmm2, %xmm5
+	ucomiss	%xmm5, %xmm1
+	jae	LBB0_4
+## %bb.3:
+	addss	%xmm2, %xmm4
+	mulss	LCPI0_1(%rip), %xmm4
+	movaps	%xmm4, %xmm0
+	subss	%xmm3, %xmm0
+	mulss	%xmm4, %xmm0
+	movaps	%xmm4, %xmm3
+	subss	%xmm1, %xmm3
+	mulss	%xmm0, %xmm3
+	subss	%xmm2, %xmm4
+	mulss	%xmm3, %xmm4
+	xorps	%xmm0, %xmm0
+	sqrtss	%xmm4, %xmm0
+	movss	LCPI0_2(%rip), %xmm1            ## xmm1 = mem[0],zero,zero,zero
+	mulss	%xmm1, %xmm0
+	movaps	LCPI0_3(%rip), %xmm2            ## xmm2 = [-0.0E+0,-0.0E+0,-0.0E+0,-0.0E+0]
+	andps	%xmm0, %xmm2
+	orps	LCPI0_4(%rip), %xmm2
+	addss	%xmm0, %xmm2
+	xorps	%xmm0, %xmm0
+	roundss	$11, %xmm2, %xmm0
+	divss	%xmm1, %xmm0
+LBB0_4:
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

@@ -1,0 +1,57 @@
+# problem44/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	cmp	w1, #1
+	b.lt	LBB0_8
+; %bb.1:
+	mov	x12, #0
+	add	x8, x0, #4
+	mov	w11, #1
+	mov	w9, w1
+	b	LBB0_3
+LBB0_2:                                 ;   in Loop: Header=BB0_3 Depth=1
+	add	x8, x8, #4
+	sub	x12, x12, #1
+	cmp	x12, x9
+	b.eq	LBB0_9
+LBB0_3:                                 ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB0_5 Depth 2
+	mov	x10, x11
+	mov	x11, x12
+	add	x12, x12, #1
+	cmp	x12, x9
+	cset	w11, lo
+	b.hs	LBB0_2
+; %bb.4:                                ;   in Loop: Header=BB0_3 Depth=1
+	ldr	w13, [x0, x11, lsl #2]
+	mov	x14, x9
+	mov	x15, x8
+LBB0_5:                                 ;   Parent Loop BB0_3 Depth=1
+                                        ; =>  This Inner Loop Header: Depth=2
+	ldr	w16, [x15]
+	cmn	w13, w16
+	b.eq	LBB0_7
+; %bb.6:                                ;   in Loop: Header=BB0_5 Depth=2
+	add	x15, x15, #4
+	sub	x14, x14, #1
+	cmp	x11, x14
+	b.ne	LBB0_5
+	b	LBB0_2
+LBB0_7:
+	and	w0, w10, #0x1
+	ret
+LBB0_8:
+	and	w0, wzr, #0x1
+	ret
+LBB0_9:
+	and	w0, w11, #0x1
+	ret
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols
+

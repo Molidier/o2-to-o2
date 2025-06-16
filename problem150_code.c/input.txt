@@ -1,0 +1,150 @@
+# problem150/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r15
+	pushq	%r14
+	pushq	%r13
+	pushq	%r12
+	pushq	%rbx
+	subq	$40, %rsp
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
+	movq	%rdi, -48(%rbp)                 ## 8-byte Spill
+	movl	$0, (%rdx)
+	testl	%esi, %esi
+	jle	LBB0_1
+## %bb.9:
+	movq	%rdx, %r15
+	movl	%esi, %r14d
+	xorl	%eax, %eax
+	movq	%rax, -56(%rbp)                 ## 8-byte Spill
+	xorl	%ebx, %ebx
+	movq	-48(%rbp), %r13                 ## 8-byte Reload
+	jmp	LBB0_10
+	.p2align	4, 0x90
+LBB0_12:                                ##   in Loop: Header=BB0_10 Depth=1
+	incq	%rbx
+	cmpq	%rbx, %r14
+	je	LBB0_2
+LBB0_10:                                ## =>This Inner Loop Header: Depth=1
+	movq	(%r13,%rbx,8), %r12
+	movq	%r12, %rdi
+	callq	_strlen
+	testb	$1, %al
+	jne	LBB0_12
+## %bb.11:                              ##   in Loop: Header=BB0_10 Depth=1
+	movq	-56(%rbp), %rax                 ## 8-byte Reload
+	cltq
+	movq	%r12, (%r13,%rax,8)
+	incl	%eax
+	movq	%rax, -56(%rbp)                 ## 8-byte Spill
+	movl	%eax, (%r15)
+	jmp	LBB0_12
+LBB0_2:
+	movq	-56(%rbp), %r15                 ## 8-byte Reload
+	cmpl	$2, %r15d
+	jl	LBB0_17
+## %bb.3:
+	leal	-1(%r15), %eax
+	xorl	%ecx, %ecx
+	movl	%eax, -68(%rbp)                 ## 4-byte Spill
+	movl	%eax, %edx
+	movq	-48(%rbp), %rbx                 ## 8-byte Reload
+	jmp	LBB0_4
+	.p2align	4, 0x90
+LBB0_16:                                ##   in Loop: Header=BB0_4 Depth=1
+	movq	-80(%rbp), %rcx                 ## 8-byte Reload
+	incl	%ecx
+	decl	%edx
+	cmpl	-68(%rbp), %ecx                 ## 4-byte Folded Reload
+	movq	-56(%rbp), %r15                 ## 8-byte Reload
+	je	LBB0_17
+LBB0_4:                                 ## =>This Loop Header: Depth=1
+                                        ##     Child Loop BB0_6 Depth 2
+	movl	%edx, %edx
+	movq	%rcx, -80(%rbp)                 ## 8-byte Spill
+	movl	%ecx, %eax
+	notl	%eax
+	addl	%r15d, %eax
+	testl	%eax, %eax
+	jle	LBB0_16
+## %bb.5:                               ##   in Loop: Header=BB0_4 Depth=1
+	movq	(%rbx), %r15
+	xorl	%r13d, %r13d
+	movq	%rdx, -64(%rbp)                 ## 8-byte Spill
+	jmp	LBB0_6
+	.p2align	4, 0x90
+LBB0_14:                                ##   in Loop: Header=BB0_6 Depth=2
+	movq	-48(%rbp), %rax                 ## 8-byte Reload
+	movq	%rbx, (%rax,%r14,8)
+	movq	%rax, %rbx
+	movq	%r15, 8(%rax,%r14,8)
+LBB0_15:                                ##   in Loop: Header=BB0_6 Depth=2
+	movq	-64(%rbp), %rdx                 ## 8-byte Reload
+	cmpq	%r13, %rdx
+	je	LBB0_16
+LBB0_6:                                 ##   Parent Loop BB0_4 Depth=1
+                                        ## =>  This Inner Loop Header: Depth=2
+	movq	%r13, %r14
+	movq	%r15, %rdi
+	callq	_strlen
+	movq	%rax, %r12
+	incq	%r13
+	movq	8(%rbx,%r14,8), %rbx
+	movq	%rbx, %rdi
+	callq	_strlen
+	cmpq	%rax, %r12
+	ja	LBB0_14
+## %bb.7:                               ##   in Loop: Header=BB0_6 Depth=2
+	jne	LBB0_8
+## %bb.13:                              ##   in Loop: Header=BB0_6 Depth=2
+	movq	%r15, %rdi
+	movq	%rbx, %rsi
+	callq	_strcmp
+	testl	%eax, %eax
+	jg	LBB0_14
+LBB0_8:                                 ##   in Loop: Header=BB0_6 Depth=2
+	movq	%rbx, %r15
+	movq	-48(%rbp), %rbx                 ## 8-byte Reload
+	jmp	LBB0_15
+LBB0_1:
+	xorl	%r15d, %r15d
+LBB0_17:
+	movslq	%r15d, %rbx
+	leaq	(,%rbx,8), %rdi
+	callq	_malloc
+	movq	%rax, %r14
+	testl	%ebx, %ebx
+	jle	LBB0_19
+## %bb.18:
+	movl	%r15d, %edx
+	shlq	$3, %rdx
+	movq	%r14, %rdi
+	movq	-48(%rbp), %rsi                 ## 8-byte Reload
+	callq	_memcpy
+LBB0_19:
+	movq	%r14, %rax
+	addq	$40, %rsp
+	popq	%rbx
+	popq	%r12
+	popq	%r13
+	popq	%r14
+	popq	%r15
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

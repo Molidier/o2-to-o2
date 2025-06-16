@@ -1,0 +1,83 @@
+# problem101/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r14
+	pushq	%rbx
+	.cfi_offset %rbx, -32
+	.cfi_offset %r14, -24
+	movl	%edi, %r14d
+	movslq	%edi, %rbx
+	leaq	(,%rbx,4), %rdi
+	callq	_malloc
+	movl	%ebx, (%rax)
+	cmpl	$2, %ebx
+	jl	LBB0_8
+## %bb.1:
+	movl	%r14d, %ecx
+	movl	(%rax), %ebx
+	leaq	-1(%rcx), %rdi
+	addq	$-2, %rcx
+	movl	%edi, %r8d
+	andl	$3, %r8d
+	movl	$1, %esi
+	cmpq	$3, %rcx
+	jb	LBB0_5
+## %bb.2:
+	andq	$-4, %rdi
+	movq	$-1, %rsi
+	xorl	%ecx, %ecx
+	.p2align	4, 0x90
+LBB0_3:                                 ## =>This Inner Loop Header: Depth=1
+	leal	(%rbx,%rcx), %edx
+	addl	$2, %edx
+	movl	%edx, 4(%rax,%rcx,2)
+	leal	4(%rbx,%rcx), %edx
+	movl	%edx, 8(%rax,%rcx,2)
+	leal	6(%rbx,%rcx), %edx
+	movl	%edx, 12(%rax,%rcx,2)
+	leal	(%rbx,%rcx), %edx
+	addl	$8, %edx
+	movl	%edx, 16(%rax,%rcx,2)
+	addq	$8, %rcx
+	leaq	(%rdi,%rsi), %rdx
+	addq	$-4, %rdx
+	addq	$-4, %rsi
+	cmpq	$-1, %rdx
+	jne	LBB0_3
+## %bb.4:
+	addl	%ebx, %ecx
+	negq	%rsi
+	movl	%ecx, %ebx
+LBB0_5:
+	testq	%r8, %r8
+	je	LBB0_8
+## %bb.6:
+	addl	$2, %ebx
+	leaq	(%rax,%rsi,4), %rcx
+	addq	%r8, %r8
+	xorl	%esi, %esi
+	.p2align	4, 0x90
+LBB0_7:                                 ## =>This Inner Loop Header: Depth=1
+	leal	(%rbx,%rsi), %edi
+	movl	%edi, (%rcx,%rsi,2)
+	addq	$2, %rsi
+	cmpq	%rsi, %r8
+	jne	LBB0_7
+LBB0_8:
+	popq	%rbx
+	popq	%r14
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

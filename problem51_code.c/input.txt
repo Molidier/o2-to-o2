@@ -1,0 +1,416 @@
+# problem51/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.section	__TEXT,__literal16,16byte_literals
+	.p2align	4                               ## -- Begin function func0
+LCPI0_0:
+	.long	1321528399                      ## 0x4ec4ec4f
+	.long	1321528399                      ## 0x4ec4ec4f
+	.long	1321528399                      ## 0x4ec4ec4f
+	.long	1321528399                      ## 0x4ec4ec4f
+LCPI0_1:
+	.long	26                              ## 0x1a
+	.long	26                              ## 0x1a
+	.long	26                              ## 0x1a
+	.long	26                              ## 0x1a
+LCPI0_2:
+	.byte	255                             ## 0xff
+	.byte	0                               ## 0x0
+	.byte	0                               ## 0x0
+	.byte	0                               ## 0x0
+	.byte	255                             ## 0xff
+	.byte	0                               ## 0x0
+	.byte	0                               ## 0x0
+	.byte	0                               ## 0x0
+	.byte	255                             ## 0xff
+	.byte	0                               ## 0x0
+	.byte	0                               ## 0x0
+	.byte	0                               ## 0x0
+	.byte	255                             ## 0xff
+	.byte	0                               ## 0x0
+	.byte	0                               ## 0x0
+	.byte	0                               ## 0x0
+LCPI0_3:
+	.space	16,97
+LCPI0_4:
+	.byte	0                               ## 0x0
+	.byte	4                               ## 0x4
+	.byte	8                               ## 0x8
+	.byte	12                              ## 0xc
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+LCPI0_5:
+	.byte	97                              ## 0x61
+	.byte	97                              ## 0x61
+	.byte	97                              ## 0x61
+	.byte	97                              ## 0x61
+	.byte	97                              ## 0x61
+	.byte	97                              ## 0x61
+	.byte	97                              ## 0x61
+	.byte	97                              ## 0x61
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r14
+	pushq	%rbx
+	.cfi_offset %rbx, -32
+	.cfi_offset %r14, -24
+	movl	%esi, %r14d
+	movq	%rdi, %rbx
+	callq	_strlen
+	testq	%rax, %rax
+	je	LBB0_17
+## %bb.1:
+	xorl	%r9d, %r9d
+	testl	%r14d, %r14d
+	sete	%r9b
+	shll	$4, %r9d
+	orl	$-92, %r9d
+	cmpq	$8, %rax
+	jae	LBB0_4
+## %bb.2:
+	xorl	%edx, %edx
+	jmp	LBB0_3
+LBB0_4:
+	movd	%r9d, %xmm8
+	cmpq	$16, %rax
+	jae	LBB0_6
+## %bb.5:
+	xorl	%edx, %edx
+LBB0_14:
+	movq	%rdx, %rsi
+	movq	%rax, %rdx
+	andq	$-8, %rdx
+	pshufd	$0, %xmm8, %xmm0                ## xmm0 = xmm8[0,0,0,0]
+	movdqa	LCPI0_0(%rip), %xmm1            ## xmm1 = [1321528399,1321528399,1321528399,1321528399]
+	movdqa	LCPI0_1(%rip), %xmm2            ## xmm2 = [26,26,26,26]
+	movdqa	LCPI0_4(%rip), %xmm3            ## xmm3 = <0,4,8,12,u,u,u,u,u,u,u,u,u,u,u,u>
+	movdqa	LCPI0_5(%rip), %xmm8            ## xmm8 = <97,97,97,97,97,97,97,97,u,u,u,u,u,u,u,u>
+	.p2align	4, 0x90
+LBB0_15:                                ## =>This Inner Loop Header: Depth=1
+	pmovsxbd	(%rbx,%rsi), %xmm4
+	pmovsxbd	4(%rbx,%rsi), %xmm6
+	paddd	%xmm0, %xmm6
+	paddd	%xmm0, %xmm4
+	pshufd	$245, %xmm4, %xmm7              ## xmm7 = xmm4[1,1,3,3]
+	pmuldq	%xmm1, %xmm7
+	movdqa	%xmm4, %xmm5
+	pmuldq	%xmm1, %xmm5
+	pshufd	$245, %xmm5, %xmm5              ## xmm5 = xmm5[1,1,3,3]
+	pblendw	$204, %xmm7, %xmm5              ## xmm5 = xmm5[0,1],xmm7[2,3],xmm5[4,5],xmm7[6,7]
+	movdqa	%xmm5, %xmm7
+	psrld	$31, %xmm7
+	psrld	$3, %xmm5
+	paddd	%xmm7, %xmm5
+	pmulld	%xmm2, %xmm5
+	psubd	%xmm5, %xmm4
+	pshufd	$245, %xmm6, %xmm5              ## xmm5 = xmm6[1,1,3,3]
+	pmuldq	%xmm1, %xmm5
+	movdqa	%xmm6, %xmm7
+	pmuldq	%xmm1, %xmm7
+	pshufd	$245, %xmm7, %xmm7              ## xmm7 = xmm7[1,1,3,3]
+	pblendw	$204, %xmm5, %xmm7              ## xmm7 = xmm7[0,1],xmm5[2,3],xmm7[4,5],xmm5[6,7]
+	movdqa	%xmm7, %xmm5
+	psrld	$31, %xmm5
+	psrld	$3, %xmm7
+	paddd	%xmm5, %xmm7
+	pmulld	%xmm2, %xmm7
+	psubd	%xmm7, %xmm6
+	pshufb	%xmm3, %xmm6
+	pshufb	%xmm3, %xmm4
+	punpckldq	%xmm6, %xmm4            ## xmm4 = xmm4[0],xmm6[0],xmm4[1],xmm6[1]
+	paddb	%xmm8, %xmm4
+	movq	%xmm4, (%rbx,%rsi)
+	addq	$8, %rsi
+	cmpq	%rsi, %rdx
+	jne	LBB0_15
+	jmp	LBB0_16
+LBB0_6:
+	movq	%rax, %rdx
+	andq	$-16, %rdx
+	pshufd	$0, %xmm8, %xmm1                ## xmm1 = xmm8[0,0,0,0]
+	leaq	-16(%rdx), %rsi
+	movq	%rsi, %r8
+	shrq	$4, %r8
+	incq	%r8
+	testq	%rsi, %rsi
+	je	LBB0_7
+## %bb.8:
+	movq	%r8, %rdi
+	andq	$-2, %rdi
+	xorl	%esi, %esi
+	movdqa	LCPI0_0(%rip), %xmm2            ## xmm2 = [1321528399,1321528399,1321528399,1321528399]
+	movdqa	LCPI0_1(%rip), %xmm10           ## xmm10 = [26,26,26,26]
+	movdqa	LCPI0_2(%rip), %xmm11           ## xmm11 = [255,0,0,0,255,0,0,0,255,0,0,0,255,0,0,0]
+	movdqa	LCPI0_3(%rip), %xmm9            ## xmm9 = [97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97]
+	.p2align	4, 0x90
+LBB0_9:                                 ## =>This Inner Loop Header: Depth=1
+	pmovsxbd	12(%rbx,%rsi), %xmm4
+	pmovsxbd	8(%rbx,%rsi), %xmm7
+	pmovsxbd	(%rbx,%rsi), %xmm6
+	pmovsxbd	4(%rbx,%rsi), %xmm5
+	paddd	%xmm1, %xmm5
+	paddd	%xmm1, %xmm6
+	paddd	%xmm1, %xmm7
+	paddd	%xmm1, %xmm4
+	pshufd	$245, %xmm4, %xmm3              ## xmm3 = xmm4[1,1,3,3]
+	pmuldq	%xmm2, %xmm3
+	movdqa	%xmm4, %xmm0
+	pmuldq	%xmm2, %xmm0
+	pshufd	$245, %xmm0, %xmm0              ## xmm0 = xmm0[1,1,3,3]
+	pblendw	$204, %xmm3, %xmm0              ## xmm0 = xmm0[0,1],xmm3[2,3],xmm0[4,5],xmm3[6,7]
+	movdqa	%xmm0, %xmm3
+	psrld	$31, %xmm3
+	psrld	$3, %xmm0
+	paddd	%xmm3, %xmm0
+	pmulld	%xmm10, %xmm0
+	psubd	%xmm0, %xmm4
+	pshufd	$245, %xmm7, %xmm0              ## xmm0 = xmm7[1,1,3,3]
+	pmuldq	%xmm2, %xmm0
+	movdqa	%xmm7, %xmm3
+	pmuldq	%xmm2, %xmm3
+	pshufd	$245, %xmm3, %xmm3              ## xmm3 = xmm3[1,1,3,3]
+	pblendw	$204, %xmm0, %xmm3              ## xmm3 = xmm3[0,1],xmm0[2,3],xmm3[4,5],xmm0[6,7]
+	movdqa	%xmm3, %xmm0
+	psrld	$31, %xmm0
+	psrld	$3, %xmm3
+	paddd	%xmm0, %xmm3
+	pmulld	%xmm10, %xmm3
+	psubd	%xmm3, %xmm7
+	pshufd	$245, %xmm6, %xmm0              ## xmm0 = xmm6[1,1,3,3]
+	pmuldq	%xmm2, %xmm0
+	movdqa	%xmm6, %xmm3
+	pmuldq	%xmm2, %xmm3
+	pshufd	$245, %xmm3, %xmm3              ## xmm3 = xmm3[1,1,3,3]
+	pblendw	$204, %xmm0, %xmm3              ## xmm3 = xmm3[0,1],xmm0[2,3],xmm3[4,5],xmm0[6,7]
+	movdqa	%xmm3, %xmm0
+	psrld	$31, %xmm0
+	psrld	$3, %xmm3
+	paddd	%xmm0, %xmm3
+	pmulld	%xmm10, %xmm3
+	psubd	%xmm3, %xmm6
+	pshufd	$245, %xmm5, %xmm0              ## xmm0 = xmm5[1,1,3,3]
+	pmuldq	%xmm2, %xmm0
+	movdqa	%xmm5, %xmm3
+	pmuldq	%xmm2, %xmm3
+	pshufd	$245, %xmm3, %xmm3              ## xmm3 = xmm3[1,1,3,3]
+	pblendw	$204, %xmm0, %xmm3              ## xmm3 = xmm3[0,1],xmm0[2,3],xmm3[4,5],xmm0[6,7]
+	movdqa	%xmm3, %xmm0
+	psrld	$31, %xmm0
+	psrld	$3, %xmm3
+	paddd	%xmm0, %xmm3
+	pmulld	%xmm10, %xmm3
+	psubd	%xmm3, %xmm5
+	pand	%xmm11, %xmm5
+	pand	%xmm11, %xmm6
+	packusdw	%xmm5, %xmm6
+	pand	%xmm11, %xmm7
+	pand	%xmm11, %xmm4
+	packusdw	%xmm4, %xmm7
+	packuswb	%xmm7, %xmm6
+	paddb	%xmm9, %xmm6
+	movdqu	%xmm6, (%rbx,%rsi)
+	pmovsxbd	28(%rbx,%rsi), %xmm0
+	pmovsxbd	24(%rbx,%rsi), %xmm7
+	pmovsxbd	16(%rbx,%rsi), %xmm6
+	pmovsxbd	20(%rbx,%rsi), %xmm5
+	paddd	%xmm1, %xmm5
+	paddd	%xmm1, %xmm6
+	paddd	%xmm1, %xmm7
+	paddd	%xmm1, %xmm0
+	pshufd	$245, %xmm0, %xmm3              ## xmm3 = xmm0[1,1,3,3]
+	pmuldq	%xmm2, %xmm3
+	movdqa	%xmm0, %xmm4
+	pmuldq	%xmm2, %xmm4
+	pshufd	$245, %xmm4, %xmm4              ## xmm4 = xmm4[1,1,3,3]
+	pblendw	$204, %xmm3, %xmm4              ## xmm4 = xmm4[0,1],xmm3[2,3],xmm4[4,5],xmm3[6,7]
+	movdqa	%xmm4, %xmm3
+	psrld	$31, %xmm3
+	psrld	$3, %xmm4
+	paddd	%xmm3, %xmm4
+	pmulld	%xmm10, %xmm4
+	psubd	%xmm4, %xmm0
+	pshufd	$245, %xmm7, %xmm3              ## xmm3 = xmm7[1,1,3,3]
+	pmuldq	%xmm2, %xmm3
+	movdqa	%xmm7, %xmm4
+	pmuldq	%xmm2, %xmm4
+	pshufd	$245, %xmm4, %xmm4              ## xmm4 = xmm4[1,1,3,3]
+	pblendw	$204, %xmm3, %xmm4              ## xmm4 = xmm4[0,1],xmm3[2,3],xmm4[4,5],xmm3[6,7]
+	movdqa	%xmm4, %xmm3
+	psrld	$31, %xmm3
+	psrld	$3, %xmm4
+	paddd	%xmm3, %xmm4
+	pmulld	%xmm10, %xmm4
+	psubd	%xmm4, %xmm7
+	pshufd	$245, %xmm6, %xmm3              ## xmm3 = xmm6[1,1,3,3]
+	pmuldq	%xmm2, %xmm3
+	movdqa	%xmm6, %xmm4
+	pmuldq	%xmm2, %xmm4
+	pshufd	$245, %xmm4, %xmm4              ## xmm4 = xmm4[1,1,3,3]
+	pblendw	$204, %xmm3, %xmm4              ## xmm4 = xmm4[0,1],xmm3[2,3],xmm4[4,5],xmm3[6,7]
+	movdqa	%xmm4, %xmm3
+	psrld	$31, %xmm3
+	psrld	$3, %xmm4
+	paddd	%xmm3, %xmm4
+	pmulld	%xmm10, %xmm4
+	psubd	%xmm4, %xmm6
+	pshufd	$245, %xmm5, %xmm3              ## xmm3 = xmm5[1,1,3,3]
+	pmuldq	%xmm2, %xmm3
+	movdqa	%xmm5, %xmm4
+	pmuldq	%xmm2, %xmm4
+	pshufd	$245, %xmm4, %xmm4              ## xmm4 = xmm4[1,1,3,3]
+	pblendw	$204, %xmm3, %xmm4              ## xmm4 = xmm4[0,1],xmm3[2,3],xmm4[4,5],xmm3[6,7]
+	movdqa	%xmm4, %xmm3
+	psrld	$31, %xmm3
+	psrld	$3, %xmm4
+	paddd	%xmm3, %xmm4
+	pmulld	%xmm10, %xmm4
+	psubd	%xmm4, %xmm5
+	pand	%xmm11, %xmm5
+	pand	%xmm11, %xmm6
+	packusdw	%xmm5, %xmm6
+	pand	%xmm11, %xmm7
+	pand	%xmm11, %xmm0
+	packusdw	%xmm0, %xmm7
+	packuswb	%xmm7, %xmm6
+	paddb	%xmm9, %xmm6
+	movdqu	%xmm6, 16(%rbx,%rsi)
+	addq	$32, %rsi
+	addq	$-2, %rdi
+	jne	LBB0_9
+## %bb.10:
+	testb	$1, %r8b
+	je	LBB0_12
+LBB0_11:
+	pmovsxbd	12(%rbx,%rsi), %xmm4
+	pmovsxbd	8(%rbx,%rsi), %xmm3
+	pmovsxbd	(%rbx,%rsi), %xmm2
+	pmovsxbd	4(%rbx,%rsi), %xmm0
+	paddd	%xmm1, %xmm0
+	paddd	%xmm1, %xmm2
+	paddd	%xmm1, %xmm3
+	paddd	%xmm1, %xmm4
+	pshufd	$245, %xmm4, %xmm5              ## xmm5 = xmm4[1,1,3,3]
+	movdqa	LCPI0_0(%rip), %xmm1            ## xmm1 = [1321528399,1321528399,1321528399,1321528399]
+	pmuldq	%xmm1, %xmm5
+	movdqa	%xmm4, %xmm6
+	pmuldq	%xmm1, %xmm6
+	pshufd	$245, %xmm6, %xmm6              ## xmm6 = xmm6[1,1,3,3]
+	pblendw	$204, %xmm5, %xmm6              ## xmm6 = xmm6[0,1],xmm5[2,3],xmm6[4,5],xmm5[6,7]
+	movdqa	%xmm6, %xmm5
+	psrld	$31, %xmm5
+	psrld	$3, %xmm6
+	paddd	%xmm5, %xmm6
+	movdqa	LCPI0_1(%rip), %xmm5            ## xmm5 = [26,26,26,26]
+	pmulld	%xmm5, %xmm6
+	psubd	%xmm6, %xmm4
+	pshufd	$245, %xmm3, %xmm6              ## xmm6 = xmm3[1,1,3,3]
+	pmuldq	%xmm1, %xmm6
+	movdqa	%xmm3, %xmm7
+	pmuldq	%xmm1, %xmm7
+	pshufd	$245, %xmm7, %xmm7              ## xmm7 = xmm7[1,1,3,3]
+	pblendw	$204, %xmm6, %xmm7              ## xmm7 = xmm7[0,1],xmm6[2,3],xmm7[4,5],xmm6[6,7]
+	movdqa	%xmm7, %xmm6
+	psrld	$31, %xmm6
+	psrld	$3, %xmm7
+	paddd	%xmm6, %xmm7
+	pmulld	%xmm5, %xmm7
+	psubd	%xmm7, %xmm3
+	pshufd	$245, %xmm2, %xmm6              ## xmm6 = xmm2[1,1,3,3]
+	pmuldq	%xmm1, %xmm6
+	movdqa	%xmm2, %xmm7
+	pmuldq	%xmm1, %xmm7
+	pshufd	$245, %xmm7, %xmm7              ## xmm7 = xmm7[1,1,3,3]
+	pblendw	$204, %xmm6, %xmm7              ## xmm7 = xmm7[0,1],xmm6[2,3],xmm7[4,5],xmm6[6,7]
+	movdqa	%xmm7, %xmm6
+	psrld	$31, %xmm6
+	psrld	$3, %xmm7
+	paddd	%xmm6, %xmm7
+	pmulld	%xmm5, %xmm7
+	psubd	%xmm7, %xmm2
+	pshufd	$245, %xmm0, %xmm6              ## xmm6 = xmm0[1,1,3,3]
+	pmuldq	%xmm1, %xmm6
+	pmuldq	%xmm0, %xmm1
+	pshufd	$245, %xmm1, %xmm1              ## xmm1 = xmm1[1,1,3,3]
+	pblendw	$204, %xmm6, %xmm1              ## xmm1 = xmm1[0,1],xmm6[2,3],xmm1[4,5],xmm6[6,7]
+	movdqa	%xmm1, %xmm6
+	psrld	$31, %xmm6
+	psrld	$3, %xmm1
+	paddd	%xmm6, %xmm1
+	pmulld	%xmm5, %xmm1
+	psubd	%xmm1, %xmm0
+	movdqa	LCPI0_2(%rip), %xmm1            ## xmm1 = [255,0,0,0,255,0,0,0,255,0,0,0,255,0,0,0]
+	pand	%xmm1, %xmm0
+	pand	%xmm1, %xmm2
+	packusdw	%xmm0, %xmm2
+	pand	%xmm1, %xmm3
+	pand	%xmm1, %xmm4
+	packusdw	%xmm4, %xmm3
+	packuswb	%xmm3, %xmm2
+	paddb	LCPI0_3(%rip), %xmm2
+	movdqu	%xmm2, (%rbx,%rsi)
+LBB0_12:
+	cmpq	%rdx, %rax
+	je	LBB0_17
+## %bb.13:
+	testb	$8, %al
+	jne	LBB0_14
+	jmp	LBB0_3
+LBB0_7:
+	xorl	%esi, %esi
+	testb	$1, %r8b
+	jne	LBB0_11
+	jmp	LBB0_12
+LBB0_3:
+	movsbl	(%rbx,%rdx), %esi
+	addl	%r9d, %esi
+	movslq	%esi, %rsi
+	imulq	$1321528399, %rsi, %rdi         ## imm = 0x4EC4EC4F
+	movq	%rdi, %rcx
+	shrq	$63, %rcx
+	sarq	$35, %rdi
+	addl	%ecx, %edi
+	leal	(%rdi,%rdi,4), %ecx
+	leal	(%rcx,%rcx,4), %ecx
+	addl	%edi, %ecx
+	subl	%ecx, %esi
+	addb	$97, %sil
+	movb	%sil, (%rbx,%rdx)
+	incq	%rdx
+LBB0_16:
+	cmpq	%rdx, %rax
+	jne	LBB0_3
+LBB0_17:
+	popq	%rbx
+	popq	%r14
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

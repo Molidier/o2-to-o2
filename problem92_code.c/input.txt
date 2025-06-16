@@ -1,0 +1,154 @@
+# problem92/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r15
+	pushq	%r14
+	pushq	%r13
+	pushq	%r12
+	pushq	%rbx
+	pushq	%rax
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
+	movb	(%rdi), %cl
+	testb	%cl, %cl
+	je	LBB0_1
+## %bb.3:
+	movq	%rdi, %rbx
+	movl	$1, %r15d
+	xorl	%r14d, %r14d
+	movq	__DefaultRuneLocale@GOTPCREL(%rip), %rsi
+	movl	$16384, %r8d                    ## imm = 0x4000
+	xorl	%r13d, %r13d
+	jmp	LBB0_4
+	.p2align	4, 0x90
+LBB0_23:                                ##   in Loop: Header=BB0_4 Depth=1
+	movzbl	%r12b, %eax
+	addl	%eax, %r14d
+	movzbl	1(%rbx), %ecx
+	incq	%rbx
+	testb	%cl, %cl
+	je	LBB0_2
+LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+	movsbl	%cl, %edi
+	testb	%dil, %dil
+	js	LBB0_6
+## %bb.5:                               ##   in Loop: Header=BB0_4 Depth=1
+	movl	%edi, %eax
+	movl	60(%rsi,%rax,4), %eax
+	andl	%r8d, %eax
+	jmp	LBB0_7
+	.p2align	4, 0x90
+LBB0_6:                                 ##   in Loop: Header=BB0_4 Depth=1
+	movl	$16384, %esi                    ## imm = 0x4000
+	callq	___maskrune
+	movl	$16384, %r8d                    ## imm = 0x4000
+	movq	__DefaultRuneLocale@GOTPCREL(%rip), %rsi
+	movzbl	(%rbx), %ecx
+LBB0_7:                                 ##   in Loop: Header=BB0_4 Depth=1
+	testl	%eax, %eax
+	setne	%al
+	testl	%r13d, %r13d
+	setne	%r12b
+	andb	%al, %r12b
+	cmpb	$73, %cl
+	jne	LBB0_10
+## %bb.8:                               ##   in Loop: Header=BB0_4 Depth=1
+	testl	%r15d, %r15d
+	je	LBB0_10
+## %bb.9:                               ##   in Loop: Header=BB0_4 Depth=1
+	movb	$73, %cl
+	movl	$1, %r13d
+	movl	$73, %edi
+	jmp	LBB0_18
+	.p2align	4, 0x90
+LBB0_10:                                ##   in Loop: Header=BB0_4 Depth=1
+	movsbl	%cl, %edi
+	testb	%cl, %cl
+	js	LBB0_14
+## %bb.11:                              ##   in Loop: Header=BB0_4 Depth=1
+	movl	%edi, %eax
+	movl	60(%rsi,%rax,4), %eax
+	shll	$17, %eax
+	sarl	$31, %eax
+	xorl	%edx, %edx
+	testb	%r12b, %r12b
+	jne	LBB0_13
+## %bb.12:                              ##   in Loop: Header=BB0_4 Depth=1
+	movl	%r13d, %edx
+LBB0_13:                                ##   in Loop: Header=BB0_4 Depth=1
+	andl	%edx, %eax
+	movzbl	%cl, %edi
+	movl	%eax, %r13d
+	jmp	LBB0_18
+LBB0_14:                                ##   in Loop: Header=BB0_4 Depth=1
+	movl	$16384, %esi                    ## imm = 0x4000
+	callq	___maskrune
+	xorl	%ecx, %ecx
+	testb	%r12b, %r12b
+	jne	LBB0_16
+## %bb.15:                              ##   in Loop: Header=BB0_4 Depth=1
+	movl	%r13d, %ecx
+LBB0_16:                                ##   in Loop: Header=BB0_4 Depth=1
+	movsbl	(%rbx), %edi
+	testl	%eax, %eax
+	movl	%ecx, %r13d
+	cmovel	%eax, %r13d
+	testl	%edi, %edi
+	movl	$16384, %r8d                    ## imm = 0x4000
+	js	LBB0_19
+## %bb.17:                              ##   in Loop: Header=BB0_4 Depth=1
+	movl	%edi, %ecx
+	movq	__DefaultRuneLocale@GOTPCREL(%rip), %rsi
+	.p2align	4, 0x90
+LBB0_18:                                ##   in Loop: Header=BB0_4 Depth=1
+	movl	%edi, %eax
+	movl	60(%rsi,%rax,4), %eax
+	andl	%r8d, %eax
+LBB0_20:                                ##   in Loop: Header=BB0_4 Depth=1
+	testl	%eax, %eax
+	cmovel	%eax, %r15d
+	cmpb	$63, %cl
+	ja	LBB0_23
+## %bb.21:                              ##   in Loop: Header=BB0_4 Depth=1
+	movzbl	%cl, %eax
+	movabsq	$-9223301659520663552, %rcx     ## imm = 0x8000400200000000
+	btq	%rax, %rcx
+	jae	LBB0_23
+## %bb.22:                              ##   in Loop: Header=BB0_4 Depth=1
+	movl	$1, %r15d
+	jmp	LBB0_23
+LBB0_19:                                ##   in Loop: Header=BB0_4 Depth=1
+	movl	$16384, %esi                    ## imm = 0x4000
+	callq	___maskrune
+	movl	$16384, %r8d                    ## imm = 0x4000
+	movzbl	(%rbx), %ecx
+	movq	__DefaultRuneLocale@GOTPCREL(%rip), %rsi
+	jmp	LBB0_20
+LBB0_1:
+	xorl	%r14d, %r14d
+LBB0_2:
+	movl	%r14d, %eax
+	addq	$8, %rsp
+	popq	%rbx
+	popq	%r12
+	popq	%r13
+	popq	%r14
+	popq	%r15
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

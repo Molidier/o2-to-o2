@@ -1,0 +1,62 @@
+# problem127/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	cbz	w1, LBB0_4
+; %bb.1:
+	cmp	w1, #2
+	b.lt	LBB0_5
+; %bb.2:
+	ldp	w13, w14, [x0]
+	cmp	w14, w13
+	b.ge	LBB0_7
+; %bb.3:
+	mov	w10, #1
+	b	LBB0_6
+LBB0_4:
+	mov	w8, #1
+	and	w0, w8, #0x1
+	ret
+LBB0_5:
+	mov	w10, #0
+LBB0_6:
+	eor	w8, w10, #0x1
+	and	w0, w8, #0x1
+	ret
+LBB0_7:
+	mov	x8, #0
+	mov	w9, w1
+	add	x11, x0, #8
+	sub	x12, x9, #2
+	mov	w10, #1
+LBB0_8:                                 ; =>This Inner Loop Header: Depth=1
+	mov	x15, x14
+	add	x14, x8, #1
+	cmp	x14, #2
+	ccmp	w15, w13, #0, hs
+	b.ne	LBB0_10
+; %bb.9:                                ;   in Loop: Header=BB0_8 Depth=1
+	sub	w14, w8, #1
+	ldr	w14, [x0, w14, uxtw #2]
+	cmp	w13, w14
+	b.eq	LBB0_6
+LBB0_10:                                ;   in Loop: Header=BB0_8 Depth=1
+	add	x10, x8, #2
+	cmp	x10, x9
+	cset	w10, lo
+	cmp	x12, x8
+	b.eq	LBB0_6
+; %bb.11:                               ;   in Loop: Header=BB0_8 Depth=1
+	ldr	w14, [x11, x8, lsl #2]
+	add	x8, x8, #1
+	mov	x13, x15
+	cmp	w14, w15
+	b.ge	LBB0_8
+	b	LBB0_6
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols

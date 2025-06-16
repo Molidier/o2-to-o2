@@ -1,0 +1,120 @@
+# problem9/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.section	__TEXT,__literal16,16byte_literals
+	.p2align	4                               ## -- Begin function func0
+LCPI0_0:
+	.long	1                               ## 0x1
+	.long	1                               ## 0x1
+	.long	1                               ## 0x1
+	.long	1                               ## 0x1
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	testl	%esi, %esi
+	jle	LBB0_1
+## %bb.2:
+	movl	%esi, %r9d
+	cmpl	$8, %esi
+	jae	LBB0_4
+## %bb.3:
+	xorl	%r10d, %r10d
+	movl	$1, %esi
+	xorl	%eax, %eax
+	jmp	LBB0_11
+LBB0_1:
+	movl	$1, %esi
+	xorl	%eax, %eax
+	jmp	LBB0_12
+LBB0_4:
+	movl	%r9d, %r10d
+	andl	$-8, %r10d
+	leaq	-8(%r10), %rax
+	movq	%rax, %r8
+	shrq	$3, %r8
+	incq	%r8
+	testq	%rax, %rax
+	je	LBB0_5
+## %bb.6:
+	movq	%r8, %rax
+	andq	$-2, %rax
+	pxor	%xmm1, %xmm1
+	movdqa	LCPI0_0(%rip), %xmm0            ## xmm0 = [1,1,1,1]
+	xorl	%esi, %esi
+	movdqa	%xmm0, %xmm2
+	pxor	%xmm3, %xmm3
+	.p2align	4, 0x90
+LBB0_7:                                 ## =>This Inner Loop Header: Depth=1
+	movdqu	(%rdi,%rsi,4), %xmm4
+	movdqu	16(%rdi,%rsi,4), %xmm5
+	movdqu	32(%rdi,%rsi,4), %xmm6
+	movdqu	48(%rdi,%rsi,4), %xmm7
+	paddd	%xmm4, %xmm1
+	paddd	%xmm5, %xmm3
+	pmulld	%xmm4, %xmm0
+	pmulld	%xmm5, %xmm2
+	paddd	%xmm6, %xmm1
+	paddd	%xmm7, %xmm3
+	pmulld	%xmm6, %xmm0
+	pmulld	%xmm7, %xmm2
+	addq	$16, %rsi
+	addq	$-2, %rax
+	jne	LBB0_7
+## %bb.8:
+	testb	$1, %r8b
+	je	LBB0_10
+LBB0_9:
+	movdqu	(%rdi,%rsi,4), %xmm4
+	movdqu	16(%rdi,%rsi,4), %xmm5
+	paddd	%xmm4, %xmm1
+	paddd	%xmm5, %xmm3
+	pmulld	%xmm4, %xmm0
+	pmulld	%xmm5, %xmm2
+LBB0_10:
+	pmulld	%xmm2, %xmm0
+	paddd	%xmm3, %xmm1
+	pshufd	$238, %xmm1, %xmm2              ## xmm2 = xmm1[2,3,2,3]
+	paddd	%xmm1, %xmm2
+	pshufd	$85, %xmm2, %xmm1               ## xmm1 = xmm2[1,1,1,1]
+	paddd	%xmm2, %xmm1
+	movd	%xmm1, %eax
+	pshufd	$238, %xmm0, %xmm1              ## xmm1 = xmm0[2,3,2,3]
+	pmulld	%xmm0, %xmm1
+	pshufd	$85, %xmm1, %xmm0               ## xmm0 = xmm1[1,1,1,1]
+	pmulld	%xmm1, %xmm0
+	movd	%xmm0, %esi
+	cmpq	%r9, %r10
+	je	LBB0_12
+	.p2align	4, 0x90
+LBB0_11:                                ## =>This Inner Loop Header: Depth=1
+	movl	(%rdi,%r10,4), %ecx
+	addl	%ecx, %eax
+	imull	%ecx, %esi
+	incq	%r10
+	cmpq	%r10, %r9
+	jne	LBB0_11
+LBB0_12:
+	movl	%eax, (%rdx)
+	movl	%esi, 4(%rdx)
+	popq	%rbp
+	retq
+LBB0_5:
+	pxor	%xmm1, %xmm1
+	movdqa	LCPI0_0(%rip), %xmm0            ## xmm0 = [1,1,1,1]
+	xorl	%esi, %esi
+	movdqa	%xmm0, %xmm2
+	pxor	%xmm3, %xmm3
+	testb	$1, %r8b
+	jne	LBB0_9
+	jmp	LBB0_10
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

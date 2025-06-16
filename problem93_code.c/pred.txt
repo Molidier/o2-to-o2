@@ -1,0 +1,40 @@
+# problem93/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	frinta	s3, s0
+	fcmp	s3, s0
+	b.ne	LBB0_4
+; %bb.1:
+	frinta	s3, s1
+	fcmp	s3, s1
+	b.ne	LBB0_4
+; %bb.2:
+	frinta	s3, s2
+	fcmp	s3, s2
+	b.ne	LBB0_4
+; %bb.3:
+	fadd	s3, s0, s1
+	fadd	s4, s0, s2
+	fcmp	s3, s1
+	cset	w8, eq
+	fcmp	s4, s2
+	cset	w9, eq
+	orr	w8, w8, w9
+	fadd	s1, s1, s2
+	fcmp	s1, s0
+	cset	w9, eq
+	and	w9, w9, w8
+	orr	w0, w9, w8
+	ret
+LBB0_4:
+	mov	w0, #0
+	ret
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols
+

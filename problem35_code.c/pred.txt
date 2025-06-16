@@ -1,0 +1,102 @@
+# problem35/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	stp	x22, x21, [sp, #-48]!           ; 16-byte Folded Spill
+	.cfi_def_cfa_offset 48
+	stp	x20, x19, [sp, #16]             ; 16-byte Folded Spill
+	stp	x29, x30, [sp, #32]             ; 16-byte Folded Spill
+	add	x29, sp, #32
+	.cfi_def_cfa w29, 16
+	.cfi_offset w30, -8
+	.cfi_offset w29, -16
+	.cfi_offset w19, -24
+	.cfi_offset w20, -32
+	.cfi_offset w21, -40
+	.cfi_offset w22, -48
+	mov	x19, x2
+	mov	x21, x1
+	mov	x20, x0
+	sbfiz	x0, x21, #2, #32
+	bl	_malloc
+	cmp	w21, #1
+	b.lt	LBB0_17
+; %bb.1:
+	mov	x9, #0
+	mov	w8, #0
+	mov	w10, w21
+	b	LBB0_4
+LBB0_2:                                 ;   in Loop: Header=BB0_4 Depth=1
+	str	w11, [x0, w8, sxtw #2]
+	add	w8, w8, #1
+LBB0_3:                                 ;   in Loop: Header=BB0_4 Depth=1
+	add	x9, x9, #1
+	cmp	x9, x10
+	b.eq	LBB0_8
+LBB0_4:                                 ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB0_6 Depth 2
+	ldr	w11, [x20, x9, lsl #2]
+	cmp	w8, #1
+	b.lt	LBB0_2
+; %bb.5:                                ;   in Loop: Header=BB0_4 Depth=1
+	mov	x12, x11
+	mov	x13, x0
+	mov	w14, w8
+LBB0_6:                                 ;   Parent Loop BB0_4 Depth=1
+                                        ; =>  This Inner Loop Header: Depth=2
+	ldr	w15, [x13]
+	cmp	w12, w15
+	b.eq	LBB0_3
+; %bb.7:                                ;   in Loop: Header=BB0_6 Depth=2
+	add	x13, x13, #4
+	subs	x14, x14, #1
+	b.ne	LBB0_6
+	b	LBB0_2
+LBB0_8:
+	cmp	w8, #2
+	b.lt	LBB0_18
+; %bb.9:
+	mov	x14, #0
+	sub	w9, w8, #1
+	add	x10, x0, #4
+	mov	w11, #1
+	mov	w12, w8
+	b	LBB0_11
+LBB0_10:                                ;   in Loop: Header=BB0_11 Depth=1
+	add	x11, x11, #1
+	add	x10, x10, #4
+	mov	x14, x13
+	cmp	x13, x9
+	b.eq	LBB0_18
+LBB0_11:                                ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB0_14 Depth 2
+	add	x13, x14, #1
+	cmp	x13, x12
+	b.hs	LBB0_10
+; %bb.12:                               ;   in Loop: Header=BB0_11 Depth=1
+	mov	x15, x12
+	mov	x16, x10
+	b	LBB0_14
+LBB0_13:                                ;   in Loop: Header=BB0_14 Depth=2
+	add	x16, x16, #4
+	sub	x15, x15, #1
+	cmp	x11, x15
+	b.eq	LBB0_10
+LBB0_14:                                ;   Parent Loop BB0_11 Depth=1
+                                        ; =>  This Inner Loop Header: Depth=2
+	ldr	w17, [x0, x14, lsl #2]
+	ldr	w1, [x16]
+	cmp	w17, w1
+	b.le	LBB0_13
+; %bb.15:                               ;   in Loop: Header=BB0_14 Depth=2
+	str	w1, [x0, x14, lsl #2]
+	str	w17, [x16]
+	b	LBB0_13
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols
+

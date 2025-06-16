@@ -1,0 +1,288 @@
+# problem20/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	sub	sp, sp, #80
+	.cfi_def_cfa_offset 80
+	stp	x29, x30, [sp, #64]             ; 16-byte Folded Spill
+	add	x29, sp, #64
+	.cfi_def_cfa w29, 16
+	.cfi_offset w30, -8
+	.cfi_offset w29, -16
+Lloh0:
+	adrp	x8, ___stack_chk_guard@GOTPAGE
+Lloh1:
+	ldr	x8, [x8, ___stack_chk_guard@GOTPAGEOFF]
+Lloh2:
+	ldr	x8, [x8]
+	stur	x8, [x29, #-8]
+	str	xzr, [sp, #48]
+	movi.2d	v0, #0000000000000000
+	stp	q0, q0, [sp, #16]
+	ldrb	w8, [x0]
+	cbz	w8, LBB0_27
+; %bb.1:
+	mov	w8, #25971
+	movk	w8, #25974, lsl #16
+	add	x9, sp, #10
+	mov	w10, #25978
+	movk	w10, #28530, lsl #16
+	add	x11, sp, #16
+	mov	w12, #28271
+	movk	w12, #101, lsl #16
+	mov	w13, #30580
+	movk	w13, #111, lsl #16
+	mov	w14, #26740
+	movk	w14, #25970, lsl #16
+	mov	w15, #101
+	mov	w16, #28518
+	movk	w16, #29301, lsl #16
+	mov	w17, #26995
+	movk	w17, #120, lsl #16
+	mov	w1, #110
+	mov	w2, #26981
+	movk	w2, #26727, lsl #16
+	mov	w3, #116
+	mov	w4, #26990
+	movk	w4, #25966, lsl #16
+LBB0_2:                                 ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB0_3 Depth 2
+	mov	x5, #0
+LBB0_3:                                 ;   Parent Loop BB0_2 Depth=1
+                                        ; =>  This Inner Loop Header: Depth=2
+	ldrb	w6, [x0, x5]
+	orr	w7, w6, #0x20
+	cmp	w7, #32
+	b.eq	LBB0_5
+; %bb.4:                                ;   in Loop: Header=BB0_3 Depth=2
+	strb	w6, [x9, x5]
+	add	x5, x5, #1
+	b	LBB0_3
+LBB0_5:                                 ;   in Loop: Header=BB0_2 Depth=1
+	strb	wzr, [x9, w5, uxtw]
+	ldur	w6, [sp, #10]
+	eor	w6, w6, w10
+	ldrb	w7, [sp, #14]
+	orr	w6, w6, w7
+	cbz	w6, LBB0_16
+; %bb.6:                                ;   in Loop: Header=BB0_2 Depth=1
+	ldur	w6, [sp, #10]
+	cmp	w6, w12
+	b.eq	LBB0_17
+; %bb.7:                                ;   in Loop: Header=BB0_2 Depth=1
+	ldur	w6, [sp, #10]
+	cmp	w6, w13
+	b.eq	LBB0_18
+; %bb.8:                                ;   in Loop: Header=BB0_2 Depth=1
+	ldur	w6, [sp, #10]
+	eor	w6, w6, w14
+	ldrh	w7, [sp, #14]
+	eor	w7, w7, w15
+	orr	w6, w6, w7
+	cbz	w6, LBB0_19
+; %bb.9:                                ;   in Loop: Header=BB0_2 Depth=1
+	ldur	w6, [sp, #10]
+	eor	w6, w6, w16
+	ldrb	w7, [sp, #14]
+	orr	w6, w6, w7
+	cbz	w6, LBB0_20
+; %bb.10:                               ;   in Loop: Header=BB0_2 Depth=1
+	ldur	w6, [sp, #10]
+	add	w7, w8, #1011
+	eor	w6, w6, w7
+	ldrb	w7, [sp, #14]
+	orr	w6, w6, w7
+	cbz	w6, LBB0_21
+; %bb.11:                               ;   in Loop: Header=BB0_2 Depth=1
+	ldur	w6, [sp, #10]
+	cmp	w6, w17
+	b.eq	LBB0_22
+; %bb.12:                               ;   in Loop: Header=BB0_2 Depth=1
+	ldur	w6, [sp, #10]
+	eor	w6, w6, w8
+	ldrh	w7, [sp, #14]
+	eor	w7, w7, w1
+	orr	w6, w6, w7
+	cbz	w6, LBB0_23
+; %bb.13:                               ;   in Loop: Header=BB0_2 Depth=1
+	ldur	w6, [sp, #10]
+	eor	w6, w6, w2
+	ldrh	w7, [sp, #14]
+	eor	w7, w7, w3
+	orr	w6, w6, w7
+	cbz	w6, LBB0_24
+; %bb.14:                               ;   in Loop: Header=BB0_2 Depth=1
+	ldur	w6, [sp, #10]
+	eor	w6, w6, w4
+	ldrb	w7, [sp, #14]
+	orr	w6, w6, w7
+	cbnz	w6, LBB0_26
+; %bb.15:                               ;   in Loop: Header=BB0_2 Depth=1
+	mov	w6, #9
+	b	LBB0_25
+LBB0_16:                                ;   in Loop: Header=BB0_2 Depth=1
+	mov	x6, #0
+	b	LBB0_25
+LBB0_17:                                ;   in Loop: Header=BB0_2 Depth=1
+	mov	w6, #1
+	b	LBB0_25
+LBB0_18:                                ;   in Loop: Header=BB0_2 Depth=1
+	mov	w6, #2
+	b	LBB0_25
+LBB0_19:                                ;   in Loop: Header=BB0_2 Depth=1
+	mov	w6, #3
+	b	LBB0_25
+LBB0_20:                                ;   in Loop: Header=BB0_2 Depth=1
+	mov	w6, #4
+	b	LBB0_25
+LBB0_21:                                ;   in Loop: Header=BB0_2 Depth=1
+	mov	w6, #5
+	b	LBB0_25
+LBB0_22:                                ;   in Loop: Header=BB0_2 Depth=1
+	mov	w6, #6
+	b	LBB0_25
+LBB0_23:                                ;   in Loop: Header=BB0_2 Depth=1
+	mov	w6, #7
+	b	LBB0_25
+LBB0_24:                                ;   in Loop: Header=BB0_2 Depth=1
+	mov	w6, #8
+LBB0_25:                                ;   in Loop: Header=BB0_2 Depth=1
+	lsl	x6, x6, #2
+	ldr	w7, [x11, x6]
+	add	w7, w7, #1
+	str	w7, [x11, x6]
+LBB0_26:                                ;   in Loop: Header=BB0_2 Depth=1
+	add	w5, w5, #1
+	add	x0, x0, x5
+	ldurb	w5, [x0, #-1]
+	cbnz	w5, LBB0_2
+LBB0_27:
+	mov	x8, #0
+	mov	w16, #0
+	add	x9, sp, #16
+Lloh3:
+	adrp	x10, l___const.func0.numto@PAGE
+Lloh4:
+	add	x10, x10, l___const.func0.numto@PAGEOFF
+	mov	w11, #32
+Lloh5:
+	adrp	x0, _func0.out@PAGE
+Lloh6:
+	add	x0, x0, _func0.out@PAGEOFF
+	b	LBB0_29
+LBB0_28:                                ;   in Loop: Header=BB0_29 Depth=1
+	add	x8, x8, #1
+	cmp	x8, #10
+	b.eq	LBB0_35
+LBB0_29:                                ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB0_32 Depth 2
+                                        ;       Child Loop BB0_34 Depth 3
+	ldr	w12, [x9, x8, lsl #2]
+	cmp	w12, #1
+	b.lt	LBB0_28
+; %bb.30:                               ;   in Loop: Header=BB0_29 Depth=1
+	mov	w13, #0
+	ldr	x14, [x10, x8, lsl #3]
+	add	x15, x14, #1
+	mov	x17, x16
+	b	LBB0_32
+LBB0_31:                                ;   in Loop: Header=BB0_32 Depth=2
+	add	w16, w17, #1
+	strb	w11, [x0, w17, sxtw]
+	add	w13, w13, #1
+	mov	x17, x16
+	cmp	w13, w12
+	b.eq	LBB0_28
+LBB0_32:                                ;   Parent Loop BB0_29 Depth=1
+                                        ; =>  This Loop Header: Depth=2
+                                        ;       Child Loop BB0_34 Depth 3
+	ldrb	w16, [x14]
+	cbz	w16, LBB0_31
+; %bb.33:                               ;   in Loop: Header=BB0_32 Depth=2
+	add	x1, x0, w17, sxtw
+	mov	x2, x15
+LBB0_34:                                ;   Parent Loop BB0_29 Depth=1
+                                        ;     Parent Loop BB0_32 Depth=2
+                                        ; =>    This Inner Loop Header: Depth=3
+	strb	w16, [x1], #1
+	ldrb	w16, [x2], #1
+	add	w17, w17, #1
+	cbnz	w16, LBB0_34
+	b	LBB0_31
+LBB0_35:
+	sub	w8, w16, #1
+	cmp	w16, #0
+	csel	x8, x8, xzr, gt
+	strb	wzr, [x0, x8]
+	ldur	x8, [x29, #-8]
+Lloh7:
+	adrp	x9, ___stack_chk_guard@GOTPAGE
+Lloh8:
+	ldr	x9, [x9, ___stack_chk_guard@GOTPAGEOFF]
+Lloh9:
+	ldr	x9, [x9]
+	cmp	x9, x8
+	b.ne	LBB0_37
+; %bb.36:
+	ldp	x29, x30, [sp, #64]             ; 16-byte Folded Reload
+	add	sp, sp, #80
+	ret
+LBB0_37:
+	bl	___stack_chk_fail
+	.loh AdrpLdrGotLdr	Lloh0, Lloh1, Lloh2
+	.loh AdrpAdd	Lloh5, Lloh6
+	.loh AdrpAdd	Lloh3, Lloh4
+	.loh AdrpLdrGotLdr	Lloh7, Lloh8, Lloh9
+	.cfi_endproc
+                                        ; -- End function
+	.section	__TEXT,__cstring,cstring_literals
+l_.str:                                 ; @.str
+	.asciz	"zero"
+
+l_.str.1:                               ; @.str.1
+	.asciz	"one"
+
+l_.str.2:                               ; @.str.2
+	.asciz	"two"
+
+l_.str.3:                               ; @.str.3
+	.asciz	"three"
+
+l_.str.4:                               ; @.str.4
+	.asciz	"four"
+
+l_.str.5:                               ; @.str.5
+	.asciz	"five"
+
+l_.str.6:                               ; @.str.6
+	.asciz	"six"
+
+l_.str.7:                               ; @.str.7
+	.asciz	"seven"
+
+l_.str.8:                               ; @.str.8
+	.asciz	"eight"
+
+l_.str.9:                               ; @.str.9
+	.asciz	"nine"
+
+	.section	__DATA,__const
+	.p2align	3                               ; @__const.func0.numto
+l___const.func0.numto:
+	.quad	l_.str
+	.quad	l_.str.1
+	.quad	l_.str.2
+	.quad	l_.str.3
+	.quad	l_.str.4
+	.quad	l_.str.5
+	.quad	l_.str.6
+	.quad	l_.str.7
+	.quad	l_.str.8
+	.quad	l_.str.9
+
+.zerofill __DATA,__bss,_func0.out,1000,0 ; @func0.out
+.subsections_via_symbols

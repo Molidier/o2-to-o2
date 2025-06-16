@@ -1,0 +1,227 @@
+# problem146/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.section	__TEXT,__literal16,16byte_literals
+	.p2align	4                               ## -- Begin function func0
+LCPI0_0:
+	.long	4294967200                      ## 0xffffffa0
+	.long	4294967200                      ## 0xffffffa0
+	.long	4294967200                      ## 0xffffffa0
+	.long	4294967200                      ## 0xffffffa0
+LCPI0_1:
+	.long	4294967248                      ## 0xffffffd0
+	.long	4294967248                      ## 0xffffffd0
+	.long	4294967248                      ## 0xffffffd0
+	.long	4294967248                      ## 0xffffffd0
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r15
+	pushq	%r14
+	pushq	%r13
+	pushq	%r12
+	pushq	%rbx
+	subq	$24, %rsp
+	.cfi_offset %rbx, -56
+	.cfi_offset %r12, -48
+	.cfi_offset %r13, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
+	movl	%esi, %r14d
+	movq	%rdi, %r15
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rax
+	movq	(%rax), %rax
+	movq	%rax, -48(%rbp)
+	movslq	%esi, %r12
+	leaq	(,%r12,4), %rdi
+	callq	_malloc
+	movq	%rax, %rbx
+	testl	%r12d, %r12d
+	jle	LBB0_20
+## %bb.1:
+	movl	%r14d, -64(%rbp)                ## 4-byte Spill
+	movl	%r14d, %r12d
+	xorl	%r13d, %r13d
+	jmp	LBB0_2
+	.p2align	4, 0x90
+LBB0_6:                                 ##   in Loop: Header=BB0_2 Depth=1
+	movsbl	-60(%rbp), %eax
+	movl	%esi, %ecx
+	subl	%eax, %ecx
+	addl	$48, %ecx
+	cmpl	$0, (%r15,%r13,4)
+	leal	-48(%rsi,%rax), %eax
+	cmovlel	%ecx, %eax
+	movl	%eax, (%rbx,%r13,4)
+	incq	%r13
+	cmpq	%r12, %r13
+	je	LBB0_7
+LBB0_2:                                 ## =>This Loop Header: Depth=1
+                                        ##     Child Loop BB0_15 Depth 2
+                                        ##     Child Loop BB0_5 Depth 2
+	movl	(%r15,%r13,4), %eax
+	movl	%eax, %r8d
+	negl	%r8d
+	cmovsl	%eax, %r8d
+	movl	$12, %edx
+	leaq	-60(%rbp), %r14
+	movq	%r14, %rdi
+	xorl	%esi, %esi
+	leaq	L_.str(%rip), %rcx
+	xorl	%eax, %eax
+	callq	___sprintf_chk
+	movq	%r14, %rdi
+	callq	_strlen
+	movl	$0, %esi
+	cmpl	$2, %eax
+	jl	LBB0_6
+## %bb.3:                               ##   in Loop: Header=BB0_2 Depth=1
+	movl	%eax, %eax
+	leaq	-1(%rax), %r8
+	cmpq	$8, %r8
+	jae	LBB0_12
+## %bb.4:                               ##   in Loop: Header=BB0_2 Depth=1
+	xorl	%esi, %esi
+	movl	$1, %ecx
+	jmp	LBB0_5
+	.p2align	4, 0x90
+LBB0_12:                                ##   in Loop: Header=BB0_2 Depth=1
+	movq	%r8, %rcx
+	andq	$-8, %rcx
+	leaq	-8(%rcx), %rsi
+	movq	%rsi, %rdx
+	shrq	$3, %rdx
+	incq	%rdx
+	testq	%rsi, %rsi
+	movdqa	LCPI0_0(%rip), %xmm4            ## xmm4 = [4294967200,4294967200,4294967200,4294967200]
+	je	LBB0_13
+## %bb.14:                              ##   in Loop: Header=BB0_2 Depth=1
+	movq	%rdx, %rsi
+	andq	$-2, %rsi
+	pxor	%xmm0, %xmm0
+	xorl	%edi, %edi
+	pxor	%xmm1, %xmm1
+	.p2align	4, 0x90
+LBB0_15:                                ##   Parent Loop BB0_2 Depth=1
+                                        ## =>  This Inner Loop Header: Depth=2
+	pmovsxbd	-59(%rbp,%rdi), %xmm2
+	pmovsxbd	-55(%rbp,%rdi), %xmm3
+	paddd	%xmm0, %xmm2
+	paddd	%xmm1, %xmm3
+	pmovsxbd	-51(%rbp,%rdi), %xmm0
+	pmovsxbd	-47(%rbp,%rdi), %xmm1
+	paddd	%xmm4, %xmm0
+	paddd	%xmm2, %xmm0
+	paddd	%xmm4, %xmm1
+	paddd	%xmm3, %xmm1
+	addq	$16, %rdi
+	addq	$-2, %rsi
+	jne	LBB0_15
+## %bb.16:                              ##   in Loop: Header=BB0_2 Depth=1
+	testb	$1, %dl
+	je	LBB0_18
+LBB0_17:                                ##   in Loop: Header=BB0_2 Depth=1
+	orq	$1, %rdi
+	pmovsxbd	-60(%rbp,%rdi), %xmm2
+	pmovsxbd	-56(%rbp,%rdi), %xmm3
+	paddd	%xmm2, %xmm0
+	paddd	%xmm3, %xmm1
+	movdqa	LCPI0_1(%rip), %xmm2            ## xmm2 = [4294967248,4294967248,4294967248,4294967248]
+	paddd	%xmm2, %xmm0
+	paddd	%xmm2, %xmm1
+LBB0_18:                                ##   in Loop: Header=BB0_2 Depth=1
+	paddd	%xmm1, %xmm0
+	pshufd	$238, %xmm0, %xmm1              ## xmm1 = xmm0[2,3,2,3]
+	paddd	%xmm0, %xmm1
+	pshufd	$85, %xmm1, %xmm0               ## xmm0 = xmm1[1,1,1,1]
+	paddd	%xmm1, %xmm0
+	movd	%xmm0, %esi
+	cmpq	%rcx, %r8
+	je	LBB0_6
+## %bb.19:                              ##   in Loop: Header=BB0_2 Depth=1
+	orq	$1, %rcx
+	.p2align	4, 0x90
+LBB0_5:                                 ##   Parent Loop BB0_2 Depth=1
+                                        ## =>  This Inner Loop Header: Depth=2
+	movsbl	-60(%rbp,%rcx), %edx
+	addl	%edx, %esi
+	addl	$-48, %esi
+	incq	%rcx
+	cmpq	%rcx, %rax
+	jne	LBB0_5
+	jmp	LBB0_6
+LBB0_13:                                ##   in Loop: Header=BB0_2 Depth=1
+	pxor	%xmm0, %xmm0
+	xorl	%edi, %edi
+	pxor	%xmm1, %xmm1
+	testb	$1, %dl
+	jne	LBB0_17
+	jmp	LBB0_18
+LBB0_7:
+	xorl	%eax, %eax
+	movl	-64(%rbp), %edi                 ## 4-byte Reload
+	jmp	LBB0_8
+	.p2align	4, 0x90
+LBB0_24:                                ##   in Loop: Header=BB0_8 Depth=1
+	incl	%eax
+	cmpl	%edi, %eax
+	je	LBB0_20
+LBB0_8:                                 ## =>This Loop Header: Depth=1
+                                        ##     Child Loop BB0_10 Depth 2
+	cmpl	$1, %edi
+	je	LBB0_24
+## %bb.9:                               ##   in Loop: Header=BB0_8 Depth=1
+	movl	(%rbx), %edx
+	movl	$1, %ecx
+	jmp	LBB0_10
+	.p2align	4, 0x90
+LBB0_22:                                ##   in Loop: Header=BB0_10 Depth=2
+	movl	%edx, (%rbx,%rcx,4)
+	movl	%esi, -4(%rbx,%rcx,4)
+	rolq	$32, -4(%r15,%rcx,4)
+LBB0_23:                                ##   in Loop: Header=BB0_10 Depth=2
+	incq	%rcx
+	cmpq	%rcx, %r12
+	je	LBB0_24
+LBB0_10:                                ##   Parent Loop BB0_8 Depth=1
+                                        ## =>  This Inner Loop Header: Depth=2
+	movl	(%rbx,%rcx,4), %esi
+	cmpl	%esi, %edx
+	jg	LBB0_22
+## %bb.11:                              ##   in Loop: Header=BB0_10 Depth=2
+	movl	%esi, %edx
+	jmp	LBB0_23
+LBB0_20:
+	movq	%rbx, %rdi
+	callq	_free
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rax
+	movq	(%rax), %rax
+	cmpq	-48(%rbp), %rax
+	jne	LBB0_25
+## %bb.21:
+	movq	%r15, %rax
+	addq	$24, %rsp
+	popq	%rbx
+	popq	%r12
+	popq	%r13
+	popq	%r14
+	popq	%r15
+	popq	%rbp
+	retq
+LBB0_25:
+	callq	___stack_chk_fail
+	.cfi_endproc
+                                        ## -- End function
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	"%d"
+
+.subsections_via_symbols
