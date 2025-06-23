@@ -1,0 +1,31 @@
+input is compiled x86 assembly from which was pred translated. pred is translated ARMv8 and gd is compiled ARMv8 of the same c code.
+ 1. understand how gd and c codes are related-> show how each line of C code is related to assembly code. also show which register was used for what var in c code 
+2. vertically compare gd and pred and list all the differences. explain the assembly code where differences occured 
+3. Label the differences and find the reasons why pred is logically incorrect. make it undersantable to look in parallel with c code. Try to connect the occured error to the optimization in level o2
+
+
+TRY TO INCLUDE THIS INTO PROMPT
+Complete C-to-Assembly Flow
+c// ; %bb.2: (both versions)
+out[0] = numbers[0];  // str w8, [x0]
+max = numbers[0];     // w8 = max
+
+// ; %bb.3: setup
+int *out_ptr = &out[1];      // x10 (gd) or x9 (pred)
+int *in_ptr = &numbers[1];   // x11 (gd) or x10 (pred)
+int remaining = size - 1;    // x9 (gd) or x11 (pred)
+
+// LBB0_4: loop body  
+while (remaining > 0) {
+    int current = *in_ptr++;
+    if (current > max) max = current;
+    *out_ptr++ = max;
+    remaining--;
+}
+
+// Return difference:
+return out;  // gd.txt: x0 unchanged (CORRECT)
+return max;  // pred.txt: x0 = x8 (WRONG!)
+
+the avtual prompt of it was:
+map ; %bb.3: to C code and explain it
