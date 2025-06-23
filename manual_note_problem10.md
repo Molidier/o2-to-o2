@@ -15,5 +15,7 @@ Key ones:
         COMMENTS:
             Impact: The function returns an integer (max value) cast as a pointer, which will likely cause:
             * Segmentation faults when caller tries to access the "array"
-            * Memory leaks (allocated array is never free
+            * Memory leaks (allocated array is never free)
             * Completely wrong behavior
+        WHY IT CAN HAPPEN:
+            LLM can stick to the %rax as a return value, which is x0 in ARMv8 -> it can cause misunderstanding that return value should be maximum -> because %rax used for computations in [input] file ->  used for array indexing and storing results 
