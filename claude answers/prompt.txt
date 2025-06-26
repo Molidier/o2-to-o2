@@ -1,8 +1,7 @@
 input is compiled x86 assembly from which was pred translated. pred is translated ARMv8 and gd is compiled ARMv8 of the same c code.
- 1. understand how gd and c codes are related-> show how each line of C code is related to assembly code. also show which register was used for what var in c code 
+1. map c code to gd and to pred -> show how each line of C code is related to assembly code. also show which register was used for what var in c code 
 2. vertically compare gd and pred and list all the differences. explain the assembly code where differences occured 
-3. Label the differences and find the reasons why pred is logically incorrect. make it undersantable to look in parallel with c code. Try to connect the occured error to the optimization in level o2
-
+3. Label the differences and find the reasons why pred is logically incorrect. make it undersantable to look in parallel with c code. Try to connect the occured error to the optimization in level o2 and/or to x86 code
 
 TRY TO INCLUDE THIS INTO PROMPT
 Complete C-to-Assembly Flow
