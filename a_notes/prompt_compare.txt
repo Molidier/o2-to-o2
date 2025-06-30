@@ -1,0 +1,3 @@
+vertically compare gd and pred and list all the differences. explain the assembly code where differences occured
+
+Label the differences and find the reasons why pred is logically incorrect. make it undersantable to look in parallel with c code. Try to categoriez to one of the categories or create new one
