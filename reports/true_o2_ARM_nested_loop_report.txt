@@ -1,0 +1,20 @@
+NESTED LOOP REPORT
+======================================================================
+
+SUMMARY REPORT
+==================================================
+Base directory scanned: true_o2_ARM
+Problem directories found: 73
+Problems with nested loops: 15
+
+Analysis:
+- Total C++ files with nested loops: 15
+- Total nested loop instances found: 18
+
+Problems containing nested loops:
+[1, 26, 34, 48, 55, 59, 88, 94, 95, 97, 108, 114, 121, 147, 157]
+
+======================================================================
+DETAILED RESULTS
+======================================================================
+

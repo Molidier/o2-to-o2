@@ -1,0 +1,329 @@
+PROBLEM DIRECTORY STRUCTURE COMPLEX IF STATEMENTS REPORT
+======================================================================
+
+
+SUMMARY REPORT
+==================================================
+Base directory scanned: false_o2_ARM
+Problem directories found: 91
+Problems with complex if statements: 31
+
+Directory Analysis:
+- Total C++ files processed: 31
+- Complex if statements found: 51
+
+Problems with directories found:
+[6, 7, 8, 9, 10, 11, 15, 18, 19, 20, 21, 22, 23, 27, 28, 29, 33, 35, 36, 37, 38, 40, 41, 44, 45, 47, 50, 51, 60, 63, 64, 65, 66, 68, 71, 72, 76, 77, 81, 82, 85, 86, 87, 89, 90, 91, 92, 93, 96, 99, 101, 105, 106, 107, 109, 112, 113, 116, 117, 118, 119, 120, 124, 125, 126, 127, 129, 130, 131, 133, 136, 137, 140, 141, 142, 143, 144, 145, 146, 148, 149, 150, 152, 154, 156, 158, 159, 161, 162, 163, 164]
+
+Problems with complex if statements:
+[23, 28, 37, 65, 68, 72, 81, 87, 91, 92, 93, 106, 117, 118, 119, 120, 125, 126, 127, 130, 137, 142, 149, 150, 152, 154, 158, 159, 161, 163, 164]
+
+Problems with directories but no complex if statements:
+[6, 7, 8, 9, 10, 11, 15, 18, 19, 20, 21, 22, 27, 29, 33, 35, 36, 38, 40, 41, 44, 45, 47, 50, 51, 60, 63, 64, 66, 71, 76, 77, 82, 85, 86, 89, 90, 96, 99, 101, 105, 107, 109, 112, 113, 116, 124, 129, 131, 133, 136, 140, 141, 143, 144, 145, 146, 148, 156, 162]
+
+Problems not found (no directories):
+[]
+
+======================================================================
+DETAILED RESULTS
+======================================================================
+
+PROBLEM 23
+--------------------------------------------------
+Directory: false_o2_ARM/problem23_code.c
+File: problem23_code.cpp
+Complex if statements: 1
+
+Line   19: if (start != end && (*end == ',' || *end == '\0')) {
+
+
+PROBLEM 28
+--------------------------------------------------
+Directory: false_o2_ARM/problem28_code.c
+File: problem28_code.cpp
+Complex if statements: 2
+
+Line    8: if (w >= 'a' && w <= 'z') {
+Line   10: } else if (w >= 'A' && w <= 'Z') {
+
+
+PROBLEM 37
+--------------------------------------------------
+Directory: false_o2_ARM/problem37_code.c
+File: problem37_code.cpp
+Complex if statements: 1
+
+Line    6: if (i % 11 == 0 || i % 13 == 0) {
+
+
+PROBLEM 65
+--------------------------------------------------
+Directory: false_o2_ARM/problem65_code.c
+File: problem65_code.cpp
+Complex if statements: 1
+
+Line   16: if (length > 0 && (s[length - 1] == 'y' || s[length - 1] == 'Y')) {
+
+
+PROBLEM 68
+--------------------------------------------------
+Directory: false_o2_ARM/problem68_code.c
+File: problem68_code.cpp
+Complex if statements: 1
+
+Line   18: if (is12 == 0 && j > 0) {
+
+
+PROBLEM 72
+--------------------------------------------------
+Directory: false_o2_ARM/problem72_code.c
+File: problem72_code.cpp
+Complex if statements: 1
+
+Line    5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
+
+
+PROBLEM 81
+--------------------------------------------------
+Directory: false_o2_ARM/problem81_code.c
+File: problem81_code.cpp
+Complex if statements: 1
+
+Line    7: if (s[i] == s[i-1] || s[i] == s[i-2]) return false;
+
+
+PROBLEM 87
+--------------------------------------------------
+Directory: false_o2_ARM/problem87_code.c
+File: problem87_code.cpp
+Complex if statements: 1
+
+Line   12: if (s[i] == ' ' || s[i] == '\0') {
+
+
+PROBLEM 91
+--------------------------------------------------
+Directory: false_o2_ARM/problem91_code.c
+File: problem91_code.cpp
+Complex if statements: 1
+
+Line   12: } else if (lst[i] < second && lst[i] != first) {
+
+
+PROBLEM 92
+--------------------------------------------------
+Directory: false_o2_ARM/problem92_code.c
+File: problem92_code.cpp
+Complex if statements: 3
+
+Line   10: if (isspace(S[i]) && isi) {
+Line   14: if (S[i] == 'I' && isstart) {
+Line   22: if (S[i] == '.' || S[i] == '?' || S[i] == '!') {
+
+
+PROBLEM 93
+--------------------------------------------------
+Directory: false_o2_ARM/problem93_code.c
+File: problem93_code.cpp
+Complex if statements: 1
+
+Line    8: if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
+
+
+PROBLEM 106
+--------------------------------------------------
+Directory: false_o2_ARM/problem106_code.c
+File: problem106_code.cpp
+Complex if statements: 2
+
+Line   21: if (arr[i] >= 1 && arr[i] <= 9) {
+Line   29: if (arr[i] >= 1 && arr[i] <= 9) {
+
+
+PROBLEM 117
+--------------------------------------------------
+Directory: false_o2_ARM/problem117_code.c
+File: problem117_code.cpp
+Complex if statements: 1
+
+Line   22: if (y < x || (y == x && arr[j] < arr[i])) {
+
+
+PROBLEM 118
+--------------------------------------------------
+Directory: false_o2_ARM/problem118_code.c
+File: problem118_code.cpp
+Complex if statements: 2
+
+Line   14: if (isspace(s[i]) || s[i] == '\0') {
+Line   26: if (strchr(vowels, s[i]) == NULL && isalpha((unsigned char)s[i])) {
+
+
+PROBLEM 119
+--------------------------------------------------
+Directory: false_o2_ARM/problem119_code.c
+File: problem119_code.cpp
+Complex if statements: 1
+
+Line   10: if (strchr(vowels, word[i]) && !strchr(vowels, word[i + 1]) && !strchr(vowels, word[i - 1])) {
+
+
+PROBLEM 120
+--------------------------------------------------
+Directory: false_o2_ARM/problem120_code.c
+File: problem120_code.cpp
+Complex if statements: 2
+
+Line   21: if (count == 0 && can) return "Yes";
+Line   36: if (count == 0 && can) return "Yes";
+
+
+PROBLEM 125
+--------------------------------------------------
+Directory: false_o2_ARM/problem125_code.c
+File: problem125_code.cpp
+Complex if statements: 6
+
+Line   10: if (i == 2 || i == 5) {
+Line   13: if (date[i] < '0' || date[i] > '9') return 0;
+Line   25: if (mm < 1 || mm > 12) return 0;
+Line   26: if (dd < 1 || dd > 31) return 0;
+Line   27: if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
+Line   28: if (mm == 2 && dd > 29) return 0;
+
+
+PROBLEM 126
+--------------------------------------------------
+Directory: false_o2_ARM/problem126_code.c
+File: problem126_code.cpp
+Complex if statements: 1
+
+Line    9: if (i >= 2 && lst[i] == lst[i - 1] && lst[i] == lst[i - 2]) return false;
+
+
+PROBLEM 127
+--------------------------------------------------
+Directory: false_o2_ARM/problem127_code.c
+File: problem127_code.cpp
+Complex if statements: 1
+
+Line    9: if (i >= 2 && lst[i] == lst[i - 1] && lst[i] == lst[i - 2]) return false;
+
+
+PROBLEM 130
+--------------------------------------------------
+Directory: false_o2_ARM/problem130_code.c
+File: problem130_code.cpp
+Complex if statements: 4
+
+Line   13: if (x > 0 && grid[x - 1][y] < min) min = grid[x - 1][y];
+Line   14: if (x < N - 1 && grid[x + 1][y] < min) min = grid[x + 1][y];
+Line   15: if (y > 0 && grid[x][y - 1] < min) min = grid[x][y - 1];
+Line   16: if (y < N - 1 && grid[x][y + 1] < min) min = grid[x][y + 1];
+
+
+PROBLEM 137
+--------------------------------------------------
+Directory: false_o2_ARM/problem137_code.c
+File: problem137_code.cpp
+Complex if statements: 2
+
+Line    7: if (lst[i] < 0 && (maxneg == 0 || lst[i] > maxneg)) maxneg = lst[i];
+Line    8: if (lst[i] > 0 && (minpos == 0 || lst[i] < minpos)) minpos = lst[i];
+
+
+PROBLEM 142
+--------------------------------------------------
+Directory: false_o2_ARM/problem142_code.c
+File: problem142_code.cpp
+Complex if statements: 4
+
+Line    9: if (w < 'A' || (w > 'Z' && w < 'a') || w > 'z') return "No";
+Line   11: if (strcmp(last, ".txt") != 0 && strcmp(last, ".exe") != 0 && strcmp(last, ".dll") != 0) return "No";
+Line   13: if (file_name[i] >= '0' && file_name[i] <= '9') num_digit++;
+Line   16: if (num_digit > 3 || num_dot != 1) return "No";
+
+
+PROBLEM 149
+--------------------------------------------------
+Directory: false_o2_ARM/problem149_code.c
+File: problem149_code.cpp
+Complex if statements: 1
+
+Line   12: if (pos1 == -1 || pos2 == -1 || pos1 == pos2) {
+
+
+PROBLEM 150
+--------------------------------------------------
+Directory: false_o2_ARM/problem150_code.c
+File: problem150_code.cpp
+Complex if statements: 1
+
+Line   21: if (len_j > len_j1 || (len_j == len_j1 && strcmp(lst[j], lst[j + 1]) > 0)) {
+
+
+PROBLEM 152
+--------------------------------------------------
+Directory: false_o2_ARM/problem152_code.c
+File: problem152_code.cpp
+Complex if statements: 1
+
+Line    8: if (lst[i] > 0 && (int)(round(lst[i])) % 2 == 1) {
+
+
+PROBLEM 154
+--------------------------------------------------
+Directory: false_o2_ARM/problem154_code.c
+File: problem154_code.cpp
+Complex if statements: 2
+
+Line   12: if (chr >= 'A' && chr <= 'Z') strength++;
+Line   13: if (chr >= 'a' && chr <= 'z') strength--;
+
+
+PROBLEM 158
+--------------------------------------------------
+Directory: false_o2_ARM/problem158_code.c
+File: problem158_code.cpp
+Complex if statements: 1
+
+Line    5: if (fabs(a*a + b*b - c*c) < 1e-4 || fabs(a*a + c*c - b*b) < 1e-4 || fabs(b*b + c*c - a*a) < 1e-4) return 1;
+
+
+PROBLEM 159
+--------------------------------------------------
+Directory: false_o2_ARM/problem159_code.c
+File: problem159_code.cpp
+Complex if statements: 1
+
+Line   18: if (unique_count > maxu || (unique_count == maxu && strcmp(words[i], max) < 0)) {
+
+
+PROBLEM 161
+--------------------------------------------------
+Directory: false_o2_ARM/problem161_code.c
+File: problem161_code.cpp
+Complex if statements: 2
+
+Line   22: if (strcmp(operato[i], "*") == 0 || strcmp(operato[i], "//") == 0) {
+Line   33: if (strcmp(operato[i], "+") == 0 || strcmp(operato[i], "-") == 0) {
+
+
+PROBLEM 163
+--------------------------------------------------
+Directory: false_o2_ARM/problem163_code.c
+File: problem163_code.cpp
+Complex if statements: 1
+
+Line   14: if (i < 10 && i % 2 == 0) {
+
+
+PROBLEM 164
+--------------------------------------------------
+Directory: false_o2_ARM/problem164_code.c
+File: problem164_code.cpp
+Complex if statements: 1
+
+Line   14: if (i < 10 && i % 2 == 0) {
+
+

@@ -1,0 +1,126 @@
+PROBLEM DIRECTORY STRUCTURE COMPLEX IF STATEMENTS REPORT
+======================================================================
+
+
+SUMMARY REPORT
+==================================================
+Base directory scanned: true_o2_ARM
+Problem directories found: 73
+Problems with complex if statements: 11
+
+Directory Analysis:
+- Total C++ files processed: 11
+- Complex if statements found: 11
+
+All problem numbers found:
+[1, 2, 3, 4, 5, 12, 13, 14, 16, 17, 24, 25, 26, 30, 31, 32, 34, 39, 42, 43, 46, 48, 49, 52, 53, 54, 55, 56, 57, 58, 59, 61, 62, 67, 69, 70, 73, 74, 75, 78, 79, 80, 83, 84, 88, 94, 95, 97, 98, 100, 102, 103, 104, 108, 110, 111, 114, 115, 121, 122, 123, 128, 132, 134, 135, 138, 139, 147, 151, 153, 155, 157, 160]
+
+Problems with complex if statements:
+[17, 67, 69, 70, 102, 103, 114, 123, 138, 139, 147]
+
+Problems with directories but no complex if statements:
+[1, 2, 3, 4, 5, 12, 13, 14, 16, 24, 25, 26, 30, 31, 32, 34, 39, 42, 43, 46, 48, 49, 52, 53, 54, 55, 56, 57, 58, 59, 61, 62, 73, 74, 75, 78, 79, 80, 83, 84, 88, 94, 95, 97, 98, 100, 104, 108, 110, 111, 115, 121, 122, 128, 132, 134, 135, 151, 153, 155, 157, 160]
+
+======================================================================
+DETAILED RESULTS
+======================================================================
+
+PROBLEM 17
+--------------------------------------------------
+Directory: true_o2_ARM/problem17_code.c
+File: problem17_code.cpp
+Complex if statements: 1
+
+Line   12: if (char_map[ch] == 0 && isalpha((unsigned char)ch)) {
+
+
+PROBLEM 67
+--------------------------------------------------
+Directory: true_o2_ARM/problem67_code.c
+File: problem67_code.cpp
+Complex if statements: 1
+
+Line    7: if (s[i] >= 'A' && s[i] <= 'Z') sum += s[i];
+
+
+PROBLEM 69
+--------------------------------------------------
+Directory: true_o2_ARM/problem69_code.c
+File: problem69_code.cpp
+Complex if statements: 1
+
+Line    9: if (arr[i] % 2 == 0 && (arr[i] < smallestEven || index == -1)) {
+
+
+PROBLEM 70
+--------------------------------------------------
+Directory: true_o2_ARM/problem70_code.c
+File: problem70_code.cpp
+Complex if statements: 1
+
+Line   10: if ((freq[lst[i]] >= lst[i]) && (lst[i] > max)) {
+
+
+PROBLEM 102
+--------------------------------------------------
+Directory: true_o2_ARM/problem102_code.c
+File: problem102_code.cpp
+Complex if statements: 1
+
+Line    5: if (y == x && y % 2 == 1) return -1;
+
+
+PROBLEM 103
+--------------------------------------------------
+Directory: true_o2_ARM/problem103_code.c
+File: problem103_code.cpp
+Complex if statements: 1
+
+Line    5: if (y == x && y % 2 == 1) return -1;
+
+
+PROBLEM 114
+--------------------------------------------------
+Directory: true_o2_ARM/problem114_code.c
+File: problem114_code.cpp
+Complex if statements: 1
+
+Line   10: if (lst[i][j] >= '0' && lst[i][j] <= '9' && (lst[i][j] - '0') % 2 == 1) sum += 1;
+
+
+PROBLEM 123
+--------------------------------------------------
+Directory: true_o2_ARM/problem123_code.c
+File: problem123_code.cpp
+Complex if statements: 1
+
+Line    6: if (arr[i] >= -99 && arr[i] <= 99) sum += arr[i];
+
+
+PROBLEM 138
+--------------------------------------------------
+Directory: true_o2_ARM/problem138_code.c
+File: problem138_code.cpp
+Complex if statements: 1
+
+Line    4: if (n % 2 == 0 && n >= 8) return 1;
+
+
+PROBLEM 139
+--------------------------------------------------
+Directory: true_o2_ARM/problem139_code.c
+File: problem139_code.cpp
+Complex if statements: 1
+
+Line    4: if (n % 2 == 0 && n >= 8) return 1;
+
+
+PROBLEM 147
+--------------------------------------------------
+Directory: true_o2_ARM/problem147_code.c
+File: problem147_code.cpp
+Complex if statements: 1
+
+Line   15: if (first % 2 == 1 && last % 2 == 1) {
+
+
