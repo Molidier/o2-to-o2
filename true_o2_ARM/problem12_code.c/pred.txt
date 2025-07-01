@@ -1,0 +1,115 @@
+# problem12/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ; -- Begin function func0
+	.p2align	2
+_func0:                                 ; @func0
+	.cfi_startproc
+; %bb.0:
+	stp	x22, x21, [sp, #-48]!           ; 16-byte Folded Spill
+	.cfi_def_cfa_offset 48
+	stp	x20, x19, [sp, #16]             ; 16-byte Folded Spill
+	stp	x29, x30, [sp, #32]             ; 16-byte Folded Spill
+	add	x29, sp, #32
+	.cfi_def_cfa w29, 16
+	.cfi_offset w30, -8
+	.cfi_offset w29, -16
+	.cfi_offset w19, -24
+	.cfi_offset w20, -32
+	.cfi_offset w21, -40
+	.cfi_offset w22, -48
+	mov	x19, x1
+	mov	x20, x0
+	bl	_strlen
+	mov	x21, x0
+	mov	x0, x19
+	bl	_strlen
+	cmp	w21, w0
+	csel	w21, w21, w0, lt
+	add	w8, w21, #1
+	sxtw	x0, w8
+	bl	_malloc
+	cbz	x0, LBB0_14
+; %bb.1:
+	cmp	w21, #1
+	b.lt	LBB0_13
+; %bb.2:
+	cmp	w21, #8
+	b.hs	LBB0_4
+; %bb.3:
+	mov	x8, #0
+	b	LBB0_11
+LBB0_4:
+	cmp	w21, #64
+	b.hs	LBB0_6
+; %bb.5:
+	mov	x8, #0
+	b	LBB0_9
+LBB0_6:
+	and	x8, x21, #0xffffffc0
+	add	x9, x0, #32
+	add	x10, x20, #32
+	add	x11, x19, #32
+	movi.16b	v0, #49
+	mov	x12, x8
+LBB0_7:                                 ; =>This Inner Loop Header: Depth=1
+	ldp	q1, q2, [x10, #-32]
+	ldp	q3, q4, [x10], #64
+	ldp	q5, q6, [x11, #-32]
+	ldp	q7, q16, [x11], #64
+	cmeq.16b	v1, v1, v5
+	cmeq.16b	v2, v2, v6
+	cmeq.16b	v3, v3, v7
+	cmeq.16b	v4, v4, v16
+	movi.16b	v5, #49
+	add.16b	v1, v1, v5
+	add.16b	v2, v2, v5
+	add.16b	v3, v3, v5
+	add.16b	v4, v4, v5
+	stp	q1, q2, [x9, #-32]
+	stp	q3, q4, [x9], #64
+	subs	x12, x12, #64
+	b.ne	LBB0_7
+; %bb.8:
+	cmp	x8, x21
+	b.eq	LBB0_13
+LBB0_9:
+	mov	x12, x8
+	and	x8, x21, #0xffffffc0
+	add	x9, x20, x12
+	add	x10, x19, x12
+	add	x11, x0, x12
+	sub	x12, x12, x8
+	movi.16b	v0, #49
+LBB0_10:                                ; =>This Inner Loop Header: Depth=1
+	ldr	q1, [x9], #64
+	ldr	q2, [x10], #64
+	cmeq.16b	v1, v1, v2
+	movi.16b	v2, #49
+	add.16b	v1, v1, v2
+	str	q1, [x11], #64
+	adds	x12, x12, #64
+	b.ne	LBB0_10
+	b	LBB0_12
+LBB0_11:
+	ldrb	w9, [x20, x8]
+	ldrb	w10, [x19, x8]
+	cmp	w9, w10
+	mov	w9, #48
+	cinc	w9, w9, ne
+	strb	w9, [x0, x8]
+	add	x8, x8, #1
+LBB0_12:
+	cmp	x8, x21
+	b.ne	LBB0_11
+LBB0_13:
+	strb	wzr, [x0, w21, sxtw]
+LBB0_14:
+	ldp	x29, x30, [sp, #32]             ; 16-byte Folded Reload
+	ldp	x20, x19, [sp, #16]             ; 16-byte Folded Reload
+	ldp	x22, x21, [sp], #48             ; 16-byte Folded Reload
+	ret
+	.cfi_endproc
+                                        ; -- End function
+.subsections_via_symbols
+

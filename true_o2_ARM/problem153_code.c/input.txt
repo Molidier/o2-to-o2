@@ -1,0 +1,132 @@
+# problem153/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	testl	%ecx, %ecx
+	jle	LBB0_16
+## %bb.1:
+	movl	%ecx, %r8d
+	cmpl	$8, %ecx
+	jae	LBB0_3
+## %bb.2:
+	xorl	%r11d, %r11d
+LBB0_12:
+	movq	%r11, %r10
+	notq	%r10
+	testb	$1, %r8b
+	je	LBB0_14
+## %bb.13:
+	movl	(%rdi,%r11,4), %r9d
+	subl	(%rsi,%r11,4), %r9d
+	movl	%r9d, %eax
+	negl	%eax
+	cmovsl	%r9d, %eax
+	movl	%eax, (%rdx,%r11,4)
+	orq	$1, %r11
+LBB0_14:
+	addq	%r8, %r10
+	je	LBB0_16
+	.p2align	4, 0x90
+LBB0_15:                                ## =>This Inner Loop Header: Depth=1
+	movl	(%rdi,%r11,4), %ecx
+	subl	(%rsi,%r11,4), %ecx
+	movl	%ecx, %eax
+	negl	%eax
+	cmovsl	%ecx, %eax
+	movl	%eax, (%rdx,%r11,4)
+	movl	4(%rdi,%r11,4), %eax
+	subl	4(%rsi,%r11,4), %eax
+	movl	%eax, %ecx
+	negl	%ecx
+	cmovsl	%eax, %ecx
+	movl	%ecx, 4(%rdx,%r11,4)
+	addq	$2, %r11
+	cmpq	%r11, %r8
+	jne	LBB0_15
+	jmp	LBB0_16
+LBB0_3:
+	movq	%rdx, %rax
+	subq	%rdi, %rax
+	xorl	%r11d, %r11d
+	cmpq	$32, %rax
+	jb	LBB0_12
+## %bb.4:
+	movq	%rdx, %rax
+	subq	%rsi, %rax
+	cmpq	$32, %rax
+	jb	LBB0_12
+## %bb.5:
+	movl	%r8d, %r11d
+	andl	$-8, %r11d
+	leaq	-8(%r11), %rax
+	movq	%rax, %r9
+	shrq	$3, %r9
+	incq	%r9
+	testq	%rax, %rax
+	je	LBB0_6
+## %bb.7:
+	movq	%r9, %r10
+	andq	$-2, %r10
+	xorl	%eax, %eax
+	.p2align	4, 0x90
+LBB0_8:                                 ## =>This Inner Loop Header: Depth=1
+	movdqu	(%rdi,%rax,4), %xmm0
+	movdqu	16(%rdi,%rax,4), %xmm1
+	movdqu	(%rsi,%rax,4), %xmm2
+	psubd	%xmm2, %xmm0
+	movdqu	16(%rsi,%rax,4), %xmm2
+	psubd	%xmm2, %xmm1
+	pabsd	%xmm0, %xmm0
+	pabsd	%xmm1, %xmm1
+	movdqu	%xmm0, (%rdx,%rax,4)
+	movdqu	%xmm1, 16(%rdx,%rax,4)
+	movdqu	32(%rdi,%rax,4), %xmm0
+	movdqu	48(%rdi,%rax,4), %xmm1
+	movdqu	32(%rsi,%rax,4), %xmm2
+	psubd	%xmm2, %xmm0
+	movdqu	48(%rsi,%rax,4), %xmm2
+	psubd	%xmm2, %xmm1
+	pabsd	%xmm0, %xmm0
+	pabsd	%xmm1, %xmm1
+	movdqu	%xmm0, 32(%rdx,%rax,4)
+	movdqu	%xmm1, 48(%rdx,%rax,4)
+	addq	$16, %rax
+	addq	$-2, %r10
+	jne	LBB0_8
+## %bb.9:
+	testb	$1, %r9b
+	je	LBB0_11
+LBB0_10:
+	movdqu	(%rdi,%rax,4), %xmm0
+	movdqu	16(%rdi,%rax,4), %xmm1
+	movdqu	(%rsi,%rax,4), %xmm2
+	psubd	%xmm2, %xmm0
+	movdqu	16(%rsi,%rax,4), %xmm2
+	psubd	%xmm2, %xmm1
+	pabsd	%xmm0, %xmm0
+	pabsd	%xmm1, %xmm1
+	movdqu	%xmm0, (%rdx,%rax,4)
+	movdqu	%xmm1, 16(%rdx,%rax,4)
+LBB0_11:
+	cmpq	%r8, %r11
+	jne	LBB0_12
+LBB0_16:
+	popq	%rbp
+	retq
+LBB0_6:
+	xorl	%eax, %eax
+	testb	$1, %r9b
+	jne	LBB0_10
+	jmp	LBB0_11
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

@@ -1,0 +1,38 @@
+# problem103/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	movl	$-1, %eax
+	cmpl	%edi, %esi
+	jl	LBB0_4
+## %bb.1:
+	movl	%esi, %ecx
+	andl	$-2147483647, %ecx              ## imm = 0x80000001
+	cmpl	%edi, %esi
+	jne	LBB0_3
+## %bb.2:
+	cmpl	$1, %ecx
+	jne	LBB0_3
+LBB0_4:
+	popq	%rbp
+	retq
+LBB0_3:
+	xorl	%eax, %eax
+	cmpl	$1, %ecx
+	sete	%al
+	subl	%eax, %esi
+	movl	%esi, %eax
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

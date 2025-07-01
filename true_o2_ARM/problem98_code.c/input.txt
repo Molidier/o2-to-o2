@@ -1,0 +1,38 @@
+# problem98/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	movl	%edi, %ecx
+	negl	%ecx
+	cmovsl	%edi, %ecx
+	movl	$3435973837, %edx               ## imm = 0xCCCCCCCD
+	movq	%rcx, %rax
+	imulq	%rdx, %rax
+	shrq	$35, %rax
+	addl	%eax, %eax
+	leal	(%rax,%rax,4), %eax
+	subl	%eax, %ecx
+	movl	%esi, %eax
+	negl	%eax
+	cmovsl	%esi, %eax
+	imulq	%rax, %rdx
+	shrq	$35, %rdx
+	addl	%edx, %edx
+	leal	(%rdx,%rdx,4), %edx
+	subl	%edx, %eax
+	imull	%ecx, %eax
+                                        ## kill: def $eax killed $eax killed $rax
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

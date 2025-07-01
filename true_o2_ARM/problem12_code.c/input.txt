@@ -1,0 +1,179 @@
+# problem12/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.section	__TEXT,__literal16,16byte_literals
+	.p2align	4                               ## -- Begin function func0
+LCPI0_0:
+	.space	16,49
+LCPI0_1:
+	.byte	49                              ## 0x31
+	.byte	49                              ## 0x31
+	.byte	49                              ## 0x31
+	.byte	49                              ## 0x31
+	.byte	49                              ## 0x31
+	.byte	49                              ## 0x31
+	.byte	49                              ## 0x31
+	.byte	49                              ## 0x31
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.space	1
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r15
+	pushq	%r14
+	pushq	%r12
+	pushq	%rbx
+	.cfi_offset %rbx, -48
+	.cfi_offset %r12, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
+	movq	%rsi, %r14
+	movq	%rdi, %rbx
+	callq	_strlen
+	movq	%rax, %r12
+	movq	%r14, %rdi
+	callq	_strlen
+	movq	%rax, %r15
+	cmpl	%r15d, %r12d
+	cmovll	%r12d, %r15d
+	leal	1(%r15), %eax
+	movslq	%eax, %rdi
+	callq	_malloc
+	testq	%rax, %rax
+	je	LBB0_19
+## %bb.1:
+	testl	%r15d, %r15d
+	jle	LBB0_18
+## %bb.2:
+	movl	%r15d, %r9d
+	cmpl	$8, %r15d
+	jae	LBB0_5
+## %bb.3:
+	xorl	%edx, %edx
+	jmp	LBB0_4
+LBB0_5:
+	cmpl	$32, %r15d
+	jae	LBB0_7
+## %bb.6:
+	xorl	%edx, %edx
+	jmp	LBB0_15
+LBB0_7:
+	movl	%r9d, %edx
+	andl	$-32, %edx
+	leaq	-32(%rdx), %rsi
+	movq	%rsi, %r8
+	shrq	$5, %r8
+	incq	%r8
+	testq	%rsi, %rsi
+	je	LBB0_8
+## %bb.9:
+	movq	%r8, %rdi
+	andq	$-2, %rdi
+	xorl	%esi, %esi
+	movdqa	LCPI0_0(%rip), %xmm0            ## xmm0 = [49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49]
+	.p2align	4, 0x90
+LBB0_10:                                ## =>This Inner Loop Header: Depth=1
+	movdqu	(%rbx,%rsi), %xmm1
+	movdqu	16(%rbx,%rsi), %xmm2
+	movdqu	(%r14,%rsi), %xmm3
+	pcmpeqb	%xmm1, %xmm3
+	movdqu	16(%r14,%rsi), %xmm1
+	pcmpeqb	%xmm2, %xmm1
+	paddb	%xmm0, %xmm3
+	paddb	%xmm0, %xmm1
+	movdqu	%xmm3, (%rax,%rsi)
+	movdqu	%xmm1, 16(%rax,%rsi)
+	movdqu	32(%rbx,%rsi), %xmm1
+	movdqu	48(%rbx,%rsi), %xmm2
+	movdqu	32(%r14,%rsi), %xmm3
+	pcmpeqb	%xmm1, %xmm3
+	movdqu	48(%r14,%rsi), %xmm1
+	pcmpeqb	%xmm2, %xmm1
+	paddb	%xmm0, %xmm3
+	paddb	%xmm0, %xmm1
+	movdqu	%xmm3, 32(%rax,%rsi)
+	movdqu	%xmm1, 48(%rax,%rsi)
+	addq	$64, %rsi
+	addq	$-2, %rdi
+	jne	LBB0_10
+## %bb.11:
+	testb	$1, %r8b
+	je	LBB0_13
+LBB0_12:
+	movdqu	(%rbx,%rsi), %xmm0
+	movdqu	16(%rbx,%rsi), %xmm1
+	movdqu	(%r14,%rsi), %xmm2
+	pcmpeqb	%xmm0, %xmm2
+	movdqu	16(%r14,%rsi), %xmm0
+	pcmpeqb	%xmm1, %xmm0
+	movdqa	LCPI0_0(%rip), %xmm1            ## xmm1 = [49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49]
+	paddb	%xmm1, %xmm2
+	paddb	%xmm1, %xmm0
+	movdqu	%xmm2, (%rax,%rsi)
+	movdqu	%xmm0, 16(%rax,%rsi)
+LBB0_13:
+	cmpq	%r9, %rdx
+	je	LBB0_18
+## %bb.14:
+	testb	$24, %r9b
+	je	LBB0_4
+LBB0_15:
+	movq	%rdx, %rsi
+	movl	%r9d, %edx
+	andl	$-8, %edx
+	movdqa	LCPI0_1(%rip), %xmm0            ## xmm0 = <49,49,49,49,49,49,49,49,u,u,u,u,u,u,u,u>
+	.p2align	4, 0x90
+LBB0_16:                                ## =>This Inner Loop Header: Depth=1
+	movq	(%rbx,%rsi), %xmm1              ## xmm1 = mem[0],zero
+	movq	(%r14,%rsi), %xmm2              ## xmm2 = mem[0],zero
+	pcmpeqb	%xmm1, %xmm2
+	paddb	%xmm0, %xmm2
+	movq	%xmm2, (%rax,%rsi)
+	addq	$8, %rsi
+	cmpq	%rsi, %rdx
+	jne	LBB0_16
+## %bb.17:
+	cmpq	%r9, %rdx
+	je	LBB0_18
+	.p2align	4, 0x90
+LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+	movzbl	(%rbx,%rdx), %ecx
+	cmpb	(%r14,%rdx), %cl
+	sete	%cl
+	xorb	$49, %cl
+	movb	%cl, (%rax,%rdx)
+	incq	%rdx
+	cmpq	%rdx, %r9
+	jne	LBB0_4
+LBB0_18:
+	movslq	%r15d, %rcx
+	movb	$0, (%rax,%rcx)
+LBB0_19:
+	popq	%rbx
+	popq	%r12
+	popq	%r14
+	popq	%r15
+	popq	%rbp
+	retq
+LBB0_8:
+	xorl	%esi, %esi
+	testb	$1, %r8b
+	jne	LBB0_12
+	jmp	LBB0_13
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

@@ -1,0 +1,62 @@
+# problem32/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	cmpq	$2, %rdi
+	jge	LBB0_2
+## %bb.1:
+	xorl	%eax, %eax
+LBB0_9:
+                                        ## kill: def $al killed $al killed $eax
+	popq	%rbp
+	retq
+LBB0_2:
+	movb	$1, %al
+	cmpq	$4, %rdi
+	jb	LBB0_9
+## %bb.3:
+	movl	$2, %ecx
+	jmp	LBB0_4
+	.p2align	4, 0x90
+LBB0_6:                                 ##   in Loop: Header=BB0_4 Depth=1
+	movl	%edi, %eax
+	xorl	%edx, %edx
+	divl	%ecx
+                                        ## kill: def $edx killed $edx def $rdx
+	testq	%rdx, %rdx
+	je	LBB0_8
+LBB0_7:                                 ##   in Loop: Header=BB0_4 Depth=1
+	incq	%rcx
+	movq	%rcx, %rax
+	imulq	%rcx, %rax
+	cmpq	%rdi, %rax
+	jg	LBB0_8
+LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+	movq	%rdi, %rax
+	orq	%rcx, %rax
+	shrq	$32, %rax
+	je	LBB0_6
+## %bb.5:                               ##   in Loop: Header=BB0_4 Depth=1
+	movq	%rdi, %rax
+	cqto
+	idivq	%rcx
+	testq	%rdx, %rdx
+	jne	LBB0_7
+LBB0_8:
+	testq	%rdx, %rdx
+	setne	%al
+                                        ## kill: def $al killed $al killed $eax
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

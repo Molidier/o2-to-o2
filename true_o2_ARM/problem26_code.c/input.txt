@@ -1,0 +1,81 @@
+# problem26/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r14
+	pushq	%rbx
+	.cfi_offset %rbx, -32
+	.cfi_offset %r14, -24
+	movq	%rsi, %r14
+	movl	%edi, %ebx
+	movl	$256, %edi                      ## imm = 0x100
+	callq	_malloc
+	movq	%rax, %r8
+	movl	$0, (%r14)
+	xorl	%esi, %esi
+	cmpl	$4, %ebx
+	jge	LBB0_1
+LBB0_7:
+	cmpl	$1, %ebx
+	jle	LBB0_9
+## %bb.8:
+	leal	1(%rsi), %eax
+	movl	%eax, (%r14)
+	movslq	%esi, %rax
+	movl	%ebx, (%r8,%rax,4)
+LBB0_9:
+	movq	%r8, %rax
+	popq	%rbx
+	popq	%r14
+	popq	%rbp
+	retq
+LBB0_1:
+	movl	$2, %edi
+	xorl	%esi, %esi
+	jmp	LBB0_2
+	.p2align	4, 0x90
+LBB0_6:                                 ##   in Loop: Header=BB0_2 Depth=1
+	incl	%edi
+	movl	%edi, %eax
+	imull	%edi, %eax
+	cmpl	%ebx, %eax
+	jg	LBB0_7
+LBB0_2:                                 ## =>This Loop Header: Depth=1
+                                        ##     Child Loop BB0_4 Depth 2
+	movl	%ebx, %eax
+	cltd
+	idivl	%edi
+	testl	%edx, %edx
+	jne	LBB0_6
+## %bb.3:                               ##   in Loop: Header=BB0_2 Depth=1
+	movslq	%esi, %rax
+	leaq	(%r8,%rax,4), %rcx
+	.p2align	4, 0x90
+LBB0_4:                                 ##   Parent Loop BB0_2 Depth=1
+                                        ## =>  This Inner Loop Header: Depth=2
+	movl	%ebx, %eax
+	cltd
+	idivl	%edi
+	movl	%edi, (%rcx)
+	movl	%eax, %ebx
+	cltd
+	idivl	%edi
+	addq	$4, %rcx
+	incl	%esi
+	testl	%edx, %edx
+	je	LBB0_4
+## %bb.5:                               ##   in Loop: Header=BB0_2 Depth=1
+	movl	%esi, (%r14)
+	jmp	LBB0_6
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

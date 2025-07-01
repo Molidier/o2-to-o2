@@ -1,0 +1,96 @@
+# problem80/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r15
+	pushq	%r14
+	pushq	%rbx
+	pushq	%rax
+	.cfi_offset %rbx, -40
+	.cfi_offset %r14, -32
+	.cfi_offset %r15, -24
+	movl	%edi, %ebx
+	movl	$64, %edi
+	callq	_malloc
+	testq	%rax, %rax
+	je	LBB0_1
+## %bb.2:
+	movq	%rax, %r14
+	movb	$0, 63(%rax)
+	testl	%ebx, %ebx
+	je	LBB0_5
+## %bb.3:
+	jle	LBB0_4
+## %bb.6:
+	movl	$62, %eax
+	movl	%ebx, %ecx
+	.p2align	4, 0x90
+LBB0_7:                                 ## =>This Inner Loop Header: Depth=1
+	movl	%ebx, %edx
+	andb	$1, %dl
+	orb	$48, %dl
+	movb	%dl, (%r14,%rax)
+	decq	%rax
+	shrl	%ecx
+	cmpl	$1, %ebx
+	movl	%ecx, %ebx
+	ja	LBB0_7
+	jmp	LBB0_8
+LBB0_1:
+	xorl	%ebx, %ebx
+	jmp	LBB0_12
+LBB0_5:
+	movb	$48, 62(%r14)
+	movl	$61, %eax
+	jmp	LBB0_8
+LBB0_4:
+	movl	$62, %eax
+LBB0_8:
+	movslq	%eax, %r15
+	movw	$25188, -1(%r15,%r14)           ## imm = 0x6264
+	movl	$66, %eax
+	subl	%r15d, %eax
+	movslq	%eax, %rdi
+	callq	_malloc
+	testq	%rax, %rax
+	je	LBB0_9
+## %bb.10:
+	movq	%rax, %rbx
+	leaq	(%r15,%r14), %rsi
+	decq	%rsi
+	movq	%rax, %rdi
+	callq	_strcpy
+	movq	%rbx, %rdi
+	callq	_strlen
+	movw	$25188, (%rbx,%rax)             ## imm = 0x6264
+	movb	$0, 2(%rbx,%rax)
+	jmp	LBB0_11
+LBB0_9:
+	xorl	%ebx, %ebx
+LBB0_11:
+	movq	%r14, %rdi
+	callq	_free
+LBB0_12:
+	movq	%rbx, %rax
+	addq	$8, %rsp
+	popq	%rbx
+	popq	%r14
+	popq	%r15
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	"db"
+
+.subsections_via_symbols

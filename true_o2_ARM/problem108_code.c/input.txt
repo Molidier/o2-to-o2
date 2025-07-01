@@ -1,0 +1,77 @@
+# problem108/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%r14
+	pushq	%rbx
+	.cfi_offset %rbx, -32
+	.cfi_offset %r14, -24
+	movl	%edi, %r14d
+	movl	$8, %edi
+	callq	_malloc
+	movq	$0, (%rax)
+	testl	%r14d, %r14d
+	jle	LBB0_9
+## %bb.1:
+	movl	$1, %r10d
+	xorl	%r8d, %r8d
+	xorl	%r9d, %r9d
+	jmp	LBB0_2
+	.p2align	4, 0x90
+LBB0_7:                                 ##   in Loop: Header=BB0_2 Depth=1
+	incl	%r9d
+	movl	%r9d, 4(%rax)
+LBB0_8:                                 ##   in Loop: Header=BB0_2 Depth=1
+	leal	1(%r10), %ecx
+	cmpl	%r14d, %r10d
+	movl	%ecx, %r10d
+	je	LBB0_9
+LBB0_2:                                 ## =>This Loop Header: Depth=1
+                                        ##     Child Loop BB0_3 Depth 2
+	movl	%r10d, %edi
+	xorl	%ecx, %ecx
+	.p2align	4, 0x90
+LBB0_3:                                 ##   Parent Loop BB0_2 Depth=1
+                                        ## =>  This Inner Loop Header: Depth=2
+	leal	(%rcx,%rcx,4), %ecx
+	movslq	%edi, %rsi
+	imulq	$1717986919, %rsi, %rdi         ## imm = 0x66666667
+	movq	%rdi, %rbx
+	shrq	$63, %rbx
+	sarq	$34, %rdi
+	addl	%ebx, %edi
+	leal	(%rdi,%rdi), %ebx
+	leal	(%rbx,%rbx,4), %ebx
+	movl	%esi, %edx
+	subl	%ebx, %edx
+	leal	(%rdx,%rcx,2), %ecx
+	addl	$9, %esi
+	cmpl	$18, %esi
+	ja	LBB0_3
+## %bb.4:                               ##   in Loop: Header=BB0_2 Depth=1
+	cmpl	%ecx, %r10d
+	jne	LBB0_8
+## %bb.5:                               ##   in Loop: Header=BB0_2 Depth=1
+	testb	$1, %r10b
+	jne	LBB0_7
+## %bb.6:                               ##   in Loop: Header=BB0_2 Depth=1
+	incl	%r8d
+	movl	%r8d, (%rax)
+	jmp	LBB0_8
+LBB0_9:
+	popq	%rbx
+	popq	%r14
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

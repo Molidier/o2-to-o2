@@ -1,0 +1,97 @@
+# problem69/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%rbx
+	.cfi_offset %rbx, -24
+	testl	%esi, %esi
+	jle	LBB0_15
+## %bb.1:
+	movq	%rdx, %rax
+	movl	%esi, %r8d
+	cmpl	$1, %esi
+	jne	LBB0_9
+## %bb.2:
+	movl	$2147483647, %r10d              ## imm = 0x7FFFFFFF
+	movl	$-1, %r11d
+	xorl	%esi, %esi
+LBB0_3:
+	testb	$1, %r8b
+	je	LBB0_6
+## %bb.4:
+	movl	(%rdi,%rsi,4), %edi
+	testb	$1, %dil
+	jne	LBB0_6
+## %bb.5:
+	cmpl	%r10d, %edi
+	setl	%r8b
+	cmpl	$-1, %r11d
+	sete	%cl
+	orb	%r8b, %cl
+	cmovnel	%edi, %r10d
+	cmovel	%r11d, %esi
+	movl	%esi, %r11d
+LBB0_6:
+	cmpl	$-1, %r11d
+	je	LBB0_15
+## %bb.7:
+	movl	%r10d, (%rax)
+	movl	%r11d, 4(%rax)
+	jmp	LBB0_16
+LBB0_15:
+	xorl	%eax, %eax
+LBB0_16:
+	popq	%rbx
+	popq	%rbp
+	retq
+LBB0_9:
+	movl	%r8d, %r9d
+	andl	$-2, %r9d
+	movl	$2147483647, %r10d              ## imm = 0x7FFFFFFF
+	movl	$-1, %r11d
+	xorl	%esi, %esi
+	jmp	LBB0_11
+	.p2align	4, 0x90
+LBB0_10:                                ##   in Loop: Header=BB0_11 Depth=1
+	addq	$2, %rsi
+	cmpq	%rsi, %r9
+	je	LBB0_3
+LBB0_11:                                ## =>This Inner Loop Header: Depth=1
+	movl	(%rdi,%rsi,4), %ecx
+	testb	$1, %cl
+	jne	LBB0_13
+## %bb.12:                              ##   in Loop: Header=BB0_11 Depth=1
+	cmpl	%r10d, %ecx
+	setl	%dl
+	cmpl	$-1, %r11d
+	sete	%bl
+	orb	%dl, %bl
+	cmovnel	%ecx, %r10d
+	cmovnel	%esi, %r11d
+LBB0_13:                                ##   in Loop: Header=BB0_11 Depth=1
+	movl	4(%rdi,%rsi,4), %ecx
+	testb	$1, %cl
+	jne	LBB0_10
+## %bb.14:                              ##   in Loop: Header=BB0_11 Depth=1
+	cmpl	%r10d, %ecx
+	setl	%dl
+	cmpl	$-1, %r11d
+	sete	%bl
+	orb	%dl, %bl
+	leal	1(%rsi), %edx
+	testb	%bl, %bl
+	cmovnel	%ecx, %r10d
+	cmovnel	%edx, %r11d
+	jmp	LBB0_10
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

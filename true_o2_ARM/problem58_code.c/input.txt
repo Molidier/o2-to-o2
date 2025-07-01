@@ -1,0 +1,113 @@
+# problem58/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.section	__TEXT,__literal16,16byte_literals
+	.p2align	4                               ## -- Begin function func0
+LCPI0_0:
+	.long	1                               ## 0x1
+	.long	1                               ## 0x1
+	.long	1                               ## 0x1
+	.long	1                               ## 0x1
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	movb	$1, %al
+	cmpl	$2, %esi
+	jl	LBB0_10
+## %bb.1:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	movl	%esi, %r9d
+	movss	(%rdi), %xmm6                   ## xmm6 = mem[0],zero,zero,zero
+	leaq	-1(%r9), %r8
+	cmpq	$8, %r8
+	jae	LBB0_3
+## %bb.2:
+	xorl	%eax, %eax
+	movl	$1, %ecx
+	xorl	%edx, %edx
+	jmp	LBB0_7
+LBB0_3:
+	movq	%r8, %rsi
+	andq	$-8, %rsi
+	leaq	1(%rsi), %rcx
+	shufps	$0, %xmm6, %xmm6                ## xmm6 = xmm6[0,0,0,0]
+	xorps	%xmm8, %xmm8
+	xorl	%eax, %eax
+	movaps	LCPI0_0(%rip), %xmm9            ## xmm9 = [1,1,1,1]
+	xorps	%xmm10, %xmm10
+	xorps	%xmm7, %xmm7
+	xorps	%xmm5, %xmm5
+	.p2align	4, 0x90
+LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+	movaps	%xmm6, %xmm4
+	movups	4(%rdi,%rax,4), %xmm1
+	movups	20(%rdi,%rax,4), %xmm6
+	blendps	$7, %xmm1, %xmm4                ## xmm4 = xmm1[0,1,2],xmm4[3]
+	shufps	$147, %xmm4, %xmm4              ## xmm4 = xmm4[3,0,1,2]
+	movaps	%xmm6, %xmm2
+	blendps	$8, %xmm1, %xmm2                ## xmm2 = xmm2[0,1,2],xmm1[3]
+	shufps	$147, %xmm2, %xmm2              ## xmm2 = xmm2[3,0,1,2]
+	movaps	%xmm4, %xmm0
+	cmpltps	%xmm1, %xmm0
+	movaps	%xmm6, %xmm3
+	cmpltps	%xmm2, %xmm3
+	cmpltps	%xmm6, %xmm2
+	blendvps	%xmm0, %xmm9, %xmm7
+	movaps	%xmm2, %xmm0
+	blendvps	%xmm0, %xmm9, %xmm5
+	cmpltps	%xmm4, %xmm1
+	movaps	%xmm1, %xmm0
+	blendvps	%xmm0, %xmm9, %xmm8
+	movaps	%xmm3, %xmm0
+	blendvps	%xmm0, %xmm9, %xmm10
+	addq	$8, %rax
+	cmpq	%rax, %rsi
+	jne	LBB0_4
+## %bb.5:
+	xorps	%xmm1, %xmm1
+	movaps	%xmm7, %xmm0
+	pcmpeqd	%xmm1, %xmm0
+	blendvps	%xmm0, %xmm5, %xmm7
+	xorl	%edx, %edx
+	ptest	%xmm7, %xmm7
+	setne	%dl
+	pcmpeqd	%xmm8, %xmm1
+	movdqa	%xmm1, %xmm0
+	blendvps	%xmm0, %xmm10, %xmm8
+	xorl	%eax, %eax
+	ptest	%xmm8, %xmm8
+	setne	%al
+	cmpq	%rsi, %r8
+	je	LBB0_9
+## %bb.6:
+	shufps	$255, %xmm6, %xmm6              ## xmm6 = xmm6[3,3,3,3]
+LBB0_7:
+	movl	$1, %esi
+	.p2align	4, 0x90
+LBB0_8:                                 ## =>This Inner Loop Header: Depth=1
+	movss	(%rdi,%rcx,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+	ucomiss	%xmm6, %xmm0
+	cmoval	%esi, %edx
+	ucomiss	%xmm0, %xmm6
+	cmoval	%esi, %eax
+	incq	%rcx
+	movaps	%xmm0, %xmm6
+	cmpq	%rcx, %r9
+	jne	LBB0_8
+LBB0_9:
+	addl	%eax, %edx
+	cmpl	$2, %edx
+	setne	%al
+	popq	%rbp
+LBB0_10:
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

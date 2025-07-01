@@ -1,0 +1,122 @@
+# problem84/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.section	__TEXT,__literal16,16byte_literals
+	.p2align	4                               ## -- Begin function func0
+LCPI0_0:
+	.long	1                               ## 0x1
+	.long	1                               ## 0x1
+	.long	1                               ## 0x1
+	.long	1                               ## 0x1
+LCPI0_1:
+	.long	18                              ## 0x12
+	.long	1                               ## 0x1
+	.long	1                               ## 0x1
+	.long	1                               ## 0x1
+LCPI0_2:
+	.long	100000000                       ## 0x5f5e100
+	.long	100000000                       ## 0x5f5e100
+	.long	100000000                       ## 0x5f5e100
+	.long	100000000                       ## 0x5f5e100
+LCPI0_3:
+	.long	10                              ## 0xa
+	.long	10                              ## 0xa
+	.long	10                              ## 0xa
+	.long	10                              ## 0xa
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+                                        ## kill: def $edi killed $edi def $rdi
+	testl	%edi, %edi
+	jle	LBB0_1
+## %bb.2:
+	movl	$1, %eax
+	cmpl	$1, %edi
+	je	LBB0_17
+## %bb.3:
+	movl	$18, %eax
+	cmpl	$3, %edi
+	jb	LBB0_17
+## %bb.4:
+	leal	-2(%rdi), %r8d
+	cmpl	$8, %r8d
+	jae	LBB0_6
+## %bb.5:
+	movl	$18, %eax
+	movl	$2, %ecx
+	jmp	LBB0_15
+LBB0_1:
+	xorl	%eax, %eax
+                                        ## kill: def $eax killed $eax killed $rax
+	retq
+LBB0_6:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	movl	%r8d, %ecx
+	andl	$-8, %ecx
+	leal	-8(%rcx), %edx
+	movl	%edx, %esi
+	shrl	$3, %esi
+	incl	%esi
+	movl	%esi, %eax
+	andl	$7, %eax
+	cmpl	$56, %edx
+	jae	LBB0_8
+## %bb.7:
+	movdqa	LCPI0_0(%rip), %xmm1            ## xmm1 = [1,1,1,1]
+	movdqa	LCPI0_1(%rip), %xmm0            ## xmm0 = [18,1,1,1]
+	jmp	LBB0_10
+LBB0_8:
+	andl	$-8, %esi
+	movdqa	LCPI0_0(%rip), %xmm1            ## xmm1 = [1,1,1,1]
+	movdqa	LCPI0_1(%rip), %xmm0            ## xmm0 = [18,1,1,1]
+	movdqa	LCPI0_2(%rip), %xmm2            ## xmm2 = [100000000,100000000,100000000,100000000]
+	.p2align	4, 0x90
+LBB0_9:                                 ## =>This Inner Loop Header: Depth=1
+	pmulld	%xmm2, %xmm0
+	pmulld	%xmm2, %xmm1
+	addl	$-8, %esi
+	jne	LBB0_9
+LBB0_10:
+	testl	%eax, %eax
+	je	LBB0_13
+## %bb.11:
+	movdqa	LCPI0_3(%rip), %xmm2            ## xmm2 = [10,10,10,10]
+	.p2align	4, 0x90
+LBB0_12:                                ## =>This Inner Loop Header: Depth=1
+	pmulld	%xmm2, %xmm0
+	pmulld	%xmm2, %xmm1
+	decl	%eax
+	jne	LBB0_12
+LBB0_13:
+	pmulld	%xmm1, %xmm0
+	pshufd	$238, %xmm0, %xmm1              ## xmm1 = xmm0[2,3,2,3]
+	pmulld	%xmm0, %xmm1
+	pshufd	$85, %xmm1, %xmm0               ## xmm0 = xmm1[1,1,1,1]
+	pmulld	%xmm1, %xmm0
+	movd	%xmm0, %eax
+	cmpl	%ecx, %r8d
+	popq	%rbp
+	je	LBB0_17
+## %bb.14:
+	orl	$2, %ecx
+LBB0_15:
+	subl	%ecx, %edi
+	.p2align	4, 0x90
+LBB0_16:                                ## =>This Inner Loop Header: Depth=1
+	addl	%eax, %eax
+	leal	(%rax,%rax,4), %eax
+	decl	%edi
+	jne	LBB0_16
+LBB0_17:
+                                        ## kill: def $eax killed $eax killed $rax
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

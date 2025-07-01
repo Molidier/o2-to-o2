@@ -1,0 +1,33 @@
+# problem78/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	movl	%edi, %eax
+	negl	%eax
+	cmovsl	%edi, %eax
+	xorl	%ecx, %ecx
+	.p2align	4, 0x90
+LBB0_1:                                 ## =>This Inner Loop Header: Depth=1
+	movl	%ecx, %edx
+	imull	%ecx, %edx
+	imull	%ecx, %edx
+	incl	%ecx
+	cmpl	%eax, %edx
+	jb	LBB0_1
+## %bb.2:
+	setbe	%al
+	movzbl	%al, %eax
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols

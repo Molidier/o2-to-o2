@@ -1,0 +1,81 @@
+# problem95/code.c
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 13, 0	sdk_version 13, 3
+	.globl	_func0                          ## -- Begin function func0
+	.p2align	4, 0x90
+_func0:                                 ## @func0
+	.cfi_startproc
+## %bb.0:
+	testl	%esi, %esi
+	jle	LBB0_14
+## %bb.1:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	movl	%esi, %r8d
+	xorl	%r10d, %r10d
+	xorl	%r9d, %r9d
+	jmp	LBB0_4
+	.p2align	4, 0x90
+LBB0_2:                                 ##   in Loop: Header=BB0_4 Depth=1
+	cmpl	%r9d, %ecx
+	cmovgl	%ecx, %r9d
+LBB0_3:                                 ##   in Loop: Header=BB0_4 Depth=1
+	incq	%r10
+	cmpq	%r8, %r10
+	je	LBB0_9
+LBB0_4:                                 ## =>This Loop Header: Depth=1
+                                        ##     Child Loop BB0_7 Depth 2
+	movl	(%rdi,%r10,4), %ecx
+	cmpl	$2, %ecx
+	jl	LBB0_3
+## %bb.5:                               ##   in Loop: Header=BB0_4 Depth=1
+	cmpl	$4, %ecx
+	jb	LBB0_2
+## %bb.6:                               ##   in Loop: Header=BB0_4 Depth=1
+	movl	$2, %esi
+	.p2align	4, 0x90
+LBB0_7:                                 ##   Parent Loop BB0_4 Depth=1
+                                        ## =>  This Inner Loop Header: Depth=2
+	movl	%ecx, %eax
+	cltd
+	idivl	%esi
+	testl	%edx, %edx
+	je	LBB0_3
+## %bb.8:                               ##   in Loop: Header=BB0_7 Depth=2
+	incl	%esi
+	movl	%esi, %eax
+	imull	%esi, %eax
+	cmpl	%ecx, %eax
+	jle	LBB0_7
+	jmp	LBB0_2
+LBB0_9:
+	testl	%r9d, %r9d
+	popq	%rbp
+	jle	LBB0_14
+## %bb.10:
+	xorl	%eax, %eax
+	movl	$3435973837, %ecx               ## imm = 0xCCCCCCCD
+	.p2align	4, 0x90
+LBB0_11:                                ## =>This Inner Loop Header: Depth=1
+	movl	%r9d, %edx
+	imulq	%rcx, %rdx
+	shrq	$35, %rdx
+	leal	(%rdx,%rdx), %esi
+	leal	(%rsi,%rsi,4), %esi
+	movl	%r9d, %edi
+	subl	%esi, %edi
+	addl	%edi, %eax
+	cmpl	$9, %r9d
+	movl	%edx, %r9d
+	ja	LBB0_11
+## %bb.12:
+	retq
+LBB0_14:
+	xorl	%eax, %eax
+	retq
+	.cfi_endproc
+                                        ## -- End function
+.subsections_via_symbols
