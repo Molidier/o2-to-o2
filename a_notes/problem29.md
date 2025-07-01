@@ -38,3 +38,6 @@ The logic is a standard two-pass process for string concatenation:
 
 *   **Category:** **Category 1: Incorrect Register State Management**
     *   **Reason:** This is a classic state management failure. The LLM did not recognize that the value in register `x19` needed to be preserved across the two loops. It failed to create a temporary copy for the first loop, leading to the "clobbering" or modification of a register whose original value was still needed later in the function. It is a failure to manage the "live range" of the `str_array` base pointer correctly.
+
+*  **Label:** `Allocate less regs in sp`
+*  **Category:** **SP difference that cause issue in the future**
