@@ -1,0 +1,33 @@
+UNSAFE STRING OPERATIONS REPORT
+======================================================================
+Scanned for: strcpy, strcat, strncat, sprintf, gets on stack buffers.
+NOTE: This is a heuristic scan. All findings should be manually verified.
+======================================================================
+
+🔢 PROBLEM 18
+--------------------------------------------------
+📄 File: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem18_code.c/problem18_code.cpp
+   Line   39: strcpy(current, "");
+
+
+🔢 PROBLEM 66
+--------------------------------------------------
+📄 File: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem66_code.c/problem66_code.cpp
+   Line    7: sprintf(xs, "%d", x);
+   Line   18: strcpy(temp, xs + len - shift);
+   Line   20: strncat(temp, xs, len - shift);
+   Line   21: strcpy(xs, temp);
+
+
+🔢 PROBLEM 85
+--------------------------------------------------
+📄 File: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem85_code.c/problem85_code.cpp
+   Line    6: sprintf(str, "%d", N);
+
+
+🔢 PROBLEM 146
+--------------------------------------------------
+📄 File: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem146_code.c/problem146_code.cpp
+   Line    9: sprintf(w, "%d", abs(nums[i]));
+
+

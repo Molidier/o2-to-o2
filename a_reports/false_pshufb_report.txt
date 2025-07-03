@@ -1,0 +1,41 @@
+[11, 45, 51]
+X86 PSHUFB Instruction Detection Results
+============================================================
+Scan Date: 2025-07-02 21:27:48
+Total directories with matching instructions found: 3
+
+Pattern Description:
+Searches for the `pshufb` (Packed Shuffle Bytes) instruction, which is part
+of the SSSE3 instruction set. It performs a parallel, in-register lookup
+table operation, making it useful for complex byte-level permutations.
+
+[1] Directory: false_o2_ARM/problem11_code.c
+    Input file: false_o2_ARM/problem11_code.c/input.txt
+    Total matching instructions found: 10
+    Instructions found:
+      Line 193: pshufb	%xmm3, %xmm1
+      Line 194: pshufb	%xmm3, %xmm0
+      Line 199: pshufb	%xmm3, %xmm1
+      Line 200: pshufb	%xmm3, %xmm0
+      Line 217: pshufb	%xmm3, %xmm1
+      Line 218: pshufb	%xmm3, %xmm0
+      Line 243: pshufb	%xmm2, %xmm0
+      Line 390: pshufb	%xmm3, %xmm1
+      Line 391: pshufb	%xmm3, %xmm0
+      Line 421: pshufb	%xmm2, %xmm0
+
+[2] Directory: false_o2_ARM/problem45_code.c
+    Input file: false_o2_ARM/problem45_code.c/input.txt
+    Total matching instructions found: 3
+    Instructions found:
+      Line 177: pshufb	%xmm0, %xmm2
+      Line 178: pshufb	%xmm0, %xmm1
+      Line 207: pshufb	%xmm0, %xmm1
+
+[3] Directory: false_o2_ARM/problem51_code.c
+    Input file: false_o2_ARM/problem51_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 145: pshufb	%xmm3, %xmm6
+      Line 146: pshufb	%xmm3, %xmm4
+

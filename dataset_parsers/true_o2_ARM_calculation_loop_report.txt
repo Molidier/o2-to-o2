@@ -1,0 +1,68 @@
+NESTED LOOP WITH CALCULATION REPORT
+======================================================================
+
+SUMMARY REPORT
+==================================================
+Base directory scanned: /home/moldir.azhimukhanbet/o2-to-o2/true_o2_ARM
+Problem directories found: 73
+Problems with matching loops: 5
+
+Analysis:
+- Total C++ files with matching loops: 5
+- Total matching loop instances found: 5
+
+Problems containing nested loops with calculations in condition:
+[26, 59, 95, 97, 121]
+
+======================================================================
+DETAILED RESULTS
+======================================================================
+
+
+================================================================================
+NESTED LOOPS WITH CALCULATIONS IN CONDITION FOUND
+================================================================================
+C++ files with matching loops: 5
+Total matching loop instances found: 5
+================================================================================
+
+🔢 PROBLEM 26
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/true_o2_ARM/problem26_code.c
+📄 File: problem26_code.cpp
+   Matching nested loops found: 1
+   Line    8: while (n % i == 0) {
+
+
+🔢 PROBLEM 59
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/true_o2_ARM/problem59_code.c
+📄 File: problem59_code.cpp
+   Matching nested loops found: 1
+   Line   27: for (j = 0; j < k - i - 1; j++) {
+
+
+🔢 PROBLEM 95
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/true_o2_ARM/problem95_code.c
+📄 File: problem95_code.cpp
+   Matching nested loops found: 1
+   Line   10: for (int j = 2; j * j <= num; ++j) {
+
+
+🔢 PROBLEM 97
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/true_o2_ARM/problem97_code.c
+📄 File: problem97_code.cpp
+   Matching nested loops found: 1
+   Line   11: for (j = 0; j < *count; j++) {
+
+
+🔢 PROBLEM 121
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/true_o2_ARM/problem121_code.c
+📄 File: problem121_code.cpp
+   Matching nested loops found: 1
+   Line    6: for (int j = 0; j < arr_size - i - 1; j++) {
+
+

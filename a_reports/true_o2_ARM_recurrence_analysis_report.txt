@@ -1,0 +1,253 @@
+GENERAL RECURRENCE RELATION REPORT
+======================================================================
+
+
+SUMMARY REPORT
+==================================================
+Base directory scanned: /home/moldir.azhimukhanbet/o2-to-o2/true_o2_ARM
+Problem directories found: 73
+Problems with matches (recurrence relations): 26
+
+Analysis of Matched Files:
+- Total C++ files with matches: 26
+- Total recurrence relations found: 41
+  - Compound Assignments: 33
+  - Standard Assignments: 8
+
+All problem directories found:
+[1, 2, 3, 4, 5, 12, 13, 14, 16, 17, 24, 25, 26, 30, 31, 32, 34, 39, 42, 43, 46, 48, 49, 52, 53, 54, 55, 56, 57, 58, 59, 61, 62, 67, 69, 70, 73, 74, 75, 78, 79, 80, 83, 84, 88, 94, 95, 97, 98, 100, 102, 103, 104, 108, 110, 111, 114, 115, 121, 122, 123, 128, 132, 134, 135, 138, 139, 147, 151, 153, 155, 157, 160]
+
+Problems with matches:
+[4, 5, 16, 26, 43, 62, 67, 73, 75, 79, 80, 84, 94, 95, 104, 108, 110, 111, 114, 115, 122, 123, 132, 134, 147, 157]
+
+Problems with directories but no matches:
+[1, 2, 3, 12, 13, 14, 17, 24, 25, 30, 31, 32, 34, 39, 42, 46, 48, 49, 52, 53, 54, 55, 56, 57, 58, 59, 61, 69, 70, 74, 78, 83, 88, 97, 98, 100, 102, 103, 121, 128, 135, 138, 139, 151, 153, 155, 160]
+
+
+======================================================================
+DETAILED RESULTS
+======================================================================
+
+
+PROBLEM 4
+--------------------------------------------------
+Directory: true_o2_ARM/problem4_code.c
+File: problem4_code.cpp
+Recurrence Relations Found: 1
+  Line    6: num += operations[i];                              (Type: Compound Assignment)
+
+
+PROBLEM 5
+--------------------------------------------------
+Directory: true_o2_ARM/problem5_code.c
+File: problem5_code.cpp
+Recurrence Relations Found: 2
+  Line   10: sum += numbers[i];                                 (Type: Compound Assignment)
+  Line   16: msum += fabs(numbers[i] - avg);                    (Type: Compound Assignment)
+
+
+PROBLEM 16
+--------------------------------------------------
+Directory: true_o2_ARM/problem16_code.c
+File: problem16_code.cpp
+Recurrence Relations Found: 3
+  Line    7: len += snprintf(NULL, 0, " %d", i);                (Type: Compound Assignment)
+  Line   16: ptr += sprintf(ptr, "0");                          (Type: Compound Assignment)
+  Line   18: ptr += sprintf(ptr, " %d", i);                     (Type: Compound Assignment)
+
+
+PROBLEM 26
+--------------------------------------------------
+Directory: true_o2_ARM/problem26_code.c
+File: problem26_code.cpp
+Recurrence Relations Found: 1
+  Line    9: n = n / i;                                         (Type: Standard Assignment)
+
+
+PROBLEM 43
+--------------------------------------------------
+Directory: true_o2_ARM/problem43_code.c
+File: problem43_code.cpp
+Recurrence Relations Found: 1
+  Line    5: l[i] += 1;                                         (Type: Compound Assignment)
+
+
+PROBLEM 62
+--------------------------------------------------
+Directory: true_o2_ARM/problem62_code.c
+File: problem62_code.cpp
+Recurrence Relations Found: 2
+  Line    8: if (brackets[i] == '(') level += 1;                (Type: Compound Assignment)
+  Line    9: if (brackets[i] == ')') level -= 1;                (Type: Compound Assignment)
+
+
+PROBLEM 67
+--------------------------------------------------
+Directory: true_o2_ARM/problem67_code.c
+File: problem67_code.cpp
+Recurrence Relations Found: 1
+  Line    8: sum += s[i];                                       (Type: Compound Assignment)
+
+
+PROBLEM 73
+--------------------------------------------------
+Directory: true_o2_ARM/problem73_code.c
+File: problem73_code.cpp
+Recurrence Relations Found: 2
+  Line    8: sum += q[i] + q[size - 1 - i];                     (Type: Compound Assignment)
+  Line   10: if (size % 2 == 1) sum += q[size / 2];             (Type: Compound Assignment)
+
+
+PROBLEM 75
+--------------------------------------------------
+Directory: true_o2_ARM/problem75_code.c
+File: problem75_code.cpp
+Recurrence Relations Found: 2
+  Line   10: sum1 += strlen(arr1[i]);                           (Type: Compound Assignment)
+  Line   14: sum2 += strlen(arr2[i]);                           (Type: Compound Assignment)
+
+
+PROBLEM 79
+--------------------------------------------------
+Directory: true_o2_ARM/problem79_code.c
+File: problem79_code.cpp
+Recurrence Relations Found: 1
+  Line    8: if (strchr(key, num[i])) out += 1;                 (Type: Compound Assignment)
+
+
+PROBLEM 80
+--------------------------------------------------
+Directory: true_o2_ARM/problem80_code.c
+File: problem80_code.cpp
+Recurrence Relations Found: 1
+  Line   18: decimal /= 2;                                      (Type: Compound Assignment)
+
+
+PROBLEM 84
+--------------------------------------------------
+Directory: true_o2_ARM/problem84_code.c
+File: problem84_code.cpp
+Recurrence Relations Found: 1
+  Line    8: out = out * 10;                                    (Type: Standard Assignment)
+
+
+PROBLEM 94
+--------------------------------------------------
+Directory: true_o2_ARM/problem94_code.c
+File: problem94_code.cpp
+Recurrence Relations Found: 3
+  Line   12: w = toupper(w);                                    (Type: Standard Assignment)
+  Line   14: w = tolower(w);                                    (Type: Standard Assignment)
+  Line   20: w = w + 2;                                         (Type: Standard Assignment)
+
+
+PROBLEM 95
+--------------------------------------------------
+Directory: true_o2_ARM/problem95_code.c
+File: problem95_code.cpp
+Recurrence Relations Found: 3
+  Line   17: largest = num > largest ? num : largest;           (Type: Standard Assignment)
+  Line   23: sum += largest % 10;                               (Type: Compound Assignment)
+  Line   24: largest /= 10;                                     (Type: Compound Assignment)
+
+
+PROBLEM 104
+--------------------------------------------------
+Directory: true_o2_ARM/problem104_code.c
+File: problem104_code.cpp
+Recurrence Relations Found: 1
+  Line   15: num /= 2;                                          (Type: Compound Assignment)
+
+
+PROBLEM 108
+--------------------------------------------------
+Directory: true_o2_ARM/problem108_code.c
+File: problem108_code.cpp
+Recurrence Relations Found: 2
+  Line   14: reversed = reversed * 10 + number % 10;            (Type: Standard Assignment)
+  Line   15: number /= 10;                                      (Type: Compound Assignment)
+
+
+PROBLEM 110
+--------------------------------------------------
+Directory: true_o2_ARM/problem110_code.c
+File: problem110_code.cpp
+Recurrence Relations Found: 2
+  Line    8: if (arr[i] < arr[i - 1]) num += 1;                 (Type: Compound Assignment)
+  Line    9: if (arr[size - 1] > arr[0]) num += 1;              (Type: Compound Assignment)
+
+
+PROBLEM 111
+--------------------------------------------------
+Directory: true_o2_ARM/problem111_code.c
+File: problem111_code.cpp
+Recurrence Relations Found: 2
+  Line    6: if (lst1[i] % 2 == 0) num += 1;                    (Type: Compound Assignment)
+  Line    8: if (lst2[i] % 2 == 0) num += 1;                    (Type: Compound Assignment)
+
+
+PROBLEM 114
+--------------------------------------------------
+Directory: true_o2_ARM/problem114_code.c
+File: problem114_code.cpp
+Recurrence Relations Found: 1
+  Line   11: sum += 1;                                          (Type: Compound Assignment)
+
+
+PROBLEM 115
+--------------------------------------------------
+Directory: true_o2_ARM/problem115_code.c
+File: problem115_code.cpp
+Recurrence Relations Found: 1
+  Line    7: current = current < 0 ? current + nums[i] : nums[i]; (Type: Standard Assignment)
+
+
+PROBLEM 122
+--------------------------------------------------
+Directory: true_o2_ARM/problem122_code.c
+File: problem122_code.cpp
+Recurrence Relations Found: 1
+  Line    6: if (lst[i * 2] % 2 == 1) sum += lst[i * 2];        (Type: Compound Assignment)
+
+
+PROBLEM 123
+--------------------------------------------------
+Directory: true_o2_ARM/problem123_code.c
+File: problem123_code.cpp
+Recurrence Relations Found: 1
+  Line    7: sum += arr[i];                                     (Type: Compound Assignment)
+
+
+PROBLEM 132
+--------------------------------------------------
+Directory: true_o2_ARM/problem132_code.c
+File: problem132_code.cpp
+Recurrence Relations Found: 2
+  Line    9: prod *= digit;                                     (Type: Compound Assignment)
+  Line   11: n /= 10;                                           (Type: Compound Assignment)
+
+
+PROBLEM 134
+--------------------------------------------------
+Directory: true_o2_ARM/problem134_code.c
+File: problem134_code.cpp
+Recurrence Relations Found: 1
+  Line    7: sum += (int)ceil(lst[i]) * (int)ceil(lst[i]);      (Type: Compound Assignment)
+
+
+PROBLEM 147
+--------------------------------------------------
+Directory: true_o2_ARM/problem147_code.c
+File: problem147_code.cpp
+Recurrence Relations Found: 2
+  Line   12: n /= 10;                                           (Type: Compound Assignment)
+  Line   16: num += 1;                                          (Type: Compound Assignment)
+
+
+PROBLEM 157
+--------------------------------------------------
+Directory: true_o2_ARM/problem157_code.c
+File: problem157_code.cpp
+Recurrence Relations Found: 1
+  Line   13: number -= num[pos];                                (Type: Compound Assignment)
+

@@ -1,0 +1,3737 @@
+[1, 4, 5, 12, 13, 14, 16, 17, 24, 25, 26, 30, 31, 32, 34, 39, 43, 48, 49, 52, 53, 55, 56, 57, 58, 59, 62, 67, 69, 70, 73, 74, 75, 78, 79, 80, 83, 84, 88, 94, 95, 97, 102, 103, 104, 108, 110, 111, 114, 115, 121, 122, 123, 128, 132, 134, 135, 138, 139, 147, 151, 153, 155, 157]
+X86 Assembly CMP/TEST with EFLAGS Pattern Detection Results
+============================================================
+Scan Date: 2025-07-02 15:58:49
+Total directories with EFLAGS-using sequences found: 64
+
+Pattern Description:
+Looking for sequences where CMP/TEST instructions set EFLAGS register
+and subsequent instructions use those flags (SET*, J*, CMOV*, etc.)
+
+[1] Directory: true_o2_ARM/problem1_code.c
+    Input file: true_o2_ARM/problem1_code.c/input.txt
+    Total CMP/TEST instructions: 4
+    Total EFLAGS-dependent instructions: 4
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 22-31):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 22: movl	$10, %eax
+        Line 23: testl	%esi, %esi
+        Line 24: jle	LBB0_8
+        Line 26: movl	%esi, %r8d
+        Line 27: xorl	%r9d, %r9d
+        Line 28: movaps	LCPI0_0(%rip), %xmm1            ## xmm1 = [NaN,NaN,NaN,NaN]
+        Line 29: movq	%r8, %rdx
+        Line 30: movq	%rdi, %rcx
+        Line 31: jmp	LBB0_3
+
+      Sequence 2 (Lines 35-50):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 13
+        Line 35: decq	%rdx
+        Line 36: cmpq	%r8, %r9
+        Line 37: je	LBB0_8
+        Line 38: LBB0_3:                                 ## =>This Loop Header: Depth=1
+        Line 40: movq	%r9, %rsi
+        Line 41: incq	%r9
+        Line 42: cmpq	%r8, %r9
+        Line 43: jae	LBB0_2
+        Line 45: movss	(%rdi,%rsi,4), %xmm2            ## xmm2 = mem[0],zero,zero,zero
+        Line 46: movl	$1, %esi
+        Line 47: .p2align	4, 0x90
+        Line 48: LBB0_6:                                 ##   Parent Loop BB0_3 Depth=1
+        Line 50: movaps	%xmm2, %xmm3
+
+      Sequence 3 (Lines 56-65):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 56: incq	%rsi
+        Line 57: cmpq	%rsi, %rdx
+        Line 58: jne	LBB0_6
+        Line 59: jmp	LBB0_2
+        Line 60: LBB0_7:
+        Line 61: movl	$1, %eax
+        Line 62: LBB0_8:
+        Line 63: popq	%rbp
+        Line 64: retq
+        Line 65: .cfi_endproc
+
+
+[2] Directory: true_o2_ARM/problem4_code.c
+    Input file: true_o2_ARM/problem4_code.c/input.txt
+    Total CMP/TEST instructions: 4
+    Total EFLAGS-dependent instructions: 5
+    Number of sequences: 1
+    Sequences found:
+      Sequence 1 (Lines 13-42):
+        CMP/TEST: 4, EFLAGS usage: 5, Total lines: 27
+        Line 13: .cfi_def_cfa_register %rbp
+        Line 14: testl	%esi, %esi
+        Line 15: jle	LBB0_1
+        Line 17: movl	(%rdi), %eax
+        Line 18: testl	%eax, %eax
+        Line 19: js	LBB0_3
+        Line 21: movl	%esi, %ecx
+        Line 22: movl	$1, %esi
+        Line 23: .p2align	4, 0x90
+        Line 24: LBB0_5:                                 ## =>This Inner Loop Header: Depth=1
+        Line 25: movq	%rsi, %rdx
+        Line 26: cmpq	%rsi, %rcx
+        Line 27: je	LBB0_7
+        Line 29: leaq	1(%rdx), %rsi
+        Line 30: addl	(%rdi,%rdx,4), %eax
+        Line 31: jns	LBB0_5
+        Line 32: LBB0_7:
+        Line 33: xorl	%eax, %eax
+        Line 34: cmpq	%rcx, %rdx
+        Line 35: setb	%al
+        Line 36: popq	%rbp
+        Line 37: retq
+        Line 38: LBB0_1:
+        Line 39: xorl	%eax, %eax
+        Line 40: popq	%rbp
+        Line 41: retq
+        Line 42: LBB0_3:
+
+
+[3] Directory: true_o2_ARM/problem5_code.c
+    Input file: true_o2_ARM/problem5_code.c/input.txt
+    Total CMP/TEST instructions: 9
+    Total EFLAGS-dependent instructions: 9
+    Number of sequences: 5
+    Sequences found:
+      Sequence 1 (Lines 21-37):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 15
+        Line 21: .cfi_def_cfa_register %rbp
+        Line 22: testl	%esi, %esi
+        Line 23: jle	LBB0_1
+        Line 25: movl	%esi, %r9d
+        Line 26: leaq	-1(%r9), %r8
+        Line 27: movl	%r9d, %ecx
+        Line 28: andl	$7, %ecx
+        Line 29: cmpq	$7, %r8
+        Line 30: jae	LBB0_4
+        Line 32: xorps	%xmm1, %xmm1
+        Line 33: xorl	%edx, %edx
+        Line 34: jmp	LBB0_6
+        Line 35: LBB0_1:
+        Line 36: cvtsi2ss	%esi, %xmm2
+        Line 37: xorps	%xmm0, %xmm0
+
+      Sequence 2 (Lines 54-66):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 12
+        Line 54: addq	$8, %rdx
+        Line 55: cmpq	%rdx, %rax
+        Line 56: jne	LBB0_5
+        Line 57: LBB0_6:
+        Line 58: testq	%rcx, %rcx
+        Line 59: je	LBB0_9
+        Line 61: leaq	(%rdi,%rdx,4), %rax
+        Line 62: xorl	%edx, %edx
+        Line 63: .p2align	4, 0x90
+        Line 64: LBB0_8:                                 ## =>This Inner Loop Header: Depth=1
+        Line 65: addss	(%rax,%rdx,4), %xmm1
+        Line 66: incq	%rdx
+
+      Sequence 3 (Lines 66-82):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 16
+        Line 66: incq	%rdx
+        Line 67: cmpq	%rdx, %rcx
+        Line 68: jne	LBB0_8
+        Line 69: LBB0_9:
+        Line 70: cvtsi2ss	%esi, %xmm2
+        Line 71: divss	%xmm2, %xmm1
+        Line 72: movl	%r9d, %ecx
+        Line 73: andl	$3, %ecx
+        Line 74: cmpq	$3, %r8
+        Line 75: jae	LBB0_11
+        Line 77: xorps	%xmm0, %xmm0
+        Line 78: xorl	%edx, %edx
+        Line 79: jmp	LBB0_13
+        Line 80: LBB0_11:
+        Line 81: andl	$-4, %r9d
+        Line 82: xorps	%xmm0, %xmm0
+
+      Sequence 4 (Lines 103-115):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 12
+        Line 103: addq	$4, %rdx
+        Line 104: cmpq	%rdx, %r9
+        Line 105: jne	LBB0_12
+        Line 106: LBB0_13:
+        Line 107: testq	%rcx, %rcx
+        Line 108: je	LBB0_16
+        Line 110: leaq	(%rdi,%rdx,4), %rax
+        Line 111: xorl	%edx, %edx
+        Line 112: movaps	LCPI0_0(%rip), %xmm3            ## xmm3 = [NaN,NaN,NaN,NaN]
+        Line 113: .p2align	4, 0x90
+        Line 114: LBB0_15:                                ## =>This Inner Loop Header: Depth=1
+        Line 115: movss	(%rax,%rdx,4), %xmm4            ## xmm4 = mem[0],zero,zero,zero
+
+      Sequence 5 (Lines 119-128):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 119: incq	%rdx
+        Line 120: cmpq	%rdx, %rcx
+        Line 121: jne	LBB0_15
+        Line 122: LBB0_16:
+        Line 123: divss	%xmm2, %xmm0
+        Line 124: popq	%rbp
+        Line 125: retq
+        Line 126: .cfi_endproc
+        Line 128: .subsections_via_symbols
+
+
+[4] Directory: true_o2_ARM/problem12_code.c
+    Input file: true_o2_ARM/problem12_code.c/input.txt
+    Total CMP/TEST instructions: 14
+    Total EFLAGS-dependent instructions: 13
+    Number of sequences: 6
+    Sequences found:
+      Sequence 1 (Lines 50-77):
+        CMP/TEST: 5, EFLAGS usage: 4, Total lines: 24
+        Line 50: movq	%rax, %r15
+        Line 51: cmpl	%r15d, %r12d
+        Line 52: cmovll	%r12d, %r15d
+        Line 53: leal	1(%r15), %eax
+        Line 54: movslq	%eax, %rdi
+        Line 55: callq	_malloc
+        Line 56: testq	%rax, %rax
+        Line 57: je	LBB0_19
+        Line 59: testl	%r15d, %r15d
+        Line 60: jle	LBB0_18
+        Line 62: movl	%r15d, %r9d
+        Line 63: cmpl	$8, %r15d
+        Line 64: jae	LBB0_5
+        Line 66: xorl	%edx, %edx
+        Line 67: jmp	LBB0_4
+        Line 68: LBB0_5:
+        Line 69: cmpl	$32, %r15d
+        Line 70: jae	LBB0_7
+        Line 72: xorl	%edx, %edx
+        Line 73: jmp	LBB0_15
+        Line 74: LBB0_7:
+        Line 75: movl	%r9d, %edx
+        Line 76: andl	$-32, %edx
+        Line 77: leaq	-32(%rdx), %rsi
+
+      Sequence 2 (Lines 80-89):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 80: incq	%r8
+        Line 81: testq	%rsi, %rsi
+        Line 82: je	LBB0_8
+        Line 84: movq	%r8, %rdi
+        Line 85: andq	$-2, %rdi
+        Line 86: xorl	%esi, %esi
+        Line 87: movdqa	LCPI0_0(%rip), %xmm0            ## xmm0 = [49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49]
+        Line 88: .p2align	4, 0x90
+        Line 89: LBB0_10:                                ## =>This Inner Loop Header: Depth=1
+
+      Sequence 3 (Lines 113-122):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 114: testb	$1, %r8b
+        Line 115: je	LBB0_13
+        Line 116: LBB0_12:
+        Line 117: movdqu	(%rbx,%rsi), %xmm0
+        Line 118: movdqu	16(%rbx,%rsi), %xmm1
+        Line 119: movdqu	(%r14,%rsi), %xmm2
+        Line 120: pcmpeqb	%xmm0, %xmm2
+        Line 121: movdqu	16(%r14,%rsi), %xmm0
+        Line 122: pcmpeqb	%xmm1, %xmm0
+
+      Sequence 4 (Lines 128-140):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 12
+        Line 128: LBB0_13:
+        Line 129: cmpq	%r9, %rdx
+        Line 130: je	LBB0_18
+        Line 132: testb	$24, %r9b
+        Line 133: je	LBB0_4
+        Line 134: LBB0_15:
+        Line 135: movq	%rdx, %rsi
+        Line 136: movl	%r9d, %edx
+        Line 137: andl	$-8, %edx
+        Line 138: movdqa	LCPI0_1(%rip), %xmm0            ## xmm0 = <49,49,49,49,49,49,49,49,u,u,u,u,u,u,u,u>
+        Line 139: .p2align	4, 0x90
+        Line 140: LBB0_16:                                ## =>This Inner Loop Header: Depth=1
+
+      Sequence 5 (Lines 146-168):
+        CMP/TEST: 4, EFLAGS usage: 4, Total lines: 22
+        Line 146: addq	$8, %rsi
+        Line 147: cmpq	%rsi, %rdx
+        Line 148: jne	LBB0_16
+        Line 150: cmpq	%r9, %rdx
+        Line 151: je	LBB0_18
+        Line 152: .p2align	4, 0x90
+        Line 153: LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+        Line 154: movzbl	(%rbx,%rdx), %ecx
+        Line 155: cmpb	(%r14,%rdx), %cl
+        Line 156: sete	%cl
+        Line 157: xorb	$49, %cl
+        Line 158: movb	%cl, (%rax,%rdx)
+        Line 159: incq	%rdx
+        Line 160: cmpq	%rdx, %r9
+        Line 161: jne	LBB0_4
+        Line 162: LBB0_18:
+        Line 163: movslq	%r15d, %rcx
+        Line 164: movb	$0, (%rax,%rcx)
+        Line 165: LBB0_19:
+        Line 166: popq	%rbx
+        Line 167: popq	%r12
+        Line 168: popq	%r14
+
+      Sequence 6 (Lines 173-180):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 6
+        Line 173: xorl	%esi, %esi
+        Line 174: testb	$1, %r8b
+        Line 175: jne	LBB0_12
+        Line 176: jmp	LBB0_13
+        Line 177: .cfi_endproc
+        Line 179: .subsections_via_symbols
+
+
+[5] Directory: true_o2_ARM/problem13_code.c
+    Input file: true_o2_ARM/problem13_code.c/input.txt
+    Total CMP/TEST instructions: 3
+    Total EFLAGS-dependent instructions: 2
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 24-33):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 24: .cfi_offset %r15, -24
+        Line 25: testl	%esi, %esi
+        Line 26: jle	LBB0_1
+        Line 28: movq	%rdi, %r12
+        Line 29: movl	%esi, %eax
+        Line 30: movq	%rax, -48(%rbp)                 ## 8-byte Spill
+        Line 31: xorl	%ebx, %ebx
+        Line 32: leaq	L_.str(%rip), %r13
+        Line 33: xorl	%r14d, %r14d
+
+      Sequence 2 (Lines 38-52):
+        CMP/TEST: 2, EFLAGS usage: 1, Total lines: 15
+        Line 38: callq	_strlen
+        Line 39: cmpl	%eax, %r14d
+        Line 40: cmovgl	%r14d, %eax
+        Line 41: cmovlq	%r15, %r13
+        Line 42: incq	%rbx
+        Line 43: movl	%eax, %r14d
+        Line 44: cmpq	%rbx, -48(%rbp)                 ## 8-byte Folded Reload
+        Line 45: jne	LBB0_4
+        Line 46: jmp	LBB0_2
+        Line 47: LBB0_1:
+        Line 48: leaq	L_.str(%rip), %r13
+        Line 49: LBB0_2:
+        Line 50: movq	%r13, %rax
+        Line 51: addq	$8, %rsp
+        Line 52: popq	%rbx
+
+
+[6] Directory: true_o2_ARM/problem14_code.c
+    Input file: true_o2_ARM/problem14_code.c/input.txt
+    Total CMP/TEST instructions: 2
+    Total EFLAGS-dependent instructions: 2
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 14-23):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 14: movl	%edi, %eax
+        Line 15: testl	%esi, %esi
+        Line 16: je	LBB0_1
+        Line 18: movl	%esi, %edx
+        Line 19: .p2align	4, 0x90
+        Line 20: LBB0_3:                                 ## =>This Inner Loop Header: Depth=1
+        Line 21: movl	%edx, %ecx
+        Line 22: cltd
+        Line 23: idivl	%ecx
+
+      Sequence 2 (Lines 24-33):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 24: movl	%ecx, %eax
+        Line 25: testl	%edx, %edx
+        Line 26: jne	LBB0_3
+        Line 27: jmp	LBB0_4
+        Line 28: LBB0_1:
+        Line 29: movl	%eax, %ecx
+        Line 30: LBB0_4:
+        Line 31: movl	%ecx, %eax
+        Line 32: popq	%rbp
+        Line 33: retq
+
+
+[7] Directory: true_o2_ARM/problem16_code.c
+    Input file: true_o2_ARM/problem16_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 5
+    Number of sequences: 4
+    Sequences found:
+      Sequence 1 (Lines 25-34):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 25: movl	%edi, %r15d
+        Line 26: testl	%edi, %edi
+        Line 27: jle	LBB0_1
+        Line 29: movl	%r15d, %r12d
+        Line 30: negl	%r12d
+        Line 31: movl	$2, %r13d
+        Line 32: movl	$1, %ebx
+        Line 33: leaq	L_.str(%rip), %r14
+        Line 34: .p2align	4, 0x90
+
+      Sequence 2 (Lines 47-56):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 47: movl	%ecx, %ebx
+        Line 48: cmpl	$1, %eax
+        Line 49: jne	LBB0_9
+        Line 51: movslq	%r13d, %rdi
+        Line 52: jmp	LBB0_3
+        Line 53: LBB0_1:
+        Line 54: movl	$2, %edi
+        Line 55: LBB0_3:
+        Line 56: callq	_malloc
+
+      Sequence 3 (Lines 57-70):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 12
+        Line 57: movq	%rax, %r14
+        Line 58: testq	%rax, %rax
+        Line 59: je	LBB0_7
+        Line 61: movw	$48, (%r14)
+        Line 62: testl	%r15d, %r15d
+        Line 63: jle	LBB0_7
+        Line 65: movq	%r14, %rbx
+        Line 66: incq	%rbx
+        Line 67: negl	%r15d
+        Line 68: movl	$1, %r13d
+        Line 69: leaq	L_.str(%rip), %r12
+        Line 70: .p2align	4, 0x90
+
+      Sequence 4 (Lines 83-92):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 83: movl	%ecx, %r13d
+        Line 84: cmpl	$1, %eax
+        Line 85: jne	LBB0_6
+        Line 86: LBB0_7:
+        Line 87: movq	%r14, %rax
+        Line 88: addq	$8, %rsp
+        Line 89: popq	%rbx
+        Line 90: popq	%r12
+        Line 91: popq	%r13
+        Line 92: popq	%r14
+
+
+[8] Directory: true_o2_ARM/problem17_code.c
+    Input file: true_o2_ARM/problem17_code.c/input.txt
+    Total CMP/TEST instructions: 7
+    Total EFLAGS-dependent instructions: 7
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 32-41):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 32: movb	(%rbx), %al
+        Line 33: testb	%al, %al
+        Line 34: je	LBB0_1
+        Line 36: incq	%rbx
+        Line 37: xorl	%r14d, %r14d
+        Line 38: movq	__DefaultRuneLocale@GOTPCREL(%rip), %r15
+        Line 39: movl	$256, %r12d                     ## imm = 0x100
+        Line 40: jmp	LBB0_3
+        Line 41: .p2align	4, 0x90
+
+      Sequence 2 (Lines 44-76):
+        CMP/TEST: 5, EFLAGS usage: 5, Total lines: 30
+        Line 44: incq	%rbx
+        Line 45: testb	%al, %al
+        Line 46: je	LBB0_10
+        Line 47: LBB0_3:                                 ## =>This Inner Loop Header: Depth=1
+        Line 48: movzbl	%al, %edi
+        Line 49: callq	___tolower
+        Line 51: movsbq	%al, %r13
+        Line 52: cmpl	$0, -1072(%rbp,%r13,4)
+        Line 53: jne	LBB0_9
+        Line 55: movzbl	%al, %edi
+        Line 56: cmpl	$127, %edi
+        Line 57: ja	LBB0_6
+        Line 59: movl	%edi, %eax
+        Line 60: movl	60(%r15,%rax,4), %eax
+        Line 61: andl	%r12d, %eax
+        Line 62: testl	%eax, %eax
+        Line 63: jne	LBB0_8
+        Line 64: jmp	LBB0_9
+        Line 65: LBB0_6:                                 ##   in Loop: Header=BB0_3 Depth=1
+        Line 66: movl	$256, %esi                      ## imm = 0x100
+        Line 67: callq	___maskrune
+        Line 68: testl	%eax, %eax
+        Line 69: je	LBB0_9
+        Line 70: LBB0_8:                                 ##   in Loop: Header=BB0_3 Depth=1
+        Line 71: movl	$1, -1072(%rbp,%r13,4)
+        Line 72: incl	%r14d
+        Line 73: jmp	LBB0_9
+        Line 74: LBB0_1:
+        Line 75: xorl	%r14d, %r14d
+        Line 76: LBB0_10:
+
+      Sequence 3 (Lines 78-87):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 78: movq	(%rax), %rax
+        Line 79: cmpq	-48(%rbp), %rax
+        Line 80: jne	LBB0_12
+        Line 82: movl	%r14d, %eax
+        Line 83: addq	$1032, %rsp                     ## imm = 0x408
+        Line 84: popq	%rbx
+        Line 85: popq	%r12
+        Line 86: popq	%r13
+        Line 87: popq	%r14
+
+
+[9] Directory: true_o2_ARM/problem24_code.c
+    Input file: true_o2_ARM/problem24_code.c/input.txt
+    Total CMP/TEST instructions: 1
+    Total EFLAGS-dependent instructions: 1
+    Number of sequences: 1
+    Sequences found:
+      Sequence 1 (Lines 17-27):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 8
+        Line 17: incl	%eax
+        Line 18: cmpb	$0, (%rdi)
+        Line 19: leaq	1(%rdi), %rdi
+        Line 20: jne	LBB0_1
+        Line 22: popq	%rbp
+        Line 23: retq
+        Line 24: .cfi_endproc
+        Line 26: .subsections_via_symbols
+
+
+[10] Directory: true_o2_ARM/problem25_code.c
+    Input file: true_o2_ARM/problem25_code.c/input.txt
+    Total CMP/TEST instructions: 3
+    Total EFLAGS-dependent instructions: 3
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 14-23):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 14: movl	$1, %ecx
+        Line 15: cmpl	$4, %edi
+        Line 16: jl	LBB0_5
+        Line 18: movl	$2, %esi
+        Line 19: .p2align	4, 0x90
+        Line 20: LBB0_2:                                 ## =>This Inner Loop Header: Depth=1
+        Line 21: movl	%edi, %eax
+        Line 22: cltd
+        Line 23: idivl	%esi
+
+      Sequence 2 (Lines 23-38):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 15
+        Line 23: idivl	%esi
+        Line 24: testl	%edx, %edx
+        Line 25: je	LBB0_3
+        Line 27: incl	%esi
+        Line 28: movl	%esi, %eax
+        Line 29: imull	%esi, %eax
+        Line 30: cmpl	%edi, %eax
+        Line 31: jle	LBB0_2
+        Line 32: jmp	LBB0_5
+        Line 33: LBB0_3:
+        Line 34: movl	%eax, %ecx
+        Line 35: LBB0_5:
+        Line 36: movl	%ecx, %eax
+        Line 37: popq	%rbp
+        Line 38: retq
+
+
+[11] Directory: true_o2_ARM/problem26_code.c
+    Input file: true_o2_ARM/problem26_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 5
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 24-36):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 12
+        Line 24: xorl	%esi, %esi
+        Line 25: cmpl	$4, %ebx
+        Line 26: jge	LBB0_1
+        Line 27: LBB0_7:
+        Line 28: cmpl	$1, %ebx
+        Line 29: jle	LBB0_9
+        Line 31: leal	1(%rsi), %eax
+        Line 32: movl	%eax, (%r14)
+        Line 33: movslq	%esi, %rax
+        Line 34: movl	%ebx, (%r8,%rax,4)
+        Line 35: LBB0_9:
+        Line 36: movq	%r8, %rax
+
+      Sequence 2 (Lines 49-65):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 14
+        Line 49: imull	%edi, %eax
+        Line 50: cmpl	%ebx, %eax
+        Line 51: jg	LBB0_7
+        Line 52: LBB0_2:                                 ## =>This Loop Header: Depth=1
+        Line 54: movl	%ebx, %eax
+        Line 55: cltd
+        Line 56: idivl	%edi
+        Line 57: testl	%edx, %edx
+        Line 58: jne	LBB0_6
+        Line 60: movslq	%esi, %rax
+        Line 61: leaq	(%r8,%rax,4), %rcx
+        Line 62: .p2align	4, 0x90
+        Line 63: LBB0_4:                                 ##   Parent Loop BB0_2 Depth=1
+        Line 65: movl	%ebx, %eax
+
+      Sequence 3 (Lines 73-82):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 7
+        Line 73: incl	%esi
+        Line 74: testl	%edx, %edx
+        Line 75: je	LBB0_4
+        Line 77: movl	%esi, (%r14)
+        Line 78: jmp	LBB0_6
+        Line 79: .cfi_endproc
+        Line 81: .subsections_via_symbols
+
+
+[12] Directory: true_o2_ARM/problem30_code.c
+    Input file: true_o2_ARM/problem30_code.c/input.txt
+    Total CMP/TEST instructions: 3
+    Total EFLAGS-dependent instructions: 3
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 36-45):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 36: movq	%rax, (%r12)
+        Line 37: testl	%ebx, %ebx
+        Line 38: jle	LBB0_1
+        Line 40: movslq	%r14d, %r13
+        Line 41: movl	%r15d, %r15d
+        Line 42: xorl	%r12d, %r12d
+        Line 43: xorl	%ebx, %ebx
+        Line 44: jmp	LBB0_4
+        Line 45: .p2align	4, 0x90
+
+      Sequence 2 (Lines 47-56):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 47: incq	%r12
+        Line 48: cmpq	%r12, %r15
+        Line 49: je	LBB0_2
+        Line 50: LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+        Line 51: movq	-56(%rbp), %rax                 ## 8-byte Reload
+        Line 52: movq	(%rax,%r12,8), %r14
+        Line 53: movq	%r14, %rdi
+        Line 54: movq	-64(%rbp), %rsi                 ## 8-byte Reload
+        Line 55: movq	%r13, %rdx
+        Line 56: callq	_strncmp
+
+      Sequence 3 (Lines 56-65):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 56: callq	_strncmp
+        Line 57: testl	%eax, %eax
+        Line 58: jne	LBB0_6
+        Line 60: movq	-48(%rbp), %rax                 ## 8-byte Reload
+        Line 61: movq	(%rax), %rax
+        Line 62: movslq	%ebx, %rcx
+        Line 63: incl	%ebx
+        Line 64: movq	%r14, (%rax,%rcx,8)
+        Line 65: jmp	LBB0_6
+
+
+[13] Directory: true_o2_ARM/problem31_code.c
+    Input file: true_o2_ARM/problem31_code.c/input.txt
+    Total CMP/TEST instructions: 4
+    Total EFLAGS-dependent instructions: 6
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 28-52):
+        CMP/TEST: 3, EFLAGS usage: 4, Total lines: 21
+        Line 28: movl	$0, (%r14)
+        Line 29: testl	%r12d, %r12d
+        Line 30: jle	LBB0_6
+        Line 32: movl	%r15d, %r8d
+        Line 33: cmpl	$1, %r15d
+        Line 34: jne	LBB0_7
+        Line 36: xorl	%edx, %edx
+        Line 37: xorl	%esi, %esi
+        Line 38: LBB0_3:
+        Line 39: testb	$1, %r8b
+        Line 40: je	LBB0_6
+        Line 42: movss	(%rbx,%rsi,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+        Line 43: xorps	%xmm1, %xmm1
+        Line 44: ucomiss	%xmm1, %xmm0
+        Line 45: jbe	LBB0_6
+        Line 47: leal	1(%rdx), %ecx
+        Line 48: movl	%ecx, (%r14)
+        Line 49: movslq	%edx, %rcx
+        Line 50: movss	%xmm0, (%rax,%rcx,4)
+        Line 51: LBB0_6:
+        Line 52: popq	%rbx
+
+      Sequence 2 (Lines 67-80):
+        CMP/TEST: 1, EFLAGS usage: 2, Total lines: 12
+        Line 67: addq	$2, %rsi
+        Line 68: cmpq	%rsi, %rdi
+        Line 69: je	LBB0_3
+        Line 70: LBB0_8:                                 ## =>This Inner Loop Header: Depth=1
+        Line 71: movss	(%rbx,%rsi,4), %xmm1            ## xmm1 = mem[0],zero,zero,zero
+        Line 72: ucomiss	%xmm0, %xmm1
+        Line 73: jbe	LBB0_10
+        Line 75: movslq	%edx, %rcx
+        Line 76: incl	%edx
+        Line 77: movl	%edx, (%r14)
+        Line 78: movss	%xmm1, (%rax,%rcx,4)
+        Line 80: LBB0_10:                                ##   in Loop: Header=BB0_8 Depth=1
+
+
+[14] Directory: true_o2_ARM/problem32_code.c
+    Input file: true_o2_ARM/problem32_code.c/input.txt
+    Total CMP/TEST instructions: 6
+    Total EFLAGS-dependent instructions: 7
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 13-22):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 8
+        Line 13: .cfi_def_cfa_register %rbp
+        Line 14: cmpq	$2, %rdi
+        Line 15: jge	LBB0_2
+        Line 17: xorl	%eax, %eax
+        Line 18: LBB0_9:
+        Line 20: popq	%rbp
+        Line 21: retq
+        Line 22: LBB0_2:
+
+      Sequence 2 (Lines 23-32):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 23: movb	$1, %al
+        Line 24: cmpq	$4, %rdi
+        Line 25: jb	LBB0_9
+        Line 27: movl	$2, %ecx
+        Line 28: jmp	LBB0_4
+        Line 29: .p2align	4, 0x90
+        Line 30: LBB0_6:                                 ##   in Loop: Header=BB0_4 Depth=1
+        Line 31: movl	%edi, %eax
+        Line 32: xorl	%edx, %edx
+
+      Sequence 3 (Lines 34-63):
+        CMP/TEST: 4, EFLAGS usage: 5, Total lines: 25
+        Line 35: testq	%rdx, %rdx
+        Line 36: je	LBB0_8
+        Line 37: LBB0_7:                                 ##   in Loop: Header=BB0_4 Depth=1
+        Line 38: incq	%rcx
+        Line 39: movq	%rcx, %rax
+        Line 40: imulq	%rcx, %rax
+        Line 41: cmpq	%rdi, %rax
+        Line 42: jg	LBB0_8
+        Line 43: LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+        Line 44: movq	%rdi, %rax
+        Line 45: orq	%rcx, %rax
+        Line 46: shrq	$32, %rax
+        Line 47: je	LBB0_6
+        Line 49: movq	%rdi, %rax
+        Line 50: cqto
+        Line 51: idivq	%rcx
+        Line 52: testq	%rdx, %rdx
+        Line 53: jne	LBB0_7
+        Line 54: LBB0_8:
+        Line 55: testq	%rdx, %rdx
+        Line 56: setne	%al
+        Line 58: popq	%rbp
+        Line 59: retq
+        Line 60: .cfi_endproc
+        Line 62: .subsections_via_symbols
+
+
+[15] Directory: true_o2_ARM/problem34_code.c
+    Input file: true_o2_ARM/problem34_code.c/input.txt
+    Total CMP/TEST instructions: 10
+    Total EFLAGS-dependent instructions: 9
+    Number of sequences: 6
+    Sequences found:
+      Sequence 1 (Lines 36-45):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 36: callq	_malloc
+        Line 37: testl	%ebx, %ebx
+        Line 38: jle	LBB0_15
+        Line 40: xorl	%edx, %edx
+        Line 41: xorl	%ecx, %ecx
+        Line 42: .p2align	4, 0x90
+        Line 43: LBB0_2:                                 ## =>This Inner Loop Header: Depth=1
+        Line 44: movl	%edx, %esi
+        Line 45: movl	(%r12,%rsi,4), %esi
+
+      Sequence 2 (Lines 48-60):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 11
+        Line 48: addl	$3, %edx
+        Line 49: cmpl	%r15d, %edx
+        Line 50: jl	LBB0_2
+        Line 52: cmpl	$2, %ecx
+        Line 53: jl	LBB0_12
+        Line 55: leaq	-1(%rcx), %rdx
+        Line 56: movl	%edx, %r8d
+        Line 57: movl	%ecx, %r13d
+        Line 58: movl	$1, %r11d
+        Line 59: xorl	%r9d, %r9d
+        Line 60: jmp	LBB0_5
+
+      Sequence 3 (Lines 63-72):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 63: incq	%r11
+        Line 64: cmpq	%r8, %r9
+        Line 65: je	LBB0_12
+        Line 66: LBB0_5:                                 ## =>This Loop Header: Depth=1
+        Line 68: movq	%r9, %r10
+        Line 69: incq	%r9
+        Line 70: movq	%r11, %rsi
+        Line 71: movl	%r10d, %ebx
+        Line 72: jmp	LBB0_6
+
+      Sequence 4 (Lines 76-100):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 22
+        Line 76: movl	%edi, %ebx
+        Line 77: cmpq	%rsi, %r13
+        Line 78: je	LBB0_9
+        Line 79: LBB0_6:                                 ##   Parent Loop BB0_5 Depth=1
+        Line 81: movl	(%rax,%rsi,4), %ecx
+        Line 82: movslq	%ebx, %rdx
+        Line 83: movl	%esi, %edi
+        Line 84: cmpl	(%rax,%rdx,4), %ecx
+        Line 85: jl	LBB0_8
+        Line 87: movl	%ebx, %edi
+        Line 88: jmp	LBB0_8
+        Line 89: .p2align	4, 0x90
+        Line 90: LBB0_9:                                 ##   in Loop: Header=BB0_5 Depth=1
+        Line 91: movl	%edi, %ecx
+        Line 92: cmpq	%rcx, %r10
+        Line 93: je	LBB0_11
+        Line 95: movl	(%rax,%r10,4), %ecx
+        Line 96: movslq	%edi, %rdx
+        Line 97: movl	(%rax,%rdx,4), %esi
+        Line 98: movl	%esi, (%rax,%r10,4)
+        Line 99: movl	%ecx, (%rax,%rdx,4)
+        Line 100: jmp	LBB0_11
+
+      Sequence 5 (Lines 101-110):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 101: LBB0_12:
+        Line 102: testl	%r15d, %r15d
+        Line 103: jle	LBB0_15
+        Line 105: movl	%r15d, %ecx
+        Line 106: xorl	%edx, %edx
+        Line 107: movl	$2863311531, %esi               ## imm = 0xAAAAAAAB
+        Line 108: .p2align	4, 0x90
+        Line 109: LBB0_14:                                ## =>This Inner Loop Header: Depth=1
+        Line 110: movl	%edx, %edi
+
+      Sequence 6 (Lines 113-129):
+        CMP/TEST: 2, EFLAGS usage: 1, Total lines: 17
+        Line 113: leal	(%rdi,%rdi,2), %ebx
+        Line 114: cmpl	%ebx, %edx
+        Line 115: leaq	(%rax,%rdi,4), %rdi
+        Line 116: cmovneq	%r12, %rdi
+        Line 117: movl	(%rdi), %edi
+        Line 118: movl	%edi, (%r14,%rdx,4)
+        Line 119: incq	%rdx
+        Line 120: addq	$4, %r12
+        Line 121: cmpq	%rdx, %rcx
+        Line 122: jne	LBB0_14
+        Line 123: LBB0_15:
+        Line 124: movq	%rax, %rdi
+        Line 125: addq	$8, %rsp
+        Line 126: popq	%rbx
+        Line 127: popq	%r12
+        Line 128: popq	%r13
+        Line 129: popq	%r14
+
+
+[16] Directory: true_o2_ARM/problem39_code.c
+    Input file: true_o2_ARM/problem39_code.c/input.txt
+    Total CMP/TEST instructions: 4
+    Total EFLAGS-dependent instructions: 3
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 28-37):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 28: movq	%rax, -56(%rbp)                 ## 8-byte Spill
+        Line 29: testl	%eax, %eax
+        Line 30: jle	LBB0_7
+        Line 32: movq	-56(%rbp), %rax                 ## 8-byte Reload
+        Line 33: addl	$2, %eax
+        Line 34: movl	$2863311531, %ecx               ## imm = 0xAAAAAAAB
+        Line 35: imulq	%rax, %rcx
+        Line 36: shrq	$33, %rcx
+        Line 37: movl	$3, %r12d
+
+      Sequence 2 (Lines 60-83):
+        CMP/TEST: 3, EFLAGS usage: 2, Total lines: 21
+        Line 60: movq	-56(%rbp), %rax                 ## 8-byte Reload
+        Line 61: cmpl	%eax, %r12d
+        Line 63: cmovll	%r12d, %eax
+        Line 64: addl	%r15d, %eax
+        Line 65: movslq	%eax, %rbx
+        Line 66: movl	$4, %ecx
+        Line 67: movq	%r14, %rdi
+        Line 68: movq	%r13, %rsi
+        Line 69: movq	%rbx, %rdx
+        Line 70: callq	___strncpy_chk
+        Line 71: movb	$0, -44(%rbp,%rbx)
+        Line 72: cmpl	$3, %ebx
+        Line 73: jne	LBB0_6
+        Line 75: cmpl	$0, -48(%rbp)                   ## 4-byte Folded Reload
+        Line 76: je	LBB0_5
+        Line 78: movzbl	-42(%rbp), %eax
+        Line 79: movzbl	-44(%rbp), %ecx
+        Line 80: movzbl	-43(%rbp), %edx
+        Line 81: movb	%dl, -42(%rbp)
+        Line 82: movb	%cl, -43(%rbp)
+        Line 83: movb	%al, -44(%rbp)
+
+
+[17] Directory: true_o2_ARM/problem43_code.c
+    Input file: true_o2_ARM/problem43_code.c/input.txt
+    Total CMP/TEST instructions: 7
+    Total EFLAGS-dependent instructions: 7
+    Number of sequences: 4
+    Sequences found:
+      Sequence 1 (Lines 13-26):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 12
+        Line 13: .cfi_def_cfa_register %rbp
+        Line 14: testl	%esi, %esi
+        Line 15: jle	LBB0_11
+        Line 17: movl	%esi, %eax
+        Line 18: cmpl	$8, %esi
+        Line 19: jae	LBB0_3
+        Line 21: xorl	%ecx, %ecx
+        Line 22: jmp	LBB0_10
+        Line 23: LBB0_3:
+        Line 24: movl	%eax, %ecx
+        Line 25: andl	$-8, %ecx
+        Line 26: leaq	-8(%rcx), %rdx
+
+      Sequence 2 (Lines 29-38):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 29: incq	%r8
+        Line 30: testq	%rdx, %rdx
+        Line 31: je	LBB0_4
+        Line 33: movq	%r8, %rsi
+        Line 34: andq	$-2, %rsi
+        Line 35: xorl	%edx, %edx
+        Line 36: pcmpeqd	%xmm0, %xmm0
+        Line 37: .p2align	4, 0x90
+        Line 38: LBB0_6:                                 ## =>This Inner Loop Header: Depth=1
+
+      Sequence 3 (Lines 54-63):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 55: testb	$1, %r8b
+        Line 56: je	LBB0_9
+        Line 57: LBB0_8:
+        Line 58: movdqu	(%rdi,%rdx,4), %xmm0
+        Line 59: movdqu	16(%rdi,%rdx,4), %xmm1
+        Line 60: pcmpeqd	%xmm2, %xmm2
+        Line 61: psubd	%xmm2, %xmm0
+        Line 62: psubd	%xmm2, %xmm1
+        Line 63: movdqu	%xmm0, (%rdi,%rdx,4)
+
+      Sequence 4 (Lines 65-85):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 19
+        Line 65: LBB0_9:
+        Line 66: cmpq	%rax, %rcx
+        Line 67: je	LBB0_11
+        Line 68: .p2align	4, 0x90
+        Line 69: LBB0_10:                                ## =>This Inner Loop Header: Depth=1
+        Line 70: incl	(%rdi,%rcx,4)
+        Line 71: incq	%rcx
+        Line 72: cmpq	%rcx, %rax
+        Line 73: jne	LBB0_10
+        Line 74: LBB0_11:
+        Line 75: popq	%rbp
+        Line 76: retq
+        Line 77: LBB0_4:
+        Line 78: xorl	%edx, %edx
+        Line 79: testb	$1, %r8b
+        Line 80: jne	LBB0_8
+        Line 81: jmp	LBB0_9
+        Line 82: .cfi_endproc
+        Line 84: .subsections_via_symbols
+
+
+[18] Directory: true_o2_ARM/problem48_code.c
+    Input file: true_o2_ARM/problem48_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 6
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 19-28):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 8
+        Line 20: testl	%esi, %esi
+        Line 21: jle	LBB0_4
+        Line 23: movl	%esi, %r8d
+        Line 24: xorl	%r9d, %r9d
+        Line 25: movq	%r8, %r10
+        Line 26: movq	%rdi, %rdx
+        Line 27: jmp	LBB0_2
+        Line 28: .p2align	4, 0x90
+
+      Sequence 2 (Lines 31-60):
+        CMP/TEST: 3, EFLAGS usage: 4, Total lines: 26
+        Line 31: decq	%r10
+        Line 32: cmpq	%r8, %r9
+        Line 33: je	LBB0_4
+        Line 34: LBB0_2:                                 ## =>This Loop Header: Depth=1
+        Line 36: movq	%r9, %rax
+        Line 37: incq	%r9
+        Line 38: cmpq	%r8, %r9
+        Line 39: jae	LBB0_3
+        Line 41: movl	$1, %ecx
+        Line 42: jmp	LBB0_7
+        Line 43: .p2align	4, 0x90
+        Line 44: LBB0_9:                                 ##   in Loop: Header=BB0_7 Depth=2
+        Line 45: incq	%rcx
+        Line 46: cmpq	%rcx, %r10
+        Line 47: je	LBB0_3
+        Line 48: LBB0_7:                                 ##   Parent Loop BB0_2 Depth=1
+        Line 50: movss	(%rdi,%rax,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+        Line 51: movss	(%rdx,%rcx,4), %xmm1            ## xmm1 = mem[0],zero,zero,zero
+        Line 52: ucomiss	%xmm1, %xmm0
+        Line 53: jbe	LBB0_9
+        Line 55: movss	%xmm1, (%rdi,%rax,4)
+        Line 56: movss	%xmm0, (%rdx,%rcx,4)
+        Line 57: jmp	LBB0_9
+        Line 58: LBB0_4:
+        Line 59: movl	%esi, %eax
+        Line 60: andl	$-2147483647, %eax              ## imm = 0x80000001
+
+      Sequence 3 (Lines 60-69):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 60: andl	$-2147483647, %eax              ## imm = 0x80000001
+        Line 61: cmpl	$1, %eax
+        Line 62: jne	LBB0_10
+        Line 64: shrl	%esi
+        Line 65: movss	(%rdi,%rsi,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+        Line 66: popq	%rbp
+        Line 67: retq
+        Line 68: LBB0_10:
+        Line 69: movl	%esi, %eax
+
+
+[19] Directory: true_o2_ARM/problem49_code.c
+    Input file: true_o2_ARM/problem49_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 5
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 19-34):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 14
+        Line 19: movb	$1, %cl
+        Line 20: cmpl	$2, %eax
+        Line 21: jl	LBB0_7
+        Line 23: movb	(%rbx), %cl
+        Line 24: leal	-1(%rax), %edx
+        Line 25: movslq	%edx, %rdx
+        Line 26: cmpb	(%rbx,%rdx), %cl
+        Line 27: jne	LBB0_2
+        Line 29: movabsq	$-4294967296, %r8               ## imm = 0xFFFFFFFF00000000
+        Line 30: movl	%eax, %r9d
+        Line 31: shrl	%r9d
+        Line 32: shlq	$32, %rax
+        Line 33: movabsq	$-8589934592, %rsi              ## imm = 0xFFFFFFFE00000000
+        Line 34: addq	%rax, %rsi
+
+      Sequence 2 (Lines 38-58):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 20
+        Line 38: movq	%rdi, %rax
+        Line 39: cmpq	%rdi, %r9
+        Line 40: je	LBB0_6
+        Line 42: movzbl	(%rbx,%rax), %edx
+        Line 43: movq	%rsi, %rcx
+        Line 44: sarq	$32, %rcx
+        Line 45: addq	%r8, %rsi
+        Line 46: leaq	1(%rax), %rdi
+        Line 47: cmpb	(%rbx,%rcx), %dl
+        Line 48: je	LBB0_4
+        Line 49: LBB0_6:
+        Line 50: cmpq	%r9, %rax
+        Line 51: setae	%cl
+        Line 52: jmp	LBB0_7
+        Line 53: LBB0_2:
+        Line 54: xorl	%ecx, %ecx
+        Line 55: LBB0_7:
+        Line 56: movl	%ecx, %eax
+        Line 57: addq	$8, %rsp
+        Line 58: popq	%rbx
+
+
+[20] Directory: true_o2_ARM/problem52_code.c
+    Input file: true_o2_ARM/problem52_code.c/input.txt
+    Total CMP/TEST instructions: 3
+    Total EFLAGS-dependent instructions: 3
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 23-32):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 23: movb	(%rdi), %r12b
+        Line 24: testb	%r12b, %r12b
+        Line 25: je	LBB0_5
+        Line 27: leaq	1(%r15), %rbx
+        Line 28: leaq	L_.str(%rip), %r14
+        Line 29: jmp	LBB0_2
+        Line 30: .p2align	4, 0x90
+        Line 31: LBB0_4:                                 ##   in Loop: Header=BB0_2 Depth=1
+        Line 32: movzbl	(%rbx), %r12d
+
+      Sequence 2 (Lines 33-49):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 16
+        Line 33: incq	%rbx
+        Line 34: testb	%r12b, %r12b
+        Line 35: je	LBB0_5
+        Line 36: LBB0_2:                                 ## =>This Inner Loop Header: Depth=1
+        Line 37: movsbl	%r12b, %esi
+        Line 38: movl	$11, %edx
+        Line 39: movq	%r14, %rdi
+        Line 40: callq	_memchr
+        Line 41: testq	%rax, %rax
+        Line 42: jne	LBB0_4
+        Line 44: movb	%r12b, (%r15)
+        Line 45: incq	%r15
+        Line 46: jmp	LBB0_4
+        Line 47: LBB0_5:
+        Line 48: movb	$0, (%r15)
+        Line 49: popq	%rbx
+
+
+[21] Directory: true_o2_ARM/problem53_code.c
+    Input file: true_o2_ARM/problem53_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 5
+    Number of sequences: 1
+    Sequences found:
+      Sequence 1 (Lines 13-40):
+        CMP/TEST: 5, EFLAGS usage: 5, Total lines: 23
+        Line 13: .cfi_def_cfa_register %rbp
+        Line 14: testl	%esi, %esi
+        Line 15: jle	LBB0_6
+        Line 17: cmpl	%edx, (%rdi)
+        Line 18: jge	LBB0_8
+        Line 20: movl	%esi, %eax
+        Line 21: movl	$1, %esi
+        Line 22: .p2align	4, 0x90
+        Line 23: LBB0_3:                                 ## =>This Inner Loop Header: Depth=1
+        Line 24: movq	%rsi, %rcx
+        Line 25: cmpq	%rsi, %rax
+        Line 26: je	LBB0_5
+        Line 28: leaq	1(%rcx), %rsi
+        Line 29: cmpl	%edx, (%rdi,%rcx,4)
+        Line 30: jl	LBB0_3
+        Line 31: LBB0_5:
+        Line 32: cmpq	%rax, %rcx
+        Line 33: setae	%al
+        Line 35: popq	%rbp
+        Line 36: retq
+        Line 37: LBB0_6:
+        Line 38: movb	$1, %al
+        Line 40: popq	%rbp
+
+
+[22] Directory: true_o2_ARM/problem55_code.c
+    Input file: true_o2_ARM/problem55_code.c/input.txt
+    Total CMP/TEST instructions: 13
+    Total EFLAGS-dependent instructions: 13
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 26-35):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 26: callq	_strlen
+        Line 27: testl	%r15d, %r15d
+        Line 28: jle	LBB0_9
+        Line 30: movslq	%r15d, %r9
+        Line 31: movl	%r9d, %r8d
+        Line 32: movl	%eax, %esi
+        Line 33: movb	$1, %r10b
+        Line 34: xorl	%edi, %edi
+        Line 35: LBB0_2:                                 ## =>This Loop Header: Depth=1
+
+      Sequence 2 (Lines 36-75):
+        CMP/TEST: 7, EFLAGS usage: 7, Total lines: 35
+        Line 37: testl	%eax, %eax
+        Line 38: jle	LBB0_19
+        Line 40: movb	(%r14,%rdi), %cl
+        Line 41: xorl	%edx, %edx
+        Line 42: .p2align	4, 0x90
+        Line 43: LBB0_4:                                 ##   Parent Loop BB0_2 Depth=1
+        Line 45: cmpb	(%rbx,%rdx), %cl
+        Line 46: je	LBB0_6
+        Line 48: incq	%rdx
+        Line 49: cmpq	%rdx, %rsi
+        Line 50: jne	LBB0_4
+        Line 51: jmp	LBB0_7
+        Line 52: .p2align	4, 0x90
+        Line 53: LBB0_6:                                 ##   in Loop: Header=BB0_2 Depth=1
+        Line 54: incq	%rdi
+        Line 55: cmpq	%r9, %rdi
+        Line 56: setl	%r10b
+        Line 57: cmpq	%r8, %rdi
+        Line 58: jne	LBB0_2
+        Line 59: jmp	LBB0_9
+        Line 60: LBB0_7:
+        Line 61: testb	$1, %r10b
+        Line 62: je	LBB0_9
+        Line 63: LBB0_19:
+        Line 64: xorl	%eax, %eax
+        Line 65: jmp	LBB0_18
+        Line 66: LBB0_9:
+        Line 67: testl	%eax, %eax
+        Line 68: jle	LBB0_16
+        Line 70: movslq	%eax, %r9
+        Line 71: movl	%r9d, %r8d
+        Line 72: movl	%r15d, %esi
+        Line 73: xorl	%edi, %edi
+        Line 74: movb	$1, %al
+        Line 75: LBB0_11:                                ## =>This Loop Header: Depth=1
+
+      Sequence 3 (Lines 76-105):
+        CMP/TEST: 5, EFLAGS usage: 5, Total lines: 26
+        Line 77: testl	%r15d, %r15d
+        Line 78: jle	LBB0_20
+        Line 80: movb	(%rbx,%rdi), %dl
+        Line 81: xorl	%ecx, %ecx
+        Line 82: .p2align	4, 0x90
+        Line 83: LBB0_13:                                ##   Parent Loop BB0_11 Depth=1
+        Line 85: cmpb	(%r14,%rcx), %dl
+        Line 86: je	LBB0_15
+        Line 88: incq	%rcx
+        Line 89: cmpq	%rcx, %rsi
+        Line 90: jne	LBB0_13
+        Line 91: jmp	LBB0_17
+        Line 92: .p2align	4, 0x90
+        Line 93: LBB0_15:                                ##   in Loop: Header=BB0_11 Depth=1
+        Line 94: incq	%rdi
+        Line 95: cmpq	%r9, %rdi
+        Line 96: setl	%al
+        Line 97: cmpq	%r8, %rdi
+        Line 98: jne	LBB0_11
+        Line 99: jmp	LBB0_17
+        Line 100: LBB0_16:
+        Line 101: xorl	%eax, %eax
+        Line 102: LBB0_17:
+        Line 103: xorb	$1, %al
+        Line 104: LBB0_18:
+        Line 105: andb	$1, %al
+
+
+[23] Directory: true_o2_ARM/problem56_code.c
+    Input file: true_o2_ARM/problem56_code.c/input.txt
+    Total CMP/TEST instructions: 7
+    Total EFLAGS-dependent instructions: 7
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 24-52):
+        CMP/TEST: 4, EFLAGS usage: 4, Total lines: 26
+        Line 24: movl	$1, -4012(%rbp)
+        Line 25: cmpl	$2, %ebx
+        Line 26: jl	LBB0_7
+        Line 28: leal	1(%rbx), %eax
+        Line 29: movl	$1, -4008(%rbp)
+        Line 30: cmpl	$3, %eax
+        Line 31: je	LBB0_7
+        Line 33: movl	%eax, %ecx
+        Line 34: leaq	-3(%rcx), %rsi
+        Line 35: addq	$-4, %rcx
+        Line 36: movl	%esi, %eax
+        Line 37: andl	$3, %eax
+        Line 38: cmpq	$3, %rcx
+        Line 39: jae	LBB0_9
+        Line 41: movl	$2, %esi
+        Line 42: movl	$1, %ecx
+        Line 43: movl	$3, %edx
+        Line 44: testq	%rax, %rax
+        Line 45: jne	LBB0_6
+        Line 46: jmp	LBB0_7
+        Line 47: LBB0_9:
+        Line 48: andq	$-4, %rsi
+        Line 49: negq	%rsi
+        Line 50: movl	$1, %ecx
+        Line 51: movl	$3, %edx
+        Line 52: .p2align	4, 0x90
+
+      Sequence 2 (Lines 65-78):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 13
+        Line 65: addq	$4, %rdx
+        Line 66: cmpq	$3, %rdi
+        Line 67: jne	LBB0_10
+        Line 69: leaq	-1(%rdx), %rsi
+        Line 70: testq	%rax, %rax
+        Line 71: je	LBB0_7
+        Line 72: .p2align	4, 0x90
+        Line 73: LBB0_6:                                 ## =>This Inner Loop Header: Depth=1
+        Line 74: addl	-4020(%rbp,%rsi,4), %ecx
+        Line 75: movl	%ecx, -4016(%rbp,%rdx,4)
+        Line 76: movq	%rdx, %rsi
+        Line 77: incq	%rdx
+        Line 78: decq	%rax
+
+      Sequence 3 (Lines 84-93):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 84: movq	(%rcx), %rcx
+        Line 85: cmpq	-16(%rbp), %rcx
+        Line 86: jne	LBB0_11
+        Line 88: addq	$4008, %rsp                     ## imm = 0xFA8
+        Line 89: popq	%rbx
+        Line 90: popq	%rbp
+        Line 91: retq
+        Line 92: LBB0_11:
+        Line 93: callq	___stack_chk_fail
+
+
+[24] Directory: true_o2_ARM/problem57_code.c
+    Input file: true_o2_ARM/problem57_code.c/input.txt
+    Total CMP/TEST instructions: 4
+    Total EFLAGS-dependent instructions: 5
+    Number of sequences: 1
+    Sequences found:
+      Sequence 1 (Lines 20-42):
+        CMP/TEST: 4, EFLAGS usage: 5, Total lines: 19
+        Line 20: xorl	%edx, %edx
+        Line 21: cmpb	$62, %cl
+        Line 22: sete	%dl
+        Line 23: incq	%rdi
+        Line 24: subl	%edx, %eax
+        Line 25: js	LBB0_6
+        Line 26: LBB0_3:                                 ## =>This Inner Loop Header: Depth=1
+        Line 27: movzbl	(%rdi), %ecx
+        Line 28: cmpb	$60, %cl
+        Line 29: je	LBB0_1
+        Line 31: testb	%cl, %cl
+        Line 32: jne	LBB0_2
+        Line 34: testl	%eax, %eax
+        Line 35: sete	%al
+        Line 37: popq	%rbp
+        Line 38: retq
+        Line 39: LBB0_6:
+        Line 40: xorl	%eax, %eax
+        Line 42: popq	%rbp
+
+
+[25] Directory: true_o2_ARM/problem58_code.c
+    Input file: true_o2_ARM/problem58_code.c/input.txt
+    Total CMP/TEST instructions: 6
+    Total EFLAGS-dependent instructions: 7
+    Number of sequences: 5
+    Sequences found:
+      Sequence 1 (Lines 17-26):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 17: movb	$1, %al
+        Line 18: cmpl	$2, %esi
+        Line 19: jl	LBB0_10
+        Line 21: pushq	%rbp
+        Line 22: .cfi_def_cfa_offset 16
+        Line 23: .cfi_offset %rbp, -16
+        Line 24: movq	%rsp, %rbp
+        Line 25: .cfi_def_cfa_register %rbp
+        Line 26: movl	%esi, %r9d
+
+      Sequence 2 (Lines 28-37):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 28: leaq	-1(%r9), %r8
+        Line 29: cmpq	$8, %r8
+        Line 30: jae	LBB0_3
+        Line 32: xorl	%eax, %eax
+        Line 33: movl	$1, %ecx
+        Line 34: xorl	%edx, %edx
+        Line 35: jmp	LBB0_7
+        Line 36: LBB0_3:
+        Line 37: movq	%r8, %rsi
+
+      Sequence 3 (Lines 70-79):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 70: addq	$8, %rax
+        Line 71: cmpq	%rax, %rsi
+        Line 72: jne	LBB0_4
+        Line 74: xorps	%xmm1, %xmm1
+        Line 75: movaps	%xmm7, %xmm0
+        Line 76: pcmpeqd	%xmm1, %xmm0
+        Line 77: blendvps	%xmm0, %xmm5, %xmm7
+        Line 78: xorl	%edx, %edx
+        Line 79: ptest	%xmm7, %xmm7
+
+      Sequence 4 (Lines 86-95):
+        CMP/TEST: 1, EFLAGS usage: 2, Total lines: 9
+        Line 86: setne	%al
+        Line 87: cmpq	%rsi, %r8
+        Line 88: je	LBB0_9
+        Line 90: shufps	$255, %xmm6, %xmm6              ## xmm6 = xmm6[3,3,3,3]
+        Line 91: LBB0_7:
+        Line 92: movl	$1, %esi
+        Line 93: .p2align	4, 0x90
+        Line 94: LBB0_8:                                 ## =>This Inner Loop Header: Depth=1
+        Line 95: movss	(%rdi,%rcx,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+
+      Sequence 5 (Lines 101-114):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 12
+        Line 101: movaps	%xmm0, %xmm6
+        Line 102: cmpq	%rcx, %r9
+        Line 103: jne	LBB0_8
+        Line 104: LBB0_9:
+        Line 105: addl	%eax, %edx
+        Line 106: cmpl	$2, %edx
+        Line 107: setne	%al
+        Line 108: popq	%rbp
+        Line 109: LBB0_10:
+        Line 110: retq
+        Line 111: .cfi_endproc
+        Line 113: .subsections_via_symbols
+
+
+[26] Directory: true_o2_ARM/problem59_code.c
+    Input file: true_o2_ARM/problem59_code.c/input.txt
+    Total CMP/TEST instructions: 17
+    Total EFLAGS-dependent instructions: 17
+    Number of sequences: 6
+    Sequences found:
+      Sequence 1 (Lines 32-41):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 32: callq	_malloc
+        Line 33: testl	%ebx, %ebx
+        Line 34: jle	LBB0_1
+        Line 36: movl	%r13d, %r8d
+        Line 37: movl	%r15d, %esi
+        Line 38: xorl	%edi, %edi
+        Line 39: xorl	%r9d, %r9d
+        Line 40: jmp	LBB0_3
+        Line 41: .p2align	4, 0x90
+
+      Sequence 2 (Lines 47-61):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 11
+        Line 47: incq	%rdi
+        Line 48: cmpq	%r8, %rdi
+        Line 49: je	LBB0_9
+        Line 50: LBB0_3:                                 ## =>This Loop Header: Depth=1
+        Line 53: testl	%r9d, %r9d
+        Line 54: jle	LBB0_7
+        Line 56: movl	(%r12,%rdi,4), %ecx
+        Line 57: movl	%r9d, %edx
+        Line 58: xorl	%ebx, %ebx
+        Line 59: .p2align	4, 0x90
+        Line 60: LBB0_5:                                 ##   Parent Loop BB0_3 Depth=1
+
+      Sequence 3 (Lines 61-94):
+        CMP/TEST: 6, EFLAGS usage: 6, Total lines: 28
+        Line 62: cmpl	%ecx, (%rax,%rbx,4)
+        Line 63: je	LBB0_17
+        Line 65: incq	%rbx
+        Line 66: cmpq	%rbx, %rdx
+        Line 67: jne	LBB0_5
+        Line 68: LBB0_7:                                 ##   in Loop: Header=BB0_3 Depth=1
+        Line 69: testl	%r15d, %r15d
+        Line 70: jle	LBB0_17
+        Line 72: movl	(%r12,%rdi,4), %ecx
+        Line 73: xorl	%edx, %edx
+        Line 74: .p2align	4, 0x90
+        Line 75: LBB0_15:                                ##   Parent Loop BB0_3 Depth=1
+        Line 77: cmpl	(%r14,%rdx,4), %ecx
+        Line 78: je	LBB0_16
+        Line 80: incq	%rdx
+        Line 81: cmpq	%rdx, %rsi
+        Line 82: jne	LBB0_15
+        Line 83: jmp	LBB0_17
+        Line 84: LBB0_9:
+        Line 85: cmpl	$2, %r9d
+        Line 86: movq	-48(%rbp), %r15                 ## 8-byte Reload
+        Line 87: jl	LBB0_30
+        Line 89: leal	-1(%r9), %r8d
+        Line 90: xorl	%r14d, %r14d
+        Line 91: movl	%r8d, %r11d
+        Line 92: jmp	LBB0_11
+        Line 93: .p2align	4, 0x90
+        Line 94: LBB0_29:                                ##   in Loop: Header=BB0_11 Depth=1
+
+      Sequence 4 (Lines 96-127):
+        CMP/TEST: 5, EFLAGS usage: 5, Total lines: 27
+        Line 96: decl	%r11d
+        Line 97: cmpl	%r8d, %r14d
+        Line 98: je	LBB0_30
+        Line 99: LBB0_11:                                ## =>This Loop Header: Depth=1
+        Line 101: movl	%r14d, %ecx
+        Line 102: notl	%ecx
+        Line 103: addl	%r9d, %ecx
+        Line 104: testl	%ecx, %ecx
+        Line 105: jle	LBB0_29
+        Line 107: movl	%r8d, %r10d
+        Line 108: subl	%r14d, %r10d
+        Line 109: movl	(%rax), %esi
+        Line 110: cmpl	$1, %r10d
+        Line 111: jne	LBB0_18
+        Line 113: xorl	%ecx, %ecx
+        Line 114: LBB0_26:                                ##   in Loop: Header=BB0_11 Depth=1
+        Line 115: testb	$1, %r10b
+        Line 116: je	LBB0_29
+        Line 118: movl	4(%rax,%rcx,4), %edx
+        Line 119: cmpl	%edx, %esi
+        Line 120: jle	LBB0_29
+        Line 122: movl	%edx, (%rax,%rcx,4)
+        Line 123: movl	%esi, 4(%rax,%rcx,4)
+        Line 124: jmp	LBB0_29
+        Line 125: .p2align	4, 0x90
+        Line 126: LBB0_18:                                ##   in Loop: Header=BB0_11 Depth=1
+        Line 127: movl	%r11d, %edi
+
+      Sequence 5 (Lines 136-150):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 13
+        Line 136: movq	%rcx, %rdx
+        Line 137: cmpq	%rcx, %rdi
+        Line 138: je	LBB0_26
+        Line 139: LBB0_19:                                ##   Parent Loop BB0_11 Depth=1
+        Line 141: movl	4(%rax,%rdx,4), %ecx
+        Line 142: cmpl	%ecx, %esi
+        Line 143: jle	LBB0_20
+        Line 145: movl	%ecx, (%rax,%rdx,4)
+        Line 146: movl	%esi, 4(%rax,%rdx,4)
+        Line 147: jmp	LBB0_22
+        Line 148: .p2align	4, 0x90
+        Line 149: LBB0_20:                                ##   in Loop: Header=BB0_19 Depth=2
+        Line 150: movl	%ecx, %esi
+
+      Sequence 6 (Lines 153-162):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 153: movl	8(%rax,%rdx,4), %ebx
+        Line 154: cmpl	%ebx, %esi
+        Line 155: jg	LBB0_24
+        Line 157: movl	%ebx, %esi
+        Line 158: jmp	LBB0_25
+        Line 159: LBB0_1:
+        Line 160: xorl	%r9d, %r9d
+        Line 161: movq	-48(%rbp), %r15                 ## 8-byte Reload
+        Line 162: LBB0_30:
+
+
+[27] Directory: true_o2_ARM/problem62_code.c
+    Input file: true_o2_ARM/problem62_code.c/input.txt
+    Total CMP/TEST instructions: 8
+    Total EFLAGS-dependent instructions: 10
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 19-62):
+        CMP/TEST: 7, EFLAGS usage: 9, Total lines: 40
+        Line 19: callq	_strlen
+        Line 20: testq	%rax, %rax
+        Line 21: je	LBB0_1
+        Line 23: movb	(%r14), %dl
+        Line 24: xorl	%ecx, %ecx
+        Line 25: cmpb	$40, %dl
+        Line 26: sete	%cl
+        Line 27: xorl	%esi, %esi
+        Line 28: cmpb	$41, %dl
+        Line 29: sete	%sil
+        Line 30: subl	%esi, %ecx
+        Line 31: js	LBB0_3
+        Line 33: movl	$1, %esi
+        Line 34: .p2align	4, 0x90
+        Line 35: LBB0_5:                                 ## =>This Inner Loop Header: Depth=1
+        Line 36: movq	%rsi, %rdx
+        Line 37: cmpq	%rsi, %rax
+        Line 38: je	LBB0_8
+        Line 40: movzbl	(%r14,%rdx), %ebx
+        Line 41: xorl	%esi, %esi
+        Line 42: cmpb	$40, %bl
+        Line 43: sete	%sil
+        Line 44: addl	%esi, %ecx
+        Line 45: xorl	%edi, %edi
+        Line 46: cmpb	$41, %bl
+        Line 47: sete	%dil
+        Line 48: leaq	1(%rdx), %rsi
+        Line 49: subl	%edi, %ecx
+        Line 50: jns	LBB0_5
+        Line 52: movl	$1, %ecx
+        Line 53: LBB0_8:
+        Line 54: cmpq	%rdx, %rax
+        Line 55: setbe	%dl
+        Line 56: jmp	LBB0_9
+        Line 57: LBB0_1:
+        Line 58: xorl	%ecx, %ecx
+        Line 59: movb	$1, %dl
+        Line 60: jmp	LBB0_9
+        Line 61: LBB0_3:
+        Line 62: xorl	%edx, %edx
+
+      Sequence 2 (Lines 64-73):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 64: LBB0_9:
+        Line 65: testl	%ecx, %ecx
+        Line 66: sete	%al
+        Line 67: andb	%dl, %al
+        Line 68: popq	%rbx
+        Line 69: popq	%r14
+        Line 70: popq	%rbp
+        Line 71: retq
+        Line 72: .cfi_endproc
+
+
+[28] Directory: true_o2_ARM/problem67_code.c
+    Input file: true_o2_ARM/problem67_code.c/input.txt
+    Total CMP/TEST instructions: 3
+    Total EFLAGS-dependent instructions: 2
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 14-23):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 14: movb	(%rdi), %dl
+        Line 15: testb	%dl, %dl
+        Line 16: je	LBB0_1
+        Line 18: incq	%rdi
+        Line 19: xorl	%ecx, %ecx
+        Line 20: xorl	%eax, %eax
+        Line 21: .p2align	4, 0x90
+        Line 22: LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+        Line 23: leal	-65(%rdx), %esi
+
+      Sequence 2 (Lines 23-39):
+        CMP/TEST: 2, EFLAGS usage: 1, Total lines: 16
+        Line 23: leal	-65(%rdx), %esi
+        Line 24: cmpb	$26, %sil
+        Line 25: movzbl	%dl, %edx
+        Line 26: cmovael	%ecx, %edx
+        Line 27: movzbl	%dl, %edx
+        Line 28: addl	%edx, %eax
+        Line 29: movzbl	(%rdi), %edx
+        Line 30: incq	%rdi
+        Line 31: testb	%dl, %dl
+        Line 32: jne	LBB0_4
+        Line 34: popq	%rbp
+        Line 35: retq
+        Line 36: LBB0_1:
+        Line 37: xorl	%eax, %eax
+        Line 38: popq	%rbp
+        Line 39: retq
+
+
+[29] Directory: true_o2_ARM/problem69_code.c
+    Input file: true_o2_ARM/problem69_code.c/input.txt
+    Total CMP/TEST instructions: 15
+    Total EFLAGS-dependent instructions: 14
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 15-52):
+        CMP/TEST: 7, EFLAGS usage: 7, Total lines: 33
+        Line 15: .cfi_offset %rbx, -24
+        Line 16: testl	%esi, %esi
+        Line 17: jle	LBB0_15
+        Line 19: movq	%rdx, %rax
+        Line 20: movl	%esi, %r8d
+        Line 21: cmpl	$1, %esi
+        Line 22: jne	LBB0_9
+        Line 24: movl	$2147483647, %r10d              ## imm = 0x7FFFFFFF
+        Line 25: movl	$-1, %r11d
+        Line 26: xorl	%esi, %esi
+        Line 27: LBB0_3:
+        Line 28: testb	$1, %r8b
+        Line 29: je	LBB0_6
+        Line 31: movl	(%rdi,%rsi,4), %edi
+        Line 32: testb	$1, %dil
+        Line 33: jne	LBB0_6
+        Line 35: cmpl	%r10d, %edi
+        Line 36: setl	%r8b
+        Line 37: cmpl	$-1, %r11d
+        Line 38: sete	%cl
+        Line 39: orb	%r8b, %cl
+        Line 40: cmovnel	%edi, %r10d
+        Line 41: cmovel	%r11d, %esi
+        Line 42: movl	%esi, %r11d
+        Line 43: LBB0_6:
+        Line 44: cmpl	$-1, %r11d
+        Line 45: je	LBB0_15
+        Line 47: movl	%r10d, (%rax)
+        Line 48: movl	%r11d, 4(%rax)
+        Line 49: jmp	LBB0_16
+        Line 50: LBB0_15:
+        Line 51: xorl	%eax, %eax
+        Line 52: LBB0_16:
+
+      Sequence 2 (Lines 65-98):
+        CMP/TEST: 8, EFLAGS usage: 7, Total lines: 30
+        Line 65: addq	$2, %rsi
+        Line 66: cmpq	%rsi, %r9
+        Line 67: je	LBB0_3
+        Line 68: LBB0_11:                                ## =>This Inner Loop Header: Depth=1
+        Line 69: movl	(%rdi,%rsi,4), %ecx
+        Line 70: testb	$1, %cl
+        Line 71: jne	LBB0_13
+        Line 73: cmpl	%r10d, %ecx
+        Line 74: setl	%dl
+        Line 75: cmpl	$-1, %r11d
+        Line 76: sete	%bl
+        Line 77: orb	%dl, %bl
+        Line 78: cmovnel	%ecx, %r10d
+        Line 79: cmovnel	%esi, %r11d
+        Line 80: LBB0_13:                                ##   in Loop: Header=BB0_11 Depth=1
+        Line 81: movl	4(%rdi,%rsi,4), %ecx
+        Line 82: testb	$1, %cl
+        Line 83: jne	LBB0_10
+        Line 85: cmpl	%r10d, %ecx
+        Line 86: setl	%dl
+        Line 87: cmpl	$-1, %r11d
+        Line 88: sete	%bl
+        Line 89: orb	%dl, %bl
+        Line 90: leal	1(%rsi), %edx
+        Line 91: testb	%bl, %bl
+        Line 92: cmovnel	%ecx, %r10d
+        Line 93: cmovnel	%edx, %r11d
+        Line 94: jmp	LBB0_10
+        Line 95: .cfi_endproc
+        Line 97: .subsections_via_symbols
+
+
+[30] Directory: true_o2_ARM/problem70_code.c
+    Input file: true_o2_ARM/problem70_code.c/input.txt
+    Total CMP/TEST instructions: 10
+    Total EFLAGS-dependent instructions: 6
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 23-53):
+        CMP/TEST: 5, EFLAGS usage: 3, Total lines: 28
+        Line 23: callq	_calloc
+        Line 24: testl	%ebx, %ebx
+        Line 25: jle	LBB0_1
+        Line 27: movl	%ebx, %r8d
+        Line 28: cmpl	$1, %ebx
+        Line 29: jne	LBB0_7
+        Line 31: movl	$-1, %ebx
+        Line 32: xorl	%edx, %edx
+        Line 33: LBB0_4:
+        Line 34: testb	$1, %r8b
+        Line 35: je	LBB0_6
+        Line 37: movslq	(%r14,%rdx,4), %rcx
+        Line 38: movl	(%rax,%rcx,4), %edx
+        Line 39: incl	%edx
+        Line 40: cmpl	%ebx, %ecx
+        Line 41: movl	%ebx, %esi
+        Line 42: cmovgl	%ecx, %esi
+        Line 43: movl	%edx, (%rax,%rcx,4)
+        Line 44: cmpl	%ecx, %edx
+        Line 45: cmovgel	%esi, %ebx
+        Line 46: jmp	LBB0_6
+        Line 47: LBB0_1:
+        Line 48: movl	$-1, %ebx
+        Line 49: LBB0_6:
+        Line 50: movq	%rax, %rdi
+        Line 51: callq	_free
+        Line 52: movl	%ebx, %eax
+        Line 53: popq	%rbx
+
+      Sequence 2 (Lines 64-96):
+        CMP/TEST: 5, EFLAGS usage: 3, Total lines: 29
+        Line 64: LBB0_12:                                ##   in Loop: Header=BB0_8 Depth=1
+        Line 65: cmpl	%edi, %ecx
+        Line 66: cmovgel	%esi, %ebx
+        Line 67: addq	$2, %rdx
+        Line 68: cmpq	%rdx, %r9
+        Line 69: je	LBB0_4
+        Line 70: LBB0_8:                                 ## =>This Inner Loop Header: Depth=1
+        Line 71: movslq	(%r14,%rdx,4), %rdi
+        Line 72: movl	(%rax,%rdi,4), %ecx
+        Line 73: incl	%ecx
+        Line 74: movl	%ecx, (%rax,%rdi,4)
+        Line 75: movl	%edi, %esi
+        Line 76: cmpl	%ebx, %edi
+        Line 77: jg	LBB0_10
+        Line 79: movl	%ebx, %esi
+        Line 80: LBB0_10:                                ##   in Loop: Header=BB0_8 Depth=1
+        Line 81: cmpl	%edi, %ecx
+        Line 82: cmovgel	%esi, %ebx
+        Line 83: movslq	4(%r14,%rdx,4), %rdi
+        Line 84: movl	(%rax,%rdi,4), %ecx
+        Line 85: incl	%ecx
+        Line 86: movl	%ecx, (%rax,%rdi,4)
+        Line 87: movl	%edi, %esi
+        Line 88: cmpl	%ebx, %edi
+        Line 89: jg	LBB0_12
+        Line 91: movl	%ebx, %esi
+        Line 92: jmp	LBB0_12
+        Line 93: .cfi_endproc
+        Line 95: .subsections_via_symbols
+
+
+[31] Directory: true_o2_ARM/problem73_code.c
+    Input file: true_o2_ARM/problem73_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 5
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 21-30):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 21: xorl	%r10d, %r10d
+        Line 22: cmpl	$2, %esi
+        Line 23: jl	LBB0_5
+        Line 25: movl	%r8d, %r9d
+        Line 26: leal	-1(%rsi), %r11d
+        Line 27: xorl	%ecx, %ecx
+        Line 28: xorl	%r10d, %r10d
+        Line 29: .p2align	4, 0x90
+        Line 30: LBB0_2:                                 ## =>This Inner Loop Header: Depth=1
+
+      Sequence 2 (Lines 32-57):
+        CMP/TEST: 4, EFLAGS usage: 4, Total lines: 23
+        Line 32: movslq	%r11d, %rbx
+        Line 33: cmpl	(%rdi,%rbx,4), %eax
+        Line 34: jne	LBB0_3
+        Line 36: leal	(%r10,%rax,2), %r10d
+        Line 37: incq	%rcx
+        Line 38: decl	%r11d
+        Line 39: cmpq	%rcx, %r9
+        Line 40: jne	LBB0_2
+        Line 41: LBB0_5:
+        Line 42: andl	$-2147483647, %esi              ## imm = 0x80000001
+        Line 43: cmpl	$1, %esi
+        Line 44: jne	LBB0_7
+        Line 46: movslq	%r8d, %rax
+        Line 47: addl	(%rdi,%rax,4), %r10d
+        Line 48: LBB0_7:
+        Line 49: cmpl	%edx, %r10d
+        Line 50: setle	%al
+        Line 51: jmp	LBB0_8
+        Line 52: LBB0_3:
+        Line 53: xorl	%eax, %eax
+        Line 54: LBB0_8:
+        Line 56: popq	%rbx
+        Line 57: popq	%rbp
+
+
+[32] Directory: true_o2_ARM/problem74_code.c
+    Input file: true_o2_ARM/problem74_code.c/input.txt
+    Total CMP/TEST instructions: 10
+    Total EFLAGS-dependent instructions: 12
+    Number of sequences: 7
+    Sequences found:
+      Sequence 1 (Lines 19-33):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 13
+        Line 19: xorl	%eax, %eax
+        Line 20: cmpl	$2, %esi
+        Line 21: jl	LBB0_14
+        Line 23: movl	%esi, %r8d
+        Line 24: shrl	%r8d
+        Line 25: cmpl	$16, %esi
+        Line 26: jae	LBB0_3
+        Line 28: xorl	%r14d, %r14d
+        Line 29: LBB0_8:
+        Line 30: xorl	%eax, %eax
+        Line 31: LBB0_9:
+        Line 32: movq	%r14, %r10
+        Line 33: notq	%r10
+
+      Sequence 2 (Lines 33-42):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 33: notq	%r10
+        Line 34: testb	$1, %r8b
+        Line 35: je	LBB0_11
+        Line 37: movl	(%rdi,%r14,4), %r9d
+        Line 38: movl	%r14d, %ecx
+        Line 39: notl	%ecx
+        Line 40: addl	%esi, %ecx
+        Line 41: movslq	%ecx, %r11
+        Line 42: xorl	%ecx, %ecx
+
+      Sequence 3 (Lines 42-56):
+        CMP/TEST: 1, EFLAGS usage: 2, Total lines: 14
+        Line 42: xorl	%ecx, %ecx
+        Line 43: cmpl	(%rdi,%r11,4), %r9d
+        Line 44: setne	%cl
+        Line 45: addl	%ecx, %eax
+        Line 46: orq	$1, %r14
+        Line 47: LBB0_11:
+        Line 48: addq	%r8, %r10
+        Line 49: je	LBB0_14
+        Line 51: movl	%r14d, %ecx
+        Line 52: notl	%ecx
+        Line 53: addl	%esi, %ecx
+        Line 54: .p2align	4, 0x90
+        Line 55: LBB0_13:                                ## =>This Inner Loop Header: Depth=1
+        Line 56: movslq	%ecx, %rcx
+
+      Sequence 4 (Lines 59-79):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 21
+        Line 59: xorl	%ebx, %ebx
+        Line 60: cmpl	(%rdi,%rcx,4), %esi
+        Line 61: setne	%bl
+        Line 62: addl	%eax, %ebx
+        Line 63: leal	-1(%rcx), %eax
+        Line 64: movslq	%eax, %rsi
+        Line 65: xorl	%eax, %eax
+        Line 66: cmpl	(%rdi,%rsi,4), %edx
+        Line 67: setne	%al
+        Line 68: addl	%ebx, %eax
+        Line 69: addq	$2, %r14
+        Line 70: addl	$-2, %ecx
+        Line 71: cmpq	%r14, %r8
+        Line 72: jne	LBB0_13
+        Line 73: jmp	LBB0_14
+        Line 74: LBB0_3:
+        Line 75: leaq	-1(%r8), %r9
+        Line 76: leal	-1(%rsi), %ecx
+        Line 77: movl	%ecx, %eax
+        Line 78: subl	%r9d, %eax
+        Line 79: xorl	%r14d, %r14d
+
+      Sequence 5 (Lines 79-92):
+        CMP/TEST: 1, EFLAGS usage: 2, Total lines: 12
+        Line 79: xorl	%r14d, %r14d
+        Line 80: cmpl	%ecx, %eax
+        Line 81: jg	LBB0_8
+        Line 83: shrq	$32, %r9
+        Line 84: movl	$0, %eax
+        Line 85: jne	LBB0_9
+        Line 87: movl	%r8d, %r14d
+        Line 88: andl	$-8, %r14d
+        Line 89: movl	%esi, %r9d
+        Line 90: andl	$-16, %r9d
+        Line 91: addq	%r9, %r9
+        Line 92: pxor	%xmm0, %xmm0
+
+      Sequence 6 (Lines 112-121):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 112: addl	$-8, %ecx
+        Line 113: cmpq	%rax, %r9
+        Line 114: jne	LBB0_6
+        Line 116: paddd	%xmm0, %xmm1
+        Line 117: pshufd	$238, %xmm1, %xmm0              ## xmm0 = xmm1[2,3,2,3]
+        Line 118: paddd	%xmm1, %xmm0
+        Line 119: pshufd	$85, %xmm0, %xmm1               ## xmm1 = xmm0[1,1,1,1]
+        Line 120: paddd	%xmm0, %xmm1
+        Line 121: movd	%xmm1, %eax
+
+      Sequence 7 (Lines 121-130):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 121: movd	%xmm1, %eax
+        Line 122: cmpq	%r8, %r14
+        Line 123: jne	LBB0_9
+        Line 124: LBB0_14:
+        Line 125: popq	%rbx
+        Line 126: popq	%r14
+        Line 127: popq	%rbp
+        Line 128: retq
+        Line 129: .cfi_endproc
+
+
+[33] Directory: true_o2_ARM/problem75_code.c
+    Input file: true_o2_ARM/problem75_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 4
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 29-38):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 29: movl	$0, %r12d
+        Line 30: testl	%esi, %esi
+        Line 31: jle	LBB0_3
+        Line 33: movl	%esi, %r15d
+        Line 34: xorl	%r14d, %r14d
+        Line 35: xorl	%r12d, %r12d
+        Line 36: .p2align	4, 0x90
+        Line 37: LBB0_2:                                 ## =>This Inner Loop Header: Depth=1
+        Line 38: movq	(%rbx,%r14,8), %rdi
+
+      Sequence 2 (Lines 41-56):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 15
+        Line 41: incq	%r14
+        Line 42: cmpq	%r14, %r15
+        Line 43: jne	LBB0_2
+        Line 44: LBB0_3:
+        Line 45: movq	%rbx, -56(%rbp)                 ## 8-byte Spill
+        Line 46: movl	-44(%rbp), %eax                 ## 4-byte Reload
+        Line 47: testl	%eax, %eax
+        Line 48: movq	-64(%rbp), %r14                 ## 8-byte Reload
+        Line 49: jle	LBB0_6
+        Line 51: movl	%eax, %r15d
+        Line 52: xorl	%ebx, %ebx
+        Line 53: xorl	%r13d, %r13d
+        Line 54: .p2align	4, 0x90
+        Line 55: LBB0_5:                                 ## =>This Inner Loop Header: Depth=1
+        Line 56: movq	(%r14,%rbx,8), %rdi
+
+      Sequence 3 (Lines 59-72):
+        CMP/TEST: 2, EFLAGS usage: 1, Total lines: 14
+        Line 59: incq	%rbx
+        Line 60: cmpq	%rbx, %r15
+        Line 61: jne	LBB0_5
+        Line 62: LBB0_6:
+        Line 63: cmpl	%r13d, %r12d
+        Line 64: movq	-56(%rbp), %rax                 ## 8-byte Reload
+        Line 65: cmovleq	%rax, %r14
+        Line 66: cmovlq	%rax, %r14
+        Line 67: movq	%r14, %rax
+        Line 68: addq	$24, %rsp
+        Line 69: popq	%rbx
+        Line 70: popq	%r12
+        Line 71: popq	%r13
+        Line 72: popq	%r14
+
+
+[34] Directory: true_o2_ARM/problem78_code.c
+    Input file: true_o2_ARM/problem78_code.c/input.txt
+    Total CMP/TEST instructions: 1
+    Total EFLAGS-dependent instructions: 2
+    Number of sequences: 1
+    Sequences found:
+      Sequence 1 (Lines 23-34):
+        CMP/TEST: 1, EFLAGS usage: 2, Total lines: 9
+        Line 23: incl	%ecx
+        Line 24: cmpl	%eax, %edx
+        Line 25: jb	LBB0_1
+        Line 27: setbe	%al
+        Line 28: movzbl	%al, %eax
+        Line 29: popq	%rbp
+        Line 30: retq
+        Line 31: .cfi_endproc
+        Line 33: .subsections_via_symbols
+
+
+[35] Directory: true_o2_ARM/problem79_code.c
+    Input file: true_o2_ARM/problem79_code.c/input.txt
+    Total CMP/TEST instructions: 3
+    Total EFLAGS-dependent instructions: 2
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 26-35):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 26: callq	_strlen
+        Line 27: testq	%rax, %rax
+        Line 28: je	LBB0_1
+        Line 30: movq	%rax, %r15
+        Line 31: xorl	%ebx, %ebx
+        Line 32: leaq	L_.str(%rip), %r12
+        Line 33: xorl	%r13d, %r13d
+        Line 34: .p2align	4, 0x90
+        Line 35: LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+
+      Sequence 2 (Lines 39-51):
+        CMP/TEST: 2, EFLAGS usage: 1, Total lines: 13
+        Line 39: callq	_memchr
+        Line 40: cmpq	$1, %rax
+        Line 41: sbbl	$-1, %r13d
+        Line 42: incq	%rbx
+        Line 43: cmpq	%rbx, %r15
+        Line 44: jne	LBB0_4
+        Line 45: jmp	LBB0_2
+        Line 46: LBB0_1:
+        Line 47: xorl	%r13d, %r13d
+        Line 48: LBB0_2:
+        Line 49: movl	%r13d, %eax
+        Line 50: addq	$8, %rsp
+        Line 51: popq	%rbx
+
+
+[36] Directory: true_o2_ARM/problem80_code.c
+    Input file: true_o2_ARM/problem80_code.c/input.txt
+    Total CMP/TEST instructions: 4
+    Total EFLAGS-dependent instructions: 5
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 23-39):
+        CMP/TEST: 2, EFLAGS usage: 3, Total lines: 14
+        Line 23: callq	_malloc
+        Line 24: testq	%rax, %rax
+        Line 25: je	LBB0_1
+        Line 27: movq	%rax, %r14
+        Line 28: movb	$0, 63(%rax)
+        Line 29: testl	%ebx, %ebx
+        Line 30: je	LBB0_5
+        Line 32: jle	LBB0_4
+        Line 34: movl	$62, %eax
+        Line 35: movl	%ebx, %ecx
+        Line 36: .p2align	4, 0x90
+        Line 37: LBB0_7:                                 ## =>This Inner Loop Header: Depth=1
+        Line 38: movl	%ebx, %edx
+        Line 39: andb	$1, %dl
+
+      Sequence 2 (Lines 43-53):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 11
+        Line 43: shrl	%ecx
+        Line 44: cmpl	$1, %ebx
+        Line 45: movl	%ecx, %ebx
+        Line 46: ja	LBB0_7
+        Line 47: jmp	LBB0_8
+        Line 48: LBB0_1:
+        Line 49: xorl	%ebx, %ebx
+        Line 50: jmp	LBB0_12
+        Line 51: LBB0_5:
+        Line 52: movb	$48, 62(%r14)
+        Line 53: movl	$61, %eax
+
+      Sequence 3 (Lines 63-72):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 63: callq	_malloc
+        Line 64: testq	%rax, %rax
+        Line 65: je	LBB0_9
+        Line 67: movq	%rax, %rbx
+        Line 68: leaq	(%r15,%r14), %rsi
+        Line 69: decq	%rsi
+        Line 70: movq	%rax, %rdi
+        Line 71: callq	_strcpy
+        Line 72: movq	%rbx, %rdi
+
+
+[37] Directory: true_o2_ARM/problem83_code.c
+    Input file: true_o2_ARM/problem83_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 5
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 15-24):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 8
+        Line 15: movq	%rax, %rcx
+        Line 16: cmpl	$2, %ecx
+        Line 17: jge	LBB0_2
+        Line 19: xorl	%eax, %eax
+        Line 20: LBB0_7:
+        Line 22: popq	%rbp
+        Line 23: retq
+        Line 24: LBB0_2:
+
+      Sequence 2 (Lines 25-34):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 25: movb	$1, %al
+        Line 26: cmpl	$4, %ecx
+        Line 27: jb	LBB0_7
+        Line 29: movl	$2, %esi
+        Line 30: .p2align	4, 0x90
+        Line 31: LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+        Line 32: movl	%ecx, %eax
+        Line 33: cltd
+        Line 34: idivl	%esi
+
+      Sequence 3 (Lines 34-52):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 15
+        Line 34: idivl	%esi
+        Line 35: testl	%edx, %edx
+        Line 36: je	LBB0_6
+        Line 38: incl	%esi
+        Line 39: movl	%esi, %eax
+        Line 40: imull	%esi, %eax
+        Line 41: cmpl	%ecx, %eax
+        Line 42: jle	LBB0_4
+        Line 43: LBB0_6:
+        Line 44: testl	%edx, %edx
+        Line 45: setne	%al
+        Line 47: popq	%rbp
+        Line 48: retq
+        Line 49: .cfi_endproc
+        Line 51: .subsections_via_symbols
+
+
+[38] Directory: true_o2_ARM/problem84_code.c
+    Input file: true_o2_ARM/problem84_code.c/input.txt
+    Total CMP/TEST instructions: 7
+    Total EFLAGS-dependent instructions: 7
+    Number of sequences: 4
+    Sequences found:
+      Sequence 1 (Lines 32-53):
+        CMP/TEST: 4, EFLAGS usage: 4, Total lines: 16
+        Line 33: testl	%edi, %edi
+        Line 34: jle	LBB0_1
+        Line 36: movl	$1, %eax
+        Line 37: cmpl	$1, %edi
+        Line 38: je	LBB0_17
+        Line 40: movl	$18, %eax
+        Line 41: cmpl	$3, %edi
+        Line 42: jb	LBB0_17
+        Line 44: leal	-2(%rdi), %r8d
+        Line 45: cmpl	$8, %r8d
+        Line 46: jae	LBB0_6
+        Line 48: movl	$18, %eax
+        Line 49: movl	$2, %ecx
+        Line 50: jmp	LBB0_15
+        Line 51: LBB0_1:
+        Line 52: xorl	%eax, %eax
+
+      Sequence 2 (Lines 68-77):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 68: andl	$7, %eax
+        Line 69: cmpl	$56, %edx
+        Line 70: jae	LBB0_8
+        Line 72: movdqa	LCPI0_0(%rip), %xmm1            ## xmm1 = [1,1,1,1]
+        Line 73: movdqa	LCPI0_1(%rip), %xmm0            ## xmm0 = [18,1,1,1]
+        Line 74: jmp	LBB0_10
+        Line 75: LBB0_8:
+        Line 76: andl	$-8, %esi
+        Line 77: movdqa	LCPI0_0(%rip), %xmm1            ## xmm1 = [1,1,1,1]
+
+      Sequence 3 (Lines 86-95):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 86: LBB0_10:
+        Line 87: testl	%eax, %eax
+        Line 88: je	LBB0_13
+        Line 90: movdqa	LCPI0_3(%rip), %xmm2            ## xmm2 = [10,10,10,10]
+        Line 91: .p2align	4, 0x90
+        Line 92: LBB0_12:                                ## =>This Inner Loop Header: Depth=1
+        Line 93: pmulld	%xmm2, %xmm0
+        Line 94: pmulld	%xmm2, %xmm1
+        Line 95: decl	%eax
+
+      Sequence 4 (Lines 103-113):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 103: movd	%xmm0, %eax
+        Line 104: cmpl	%ecx, %r8d
+        Line 105: popq	%rbp
+        Line 106: je	LBB0_17
+        Line 108: orl	$2, %ecx
+        Line 109: LBB0_15:
+        Line 110: subl	%ecx, %edi
+        Line 111: .p2align	4, 0x90
+        Line 112: LBB0_16:                                ## =>This Inner Loop Header: Depth=1
+        Line 113: addl	%eax, %eax
+
+
+[39] Directory: true_o2_ARM/problem88_code.c
+    Input file: true_o2_ARM/problem88_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 5
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 32-41):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 32: movq	%rax, -56(%rbp)                 ## 8-byte Spill
+        Line 33: testl	%r14d, %r14d
+        Line 34: jle	LBB0_1
+        Line 36: movl	%r14d, %eax
+        Line 37: movq	%rax, -80(%rbp)                 ## 8-byte Spill
+        Line 38: xorl	%r15d, %r15d
+        Line 39: xorl	%r13d, %r13d
+        Line 40: jmp	LBB0_4
+        Line 41: .p2align	4, 0x90
+
+      Sequence 2 (Lines 43-58):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 14
+        Line 43: incq	%r15
+        Line 44: cmpq	-80(%rbp), %r15                 ## 8-byte Folded Reload
+        Line 45: je	LBB0_2
+        Line 46: LBB0_4:                                 ## =>This Loop Header: Depth=1
+        Line 48: movq	-88(%rbp), %rax                 ## 8-byte Reload
+        Line 49: movl	(%rax,%r15,4), %r12d
+        Line 50: testl	%r12d, %r12d
+        Line 51: jle	LBB0_9
+        Line 53: movq	-72(%rbp), %rax                 ## 8-byte Reload
+        Line 54: movq	(%rax,%r15,8), %r14
+        Line 55: jmp	LBB0_6
+        Line 56: .p2align	4, 0x90
+        Line 57: LBB0_8:                                 ##   in Loop: Header=BB0_6 Depth=2
+        Line 58: leaq	1(%rbx), %rax
+
+      Sequence 3 (Lines 59-75):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 15
+        Line 59: movq	%rbx, %r12
+        Line 60: cmpq	$1, %rax
+        Line 61: jbe	LBB0_9
+        Line 62: LBB0_6:                                 ##   Parent Loop BB0_4 Depth=1
+        Line 64: leaq	-1(%r12), %rbx
+        Line 65: movl	%ebx, %eax
+        Line 66: movl	-44(%rbp), %ecx                 ## 4-byte Reload
+        Line 67: cmpl	%ecx, (%r14,%rax,4)
+        Line 68: jne	LBB0_8
+        Line 70: decl	%r12d
+        Line 71: movl	$8, %edi
+        Line 72: callq	_malloc
+        Line 73: movslq	%r13d, %r13
+        Line 74: movq	-56(%rbp), %rcx                 ## 8-byte Reload
+        Line 75: movq	%rax, (%rcx,%r13,8)
+
+
+[40] Directory: true_o2_ARM/problem94_code.c
+    Input file: true_o2_ARM/problem94_code.c/input.txt
+    Total CMP/TEST instructions: 8
+    Total EFLAGS-dependent instructions: 9
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 26-61):
+        CMP/TEST: 5, EFLAGS usage: 5, Total lines: 33
+        Line 26: movb	(%rdi), %bl
+        Line 27: testb	%bl, %bl
+        Line 28: je	LBB0_1
+        Line 30: movq	%rdi, %r15
+        Line 31: xorl	%r13d, %r13d
+        Line 32: .p2align	4, 0x90
+        Line 33: LBB0_3:                                 ## =>This Inner Loop Header: Depth=1
+        Line 34: movsbl	%bl, %r12d
+        Line 35: testb	%r12b, %r12b
+        Line 36: js	LBB0_6
+        Line 38: movl	%r12d, %eax
+        Line 39: movq	__DefaultRuneLocale@GOTPCREL(%rip), %rcx
+        Line 40: movl	60(%rcx,%rax,4), %eax
+        Line 41: testl	$4096, %eax                     ## imm = 0x1000
+        Line 42: jne	LBB0_7
+        Line 44: andl	$32768, %eax                    ## imm = 0x8000
+        Line 45: testl	%eax, %eax
+        Line 46: jne	LBB0_10
+        Line 47: jmp	LBB0_12
+        Line 48: .p2align	4, 0x90
+        Line 49: LBB0_6:                                 ##   in Loop: Header=BB0_3 Depth=1
+        Line 50: movl	$4096, %esi                     ## imm = 0x1000
+        Line 51: movl	%r12d, %edi
+        Line 52: callq	___maskrune
+        Line 53: testl	%eax, %eax
+        Line 54: je	LBB0_8
+        Line 55: LBB0_7:                                 ##   in Loop: Header=BB0_3 Depth=1
+        Line 56: movl	%r12d, %edi
+        Line 57: callq	___toupper
+        Line 58: jmp	LBB0_11
+        Line 59: LBB0_8:                                 ##   in Loop: Header=BB0_3 Depth=1
+        Line 60: movl	$32768, %esi                    ## imm = 0x8000
+        Line 61: movl	%r12d, %edi
+
+      Sequence 2 (Lines 62-71):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 62: callq	___maskrune
+        Line 63: testl	%eax, %eax
+        Line 64: je	LBB0_12
+        Line 65: LBB0_10:                                ##   in Loop: Header=BB0_3 Depth=1
+        Line 66: movl	%r12d, %edi
+        Line 67: callq	___tolower
+        Line 68: LBB0_11:                                ##   in Loop: Header=BB0_3 Depth=1
+        Line 69: movl	%eax, %ebx
+        Line 70: LBB0_12:                                ##   in Loop: Header=BB0_3 Depth=1
+        Line 71: leal	-65(%rbx), %eax
+
+      Sequence 3 (Lines 71-93):
+        CMP/TEST: 2, EFLAGS usage: 3, Total lines: 20
+        Line 71: leal	-65(%rbx), %eax
+        Line 72: cmpb	$52, %al
+        Line 73: ja	LBB0_15
+        Line 75: movzbl	%al, %eax
+        Line 76: movabsq	$4575140898685201, %rcx         ## imm = 0x10411100104111
+        Line 77: btq	%rax, %rcx
+        Line 78: jae	LBB0_15
+        Line 80: addb	$2, %bl
+        Line 81: LBB0_15:                                ##   in Loop: Header=BB0_3 Depth=1
+        Line 82: movb	%bl, (%r14,%r13)
+        Line 83: movzbl	1(%r15,%r13), %ebx
+        Line 84: incq	%r13
+        Line 85: testb	%bl, %bl
+        Line 86: jne	LBB0_3
+        Line 88: movl	%r13d, %eax
+        Line 89: jmp	LBB0_17
+        Line 90: LBB0_1:
+        Line 91: xorl	%eax, %eax
+        Line 92: LBB0_17:
+        Line 93: movb	$0, (%r14,%rax)
+
+
+[41] Directory: true_o2_ARM/problem95_code.c
+    Input file: true_o2_ARM/problem95_code.c/input.txt
+    Total CMP/TEST instructions: 9
+    Total EFLAGS-dependent instructions: 8
+    Number of sequences: 4
+    Sequences found:
+      Sequence 1 (Lines 8-17):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 8
+        Line 9: testl	%esi, %esi
+        Line 10: jle	LBB0_14
+        Line 12: pushq	%rbp
+        Line 13: .cfi_def_cfa_offset 16
+        Line 14: .cfi_offset %rbp, -16
+        Line 15: movq	%rsp, %rbp
+        Line 16: .cfi_def_cfa_register %rbp
+        Line 17: movl	%esi, %r8d
+
+      Sequence 2 (Lines 22-43):
+        CMP/TEST: 4, EFLAGS usage: 3, Total lines: 18
+        Line 22: LBB0_2:                                 ##   in Loop: Header=BB0_4 Depth=1
+        Line 23: cmpl	%r9d, %ecx
+        Line 24: cmovgl	%ecx, %r9d
+        Line 25: LBB0_3:                                 ##   in Loop: Header=BB0_4 Depth=1
+        Line 26: incq	%r10
+        Line 27: cmpq	%r8, %r10
+        Line 28: je	LBB0_9
+        Line 29: LBB0_4:                                 ## =>This Loop Header: Depth=1
+        Line 31: movl	(%rdi,%r10,4), %ecx
+        Line 32: cmpl	$2, %ecx
+        Line 33: jl	LBB0_3
+        Line 35: cmpl	$4, %ecx
+        Line 36: jb	LBB0_2
+        Line 38: movl	$2, %esi
+        Line 39: .p2align	4, 0x90
+        Line 40: LBB0_7:                                 ##   Parent Loop BB0_4 Depth=1
+        Line 42: movl	%ecx, %eax
+        Line 43: cltd
+
+      Sequence 3 (Lines 44-64):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 19
+        Line 44: idivl	%esi
+        Line 45: testl	%edx, %edx
+        Line 46: je	LBB0_3
+        Line 48: incl	%esi
+        Line 49: movl	%esi, %eax
+        Line 50: imull	%esi, %eax
+        Line 51: cmpl	%ecx, %eax
+        Line 52: jle	LBB0_7
+        Line 53: jmp	LBB0_2
+        Line 54: LBB0_9:
+        Line 55: testl	%r9d, %r9d
+        Line 56: popq	%rbp
+        Line 57: jle	LBB0_14
+        Line 59: xorl	%eax, %eax
+        Line 60: movl	$3435973837, %ecx               ## imm = 0xCCCCCCCD
+        Line 61: .p2align	4, 0x90
+        Line 62: LBB0_11:                                ## =>This Inner Loop Header: Depth=1
+        Line 63: movl	%r9d, %edx
+        Line 64: imulq	%rcx, %rdx
+
+      Sequence 4 (Lines 70-80):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 70: addl	%edi, %eax
+        Line 71: cmpl	$9, %r9d
+        Line 72: movl	%edx, %r9d
+        Line 73: ja	LBB0_11
+        Line 75: retq
+        Line 76: LBB0_14:
+        Line 77: xorl	%eax, %eax
+        Line 78: retq
+        Line 79: .cfi_endproc
+
+
+[42] Directory: true_o2_ARM/problem97_code.c
+    Input file: true_o2_ARM/problem97_code.c/input.txt
+    Total CMP/TEST instructions: 6
+    Total EFLAGS-dependent instructions: 6
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 27-36):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 27: movl	$0, (%r14)
+        Line 28: cmpl	$3, %ebx
+        Line 29: jl	LBB0_9
+        Line 31: movl	$2, %esi
+        Line 32: xorl	%r8d, %r8d
+        Line 33: jmp	LBB0_2
+        Line 34: .p2align	4, 0x90
+        Line 35: LBB0_7:                                 ##   in Loop: Header=BB0_2 Depth=1
+        Line 36: movslq	%r8d, %rax
+
+      Sequence 2 (Lines 41-54):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 11
+        Line 41: incl	%esi
+        Line 42: cmpl	%r15d, %esi
+        Line 43: je	LBB0_9
+        Line 44: LBB0_2:                                 ## =>This Loop Header: Depth=1
+        Line 46: testl	%r8d, %r8d
+        Line 47: jle	LBB0_7
+        Line 49: movl	%r8d, %ebx
+        Line 50: xorl	%edi, %edi
+        Line 51: .p2align	4, 0x90
+        Line 52: LBB0_5:                                 ##   Parent Loop BB0_2 Depth=1
+        Line 54: movl	(%r9,%rdi,4), %ecx
+
+      Sequence 3 (Lines 56-75):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 18
+        Line 56: imull	%ecx, %eax
+        Line 57: cmpl	%esi, %eax
+        Line 58: ja	LBB0_7
+        Line 60: movl	%esi, %eax
+        Line 61: cltd
+        Line 62: idivl	%ecx
+        Line 63: testl	%edx, %edx
+        Line 64: je	LBB0_8
+        Line 66: incq	%rdi
+        Line 67: cmpq	%rdi, %rbx
+        Line 68: jne	LBB0_5
+        Line 69: jmp	LBB0_7
+        Line 70: LBB0_9:
+        Line 71: movq	%r9, %rax
+        Line 72: addq	$8, %rsp
+        Line 73: popq	%rbx
+        Line 74: popq	%r14
+        Line 75: popq	%r15
+
+
+[43] Directory: true_o2_ARM/problem102_code.c
+    Input file: true_o2_ARM/problem102_code.c/input.txt
+    Total CMP/TEST instructions: 4
+    Total EFLAGS-dependent instructions: 4
+    Number of sequences: 1
+    Sequences found:
+      Sequence 1 (Lines 14-38):
+        CMP/TEST: 4, EFLAGS usage: 4, Total lines: 22
+        Line 14: movl	$-1, %eax
+        Line 15: cmpl	%edi, %esi
+        Line 16: jl	LBB0_4
+        Line 18: movl	%esi, %ecx
+        Line 19: andl	$-2147483647, %ecx              ## imm = 0x80000001
+        Line 20: cmpl	%edi, %esi
+        Line 21: jne	LBB0_3
+        Line 23: cmpl	$1, %ecx
+        Line 24: jne	LBB0_3
+        Line 25: LBB0_4:
+        Line 26: popq	%rbp
+        Line 27: retq
+        Line 28: LBB0_3:
+        Line 29: xorl	%eax, %eax
+        Line 30: cmpl	$1, %ecx
+        Line 31: sete	%al
+        Line 32: subl	%eax, %esi
+        Line 33: movl	%esi, %eax
+        Line 34: popq	%rbp
+        Line 35: retq
+        Line 36: .cfi_endproc
+        Line 38: .subsections_via_symbols
+
+
+[44] Directory: true_o2_ARM/problem103_code.c
+    Input file: true_o2_ARM/problem103_code.c/input.txt
+    Total CMP/TEST instructions: 4
+    Total EFLAGS-dependent instructions: 4
+    Number of sequences: 1
+    Sequences found:
+      Sequence 1 (Lines 14-38):
+        CMP/TEST: 4, EFLAGS usage: 4, Total lines: 22
+        Line 14: movl	$-1, %eax
+        Line 15: cmpl	%edi, %esi
+        Line 16: jl	LBB0_4
+        Line 18: movl	%esi, %ecx
+        Line 19: andl	$-2147483647, %ecx              ## imm = 0x80000001
+        Line 20: cmpl	%edi, %esi
+        Line 21: jne	LBB0_3
+        Line 23: cmpl	$1, %ecx
+        Line 24: jne	LBB0_3
+        Line 25: LBB0_4:
+        Line 26: popq	%rbp
+        Line 27: retq
+        Line 28: LBB0_3:
+        Line 29: xorl	%eax, %eax
+        Line 30: cmpl	$1, %ecx
+        Line 31: sete	%al
+        Line 32: subl	%eax, %esi
+        Line 33: movl	%esi, %eax
+        Line 34: popq	%rbp
+        Line 35: retq
+        Line 36: .cfi_endproc
+        Line 38: .subsections_via_symbols
+
+
+[45] Directory: true_o2_ARM/problem104_code.c
+    Input file: true_o2_ARM/problem104_code.c/input.txt
+    Total CMP/TEST instructions: 2
+    Total EFLAGS-dependent instructions: 2
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 16-25):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 16: .cfi_offset %rbx, -24
+        Line 17: cmpl	%esi, %edi
+        Line 18: jle	LBB0_2
+        Line 20: leaq	L_.str(%rip), %rax
+        Line 21: jmp	LBB0_4
+        Line 22: LBB0_2:
+        Line 23: movl	%esi, %ebx
+        Line 24: addl	%edi, %ebx
+        Line 25: movl	$33, %edi
+
+      Sequence 2 (Lines 44-54):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 44: decq	%rax
+        Line 45: cmpl	$3, %ebx
+        Line 46: movl	%edx, %ebx
+        Line 47: jg	LBB0_3
+        Line 48: LBB0_4:
+        Line 49: addq	$8, %rsp
+        Line 50: popq	%rbx
+        Line 51: popq	%rbp
+        Line 52: retq
+        Line 53: .cfi_endproc
+
+
+[46] Directory: true_o2_ARM/problem108_code.c
+    Input file: true_o2_ARM/problem108_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 5
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 21-30):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 21: movq	$0, (%rax)
+        Line 22: testl	%r14d, %r14d
+        Line 23: jle	LBB0_9
+        Line 25: movl	$1, %r10d
+        Line 26: xorl	%r8d, %r8d
+        Line 27: xorl	%r9d, %r9d
+        Line 28: jmp	LBB0_2
+        Line 29: .p2align	4, 0x90
+        Line 30: LBB0_7:                                 ##   in Loop: Header=BB0_2 Depth=1
+
+      Sequence 2 (Lines 34-44):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 34: leal	1(%r10), %ecx
+        Line 35: cmpl	%r14d, %r10d
+        Line 36: movl	%ecx, %r10d
+        Line 37: je	LBB0_9
+        Line 38: LBB0_2:                                 ## =>This Loop Header: Depth=1
+        Line 40: movl	%r10d, %edi
+        Line 41: xorl	%ecx, %ecx
+        Line 42: .p2align	4, 0x90
+        Line 43: LBB0_3:                                 ##   Parent Loop BB0_2 Depth=1
+
+      Sequence 3 (Lines 57-72):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 13
+        Line 57: addl	$9, %esi
+        Line 58: cmpl	$18, %esi
+        Line 59: ja	LBB0_3
+        Line 61: cmpl	%ecx, %r10d
+        Line 62: jne	LBB0_8
+        Line 64: testb	$1, %r10b
+        Line 65: jne	LBB0_7
+        Line 67: incl	%r8d
+        Line 68: movl	%r8d, (%rax)
+        Line 69: jmp	LBB0_8
+        Line 70: LBB0_9:
+        Line 71: popq	%rbx
+        Line 72: popq	%r14
+
+
+[47] Directory: true_o2_ARM/problem110_code.c
+    Input file: true_o2_ARM/problem110_code.c/input.txt
+    Total CMP/TEST instructions: 9
+    Total EFLAGS-dependent instructions: 9
+    Number of sequences: 4
+    Sequences found:
+      Sequence 1 (Lines 8-17):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 8
+        Line 9: testl	%esi, %esi
+        Line 10: je	LBB0_1
+        Line 12: pushq	%rbp
+        Line 13: .cfi_def_cfa_offset 16
+        Line 14: .cfi_offset %rbp, -16
+        Line 15: movq	%rsp, %rbp
+        Line 16: .cfi_def_cfa_register %rbp
+        Line 17: pushq	%rbx
+
+      Sequence 2 (Lines 18-33):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 14
+        Line 18: .cfi_offset %rbx, -24
+        Line 19: cmpl	$1, %esi
+        Line 20: jle	LBB0_3
+        Line 22: movl	%esi, %r10d
+        Line 23: movl	(%rdi), %r8d
+        Line 24: leaq	-1(%r10), %r9
+        Line 25: cmpq	$8, %r9
+        Line 26: jae	LBB0_8
+        Line 28: xorl	%r11d, %r11d
+        Line 29: movl	$1, %ebx
+        Line 30: movl	%r8d, %eax
+        Line 31: jmp	LBB0_12
+        Line 32: LBB0_1:
+        Line 33: movb	$1, %al
+
+      Sequence 3 (Lines 60-69):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 60: addq	$8, %rax
+        Line 61: cmpq	%rax, %rcx
+        Line 62: jne	LBB0_9
+        Line 64: paddd	%xmm1, %xmm2
+        Line 65: pshufd	$238, %xmm2, %xmm1              ## xmm1 = xmm2[2,3,2,3]
+        Line 66: paddd	%xmm2, %xmm1
+        Line 67: pshufd	$85, %xmm1, %xmm2               ## xmm2 = xmm1[1,1,1,1]
+        Line 68: paddd	%xmm1, %xmm2
+        Line 69: movd	%xmm2, %r11d
+
+      Sequence 4 (Lines 69-99):
+        CMP/TEST: 5, EFLAGS usage: 5, Total lines: 28
+        Line 69: movd	%xmm2, %r11d
+        Line 70: cmpq	%rcx, %r9
+        Line 71: je	LBB0_4
+        Line 73: pextrd	$3, %xmm0, %eax
+        Line 74: .p2align	4, 0x90
+        Line 75: LBB0_12:                                ## =>This Inner Loop Header: Depth=1
+        Line 76: movl	(%rdi,%rbx,4), %ecx
+        Line 77: xorl	%edx, %edx
+        Line 78: cmpl	%eax, %ecx
+        Line 79: setl	%dl
+        Line 80: addl	%edx, %r11d
+        Line 81: incq	%rbx
+        Line 82: movl	%ecx, %eax
+        Line 83: cmpq	%rbx, %r10
+        Line 84: jne	LBB0_12
+        Line 85: LBB0_4:
+        Line 86: movslq	%esi, %rcx
+        Line 87: xorl	%edx, %edx
+        Line 88: cmpl	%r8d, -4(%rdi,%rcx,4)
+        Line 89: setg	%dl
+        Line 90: addl	%r11d, %edx
+        Line 91: cmpl	$2, %edx
+        Line 92: setb	%al
+        Line 93: popq	%rbx
+        Line 94: popq	%rbp
+        Line 95: retq
+        Line 96: .cfi_endproc
+        Line 98: .subsections_via_symbols
+
+
+[48] Directory: true_o2_ARM/problem111_code.c
+    Input file: true_o2_ARM/problem111_code.c/input.txt
+    Total CMP/TEST instructions: 15
+    Total EFLAGS-dependent instructions: 14
+    Number of sequences: 10
+    Sequences found:
+      Sequence 1 (Lines 21-34):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 12
+        Line 21: .cfi_def_cfa_register %rbp
+        Line 22: testl	%esi, %esi
+        Line 23: jle	LBB0_1
+        Line 25: movl	%esi, %r8d
+        Line 26: cmpl	$8, %esi
+        Line 27: jae	LBB0_5
+        Line 29: xorl	%r9d, %r9d
+        Line 30: xorl	%r10d, %r10d
+        Line 31: jmp	LBB0_4
+        Line 32: LBB0_1:
+        Line 33: xorl	%r10d, %r10d
+        Line 34: jmp	LBB0_12
+
+      Sequence 2 (Lines 41-50):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 41: incq	%r10
+        Line 42: testq	%rax, %rax
+        Line 43: je	LBB0_6
+        Line 45: movq	%r10, %r11
+        Line 46: andq	$-2, %r11
+        Line 47: pxor	%xmm3, %xmm3
+        Line 48: xorl	%eax, %eax
+        Line 49: movdqa	LCPI0_0(%rip), %xmm2            ## xmm2 = [1,1,1,1]
+        Line 50: pxor	%xmm4, %xmm4
+
+      Sequence 3 (Lines 70-79):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 71: testb	$1, %r10b
+        Line 72: je	LBB0_11
+        Line 73: LBB0_10:
+        Line 74: movdqu	(%rdi,%rax,4), %xmm2
+        Line 75: movdqu	16(%rdi,%rax,4), %xmm3
+        Line 76: movdqa	LCPI0_0(%rip), %xmm4            ## xmm4 = [1,1,1,1]
+        Line 77: pandn	%xmm4, %xmm2
+        Line 78: paddd	%xmm2, %xmm0
+        Line 79: pandn	%xmm4, %xmm3
+
+      Sequence 4 (Lines 87-96):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 87: movd	%xmm0, %r10d
+        Line 88: cmpq	%r8, %r9
+        Line 89: je	LBB0_12
+        Line 90: .p2align	4, 0x90
+        Line 91: LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+        Line 92: movl	(%rdi,%r9,4), %eax
+        Line 93: notl	%eax
+        Line 94: andl	$1, %eax
+        Line 95: addl	%eax, %r10d
+        Line 96: incq	%r9
+
+      Sequence 5 (Lines 96-112):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 15
+        Line 96: incq	%r9
+        Line 97: cmpq	%r9, %r8
+        Line 98: jne	LBB0_4
+        Line 99: LBB0_12:
+        Line 100: testl	%ecx, %ecx
+        Line 101: jle	LBB0_23
+        Line 103: movl	%ecx, %r9d
+        Line 104: cmpl	$8, %ecx
+        Line 105: jae	LBB0_15
+        Line 107: xorl	%ecx, %ecx
+        Line 108: jmp	LBB0_22
+        Line 109: LBB0_15:
+        Line 110: movl	%r9d, %ecx
+        Line 111: andl	$-8, %ecx
+        Line 112: movd	%r10d, %xmm0
+
+      Sequence 6 (Lines 116-125):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 116: incq	%r8
+        Line 117: testq	%rax, %rax
+        Line 118: je	LBB0_16
+        Line 120: movq	%r8, %rdi
+        Line 121: andq	$-2, %rdi
+        Line 122: pxor	%xmm3, %xmm3
+        Line 123: xorl	%eax, %eax
+        Line 124: movdqa	LCPI0_0(%rip), %xmm2            ## xmm2 = [1,1,1,1]
+        Line 125: movdqa	%xmm0, %xmm4
+
+      Sequence 7 (Lines 145-154):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 146: testb	$1, %r8b
+        Line 147: je	LBB0_21
+        Line 148: LBB0_20:
+        Line 149: movdqu	(%rdx,%rax,4), %xmm2
+        Line 150: movdqu	16(%rdx,%rax,4), %xmm3
+        Line 151: movdqa	LCPI0_0(%rip), %xmm4            ## xmm4 = [1,1,1,1]
+        Line 152: pandn	%xmm4, %xmm2
+        Line 153: paddd	%xmm2, %xmm0
+        Line 154: pandn	%xmm4, %xmm3
+
+      Sequence 8 (Lines 162-171):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 162: movd	%xmm0, %r10d
+        Line 163: cmpq	%r9, %rcx
+        Line 164: je	LBB0_23
+        Line 165: .p2align	4, 0x90
+        Line 166: LBB0_22:                                ## =>This Inner Loop Header: Depth=1
+        Line 167: movl	(%rdx,%rcx,4), %eax
+        Line 168: notl	%eax
+        Line 169: andl	$1, %eax
+        Line 170: addl	%eax, %r10d
+        Line 171: incq	%rcx
+
+      Sequence 9 (Lines 171-184):
+        CMP/TEST: 2, EFLAGS usage: 1, Total lines: 14
+        Line 171: incq	%rcx
+        Line 172: cmpq	%rcx, %r9
+        Line 173: jne	LBB0_22
+        Line 174: LBB0_23:
+        Line 175: cmpl	%esi, %r10d
+        Line 176: leaq	L_.str.1(%rip), %rcx
+        Line 177: leaq	L_.str(%rip), %rax
+        Line 178: cmovlq	%rcx, %rax
+        Line 179: popq	%rbp
+        Line 180: retq
+        Line 181: LBB0_6:
+        Line 182: pxor	%xmm0, %xmm0
+        Line 183: xorl	%eax, %eax
+        Line 184: pxor	%xmm1, %xmm1
+
+      Sequence 10 (Lines 184-199):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 14
+        Line 184: pxor	%xmm1, %xmm1
+        Line 185: testb	$1, %r10b
+        Line 186: jne	LBB0_10
+        Line 187: jmp	LBB0_11
+        Line 188: LBB0_16:
+        Line 189: pxor	%xmm1, %xmm1
+        Line 190: xorl	%eax, %eax
+        Line 191: testb	$1, %r8b
+        Line 192: jne	LBB0_20
+        Line 193: jmp	LBB0_21
+        Line 194: .cfi_endproc
+        Line 196: .section	__TEXT,__cstring,cstring_literals
+        Line 197: L_.str:                                 ## @.str
+        Line 198: .asciz	"YES"
+
+
+[49] Directory: true_o2_ARM/problem114_code.c
+    Input file: true_o2_ARM/problem114_code.c/input.txt
+    Total CMP/TEST instructions: 6
+    Total EFLAGS-dependent instructions: 6
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 30-39):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 30: movq	%rax, %r12
+        Line 31: testl	%ebx, %ebx
+        Line 32: jle	LBB0_8
+        Line 34: movl	%r15d, %r13d
+        Line 35: xorl	%r15d, %r15d
+        Line 36: jmp	LBB0_2
+        Line 37: .p2align	4, 0x90
+        Line 38: LBB0_7:                                 ##   in Loop: Header=BB0_2 Depth=1
+        Line 39: movl	$100, %edi
+
+      Sequence 2 (Lines 51-67):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 15
+        Line 51: incq	%r15
+        Line 52: cmpq	%r13, %r15
+        Line 53: je	LBB0_8
+        Line 54: LBB0_2:                                 ## =>This Loop Header: Depth=1
+        Line 56: movq	(%r14,%r15,8), %rax
+        Line 57: movb	(%rax), %cl
+        Line 58: movl	$0, %ebx
+        Line 59: testb	%cl, %cl
+        Line 60: je	LBB0_7
+        Line 62: incq	%rax
+        Line 63: xorl	%ebx, %ebx
+        Line 64: jmp	LBB0_4
+        Line 65: .p2align	4, 0x90
+        Line 66: LBB0_6:                                 ##   in Loop: Header=BB0_4 Depth=2
+        Line 67: movzbl	(%rax), %ecx
+
+      Sequence 3 (Lines 68-89):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 20
+        Line 68: incq	%rax
+        Line 69: testb	%cl, %cl
+        Line 70: je	LBB0_7
+        Line 71: LBB0_4:                                 ##   Parent Loop BB0_2 Depth=1
+        Line 73: leal	-48(%rcx), %edx
+        Line 74: cmpb	$9, %dl
+        Line 75: ja	LBB0_6
+        Line 77: movzbl	%cl, %ecx
+        Line 78: addl	$-48, %ecx
+        Line 79: andl	$-2147483647, %ecx              ## imm = 0x80000001
+        Line 80: xorl	%edx, %edx
+        Line 81: cmpl	$1, %ecx
+        Line 82: sete	%dl
+        Line 83: addl	%edx, %ebx
+        Line 84: jmp	LBB0_6
+        Line 85: LBB0_8:
+        Line 86: movq	%r12, %rax
+        Line 87: addq	$8, %rsp
+        Line 88: popq	%rbx
+        Line 89: popq	%r12
+
+
+[50] Directory: true_o2_ARM/problem115_code.c
+    Input file: true_o2_ARM/problem115_code.c/input.txt
+    Total CMP/TEST instructions: 7
+    Total EFLAGS-dependent instructions: 4
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 14-28):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 13
+        Line 14: movq	(%rdi), %rax
+        Line 15: cmpl	$2, %esi
+        Line 16: jl	LBB0_5
+        Line 18: movl	%esi, %r8d
+        Line 19: decq	%r8
+        Line 20: cmpl	$2, %esi
+        Line 21: jne	LBB0_6
+        Line 23: movl	$1, %edx
+        Line 24: movq	%rax, %rsi
+        Line 25: jmp	LBB0_3
+        Line 26: LBB0_6:
+        Line 27: movq	%r8, %r9
+        Line 28: andq	$-2, %r9
+
+      Sequence 2 (Lines 37-68):
+        CMP/TEST: 5, EFLAGS usage: 2, Total lines: 29
+        Line 37: addq	(%rdi,%rdx,8), %rcx
+        Line 38: cmpq	%rax, %rcx
+        Line 39: cmovlq	%rcx, %rax
+        Line 40: movq	%rcx, %rsi
+        Line 41: sarq	$63, %rsi
+        Line 42: andq	%rcx, %rsi
+        Line 43: addq	8(%rdi,%rdx,8), %rsi
+        Line 44: cmpq	%rax, %rsi
+        Line 45: cmovlq	%rsi, %rax
+        Line 46: leaq	(%r9,%rdx), %rcx
+        Line 47: addq	$2, %rcx
+        Line 48: addq	$2, %rdx
+        Line 49: cmpq	$1, %rcx
+        Line 50: jne	LBB0_7
+        Line 51: LBB0_3:
+        Line 52: testb	$1, %r8b
+        Line 53: je	LBB0_5
+        Line 55: movq	%rsi, %rcx
+        Line 56: sarq	$63, %rcx
+        Line 57: andq	%rsi, %rcx
+        Line 58: addq	(%rdi,%rdx,8), %rcx
+        Line 59: cmpq	%rax, %rcx
+        Line 60: cmovgeq	%rax, %rcx
+        Line 61: movq	%rcx, %rax
+        Line 62: LBB0_5:
+        Line 63: popq	%rbp
+        Line 64: retq
+        Line 65: .cfi_endproc
+        Line 67: .subsections_via_symbols
+
+
+[51] Directory: true_o2_ARM/problem121_code.c
+    Input file: true_o2_ARM/problem121_code.c/input.txt
+    Total CMP/TEST instructions: 18
+    Total EFLAGS-dependent instructions: 18
+    Number of sequences: 9
+    Sequences found:
+      Sequence 1 (Lines 20-29):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 8
+        Line 21: cmpl	$2, %esi
+        Line 22: jl	LBB0_17
+        Line 24: leal	-1(%rsi), %r8d
+        Line 25: xorl	%r9d, %r9d
+        Line 26: movl	%r8d, %r10d
+        Line 27: jmp	LBB0_3
+        Line 28: .p2align	4, 0x90
+        Line 29: LBB0_2:                                 ##   in Loop: Header=BB0_3 Depth=1
+
+      Sequence 2 (Lines 31-61):
+        CMP/TEST: 5, EFLAGS usage: 5, Total lines: 26
+        Line 31: decl	%r10d
+        Line 32: cmpl	%r8d, %r9d
+        Line 33: je	LBB0_17
+        Line 34: LBB0_3:                                 ## =>This Loop Header: Depth=1
+        Line 36: movl	%r10d, %r10d
+        Line 37: movl	%r9d, %eax
+        Line 38: notl	%eax
+        Line 39: addl	%esi, %eax
+        Line 40: testl	%eax, %eax
+        Line 41: jle	LBB0_2
+        Line 43: movl	(%rdi), %r14d
+        Line 44: cmpl	$1, %r10d
+        Line 45: jne	LBB0_9
+        Line 47: xorl	%r15d, %r15d
+        Line 48: LBB0_6:                                 ##   in Loop: Header=BB0_3 Depth=1
+        Line 49: testb	$1, %r10b
+        Line 50: je	LBB0_2
+        Line 52: movl	4(%rdi,%r15,4), %eax
+        Line 53: cmpl	%eax, %r14d
+        Line 54: jle	LBB0_2
+        Line 56: movl	%eax, (%rdi,%r15,4)
+        Line 57: movl	%r14d, 4(%rdi,%r15,4)
+        Line 58: jmp	LBB0_2
+        Line 59: .p2align	4, 0x90
+        Line 60: LBB0_9:                                 ##   in Loop: Header=BB0_3 Depth=1
+        Line 61: movl	%r10d, %r11d
+
+      Sequence 3 (Lines 70-84):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 13
+        Line 70: movq	%r15, %rbx
+        Line 71: cmpq	%r15, %r11
+        Line 72: je	LBB0_6
+        Line 73: LBB0_12:                                ##   Parent Loop BB0_3 Depth=1
+        Line 75: movl	4(%rdi,%rbx,4), %eax
+        Line 76: cmpl	%eax, %r14d
+        Line 77: jle	LBB0_14
+        Line 79: movl	%eax, (%rdi,%rbx,4)
+        Line 80: movl	%r14d, 4(%rdi,%rbx,4)
+        Line 81: jmp	LBB0_15
+        Line 82: .p2align	4, 0x90
+        Line 83: LBB0_14:                                ##   in Loop: Header=BB0_12 Depth=2
+        Line 84: movl	%eax, %r14d
+
+      Sequence 4 (Lines 87-114):
+        CMP/TEST: 4, EFLAGS usage: 4, Total lines: 25
+        Line 87: movl	8(%rdi,%rbx,4), %eax
+        Line 88: cmpl	%eax, %r14d
+        Line 89: jg	LBB0_10
+        Line 91: movl	%eax, %r14d
+        Line 92: jmp	LBB0_11
+        Line 93: LBB0_17:
+        Line 94: testl	%edx, %edx
+        Line 95: jle	LBB0_36
+        Line 97: subl	%edx, %esi
+        Line 98: movslq	%esi, %r8
+        Line 99: movl	%edx, %r10d
+        Line 100: cmpl	$8, %edx
+        Line 101: jb	LBB0_19
+        Line 103: leaq	(%rdi,%r8,4), %rax
+        Line 104: movq	%rcx, %rdx
+        Line 105: subq	%rax, %rdx
+        Line 106: cmpq	$32, %rdx
+        Line 107: jae	LBB0_22
+        Line 108: LBB0_19:
+        Line 109: xorl	%edx, %edx
+        Line 110: LBB0_30:
+        Line 111: movq	%rdx, %r9
+        Line 112: notq	%r9
+        Line 113: addq	%r10, %r9
+        Line 114: movq	%r10, %rsi
+
+      Sequence 5 (Lines 126-135):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 126: LBB0_33:
+        Line 127: cmpq	$3, %r9
+        Line 128: jb	LBB0_36
+        Line 130: leaq	(%rdi,%r8,4), %rax
+        Line 131: addq	$12, %rax
+        Line 132: .p2align	4, 0x90
+        Line 133: LBB0_35:                                ## =>This Inner Loop Header: Depth=1
+        Line 134: movl	-12(%rax,%rdx,4), %esi
+        Line 135: movl	%esi, (%rcx,%rdx,4)
+
+      Sequence 6 (Lines 142-151):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 142: addq	$4, %rdx
+        Line 143: cmpq	%rdx, %r10
+        Line 144: jne	LBB0_35
+        Line 145: jmp	LBB0_36
+        Line 146: LBB0_22:
+        Line 147: movl	%r10d, %edx
+        Line 148: andl	$-8, %edx
+        Line 149: leaq	-8(%rdx), %rax
+        Line 150: movq	%rax, %rsi
+        Line 151: shrq	$3, %rsi
+
+      Sequence 7 (Lines 154-163):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 154: andl	$3, %r9d
+        Line 155: cmpq	$24, %rax
+        Line 156: jae	LBB0_24
+        Line 158: xorl	%eax, %eax
+        Line 159: jmp	LBB0_26
+        Line 160: LBB0_24:
+        Line 161: andq	$-4, %rsi
+        Line 162: leaq	(%rdi,%r8,4), %rbx
+        Line 163: addq	$112, %rbx
+
+      Sequence 8 (Lines 186-195):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 186: LBB0_26:
+        Line 187: testq	%r9, %r9
+        Line 188: je	LBB0_29
+        Line 190: leaq	(%rcx,%rax,4), %rsi
+        Line 191: addq	$16, %rsi
+        Line 192: addq	%r8, %rax
+        Line 193: leaq	(%rdi,%rax,4), %rax
+        Line 194: addq	$16, %rax
+        Line 195: shlq	$5, %r9
+
+      Sequence 9 (Lines 203-215):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 13
+        Line 203: addq	$32, %rbx
+        Line 204: cmpq	%rbx, %r9
+        Line 205: jne	LBB0_28
+        Line 206: LBB0_29:
+        Line 207: cmpq	%r10, %rdx
+        Line 208: jne	LBB0_30
+        Line 209: LBB0_36:
+        Line 210: popq	%rbx
+        Line 211: popq	%r14
+        Line 212: popq	%r15
+        Line 213: popq	%rbp
+        Line 214: retq
+        Line 215: .cfi_endproc
+
+
+[52] Directory: true_o2_ARM/problem122_code.c
+    Input file: true_o2_ARM/problem122_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 4
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 26-40):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 13
+        Line 26: .cfi_def_cfa_register %rbp
+        Line 27: testl	%esi, %esi
+        Line 28: jle	LBB0_1
+        Line 30: decl	%esi
+        Line 31: xorl	%r9d, %r9d
+        Line 32: cmpl	$16, %esi
+        Line 33: jae	LBB0_4
+        Line 35: xorl	%edx, %edx
+        Line 36: xorl	%r8d, %r8d
+        Line 37: xorl	%eax, %eax
+        Line 38: jmp	LBB0_7
+        Line 39: LBB0_1:
+        Line 40: xorl	%eax, %eax
+
+      Sequence 2 (Lines 77-86):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 77: addq	$8, %rax
+        Line 78: cmpq	%rax, %rdx
+        Line 79: jne	LBB0_5
+        Line 81: paddd	%xmm0, %xmm1
+        Line 82: pshufd	$238, %xmm1, %xmm0              ## xmm0 = xmm1[2,3,2,3]
+        Line 83: paddd	%xmm1, %xmm0
+        Line 84: pshufd	$85, %xmm0, %xmm1               ## xmm1 = xmm0[1,1,1,1]
+        Line 85: paddd	%xmm0, %xmm1
+        Line 86: movd	%xmm1, %eax
+
+      Sequence 3 (Lines 98-111):
+        CMP/TEST: 2, EFLAGS usage: 1, Total lines: 11
+        Line 98: andl	$-2147483647, %ecx              ## imm = 0x80000001
+        Line 99: cmpl	$1, %ecx
+        Line 100: cmovnel	%r9d, %edx
+        Line 101: addl	%edx, %eax
+        Line 102: incq	%rdi
+        Line 103: cmpq	%rdi, %rsi
+        Line 104: jne	LBB0_8
+        Line 106: popq	%rbp
+        Line 107: retq
+        Line 108: .cfi_endproc
+        Line 110: .subsections_via_symbols
+
+
+[53] Directory: true_o2_ARM/problem123_code.c
+    Input file: true_o2_ARM/problem123_code.c/input.txt
+    Total CMP/TEST instructions: 8
+    Total EFLAGS-dependent instructions: 7
+    Number of sequences: 5
+    Sequences found:
+      Sequence 1 (Lines 26-40):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 13
+        Line 26: .cfi_def_cfa_register %rbp
+        Line 27: testl	%esi, %esi
+        Line 28: jle	LBB0_1
+        Line 30: movl	%esi, %r10d
+        Line 31: xorl	%r9d, %r9d
+        Line 32: cmpl	$8, %esi
+        Line 33: jae	LBB0_4
+        Line 35: xorl	%esi, %esi
+        Line 36: xorl	%eax, %eax
+        Line 37: jmp	LBB0_11
+        Line 38: LBB0_1:
+        Line 39: xorl	%eax, %eax
+        Line 40: popq	%rbp
+
+      Sequence 2 (Lines 48-57):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 48: incq	%r8
+        Line 49: testq	%rax, %rax
+        Line 50: je	LBB0_5
+        Line 52: movq	%r8, %rdx
+        Line 53: andq	$-2, %rdx
+        Line 54: pxor	%xmm0, %xmm0
+        Line 55: xorl	%eax, %eax
+        Line 56: movdqa	LCPI0_0(%rip), %xmm8            ## xmm8 = [99,99,99,99]
+        Line 57: movdqa	LCPI0_1(%rip), %xmm9            ## xmm9 = [198,198,198,198]
+
+      Sequence 3 (Lines 96-105):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 97: testb	$1, %r8b
+        Line 98: je	LBB0_10
+        Line 99: LBB0_9:
+        Line 100: movdqu	(%rdi,%rax,4), %xmm2
+        Line 101: movdqu	16(%rdi,%rax,4), %xmm3
+        Line 102: movdqa	LCPI0_0(%rip), %xmm4            ## xmm4 = [99,99,99,99]
+        Line 103: movdqa	%xmm2, %xmm5
+        Line 104: paddd	%xmm4, %xmm5
+        Line 105: paddd	%xmm3, %xmm4
+
+      Sequence 4 (Lines 122-141):
+        CMP/TEST: 3, EFLAGS usage: 2, Total lines: 20
+        Line 122: movd	%xmm0, %eax
+        Line 123: cmpq	%r10, %rsi
+        Line 124: je	LBB0_12
+        Line 125: .p2align	4, 0x90
+        Line 126: LBB0_11:                                ## =>This Inner Loop Header: Depth=1
+        Line 127: movl	(%rdi,%rsi,4), %edx
+        Line 128: leal	99(%rdx), %ecx
+        Line 129: cmpl	$199, %ecx
+        Line 130: cmovael	%r9d, %edx
+        Line 131: addl	%edx, %eax
+        Line 132: incq	%rsi
+        Line 133: cmpq	%rsi, %r10
+        Line 134: jne	LBB0_11
+        Line 135: LBB0_12:
+        Line 136: popq	%rbp
+        Line 137: retq
+        Line 138: LBB0_5:
+        Line 139: pxor	%xmm0, %xmm0
+        Line 140: xorl	%eax, %eax
+        Line 141: pxor	%xmm1, %xmm1
+
+      Sequence 5 (Lines 141-148):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 6
+        Line 141: pxor	%xmm1, %xmm1
+        Line 142: testb	$1, %r8b
+        Line 143: jne	LBB0_9
+        Line 144: jmp	LBB0_10
+        Line 145: .cfi_endproc
+        Line 147: .subsections_via_symbols
+
+
+[54] Directory: true_o2_ARM/problem128_code.c
+    Input file: true_o2_ARM/problem128_code.c/input.txt
+    Total CMP/TEST instructions: 6
+    Total EFLAGS-dependent instructions: 4
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 13-33):
+        CMP/TEST: 4, EFLAGS usage: 2, Total lines: 19
+        Line 13: .cfi_def_cfa_register %rbp
+        Line 14: cmpl	%edx, %edi
+        Line 15: cmovgl	%edi, %edx
+        Line 16: movl	%ecx, %edi
+        Line 17: cmpl	%ecx, %esi
+        Line 18: cmovll	%esi, %edi
+        Line 19: subl	%edx, %edi
+        Line 20: leaq	L_.str(%rip), %rcx
+        Line 21: cmpl	$2, %edi
+        Line 22: jl	LBB0_7
+        Line 24: leaq	L_.str.1(%rip), %r8
+        Line 25: cmpl	$4, %edi
+        Line 26: jb	LBB0_6
+        Line 28: movl	$2, %esi
+        Line 29: .p2align	4, 0x90
+        Line 30: LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
+        Line 31: movl	%edi, %eax
+        Line 32: cltd
+        Line 33: idivl	%esi
+
+      Sequence 2 (Lines 33-48):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 15
+        Line 33: idivl	%esi
+        Line 34: testl	%edx, %edx
+        Line 35: je	LBB0_7
+        Line 37: incl	%esi
+        Line 38: movl	%esi, %eax
+        Line 39: imull	%esi, %eax
+        Line 40: cmpl	%edi, %eax
+        Line 41: jle	LBB0_4
+        Line 42: LBB0_6:
+        Line 43: movq	%r8, %rcx
+        Line 44: LBB0_7:
+        Line 45: movq	%rcx, %rax
+        Line 46: popq	%rbp
+        Line 47: retq
+        Line 48: .cfi_endproc
+
+
+[55] Directory: true_o2_ARM/problem132_code.c
+    Input file: true_o2_ARM/problem132_code.c/input.txt
+    Total CMP/TEST instructions: 4
+    Total EFLAGS-dependent instructions: 2
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 13-22):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 13: .cfi_def_cfa_register %rbp
+        Line 14: testl	%edi, %edi
+        Line 15: jle	LBB0_1
+        Line 17: movl	$1, %r9d
+        Line 18: xorl	%ecx, %ecx
+        Line 19: movl	$3435973837, %r8d               ## imm = 0xCCCCCCCD
+        Line 20: movl	$1, %eax
+        Line 21: .p2align	4, 0x90
+        Line 22: LBB0_3:                                 ## =>This Inner Loop Header: Depth=1
+
+      Sequence 2 (Lines 29-47):
+        CMP/TEST: 3, EFLAGS usage: 1, Total lines: 17
+        Line 29: subl	%r10d, %edx
+        Line 30: testb	$1, %dl
+        Line 31: cmovel	%r9d, %edx
+        Line 32: cmovnel	%r9d, %ecx
+        Line 33: imull	%edx, %eax
+        Line 34: cmpl	$9, %edi
+        Line 35: movl	%esi, %edi
+        Line 36: ja	LBB0_3
+        Line 38: testl	%ecx, %ecx
+        Line 39: cmovel	%ecx, %eax
+        Line 40: popq	%rbp
+        Line 41: retq
+        Line 42: LBB0_1:
+        Line 43: xorl	%eax, %eax
+        Line 44: popq	%rbp
+        Line 45: retq
+        Line 46: .cfi_endproc
+
+
+[56] Directory: true_o2_ARM/problem134_code.c
+    Input file: true_o2_ARM/problem134_code.c/input.txt
+    Total CMP/TEST instructions: 7
+    Total EFLAGS-dependent instructions: 7
+    Number of sequences: 6
+    Sequences found:
+      Sequence 1 (Lines 13-26):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 12
+        Line 13: .cfi_def_cfa_register %rbp
+        Line 14: testl	%esi, %esi
+        Line 15: jle	LBB0_1
+        Line 17: movl	%esi, %ecx
+        Line 18: cmpl	$8, %esi
+        Line 19: jae	LBB0_4
+        Line 21: xorl	%edx, %edx
+        Line 22: xorl	%eax, %eax
+        Line 23: jmp	LBB0_11
+        Line 24: LBB0_1:
+        Line 25: xorl	%eax, %eax
+        Line 26: popq	%rbp
+
+      Sequence 2 (Lines 34-43):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 34: incq	%r8
+        Line 35: testq	%rax, %rax
+        Line 36: je	LBB0_5
+        Line 38: movq	%r8, %rax
+        Line 39: andq	$-2, %rax
+        Line 40: pxor	%xmm0, %xmm0
+        Line 41: xorl	%esi, %esi
+        Line 42: pxor	%xmm1, %xmm1
+        Line 43: .p2align	4, 0x90
+
+      Sequence 3 (Lines 68-77):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 69: testb	$1, %r8b
+        Line 70: je	LBB0_10
+        Line 71: LBB0_9:
+        Line 72: movups	(%rdi,%rsi,4), %xmm2
+        Line 73: movups	16(%rdi,%rsi,4), %xmm3
+        Line 74: roundps	$10, %xmm2, %xmm2
+        Line 75: roundps	$10, %xmm3, %xmm3
+        Line 76: cvttps2dq	%xmm2, %xmm2
+        Line 77: cvttps2dq	%xmm3, %xmm3
+
+      Sequence 4 (Lines 88-97):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 88: movd	%xmm0, %eax
+        Line 89: cmpq	%rcx, %rdx
+        Line 90: je	LBB0_12
+        Line 91: .p2align	4, 0x90
+        Line 92: LBB0_11:                                ## =>This Inner Loop Header: Depth=1
+        Line 93: movss	(%rdi,%rdx,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+        Line 94: roundss	$10, %xmm0, %xmm0
+        Line 95: cvttss2si	%xmm0, %esi
+        Line 96: imull	%esi, %esi
+        Line 97: addl	%esi, %eax
+
+      Sequence 5 (Lines 98-107):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 98: incq	%rdx
+        Line 99: cmpq	%rdx, %rcx
+        Line 100: jne	LBB0_11
+        Line 101: LBB0_12:
+        Line 102: popq	%rbp
+        Line 103: retq
+        Line 104: LBB0_5:
+        Line 105: pxor	%xmm0, %xmm0
+        Line 106: xorl	%esi, %esi
+        Line 107: pxor	%xmm1, %xmm1
+
+      Sequence 6 (Lines 107-114):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 6
+        Line 107: pxor	%xmm1, %xmm1
+        Line 108: testb	$1, %r8b
+        Line 109: jne	LBB0_9
+        Line 110: jmp	LBB0_10
+        Line 111: .cfi_endproc
+        Line 113: .subsections_via_symbols
+
+
+[57] Directory: true_o2_ARM/problem135_code.c
+    Input file: true_o2_ARM/problem135_code.c/input.txt
+    Total CMP/TEST instructions: 7
+    Total EFLAGS-dependent instructions: 7
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 25-34):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 25: xorl	%r15d, %r15d
+        Line 26: testl	%ebx, %ebx
+        Line 27: je	LBB0_10
+        Line 29: movl	%ebx, %r12d
+        Line 30: shlq	$32, %rbx
+        Line 31: movabsq	$-4294967296, %rax              ## imm = 0xFFFFFFFF00000000
+        Line 32: addq	%rbx, %rax
+        Line 33: sarq	$32, %rax
+        Line 34: movzbl	(%r14,%rax), %edi
+
+      Sequence 2 (Lines 34-67):
+        CMP/TEST: 5, EFLAGS usage: 5, Total lines: 30
+        Line 34: movzbl	(%r14,%rax), %edi
+        Line 35: testb	%dil, %dil
+        Line 36: js	LBB0_3
+        Line 38: movq	__DefaultRuneLocale@GOTPCREL(%rip), %rcx
+        Line 39: movl	$256, %eax                      ## imm = 0x100
+        Line 40: andl	60(%rcx,%rdi,4), %eax
+        Line 41: testl	%eax, %eax
+        Line 42: jne	LBB0_5
+        Line 43: jmp	LBB0_10
+        Line 44: LBB0_3:
+        Line 45: movl	$256, %esi                      ## imm = 0x100
+        Line 47: callq	___maskrune
+        Line 48: testl	%eax, %eax
+        Line 49: je	LBB0_10
+        Line 50: LBB0_5:
+        Line 51: movl	$1, %r15d
+        Line 52: cmpl	$1, %r12d
+        Line 53: je	LBB0_10
+        Line 55: movabsq	$-8589934592, %rax              ## imm = 0xFFFFFFFE00000000
+        Line 56: addq	%rax, %rbx
+        Line 57: sarq	$32, %rbx
+        Line 58: movzbl	(%r14,%rbx), %edi
+        Line 59: testb	%dil, %dil
+        Line 60: js	LBB0_8
+        Line 62: movq	__DefaultRuneLocale@GOTPCREL(%rip), %rcx
+        Line 63: movl	$256, %eax                      ## imm = 0x100
+        Line 64: andl	60(%rcx,%rdi,4), %eax
+        Line 65: jmp	LBB0_9
+        Line 66: LBB0_8:
+        Line 67: movl	$256, %esi                      ## imm = 0x100
+
+      Sequence 3 (Lines 71-80):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 71: xorl	%r15d, %r15d
+        Line 72: testl	%eax, %eax
+        Line 73: sete	%r15b
+        Line 74: LBB0_10:
+        Line 75: movl	%r15d, %eax
+        Line 76: popq	%rbx
+        Line 77: popq	%r12
+        Line 78: popq	%r14
+        Line 79: popq	%r15
+        Line 80: popq	%rbp
+
+
+[58] Directory: true_o2_ARM/problem138_code.c
+    Input file: true_o2_ARM/problem138_code.c/input.txt
+    Total CMP/TEST instructions: 2
+    Total EFLAGS-dependent instructions: 2
+    Number of sequences: 1
+    Sequences found:
+      Sequence 1 (Lines 13-24):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 11
+        Line 13: .cfi_def_cfa_register %rbp
+        Line 14: testb	$1, %dil
+        Line 15: sete	%al
+        Line 16: cmpl	$8, %edi
+        Line 17: setge	%cl
+        Line 18: andb	%al, %cl
+        Line 19: movzbl	%cl, %eax
+        Line 20: popq	%rbp
+        Line 21: retq
+        Line 22: .cfi_endproc
+        Line 24: .subsections_via_symbols
+
+
+[59] Directory: true_o2_ARM/problem139_code.c
+    Input file: true_o2_ARM/problem139_code.c/input.txt
+    Total CMP/TEST instructions: 2
+    Total EFLAGS-dependent instructions: 2
+    Number of sequences: 1
+    Sequences found:
+      Sequence 1 (Lines 13-24):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 11
+        Line 13: .cfi_def_cfa_register %rbp
+        Line 14: testb	$1, %dil
+        Line 15: sete	%al
+        Line 16: cmpl	$8, %edi
+        Line 17: setge	%cl
+        Line 18: andb	%al, %cl
+        Line 19: movzbl	%cl, %eax
+        Line 20: popq	%rbp
+        Line 21: retq
+        Line 22: .cfi_endproc
+        Line 24: .subsections_via_symbols
+
+
+[60] Directory: true_o2_ARM/problem147_code.c
+    Input file: true_o2_ARM/problem147_code.c/input.txt
+    Total CMP/TEST instructions: 4
+    Total EFLAGS-dependent instructions: 4
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 13-22):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 13: .cfi_def_cfa_register %rbp
+        Line 14: testl	%esi, %esi
+        Line 15: jle	LBB0_1
+        Line 17: movl	%esi, %r8d
+        Line 18: xorl	%r10d, %r10d
+        Line 19: movl	$3435973837, %esi               ## imm = 0xCCCCCCCD
+        Line 20: xorl	%eax, %eax
+        Line 21: jmp	LBB0_4
+        Line 22: .p2align	4, 0x90
+
+      Sequence 2 (Lines 24-38):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 12
+        Line 24: incq	%r10
+        Line 25: cmpq	%r8, %r10
+        Line 26: je	LBB0_2
+        Line 27: LBB0_4:                                 ## =>This Loop Header: Depth=1
+        Line 29: movl	(%rdi,%r10,4), %r9d
+        Line 30: cmpl	$11, %r9d
+        Line 31: jl	LBB0_8
+        Line 33: movl	%r9d, %ecx
+        Line 34: .p2align	4, 0x90
+        Line 35: LBB0_6:                                 ##   Parent Loop BB0_4 Depth=1
+        Line 37: movl	%ecx, %edx
+        Line 38: movl	%ecx, %ecx
+
+      Sequence 3 (Lines 40-49):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 40: shrq	$35, %rcx
+        Line 41: cmpl	$99, %edx
+        Line 42: ja	LBB0_6
+        Line 44: andl	%r9d, %ecx
+        Line 45: andl	$1, %ecx
+        Line 46: addl	%ecx, %eax
+        Line 47: jmp	LBB0_8
+        Line 48: LBB0_1:
+        Line 49: xorl	%eax, %eax
+
+
+[61] Directory: true_o2_ARM/problem151_code.c
+    Input file: true_o2_ARM/problem151_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 3
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 16-27):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 11
+        Line 16: xorl	%ecx, %ecx
+        Line 17: cmpl	$2, %edi
+        Line 18: setge	%cl
+        Line 19: cmpl	$4, %edi
+        Line 20: jl	LBB0_3
+        Line 22: movl	$2, %esi
+        Line 23: .p2align	4, 0x90
+        Line 24: LBB0_2:                                 ## =>This Inner Loop Header: Depth=1
+        Line 25: movl	%edi, %eax
+        Line 26: cltd
+        Line 27: idivl	%esi
+
+      Sequence 2 (Lines 27-44):
+        CMP/TEST: 3, EFLAGS usage: 1, Total lines: 16
+        Line 27: idivl	%esi
+        Line 28: testl	%edx, %edx
+        Line 29: cmovel	%edx, %ecx
+        Line 30: incl	%esi
+        Line 31: movl	%esi, %eax
+        Line 32: imull	%esi, %eax
+        Line 33: cmpl	%edi, %eax
+        Line 34: jle	LBB0_2
+        Line 35: LBB0_3:
+        Line 36: testl	%ecx, %ecx
+        Line 37: cmovel	%r8d, %r9d
+        Line 38: movl	%r9d, %eax
+        Line 39: popq	%rbp
+        Line 40: retq
+        Line 41: .cfi_endproc
+        Line 43: .subsections_via_symbols
+
+
+[62] Directory: true_o2_ARM/problem153_code.c
+    Input file: true_o2_ARM/problem153_code.c/input.txt
+    Total CMP/TEST instructions: 10
+    Total EFLAGS-dependent instructions: 10
+    Number of sequences: 5
+    Sequences found:
+      Sequence 1 (Lines 13-33):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 18
+        Line 13: .cfi_def_cfa_register %rbp
+        Line 14: testl	%ecx, %ecx
+        Line 15: jle	LBB0_16
+        Line 17: movl	%ecx, %r8d
+        Line 18: cmpl	$8, %ecx
+        Line 19: jae	LBB0_3
+        Line 21: xorl	%r11d, %r11d
+        Line 22: LBB0_12:
+        Line 23: movq	%r11, %r10
+        Line 24: notq	%r10
+        Line 25: testb	$1, %r8b
+        Line 26: je	LBB0_14
+        Line 28: movl	(%rdi,%r11,4), %r9d
+        Line 29: subl	(%rsi,%r11,4), %r9d
+        Line 30: movl	%r9d, %eax
+        Line 31: negl	%eax
+        Line 32: cmovsl	%r9d, %eax
+        Line 33: movl	%eax, (%rdx,%r11,4)
+
+      Sequence 2 (Lines 52-73):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 20
+        Line 52: addq	$2, %r11
+        Line 53: cmpq	%r11, %r8
+        Line 54: jne	LBB0_15
+        Line 55: jmp	LBB0_16
+        Line 56: LBB0_3:
+        Line 57: movq	%rdx, %rax
+        Line 58: subq	%rdi, %rax
+        Line 59: xorl	%r11d, %r11d
+        Line 60: cmpq	$32, %rax
+        Line 61: jb	LBB0_12
+        Line 63: movq	%rdx, %rax
+        Line 64: subq	%rsi, %rax
+        Line 65: cmpq	$32, %rax
+        Line 66: jb	LBB0_12
+        Line 68: movl	%r8d, %r11d
+        Line 69: andl	$-8, %r11d
+        Line 70: leaq	-8(%r11), %rax
+        Line 71: movq	%rax, %r9
+        Line 72: shrq	$3, %r9
+        Line 73: incq	%r9
+
+      Sequence 3 (Lines 73-82):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 73: incq	%r9
+        Line 74: testq	%rax, %rax
+        Line 75: je	LBB0_6
+        Line 77: movq	%r9, %r10
+        Line 78: andq	$-2, %r10
+        Line 79: xorl	%eax, %eax
+        Line 80: .p2align	4, 0x90
+        Line 81: LBB0_8:                                 ## =>This Inner Loop Header: Depth=1
+        Line 82: movdqu	(%rdi,%rax,4), %xmm0
+
+      Sequence 4 (Lines 105-114):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 106: testb	$1, %r9b
+        Line 107: je	LBB0_11
+        Line 108: LBB0_10:
+        Line 109: movdqu	(%rdi,%rax,4), %xmm0
+        Line 110: movdqu	16(%rdi,%rax,4), %xmm1
+        Line 111: movdqu	(%rsi,%rax,4), %xmm2
+        Line 112: psubd	%xmm2, %xmm0
+        Line 113: movdqu	16(%rsi,%rax,4), %xmm2
+        Line 114: psubd	%xmm2, %xmm1
+
+      Sequence 5 (Lines 119-133):
+        CMP/TEST: 2, EFLAGS usage: 2, Total lines: 13
+        Line 119: LBB0_11:
+        Line 120: cmpq	%r8, %r11
+        Line 121: jne	LBB0_12
+        Line 122: LBB0_16:
+        Line 123: popq	%rbp
+        Line 124: retq
+        Line 125: LBB0_6:
+        Line 126: xorl	%eax, %eax
+        Line 127: testb	$1, %r9b
+        Line 128: jne	LBB0_10
+        Line 129: jmp	LBB0_11
+        Line 130: .cfi_endproc
+        Line 132: .subsections_via_symbols
+
+
+[63] Directory: true_o2_ARM/problem155_code.c
+    Input file: true_o2_ARM/problem155_code.c/input.txt
+    Total CMP/TEST instructions: 4
+    Total EFLAGS-dependent instructions: 4
+    Number of sequences: 2
+    Sequences found:
+      Sequence 1 (Lines 34-43):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 34: movq	%rax, -48(%rbp)                 ## 8-byte Spill
+        Line 35: testl	%ebx, %ebx
+        Line 36: jle	LBB0_1
+        Line 38: movslq	%ebx, %r15
+        Line 39: movl	%r15d, %eax
+        Line 40: movq	%rax, -56(%rbp)                 ## 8-byte Spill
+        Line 41: movb	$1, %r12b
+        Line 42: xorl	%ebx, %ebx
+        Line 43: movq	%r15, %r14
+
+      Sequence 2 (Lines 61-77):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 16
+        Line 61: callq	_strstr
+        Line 62: testq	%rax, %rax
+        Line 63: jne	LBB0_5
+        Line 65: incq	%rbx
+        Line 66: cmpq	%r15, %rbx
+        Line 67: setl	%r12b
+        Line 68: decq	%r14
+        Line 69: cmpq	%rbx, -56(%rbp)                 ## 8-byte Folded Reload
+        Line 70: jne	LBB0_4
+        Line 71: jmp	LBB0_5
+        Line 72: LBB0_1:
+        Line 73: xorl	%r12d, %r12d
+        Line 74: LBB0_5:
+        Line 75: movq	-48(%rbp), %rdi                 ## 8-byte Reload
+        Line 76: callq	_free
+        Line 77: andb	$1, %r12b
+
+
+[64] Directory: true_o2_ARM/problem157_code.c
+    Input file: true_o2_ARM/problem157_code.c/input.txt
+    Total CMP/TEST instructions: 5
+    Total EFLAGS-dependent instructions: 5
+    Number of sequences: 3
+    Sequences found:
+      Sequence 1 (Lines 25-34):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 9
+        Line 25: movb	$0, (%rsi)
+        Line 26: testl	%edi, %edi
+        Line 27: jle	LBB0_6
+        Line 29: movq	%rsi, %r14
+        Line 30: movl	%edi, %ebx
+        Line 31: xorl	%eax, %eax
+        Line 32: jmp	LBB0_2
+        Line 33: .p2align	4, 0x90
+        Line 34: LBB0_5:                                 ##   in Loop: Header=BB0_2 Depth=1
+
+      Sequence 2 (Lines 35-54):
+        CMP/TEST: 3, EFLAGS usage: 3, Total lines: 17
+        Line 35: xorl	%eax, %eax
+        Line 36: testl	%ebx, %ebx
+        Line 37: setg	%al
+        Line 38: addl	%r12d, %eax
+        Line 39: testl	%ebx, %ebx
+        Line 40: jle	LBB0_6
+        Line 41: LBB0_2:                                 ## =>This Loop Header: Depth=1
+        Line 43: movl	%eax, %r12d
+        Line 44: leaq	l___const.func0.num(%rip), %rax
+        Line 45: movl	(%rax,%r12,4), %r13d
+        Line 46: cmpl	%r13d, %ebx
+        Line 47: jl	LBB0_5
+        Line 49: leaq	l_reltable.func0(%rip), %rax
+        Line 50: movslq	(%rax,%r12,4), %r15
+        Line 51: addq	%rax, %r15
+        Line 52: .p2align	4, 0x90
+        Line 53: LBB0_4:                                 ##   Parent Loop BB0_2 Depth=1
+
+      Sequence 3 (Lines 58-67):
+        CMP/TEST: 1, EFLAGS usage: 1, Total lines: 10
+        Line 58: subl	%r13d, %ebx
+        Line 59: cmpl	%r13d, %ebx
+        Line 60: jge	LBB0_4
+        Line 61: jmp	LBB0_5
+        Line 62: LBB0_6:
+        Line 63: addq	$8, %rsp
+        Line 64: popq	%rbx
+        Line 65: popq	%r12
+        Line 66: popq	%r13
+        Line 67: popq	%r14
+
+

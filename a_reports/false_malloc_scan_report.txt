@@ -1,0 +1,234 @@
+MALLOC CALLS REPORT
+======================================================================
+
+SUMMARY REPORT
+==================================================
+Base directory scanned: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM
+Problem directories found: 91
+Problems with malloc calls: 26
+
+Analysis:
+- Total C++ files with malloc calls: 26
+- Total malloc instances found: 32
+
+Problems containing malloc calls:
+[6, 10, 11, 15, 18, 27, 29, 35, 38, 82, 85, 87, 89, 101, 105, 106, 107, 113, 118, 130, 131, 146, 148, 149, 150, 161]
+
+======================================================================
+DETAILED RESULTS
+======================================================================
+
+🔢 PROBLEM 6
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem6_code.c
+📄 File: problem6_code.cpp
+   Malloc calls found: 1
+   Line    7: int *out = (int *)malloc(*out_size * sizeof(int)); //x0 -> return value
+
+
+🔢 PROBLEM 10
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem10_code.c
+📄 File: problem10_code.cpp
+   Malloc calls found: 1
+   Line    9: int *out = malloc(size * sizeof(int));
+
+
+🔢 PROBLEM 11
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem11_code.c
+📄 File: problem11_code.cpp
+   Malloc calls found: 1
+   Line    7: char *result = (char *)malloc(2 * len + 1);
+
+
+🔢 PROBLEM 15
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem15_code.c
+📄 File: problem15_code.cpp
+   Malloc calls found: 3
+   Line    7: char **out = malloc(len * sizeof(char *));
+   Line    9: char *current = malloc(len + 1);
+   Line   18: out[i] = malloc(strlen(current) + 1);
+
+
+🔢 PROBLEM 18
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem18_code.c
+📄 File: problem18_code.cpp
+   Malloc calls found: 1
+   Line   12: char *temp_music_string = malloc(music_string_length + 1);
+
+
+🔢 PROBLEM 27
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem27_code.c
+📄 File: problem27_code.cpp
+   Malloc calls found: 1
+   Line    5: int* out = (int*)malloc(size * sizeof(int));
+
+
+🔢 PROBLEM 29
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem29_code.c
+📄 File: problem29_code.cpp
+   Malloc calls found: 1
+   Line   11: char* out = (char*)malloc(length + 1);
+
+
+🔢 PROBLEM 35
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem35_code.c
+📄 File: problem35_code.cpp
+   Malloc calls found: 1
+   Line    5: int *out = malloc(size * sizeof(int));
+
+
+🔢 PROBLEM 38
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem38_code.c
+📄 File: problem38_code.cpp
+   Malloc calls found: 1
+   Line    6: float *even = malloc((size / 2 + 1) * sizeof(float));
+
+
+🔢 PROBLEM 82
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem82_code.c
+📄 File: problem82_code.cpp
+   Malloc calls found: 1
+   Line    5: char** out = malloc(size * sizeof(char*));
+
+
+🔢 PROBLEM 85
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem85_code.c
+📄 File: problem85_code.cpp
+   Malloc calls found: 1
+   Line   11: char* bi = malloc(33);
+
+
+🔢 PROBLEM 87
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem87_code.c
+📄 File: problem87_code.cpp
+   Malloc calls found: 1
+   Line    7: char* out = malloc(len + 2);
+
+
+🔢 PROBLEM 89
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem89_code.c
+📄 File: problem89_code.cpp
+   Malloc calls found: 1
+   Line   11: *out_array = (int *)malloc(sizeof(int) * size);
+
+
+🔢 PROBLEM 101
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem101_code.c
+📄 File: problem101_code.cpp
+   Malloc calls found: 1
+   Line    5: int* out = (int*)malloc(n * sizeof(int));
+
+
+🔢 PROBLEM 105
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem105_code.c
+📄 File: problem105_code.cpp
+   Malloc calls found: 1
+   Line    6: *out = malloc(size * sizeof(int));
+
+
+🔢 PROBLEM 106
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem106_code.c
+📄 File: problem106_code.cpp
+   Malloc calls found: 1
+   Line   26: *out = malloc(*out_size * sizeof(char *));
+
+
+🔢 PROBLEM 107
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem107_code.c
+📄 File: problem107_code.cpp
+   Malloc calls found: 1
+   Line    5: int* out = (int*)malloc(n * sizeof(int));
+
+
+🔢 PROBLEM 113
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem113_code.c
+📄 File: problem113_code.cpp
+   Malloc calls found: 1
+   Line    8: char *n = malloc((len + 1) * sizeof(char));
+
+
+🔢 PROBLEM 118
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem118_code.c
+📄 File: problem118_code.cpp
+   Malloc calls found: 2
+   Line   11: char *current = (char *)malloc(length + 1);
+   Line   18: out[word_count] = (char *)malloc(strlen(current) + 1);
+
+
+🔢 PROBLEM 130
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem130_code.c
+📄 File: problem130_code.cpp
+   Malloc calls found: 1
+   Line   19: int *out = (int *)malloc(k * sizeof(int));
+
+
+🔢 PROBLEM 131
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem131_code.c
+📄 File: problem131_code.cpp
+   Malloc calls found: 1
+   Line    5: int* out = (int*)malloc((n + 1) * sizeof(int));
+
+
+🔢 PROBLEM 146
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem146_code.c
+📄 File: problem146_code.cpp
+   Malloc calls found: 1
+   Line    6: int* sumdigit = (int*)malloc(size * sizeof(int));
+
+
+🔢 PROBLEM 148
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem148_code.c
+📄 File: problem148_code.cpp
+   Malloc calls found: 3
+   Line    5: int *a = (int *)malloc(n * sizeof(int));
+   Line    6: int **sum = (int **)malloc((n + 1) * sizeof(int *));
+   Line    7: int **sum2 = (int **)malloc((n + 1) * sizeof(int *));
+
+
+🔢 PROBLEM 149
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem149_code.c
+📄 File: problem149_code.cpp
+   Malloc calls found: 1
+   Line   22: char** out = malloc(*returnSize * sizeof(char*));
+
+
+🔢 PROBLEM 150
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem150_code.c
+📄 File: problem150_code.cpp
+   Malloc calls found: 1
+   Line   29: char **out = malloc(*return_size * sizeof(char *));
+
+
+🔢 PROBLEM 161
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem161_code.c
+📄 File: problem161_code.cpp
+   Malloc calls found: 2
+   Line    7: int *num = (int*)malloc(operand_size * sizeof(int));
+   Line    8: int *posto = (int*)malloc(operand_size * sizeof(int));
+
+

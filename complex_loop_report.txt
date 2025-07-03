@@ -1,0 +1,86 @@
+COMPLEX LOOP REPORT
+======================================================================
+
+SUMMARY REPORT
+==================================================
+Base directory scanned: false_o2_ARM
+Problem directories found: 91
+Problems with complex loops: 8
+
+Analysis:
+- Total C++ files with complex loops: 8
+- Total complex loop instances found: 9
+
+Problems containing complex loops:
+[20, 23, 60, 77, 99, 105, 106, 124]
+
+
+======================================================================
+DETAILED RESULTS
+======================================================================
+
+
+================================================================================
+LOOPS WITH COMPLEX CONDITIONS (&& or ||) FOUND
+================================================================================
+C++ files with complex loops: 8
+Total complex loop instances found: 9
+================================================================================
+
+🔢 PROBLEM 20
+--------------------------------------------------
+📄 File: problem20_code.cpp
+   Complex loops found: 1
+   Line   14: for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
+
+
+🔢 PROBLEM 23
+--------------------------------------------------
+📄 File: problem23_code.cpp
+   Complex loops found: 2
+   Line   12: while (*start && !isdigit(*start) && *start != '-') {
+   Line   22: while (*end && *end != ',') {
+
+
+🔢 PROBLEM 60
+--------------------------------------------------
+📄 File: problem60_code.cpp
+   Complex loops found: 1
+   Line    5: while (n % i == 0 && n > i) n = n / i;
+
+
+🔢 PROBLEM 77
+--------------------------------------------------
+📄 File: problem77_code.cpp
+   Complex loops found: 1
+   Line    5: while (p <= x && count < 100) {
+
+
+🔢 PROBLEM 99
+--------------------------------------------------
+📄 File: problem99_code.cpp
+   Complex loops found: 1
+   Line    7: for (int i = 0; s[i] != '\0' && i * 2 < strlen(s); i++) {
+
+
+🔢 PROBLEM 105
+--------------------------------------------------
+📄 File: problem105_code.cpp
+   Complex loops found: 1
+   Line   14: while (num > 0 && !has_even_digit) {
+
+
+🔢 PROBLEM 106
+--------------------------------------------------
+📄 File: problem106_code.cpp
+   Complex loops found: 1
+   Line   28: for (i = size - 1, j = 0; i >= 0 && j < *out_size; i--) {
+
+
+🔢 PROBLEM 124
+--------------------------------------------------
+📄 File: problem124_code.cpp
+   Complex loops found: 1
+   Line   26: while (j >= 0 && out[j] > key) {
+
+

@@ -1,0 +1,557 @@
+[1, 2, 3, 5, 12, 31, 43, 46, 48, 58, 74, 84, 100, 110, 111, 121, 122, 123, 134, 153]
+X86 SIMD Instruction Detection Results
+============================================================
+Scan Date: 2025-07-02 21:19:29
+Total directories with matching instructions found: 20
+
+Pattern Description:
+Searches for instructions characteristic of x86 SIMD extensions (MMX, SSE, AVX, etc.).
+The pattern looks for:
+  - Instructions starting with 'v' (for AVX, AVX2, AVX-512).
+  - Packed integer instructions, often starting with 'p' (e.g., paddb, pshufb).
+  - SSE instructions with data type suffixes (e.g., addps, subsd, movaps).
+
+[1] Directory: true_o2_ARM/problem1_code.c
+    Input file: true_o2_ARM/problem1_code.c/input.txt
+    Total matching instructions found: 5
+    Instructions found:
+      Line 28: movaps	LCPI0_0(%rip), %xmm1            ## xmm1 = [NaN,NaN,NaN,NaN]
+      Line 45: movss	(%rdi,%rsi,4), %xmm2            ## xmm2 = mem[0],zero,zero,zero
+      Line 50: movaps	%xmm2, %xmm3
+      Line 51: subss	(%rcx,%rsi,4), %xmm3
+      Line 52: andps	%xmm1, %xmm3
+
+[2] Directory: true_o2_ARM/problem2_code.c
+    Input file: true_o2_ARM/problem2_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 16: subss	%xmm1, %xmm0
+
+[3] Directory: true_o2_ARM/problem3_code.c
+    Input file: true_o2_ARM/problem3_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 16: subss	%xmm1, %xmm0
+
+[4] Directory: true_o2_ARM/problem5_code.c
+    Input file: true_o2_ARM/problem5_code.c/input.txt
+    Total matching instructions found: 38
+    Instructions found:
+      Line 32: xorps	%xmm1, %xmm1
+      Line 37: xorps	%xmm0, %xmm0
+      Line 42: xorps	%xmm1, %xmm1
+      Line 46: addss	(%rdi,%rdx,4), %xmm1
+      Line 47: addss	4(%rdi,%rdx,4), %xmm1
+      Line 48: addss	8(%rdi,%rdx,4), %xmm1
+      Line 49: addss	12(%rdi,%rdx,4), %xmm1
+      Line 50: addss	16(%rdi,%rdx,4), %xmm1
+      Line 51: addss	20(%rdi,%rdx,4), %xmm1
+      Line 52: addss	24(%rdi,%rdx,4), %xmm1
+      Line 53: addss	28(%rdi,%rdx,4), %xmm1
+      Line 65: addss	(%rax,%rdx,4), %xmm1
+      Line 71: divss	%xmm2, %xmm1
+      Line 77: xorps	%xmm0, %xmm0
+      Line 82: xorps	%xmm0, %xmm0
+      Line 84: movaps	LCPI0_0(%rip), %xmm3            ## xmm3 = [NaN,NaN,NaN,NaN]
+      Line 87: movss	(%rdi,%rdx,4), %xmm4            ## xmm4 = mem[0],zero,zero,zero
+      Line 88: movss	4(%rdi,%rdx,4), %xmm5           ## xmm5 = mem[0],zero,zero,zero
+      Line 89: subss	%xmm1, %xmm4
+      Line 90: andps	%xmm3, %xmm4
+      Line 91: addss	%xmm0, %xmm4
+      Line 92: subss	%xmm1, %xmm5
+      Line 93: andps	%xmm3, %xmm5
+      Line 94: addss	%xmm4, %xmm5
+      Line 95: movss	8(%rdi,%rdx,4), %xmm4           ## xmm4 = mem[0],zero,zero,zero
+      Line 96: subss	%xmm1, %xmm4
+      Line 97: andps	%xmm3, %xmm4
+      Line 98: addss	%xmm5, %xmm4
+      Line 99: movss	12(%rdi,%rdx,4), %xmm0          ## xmm0 = mem[0],zero,zero,zero
+      Line 100: subss	%xmm1, %xmm0
+      Line 101: andps	%xmm3, %xmm0
+      Line 102: addss	%xmm4, %xmm0
+      Line 112: movaps	LCPI0_0(%rip), %xmm3            ## xmm3 = [NaN,NaN,NaN,NaN]
+      Line 115: movss	(%rax,%rdx,4), %xmm4            ## xmm4 = mem[0],zero,zero,zero
+      Line 116: subss	%xmm1, %xmm4
+      Line 117: andps	%xmm3, %xmm4
+      Line 118: addss	%xmm4, %xmm0
+      Line 123: divss	%xmm2, %xmm0
+
+[5] Directory: true_o2_ARM/problem12_code.c
+    Input file: true_o2_ARM/problem12_code.c/input.txt
+    Total matching instructions found: 35
+    Instructions found:
+      Line 87: movdqa	LCPI0_0(%rip), %xmm0            ## xmm0 = [49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49]
+      Line 90: movdqu	(%rbx,%rsi), %xmm1
+      Line 91: movdqu	16(%rbx,%rsi), %xmm2
+      Line 92: movdqu	(%r14,%rsi), %xmm3
+      Line 93: pcmpeqb	%xmm1, %xmm3
+      Line 94: movdqu	16(%r14,%rsi), %xmm1
+      Line 95: pcmpeqb	%xmm2, %xmm1
+      Line 96: paddb	%xmm0, %xmm3
+      Line 97: paddb	%xmm0, %xmm1
+      Line 98: movdqu	%xmm3, (%rax,%rsi)
+      Line 99: movdqu	%xmm1, 16(%rax,%rsi)
+      Line 100: movdqu	32(%rbx,%rsi), %xmm1
+      Line 101: movdqu	48(%rbx,%rsi), %xmm2
+      Line 102: movdqu	32(%r14,%rsi), %xmm3
+      Line 103: pcmpeqb	%xmm1, %xmm3
+      Line 104: movdqu	48(%r14,%rsi), %xmm1
+      Line 105: pcmpeqb	%xmm2, %xmm1
+      Line 106: paddb	%xmm0, %xmm3
+      Line 107: paddb	%xmm0, %xmm1
+      Line 108: movdqu	%xmm3, 32(%rax,%rsi)
+      Line 109: movdqu	%xmm1, 48(%rax,%rsi)
+      Line 117: movdqu	(%rbx,%rsi), %xmm0
+      Line 118: movdqu	16(%rbx,%rsi), %xmm1
+      Line 119: movdqu	(%r14,%rsi), %xmm2
+      Line 120: pcmpeqb	%xmm0, %xmm2
+      Line 121: movdqu	16(%r14,%rsi), %xmm0
+      Line 122: pcmpeqb	%xmm1, %xmm0
+      Line 123: movdqa	LCPI0_0(%rip), %xmm1            ## xmm1 = [49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49]
+      Line 124: paddb	%xmm1, %xmm2
+      Line 125: paddb	%xmm1, %xmm0
+      Line 126: movdqu	%xmm2, (%rax,%rsi)
+      Line 127: movdqu	%xmm0, 16(%rax,%rsi)
+      Line 138: movdqa	LCPI0_1(%rip), %xmm0            ## xmm0 = <49,49,49,49,49,49,49,49,u,u,u,u,u,u,u,u>
+      Line 143: pcmpeqb	%xmm1, %xmm2
+      Line 144: paddb	%xmm0, %xmm2
+
+[6] Directory: true_o2_ARM/problem31_code.c
+    Input file: true_o2_ARM/problem31_code.c/input.txt
+    Total matching instructions found: 8
+    Instructions found:
+      Line 42: movss	(%rbx,%rsi,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+      Line 43: xorps	%xmm1, %xmm1
+      Line 50: movss	%xmm0, (%rax,%rcx,4)
+      Line 62: xorps	%xmm0, %xmm0
+      Line 71: movss	(%rbx,%rsi,4), %xmm1            ## xmm1 = mem[0],zero,zero,zero
+      Line 78: movss	%xmm1, (%rax,%rcx,4)
+      Line 81: movss	4(%rbx,%rsi,4), %xmm1           ## xmm1 = mem[0],zero,zero,zero
+      Line 88: movss	%xmm1, (%rax,%rcx,4)
+
+[7] Directory: true_o2_ARM/problem43_code.c
+    Input file: true_o2_ARM/problem43_code.c/input.txt
+    Total matching instructions found: 20
+    Instructions found:
+      Line 36: pcmpeqd	%xmm0, %xmm0
+      Line 39: movdqu	(%rdi,%rdx,4), %xmm1
+      Line 40: movdqu	16(%rdi,%rdx,4), %xmm2
+      Line 41: movdqu	32(%rdi,%rdx,4), %xmm3
+      Line 42: movdqu	48(%rdi,%rdx,4), %xmm4
+      Line 43: psubd	%xmm0, %xmm1
+      Line 44: psubd	%xmm0, %xmm2
+      Line 45: movdqu	%xmm1, (%rdi,%rdx,4)
+      Line 46: movdqu	%xmm2, 16(%rdi,%rdx,4)
+      Line 47: psubd	%xmm0, %xmm3
+      Line 48: psubd	%xmm0, %xmm4
+      Line 49: movdqu	%xmm3, 32(%rdi,%rdx,4)
+      Line 50: movdqu	%xmm4, 48(%rdi,%rdx,4)
+      Line 58: movdqu	(%rdi,%rdx,4), %xmm0
+      Line 59: movdqu	16(%rdi,%rdx,4), %xmm1
+      Line 60: pcmpeqd	%xmm2, %xmm2
+      Line 61: psubd	%xmm2, %xmm0
+      Line 62: psubd	%xmm2, %xmm1
+      Line 63: movdqu	%xmm0, (%rdi,%rdx,4)
+      Line 64: movdqu	%xmm1, 16(%rdi,%rdx,4)
+
+[8] Directory: true_o2_ARM/problem46_code.c
+    Input file: true_o2_ARM/problem46_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 19: mulss	%xmm1, %xmm0
+      Line 20: mulss	LCPI0_0(%rip), %xmm0
+
+[9] Directory: true_o2_ARM/problem48_code.c
+    Input file: true_o2_ARM/problem48_code.c/input.txt
+    Total matching instructions found: 8
+    Instructions found:
+      Line 50: movss	(%rdi,%rax,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+      Line 51: movss	(%rdx,%rcx,4), %xmm1            ## xmm1 = mem[0],zero,zero,zero
+      Line 55: movss	%xmm1, (%rdi,%rax,4)
+      Line 56: movss	%xmm0, (%rdx,%rcx,4)
+      Line 65: movss	(%rdi,%rsi,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+      Line 74: movss	(%rdi,%rax,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+      Line 75: addss	-4(%rdi,%rax,4), %xmm0
+      Line 76: mulss	LCPI0_0(%rip), %xmm0
+
+[10] Directory: true_o2_ARM/problem58_code.c
+    Input file: true_o2_ARM/problem58_code.c/input.txt
+    Total matching instructions found: 38
+    Instructions found:
+      Line 27: movss	(%rdi), %xmm6                   ## xmm6 = mem[0],zero,zero,zero
+      Line 40: shufps	$0, %xmm6, %xmm6                ## xmm6 = xmm6[0,0,0,0]
+      Line 41: xorps	%xmm8, %xmm8
+      Line 43: movaps	LCPI0_0(%rip), %xmm9            ## xmm9 = [1,1,1,1]
+      Line 44: xorps	%xmm10, %xmm10
+      Line 45: xorps	%xmm7, %xmm7
+      Line 46: xorps	%xmm5, %xmm5
+      Line 49: movaps	%xmm6, %xmm4
+      Line 50: movups	4(%rdi,%rax,4), %xmm1
+      Line 51: movups	20(%rdi,%rax,4), %xmm6
+      Line 52: blendps	$7, %xmm1, %xmm4                ## xmm4 = xmm1[0,1,2],xmm4[3]
+      Line 53: shufps	$147, %xmm4, %xmm4              ## xmm4 = xmm4[3,0,1,2]
+      Line 54: movaps	%xmm6, %xmm2
+      Line 55: blendps	$8, %xmm1, %xmm2                ## xmm2 = xmm2[0,1,2],xmm1[3]
+      Line 56: shufps	$147, %xmm2, %xmm2              ## xmm2 = xmm2[3,0,1,2]
+      Line 57: movaps	%xmm4, %xmm0
+      Line 58: cmpltps	%xmm1, %xmm0
+      Line 59: movaps	%xmm6, %xmm3
+      Line 60: cmpltps	%xmm2, %xmm3
+      Line 61: cmpltps	%xmm6, %xmm2
+      Line 62: blendvps	%xmm0, %xmm9, %xmm7
+      Line 63: movaps	%xmm2, %xmm0
+      Line 64: blendvps	%xmm0, %xmm9, %xmm5
+      Line 65: cmpltps	%xmm4, %xmm1
+      Line 66: movaps	%xmm1, %xmm0
+      Line 67: blendvps	%xmm0, %xmm9, %xmm8
+      Line 68: movaps	%xmm3, %xmm0
+      Line 69: blendvps	%xmm0, %xmm9, %xmm10
+      Line 74: xorps	%xmm1, %xmm1
+      Line 75: movaps	%xmm7, %xmm0
+      Line 76: pcmpeqd	%xmm1, %xmm0
+      Line 77: blendvps	%xmm0, %xmm5, %xmm7
+      Line 81: pcmpeqd	%xmm8, %xmm1
+      Line 82: movdqa	%xmm1, %xmm0
+      Line 83: blendvps	%xmm0, %xmm10, %xmm8
+      Line 90: shufps	$255, %xmm6, %xmm6              ## xmm6 = xmm6[3,3,3,3]
+      Line 95: movss	(%rdi,%rcx,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+      Line 101: movaps	%xmm0, %xmm6
+
+[11] Directory: true_o2_ARM/problem74_code.c
+    Input file: true_o2_ARM/problem74_code.c/input.txt
+    Total matching instructions found: 20
+    Instructions found:
+      Line 92: pxor	%xmm0, %xmm0
+      Line 94: pcmpeqd	%xmm2, %xmm2
+      Line 95: pxor	%xmm1, %xmm1
+      Line 98: movdqu	(%rdi,%rax), %xmm3
+      Line 99: movdqu	16(%rdi,%rax), %xmm4
+      Line 101: movdqu	-28(%rdi,%rcx,4), %xmm5
+      Line 102: movdqu	-12(%rdi,%rcx,4), %xmm6
+      Line 103: pshufd	$27, %xmm6, %xmm6               ## xmm6 = xmm6[3,2,1,0]
+      Line 104: pcmpeqd	%xmm3, %xmm6
+      Line 105: paddd	%xmm6, %xmm0
+      Line 106: pshufd	$27, %xmm5, %xmm3               ## xmm3 = xmm5[3,2,1,0]
+      Line 107: pcmpeqd	%xmm4, %xmm3
+      Line 108: paddd	%xmm3, %xmm1
+      Line 109: psubd	%xmm2, %xmm0
+      Line 110: psubd	%xmm2, %xmm1
+      Line 116: paddd	%xmm0, %xmm1
+      Line 117: pshufd	$238, %xmm1, %xmm0              ## xmm0 = xmm1[2,3,2,3]
+      Line 118: paddd	%xmm1, %xmm0
+      Line 119: pshufd	$85, %xmm0, %xmm1               ## xmm1 = xmm0[1,1,1,1]
+      Line 120: paddd	%xmm0, %xmm1
+
+[12] Directory: true_o2_ARM/problem84_code.c
+    Input file: true_o2_ARM/problem84_code.c/input.txt
+    Total matching instructions found: 15
+    Instructions found:
+      Line 72: movdqa	LCPI0_0(%rip), %xmm1            ## xmm1 = [1,1,1,1]
+      Line 73: movdqa	LCPI0_1(%rip), %xmm0            ## xmm0 = [18,1,1,1]
+      Line 77: movdqa	LCPI0_0(%rip), %xmm1            ## xmm1 = [1,1,1,1]
+      Line 78: movdqa	LCPI0_1(%rip), %xmm0            ## xmm0 = [18,1,1,1]
+      Line 79: movdqa	LCPI0_2(%rip), %xmm2            ## xmm2 = [100000000,100000000,100000000,100000000]
+      Line 82: pmulld	%xmm2, %xmm0
+      Line 83: pmulld	%xmm2, %xmm1
+      Line 90: movdqa	LCPI0_3(%rip), %xmm2            ## xmm2 = [10,10,10,10]
+      Line 93: pmulld	%xmm2, %xmm0
+      Line 94: pmulld	%xmm2, %xmm1
+      Line 98: pmulld	%xmm1, %xmm0
+      Line 99: pshufd	$238, %xmm0, %xmm1              ## xmm1 = xmm0[2,3,2,3]
+      Line 100: pmulld	%xmm0, %xmm1
+      Line 101: pshufd	$85, %xmm1, %xmm0               ## xmm0 = xmm1[1,1,1,1]
+      Line 102: pmulld	%xmm1, %xmm0
+
+[13] Directory: true_o2_ARM/problem100_code.c
+    Input file: true_o2_ARM/problem100_code.c/input.txt
+    Total matching instructions found: 11
+    Instructions found:
+      Line 22: movsd	LCPI0_0(%rip), %xmm1            ## xmm1 = mem[0],zero
+      Line 23: addsd	%xmm0, %xmm1
+      Line 24: roundsd	$10, %xmm1, %xmm1
+      Line 25: movsd	LCPI0_1(%rip), %xmm2            ## xmm2 = mem[0],zero
+      Line 26: addsd	%xmm0, %xmm2
+      Line 27: roundsd	$9, %xmm2, %xmm2
+      Line 28: xorpd	%xmm3, %xmm3
+      Line 29: cmpltsd	%xmm3, %xmm0
+      Line 30: andpd	%xmm0, %xmm1
+      Line 31: andnpd	%xmm2, %xmm0
+      Line 32: orpd	%xmm1, %xmm0
+
+[14] Directory: true_o2_ARM/problem110_code.c
+    Input file: true_o2_ARM/problem110_code.c/input.txt
+    Total matching instructions found: 18
+    Instructions found:
+      Line 44: pshufd	$0, %xmm0, %xmm0                ## xmm0 = xmm0[0,0,0,0]
+      Line 45: pxor	%xmm1, %xmm1
+      Line 47: pxor	%xmm2, %xmm2
+      Line 50: movdqu	4(%rdi,%rax,4), %xmm3
+      Line 51: movdqa	%xmm3, %xmm4
+      Line 52: palignr	$12, %xmm0, %xmm4               ## xmm4 = xmm0[12,13,14,15],xmm4[0,1,2,3,4,5,6,7,8,9,10,11]
+      Line 53: movdqu	20(%rdi,%rax,4), %xmm0
+      Line 54: movdqa	%xmm0, %xmm5
+      Line 55: palignr	$12, %xmm3, %xmm5               ## xmm5 = xmm3[12,13,14,15],xmm5[0,1,2,3,4,5,6,7,8,9,10,11]
+      Line 56: pcmpgtd	%xmm3, %xmm4
+      Line 57: psubd	%xmm4, %xmm1
+      Line 58: pcmpgtd	%xmm0, %xmm5
+      Line 59: psubd	%xmm5, %xmm2
+      Line 64: paddd	%xmm1, %xmm2
+      Line 65: pshufd	$238, %xmm2, %xmm1              ## xmm1 = xmm2[2,3,2,3]
+      Line 66: paddd	%xmm2, %xmm1
+      Line 67: pshufd	$85, %xmm1, %xmm2               ## xmm2 = xmm1[1,1,1,1]
+      Line 68: paddd	%xmm1, %xmm2
+
+[15] Directory: true_o2_ARM/problem111_code.c
+    Input file: true_o2_ARM/problem111_code.c/input.txt
+    Total matching instructions found: 61
+    Instructions found:
+      Line 47: pxor	%xmm3, %xmm3
+      Line 49: movdqa	LCPI0_0(%rip), %xmm2            ## xmm2 = [1,1,1,1]
+      Line 50: pxor	%xmm4, %xmm4
+      Line 53: movdqu	(%rdi,%rax,4), %xmm5
+      Line 54: movdqu	16(%rdi,%rax,4), %xmm6
+      Line 55: movdqu	32(%rdi,%rax,4), %xmm0
+      Line 56: movdqu	48(%rdi,%rax,4), %xmm1
+      Line 57: pandn	%xmm2, %xmm5
+      Line 58: paddd	%xmm3, %xmm5
+      Line 59: pandn	%xmm2, %xmm6
+      Line 60: paddd	%xmm4, %xmm6
+      Line 61: pandn	%xmm2, %xmm0
+      Line 62: paddd	%xmm5, %xmm0
+      Line 63: pandn	%xmm2, %xmm1
+      Line 64: paddd	%xmm6, %xmm1
+      Line 66: movdqa	%xmm0, %xmm3
+      Line 67: movdqa	%xmm1, %xmm4
+      Line 74: movdqu	(%rdi,%rax,4), %xmm2
+      Line 75: movdqu	16(%rdi,%rax,4), %xmm3
+      Line 76: movdqa	LCPI0_0(%rip), %xmm4            ## xmm4 = [1,1,1,1]
+      Line 77: pandn	%xmm4, %xmm2
+      Line 78: paddd	%xmm2, %xmm0
+      Line 79: pandn	%xmm4, %xmm3
+      Line 80: paddd	%xmm3, %xmm1
+      Line 82: paddd	%xmm1, %xmm0
+      Line 83: pshufd	$238, %xmm0, %xmm1              ## xmm1 = xmm0[2,3,2,3]
+      Line 84: paddd	%xmm0, %xmm1
+      Line 85: pshufd	$85, %xmm1, %xmm0               ## xmm0 = xmm1[1,1,1,1]
+      Line 86: paddd	%xmm1, %xmm0
+      Line 122: pxor	%xmm3, %xmm3
+      Line 124: movdqa	LCPI0_0(%rip), %xmm2            ## xmm2 = [1,1,1,1]
+      Line 125: movdqa	%xmm0, %xmm4
+      Line 128: movdqu	(%rdx,%rax,4), %xmm5
+      Line 129: movdqu	16(%rdx,%rax,4), %xmm6
+      Line 130: movdqu	32(%rdx,%rax,4), %xmm0
+      Line 131: movdqu	48(%rdx,%rax,4), %xmm1
+      Line 132: pandn	%xmm2, %xmm5
+      Line 133: paddd	%xmm4, %xmm5
+      Line 134: pandn	%xmm2, %xmm6
+      Line 135: paddd	%xmm3, %xmm6
+      Line 136: pandn	%xmm2, %xmm0
+      Line 137: paddd	%xmm5, %xmm0
+      Line 138: pandn	%xmm2, %xmm1
+      Line 139: paddd	%xmm6, %xmm1
+      Line 141: movdqa	%xmm0, %xmm4
+      Line 142: movdqa	%xmm1, %xmm3
+      Line 149: movdqu	(%rdx,%rax,4), %xmm2
+      Line 150: movdqu	16(%rdx,%rax,4), %xmm3
+      Line 151: movdqa	LCPI0_0(%rip), %xmm4            ## xmm4 = [1,1,1,1]
+      Line 152: pandn	%xmm4, %xmm2
+      Line 153: paddd	%xmm2, %xmm0
+      Line 154: pandn	%xmm4, %xmm3
+      Line 155: paddd	%xmm3, %xmm1
+      Line 157: paddd	%xmm1, %xmm0
+      Line 158: pshufd	$238, %xmm0, %xmm1              ## xmm1 = xmm0[2,3,2,3]
+      Line 159: paddd	%xmm0, %xmm1
+      Line 160: pshufd	$85, %xmm1, %xmm0               ## xmm0 = xmm1[1,1,1,1]
+      Line 161: paddd	%xmm1, %xmm0
+      Line 182: pxor	%xmm0, %xmm0
+      Line 184: pxor	%xmm1, %xmm1
+      Line 189: pxor	%xmm1, %xmm1
+
+[16] Directory: true_o2_ARM/problem121_code.c
+    Input file: true_o2_ARM/problem121_code.c/input.txt
+    Total matching instructions found: 20
+    Instructions found:
+      Line 167: movups	-112(%rbx,%rax,4), %xmm0
+      Line 168: movups	-96(%rbx,%rax,4), %xmm1
+      Line 169: movups	%xmm0, (%rcx,%rax,4)
+      Line 170: movups	%xmm1, 16(%rcx,%rax,4)
+      Line 171: movups	-80(%rbx,%rax,4), %xmm0
+      Line 172: movups	-64(%rbx,%rax,4), %xmm1
+      Line 173: movups	%xmm0, 32(%rcx,%rax,4)
+      Line 174: movups	%xmm1, 48(%rcx,%rax,4)
+      Line 175: movups	-48(%rbx,%rax,4), %xmm0
+      Line 176: movups	-32(%rbx,%rax,4), %xmm1
+      Line 177: movups	%xmm0, 64(%rcx,%rax,4)
+      Line 178: movups	%xmm1, 80(%rcx,%rax,4)
+      Line 179: movups	-16(%rbx,%rax,4), %xmm0
+      Line 180: movups	(%rbx,%rax,4), %xmm1
+      Line 181: movups	%xmm0, 96(%rcx,%rax,4)
+      Line 182: movups	%xmm1, 112(%rcx,%rax,4)
+      Line 199: movups	-16(%rax,%rbx), %xmm0
+      Line 200: movups	(%rax,%rbx), %xmm1
+      Line 201: movups	%xmm0, -16(%rsi,%rbx)
+      Line 202: movups	%xmm1, (%rsi,%rbx)
+
+[17] Directory: true_o2_ARM/problem122_code.c
+    Input file: true_o2_ARM/problem122_code.c/input.txt
+    Total matching instructions found: 25
+    Instructions found:
+      Line 54: pxor	%xmm0, %xmm0
+      Line 56: movaps	LCPI0_0(%rip), %xmm2            ## xmm2 = [2147483649,2147483649,2147483649,2147483649]
+      Line 57: movdqa	LCPI0_1(%rip), %xmm3            ## xmm3 = [1,1,1,1]
+      Line 58: pxor	%xmm1, %xmm1
+      Line 61: movups	(%rdi,%rax,8), %xmm4
+      Line 62: movups	16(%rdi,%rax,8), %xmm5
+      Line 63: shufps	$136, %xmm5, %xmm4              ## xmm4 = xmm4[0,2],xmm5[0,2]
+      Line 64: movups	32(%rdi,%rax,8), %xmm5
+      Line 65: movups	48(%rdi,%rax,8), %xmm6
+      Line 66: shufps	$136, %xmm6, %xmm5              ## xmm5 = xmm5[0,2],xmm6[0,2]
+      Line 67: movaps	%xmm4, %xmm6
+      Line 68: andps	%xmm2, %xmm6
+      Line 69: movaps	%xmm5, %xmm7
+      Line 70: andps	%xmm2, %xmm7
+      Line 71: pcmpeqd	%xmm3, %xmm6
+      Line 72: pcmpeqd	%xmm3, %xmm7
+      Line 73: pand	%xmm4, %xmm6
+      Line 74: paddd	%xmm6, %xmm0
+      Line 75: pand	%xmm5, %xmm7
+      Line 76: paddd	%xmm7, %xmm1
+      Line 81: paddd	%xmm0, %xmm1
+      Line 82: pshufd	$238, %xmm1, %xmm0              ## xmm0 = xmm1[2,3,2,3]
+      Line 83: paddd	%xmm1, %xmm0
+      Line 84: pshufd	$85, %xmm0, %xmm1               ## xmm1 = xmm0[1,1,1,1]
+      Line 85: paddd	%xmm0, %xmm1
+
+[18] Directory: true_o2_ARM/problem123_code.c
+    Input file: true_o2_ARM/problem123_code.c/input.txt
+    Total matching instructions found: 53
+    Instructions found:
+      Line 54: pxor	%xmm0, %xmm0
+      Line 56: movdqa	LCPI0_0(%rip), %xmm8            ## xmm8 = [99,99,99,99]
+      Line 57: movdqa	LCPI0_1(%rip), %xmm9            ## xmm9 = [198,198,198,198]
+      Line 58: pxor	%xmm1, %xmm1
+      Line 61: movdqu	(%rdi,%rax,4), %xmm4
+      Line 62: movdqu	16(%rdi,%rax,4), %xmm3
+      Line 63: movdqu	32(%rdi,%rax,4), %xmm5
+      Line 64: movdqu	48(%rdi,%rax,4), %xmm10
+      Line 65: movdqa	%xmm4, %xmm2
+      Line 66: paddd	%xmm8, %xmm2
+      Line 67: movdqa	%xmm3, %xmm7
+      Line 68: paddd	%xmm8, %xmm7
+      Line 69: movdqa	%xmm2, %xmm6
+      Line 71: pcmpeqd	%xmm2, %xmm6
+      Line 72: movdqa	%xmm7, %xmm2
+      Line 74: pcmpeqd	%xmm7, %xmm2
+      Line 75: pand	%xmm4, %xmm6
+      Line 76: paddd	%xmm0, %xmm6
+      Line 77: pand	%xmm3, %xmm2
+      Line 78: paddd	%xmm1, %xmm2
+      Line 79: movdqa	%xmm5, %xmm1
+      Line 80: paddd	%xmm8, %xmm1
+      Line 81: movdqa	%xmm10, %xmm3
+      Line 82: paddd	%xmm8, %xmm3
+      Line 83: movdqa	%xmm1, %xmm0
+      Line 85: pcmpeqd	%xmm1, %xmm0
+      Line 86: movdqa	%xmm3, %xmm1
+      Line 88: pcmpeqd	%xmm3, %xmm1
+      Line 89: pand	%xmm5, %xmm0
+      Line 90: paddd	%xmm6, %xmm0
+      Line 91: pand	%xmm10, %xmm1
+      Line 92: paddd	%xmm2, %xmm1
+      Line 100: movdqu	(%rdi,%rax,4), %xmm2
+      Line 101: movdqu	16(%rdi,%rax,4), %xmm3
+      Line 102: movdqa	LCPI0_0(%rip), %xmm4            ## xmm4 = [99,99,99,99]
+      Line 103: movdqa	%xmm2, %xmm5
+      Line 104: paddd	%xmm4, %xmm5
+      Line 105: paddd	%xmm3, %xmm4
+      Line 106: movdqa	LCPI0_1(%rip), %xmm6            ## xmm6 = [198,198,198,198]
+      Line 107: movdqa	%xmm5, %xmm7
+      Line 109: pcmpeqd	%xmm5, %xmm7
+      Line 111: pcmpeqd	%xmm4, %xmm6
+      Line 112: pand	%xmm2, %xmm7
+      Line 113: paddd	%xmm7, %xmm0
+      Line 114: pand	%xmm3, %xmm6
+      Line 115: paddd	%xmm6, %xmm1
+      Line 117: paddd	%xmm1, %xmm0
+      Line 118: pshufd	$238, %xmm0, %xmm1              ## xmm1 = xmm0[2,3,2,3]
+      Line 119: paddd	%xmm0, %xmm1
+      Line 120: pshufd	$85, %xmm1, %xmm0               ## xmm0 = xmm1[1,1,1,1]
+      Line 121: paddd	%xmm1, %xmm0
+      Line 139: pxor	%xmm0, %xmm0
+      Line 141: pxor	%xmm1, %xmm1
+
+[19] Directory: true_o2_ARM/problem134_code.c
+    Input file: true_o2_ARM/problem134_code.c/input.txt
+    Total matching instructions found: 35
+    Instructions found:
+      Line 40: pxor	%xmm0, %xmm0
+      Line 42: pxor	%xmm1, %xmm1
+      Line 45: movups	(%rdi,%rsi,4), %xmm2
+      Line 46: movups	16(%rdi,%rsi,4), %xmm3
+      Line 47: movups	32(%rdi,%rsi,4), %xmm4
+      Line 48: movups	48(%rdi,%rsi,4), %xmm5
+      Line 49: roundps	$10, %xmm2, %xmm2
+      Line 50: roundps	$10, %xmm3, %xmm3
+      Line 53: pmulld	%xmm2, %xmm2
+      Line 54: paddd	%xmm0, %xmm2
+      Line 55: pmulld	%xmm3, %xmm3
+      Line 56: paddd	%xmm1, %xmm3
+      Line 57: roundps	$10, %xmm4, %xmm0
+      Line 58: roundps	$10, %xmm5, %xmm1
+      Line 61: pmulld	%xmm0, %xmm0
+      Line 62: paddd	%xmm2, %xmm0
+      Line 63: pmulld	%xmm1, %xmm1
+      Line 64: paddd	%xmm3, %xmm1
+      Line 72: movups	(%rdi,%rsi,4), %xmm2
+      Line 73: movups	16(%rdi,%rsi,4), %xmm3
+      Line 74: roundps	$10, %xmm2, %xmm2
+      Line 75: roundps	$10, %xmm3, %xmm3
+      Line 78: pmulld	%xmm2, %xmm2
+      Line 79: paddd	%xmm2, %xmm0
+      Line 80: pmulld	%xmm3, %xmm3
+      Line 81: paddd	%xmm3, %xmm1
+      Line 83: paddd	%xmm1, %xmm0
+      Line 84: pshufd	$238, %xmm0, %xmm1              ## xmm1 = xmm0[2,3,2,3]
+      Line 85: paddd	%xmm0, %xmm1
+      Line 86: pshufd	$85, %xmm1, %xmm0               ## xmm0 = xmm1[1,1,1,1]
+      Line 87: paddd	%xmm1, %xmm0
+      Line 93: movss	(%rdi,%rdx,4), %xmm0            ## xmm0 = mem[0],zero,zero,zero
+      Line 94: roundss	$10, %xmm0, %xmm0
+      Line 105: pxor	%xmm0, %xmm0
+      Line 107: pxor	%xmm1, %xmm1
+
+[20] Directory: true_o2_ARM/problem153_code.c
+    Input file: true_o2_ARM/problem153_code.c/input.txt
+    Total matching instructions found: 30
+    Instructions found:
+      Line 82: movdqu	(%rdi,%rax,4), %xmm0
+      Line 83: movdqu	16(%rdi,%rax,4), %xmm1
+      Line 84: movdqu	(%rsi,%rax,4), %xmm2
+      Line 85: psubd	%xmm2, %xmm0
+      Line 86: movdqu	16(%rsi,%rax,4), %xmm2
+      Line 87: psubd	%xmm2, %xmm1
+      Line 88: pabsd	%xmm0, %xmm0
+      Line 89: pabsd	%xmm1, %xmm1
+      Line 90: movdqu	%xmm0, (%rdx,%rax,4)
+      Line 91: movdqu	%xmm1, 16(%rdx,%rax,4)
+      Line 92: movdqu	32(%rdi,%rax,4), %xmm0
+      Line 93: movdqu	48(%rdi,%rax,4), %xmm1
+      Line 94: movdqu	32(%rsi,%rax,4), %xmm2
+      Line 95: psubd	%xmm2, %xmm0
+      Line 96: movdqu	48(%rsi,%rax,4), %xmm2
+      Line 97: psubd	%xmm2, %xmm1
+      Line 98: pabsd	%xmm0, %xmm0
+      Line 99: pabsd	%xmm1, %xmm1
+      Line 100: movdqu	%xmm0, 32(%rdx,%rax,4)
+      Line 101: movdqu	%xmm1, 48(%rdx,%rax,4)
+      Line 109: movdqu	(%rdi,%rax,4), %xmm0
+      Line 110: movdqu	16(%rdi,%rax,4), %xmm1
+      Line 111: movdqu	(%rsi,%rax,4), %xmm2
+      Line 112: psubd	%xmm2, %xmm0
+      Line 113: movdqu	16(%rsi,%rax,4), %xmm2
+      Line 114: psubd	%xmm2, %xmm1
+      Line 115: pabsd	%xmm0, %xmm0
+      Line 116: pabsd	%xmm1, %xmm1
+      Line 117: movdqu	%xmm0, (%rdx,%rax,4)
+      Line 118: movdqu	%xmm1, 16(%rdx,%rax,4)
+

@@ -1,0 +1,70 @@
+REALLOC CALLS REPORT
+======================================================================
+
+SUMMARY REPORT
+==================================================
+Base directory scanned: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM
+Problem directories found: 91
+Problems with realloc calls: 6
+
+Analysis:
+- Total C++ files with realloc calls: 6
+- Total realloc instances found: 8
+
+Problems containing realloc calls:
+[7, 8, 15, 18, 118, 124]
+
+======================================================================
+DETAILED RESULTS
+======================================================================
+
+🔢 PROBLEM 7
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem7_code.c
+📄 File: problem7_code.cpp
+   Realloc calls found: 1
+   Line   17: all_levels = (int*)realloc(all_levels, sizeof(int) * (count + 1));
+
+
+🔢 PROBLEM 8
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem8_code.c
+📄 File: problem8_code.cpp
+   Realloc calls found: 1
+   Line   10: out = (char **)realloc(out, sizeof(char *) * (count + 1));
+
+
+🔢 PROBLEM 15
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem15_code.c
+📄 File: problem15_code.cpp
+   Realloc calls found: 1
+   Line   14: current = realloc(current, current_len + 2);
+
+
+🔢 PROBLEM 18
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem18_code.c
+📄 File: problem18_code.cpp
+   Realloc calls found: 3
+   Line   21: out = realloc(out, capacity * sizeof(int));
+   Line   28: out = realloc(out, capacity * sizeof(int));
+   Line   35: out = realloc(out, capacity * sizeof(int));
+
+
+🔢 PROBLEM 118
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem118_code.c
+📄 File: problem118_code.cpp
+   Realloc calls found: 1
+   Line   17: out = (char **)realloc(out, sizeof(char *) * (word_count + 1));
+
+
+🔢 PROBLEM 124
+--------------------------------------------------
+📁 Directory: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM/problem124_code.c
+📄 File: problem124_code.cpp
+   Realloc calls found: 1
+   Line   13: out = (int*)realloc(out, capacity * sizeof(int));
+
+

@@ -1,0 +1,127 @@
+NESTED LOOP WITH CALCULATION REPORT
+======================================================================
+
+SUMMARY REPORT
+==================================================
+Base directory scanned: false_o2_ARM
+Problem directories found: 91
+Problems with matching loops: 12
+
+Analysis:
+- Total C++ files with matching loops: 12
+- Total matching loop instances found: 15
+
+Problems containing nested loops with calculations in condition:
+[11, 23, 38, 40, 76, 87, 105, 106, 113, 144, 150, 161]
+
+======================================================================
+DETAILED RESULTS
+======================================================================
+
+
+================================================================================
+NESTED LOOPS WITH CALCULATIONS IN CONDITION FOUND
+================================================================================
+C++ files with matching loops: 12
+Total matching loop instances found: 15
+================================================================================
+
+🔢 PROBLEM 11
+--------------------------------------------------
+📁 Directory: false_o2_ARM/problem11_code.c
+📄 File: problem11_code.cpp
+   Matching nested loops found: 1
+   Line   14: for (j = 0; j < (len - i) / 2; j++) {
+
+
+🔢 PROBLEM 23
+--------------------------------------------------
+📁 Directory: false_o2_ARM/problem23_code.c
+📄 File: problem23_code.cpp
+   Matching nested loops found: 2
+   Line   12: while (*start && !isdigit(*start) && *start != '-') {
+   Line   22: while (*end && *end != ',') {
+
+
+🔢 PROBLEM 38
+--------------------------------------------------
+📁 Directory: false_o2_ARM/problem38_code.c
+📄 File: problem38_code.cpp
+   Matching nested loops found: 1
+   Line   14: for (j = 0; j < even_count - i - 1; j++) {
+
+
+🔢 PROBLEM 40
+--------------------------------------------------
+📁 Directory: false_o2_ARM/problem40_code.c
+📄 File: problem40_code.cpp
+   Matching nested loops found: 1
+   Line   10: for (int w = 2; w * w <= f1; w++) {
+
+
+🔢 PROBLEM 76
+--------------------------------------------------
+📁 Directory: false_o2_ARM/problem76_code.c
+📄 File: problem76_code.cpp
+   Matching nested loops found: 1
+   Line    8: while (a % i == 0) {
+
+
+🔢 PROBLEM 87
+--------------------------------------------------
+📁 Directory: false_o2_ARM/problem87_code.c
+📄 File: problem87_code.cpp
+   Matching nested loops found: 1
+   Line   13: for (int j = 0; j < current_index - 1; j++) {
+
+
+🔢 PROBLEM 105
+--------------------------------------------------
+📁 Directory: false_o2_ARM/problem105_code.c
+📄 File: problem105_code.cpp
+   Matching nested loops found: 1
+   Line   26: for (int j = 0; j < *out_size - i - 1; j++) {
+
+
+🔢 PROBLEM 106
+--------------------------------------------------
+📁 Directory: false_o2_ARM/problem106_code.c
+📄 File: problem106_code.cpp
+   Matching nested loops found: 1
+   Line   10: for (j = 0; j < size - i - 1; j++) {
+
+
+🔢 PROBLEM 113
+--------------------------------------------------
+📁 Directory: false_o2_ARM/problem113_code.c
+📄 File: problem113_code.cpp
+   Matching nested loops found: 1
+   Line   13: while (*temp != '\0') {
+
+
+🔢 PROBLEM 144
+--------------------------------------------------
+📁 Directory: false_o2_ARM/problem144_code.c
+📄 File: problem144_code.cpp
+   Matching nested loops found: 1
+   Line   17: for (j = 2; j * j <= word_len; ++j) {
+
+
+🔢 PROBLEM 150
+--------------------------------------------------
+📁 Directory: false_o2_ARM/problem150_code.c
+📄 File: problem150_code.cpp
+   Matching nested loops found: 1
+   Line   18: for (j = 0; j < *return_size - i - 1; ++j) {
+
+
+🔢 PROBLEM 161
+--------------------------------------------------
+📁 Directory: false_o2_ARM/problem161_code.c
+📄 File: problem161_code.cpp
+   Matching nested loops found: 3
+   Line   16: while (posto[posto[i + 1]] != posto[i + 1]) posto[i + 1] = posto[posto[i + 1]];
+   Line   24: while (posto[posto[i + 1]] != posto[i + 1]) posto[i + 1] = posto[posto[i + 1]];
+   Line   35: while (posto[posto[i + 1]] != posto[i + 1]) posto[i + 1] = posto[posto[i + 1]];
+
+

@@ -1,0 +1,363 @@
+[4, 5, 12, 13, 16, 17, 24, 26, 30, 31, 34, 39, 43, 49, 52, 53, 54, 56, 58, 59, 61, 62, 67, 69, 70, 73, 74, 79, 80, 84, 88, 94, 95, 97, 98, 104, 108, 110, 111, 114, 115, 121, 122, 123, 128, 132, 134, 153, 155, 157]
+X86 Assembly LEA/LEAL/LEAQ Instruction Detection Results
+============================================================
+Scan Date: 2025-07-02 15:53:51
+Total directories with matching instructions found: 50
+
+Pattern Description:
+Looking for `lea` (Load Effective Address) instructions and their
+size-specific variants `leal` (32-bit) and `leaq` (64-bit).
+
+[1] Directory: true_o2_ARM/problem4_code.c
+    Input file: true_o2_ARM/problem4_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 29: leaq	1(%rdx), %rsi
+
+[2] Directory: true_o2_ARM/problem5_code.c
+    Input file: true_o2_ARM/problem5_code.c/input.txt
+    Total matching instructions found: 3
+    Instructions found:
+      Line 26: leaq	-1(%r9), %r8
+      Line 61: leaq	(%rdi,%rdx,4), %rax
+      Line 110: leaq	(%rdi,%rdx,4), %rax
+
+[3] Directory: true_o2_ARM/problem12_code.c
+    Input file: true_o2_ARM/problem12_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 53: leal	1(%r15), %eax
+      Line 77: leaq	-32(%rdx), %rsi
+
+[4] Directory: true_o2_ARM/problem13_code.c
+    Input file: true_o2_ARM/problem13_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 32: leaq	L_.str(%rip), %r13
+      Line 48: leaq	L_.str(%rip), %r13
+
+[5] Directory: true_o2_ARM/problem16_code.c
+    Input file: true_o2_ARM/problem16_code.c/input.txt
+    Total matching instructions found: 4
+    Instructions found:
+      Line 33: leaq	L_.str(%rip), %r14
+      Line 43: leal	(%r12,%rbx), %eax
+      Line 69: leaq	L_.str(%rip), %r12
+      Line 79: leal	(%r15,%r13), %eax
+
+[6] Directory: true_o2_ARM/problem17_code.c
+    Input file: true_o2_ARM/problem17_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 29: leaq	-1072(%rbp), %rdi
+
+[7] Directory: true_o2_ARM/problem24_code.c
+    Input file: true_o2_ARM/problem24_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 19: leaq	1(%rdi), %rdi
+
+[8] Directory: true_o2_ARM/problem26_code.c
+    Input file: true_o2_ARM/problem26_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 31: leal	1(%rsi), %eax
+      Line 61: leaq	(%r8,%rax,4), %rcx
+
+[9] Directory: true_o2_ARM/problem30_code.c
+    Input file: true_o2_ARM/problem30_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 33: leaq	(,%rbx,8), %rdi
+
+[10] Directory: true_o2_ARM/problem31_code.c
+    Input file: true_o2_ARM/problem31_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 26: leaq	(,%r12,4), %rdi
+      Line 47: leal	1(%rdx), %ecx
+
+[11] Directory: true_o2_ARM/problem34_code.c
+    Input file: true_o2_ARM/problem34_code.c/input.txt
+    Total matching instructions found: 4
+    Instructions found:
+      Line 35: leaq	4(,%rax,4), %rdi
+      Line 55: leaq	-1(%rcx), %rdx
+      Line 113: leal	(%rdi,%rdi,2), %ebx
+      Line 115: leaq	(%rax,%rdi,4), %rdi
+
+[12] Directory: true_o2_ARM/problem39_code.c
+    Input file: true_o2_ARM/problem39_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 39: leaq	-44(%rbp), %r14
+
+[13] Directory: true_o2_ARM/problem43_code.c
+    Input file: true_o2_ARM/problem43_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 26: leaq	-8(%rcx), %rdx
+
+[14] Directory: true_o2_ARM/problem49_code.c
+    Input file: true_o2_ARM/problem49_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 24: leal	-1(%rax), %edx
+      Line 46: leaq	1(%rax), %rdi
+
+[15] Directory: true_o2_ARM/problem52_code.c
+    Input file: true_o2_ARM/problem52_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 27: leaq	1(%r15), %rbx
+      Line 28: leaq	L_.str(%rip), %r14
+
+[16] Directory: true_o2_ARM/problem53_code.c
+    Input file: true_o2_ARM/problem53_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 28: leaq	1(%rcx), %rsi
+
+[17] Directory: true_o2_ARM/problem54_code.c
+    Input file: true_o2_ARM/problem54_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 16: leal	(%rdi,%rsi), %eax
+
+[18] Directory: true_o2_ARM/problem56_code.c
+    Input file: true_o2_ARM/problem56_code.c/input.txt
+    Total matching instructions found: 5
+    Instructions found:
+      Line 21: leaq	-4016(%rbp), %rdi
+      Line 28: leal	1(%rbx), %eax
+      Line 34: leaq	-3(%rcx), %rsi
+      Line 63: leaq	(%rsi,%rdx), %rdi
+      Line 69: leaq	-1(%rdx), %rsi
+
+[19] Directory: true_o2_ARM/problem58_code.c
+    Input file: true_o2_ARM/problem58_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 28: leaq	-1(%r9), %r8
+      Line 39: leaq	1(%rsi), %rcx
+
+[20] Directory: true_o2_ARM/problem59_code.c
+    Input file: true_o2_ARM/problem59_code.c/input.txt
+    Total matching instructions found: 3
+    Instructions found:
+      Line 31: leaq	(,%rbx,4), %rdi
+      Line 89: leal	-1(%r9), %r8d
+      Line 152: leaq	2(%rdx), %rcx
+
+[21] Directory: true_o2_ARM/problem61_code.c
+    Input file: true_o2_ARM/problem61_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 15: leal	1(%rdi), %ecx
+
+[22] Directory: true_o2_ARM/problem62_code.c
+    Input file: true_o2_ARM/problem62_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 48: leaq	1(%rdx), %rsi
+
+[23] Directory: true_o2_ARM/problem67_code.c
+    Input file: true_o2_ARM/problem67_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 23: leal	-65(%rdx), %esi
+
+[24] Directory: true_o2_ARM/problem69_code.c
+    Input file: true_o2_ARM/problem69_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 90: leal	1(%rsi), %edx
+
+[25] Directory: true_o2_ARM/problem70_code.c
+    Input file: true_o2_ARM/problem70_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 20: leal	1(%rbx), %eax
+
+[26] Directory: true_o2_ARM/problem73_code.c
+    Input file: true_o2_ARM/problem73_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 26: leal	-1(%rsi), %r11d
+      Line 36: leal	(%r10,%rax,2), %r10d
+
+[27] Directory: true_o2_ARM/problem74_code.c
+    Input file: true_o2_ARM/problem74_code.c/input.txt
+    Total matching instructions found: 3
+    Instructions found:
+      Line 63: leal	-1(%rcx), %eax
+      Line 75: leaq	-1(%r8), %r9
+      Line 76: leal	-1(%rsi), %ecx
+
+[28] Directory: true_o2_ARM/problem79_code.c
+    Input file: true_o2_ARM/problem79_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 32: leaq	L_.str(%rip), %r12
+
+[29] Directory: true_o2_ARM/problem80_code.c
+    Input file: true_o2_ARM/problem80_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 68: leaq	(%r15,%r14), %rsi
+
+[30] Directory: true_o2_ARM/problem84_code.c
+    Input file: true_o2_ARM/problem84_code.c/input.txt
+    Total matching instructions found: 3
+    Instructions found:
+      Line 44: leal	-2(%rdi), %r8d
+      Line 63: leal	-8(%rcx), %edx
+      Line 114: leal	(%rax,%rax,4), %eax
+
+[31] Directory: true_o2_ARM/problem88_code.c
+    Input file: true_o2_ARM/problem88_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 58: leaq	1(%rbx), %rax
+      Line 64: leaq	-1(%r12), %rbx
+
+[32] Directory: true_o2_ARM/problem94_code.c
+    Input file: true_o2_ARM/problem94_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 71: leal	-65(%rbx), %eax
+
+[33] Directory: true_o2_ARM/problem95_code.c
+    Input file: true_o2_ARM/problem95_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 66: leal	(%rdx,%rdx), %esi
+      Line 67: leal	(%rsi,%rsi,4), %esi
+
+[34] Directory: true_o2_ARM/problem97_code.c
+    Input file: true_o2_ARM/problem97_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 24: leaq	(,%rbx,4), %rdi
+
+[35] Directory: true_o2_ARM/problem98_code.c
+    Input file: true_o2_ARM/problem98_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 22: leal	(%rax,%rax,4), %eax
+      Line 30: leal	(%rdx,%rdx,4), %edx
+
+[36] Directory: true_o2_ARM/problem104_code.c
+    Input file: true_o2_ARM/problem104_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 20: leaq	L_.str(%rip), %rax
+
+[37] Directory: true_o2_ARM/problem108_code.c
+    Input file: true_o2_ARM/problem108_code.c/input.txt
+    Total matching instructions found: 5
+    Instructions found:
+      Line 34: leal	1(%r10), %ecx
+      Line 45: leal	(%rcx,%rcx,4), %ecx
+      Line 52: leal	(%rdi,%rdi), %ebx
+      Line 53: leal	(%rbx,%rbx,4), %ebx
+      Line 56: leal	(%rdx,%rcx,2), %ecx
+
+[38] Directory: true_o2_ARM/problem110_code.c
+    Input file: true_o2_ARM/problem110_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 24: leaq	-1(%r10), %r9
+      Line 42: leaq	1(%rcx), %rbx
+
+[39] Directory: true_o2_ARM/problem111_code.c
+    Input file: true_o2_ARM/problem111_code.c/input.txt
+    Total matching instructions found: 4
+    Instructions found:
+      Line 38: leaq	-8(%r9), %rax
+      Line 113: leaq	-8(%rcx), %rax
+      Line 176: leaq	L_.str.1(%rip), %rcx
+      Line 177: leaq	L_.str(%rip), %rax
+
+[40] Directory: true_o2_ARM/problem114_code.c
+    Input file: true_o2_ARM/problem114_code.c/input.txt
+    Total matching instructions found: 3
+    Instructions found:
+      Line 28: leaq	(,%rbx,8), %rdi
+      Line 46: leaq	L_.str(%rip), %rcx
+      Line 73: leal	-48(%rcx), %edx
+
+[41] Directory: true_o2_ARM/problem115_code.c
+    Input file: true_o2_ARM/problem115_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 46: leaq	(%r9,%rdx), %rcx
+
+[42] Directory: true_o2_ARM/problem121_code.c
+    Input file: true_o2_ARM/problem121_code.c/input.txt
+    Total matching instructions found: 9
+    Instructions found:
+      Line 24: leal	-1(%rsi), %r8d
+      Line 86: leaq	2(%rbx), %r15
+      Line 103: leaq	(%rdi,%r8,4), %rax
+      Line 118: leaq	(%rdi,%r8,4), %rbx
+      Line 130: leaq	(%rdi,%r8,4), %rax
+      Line 149: leaq	-8(%rdx), %rax
+      Line 162: leaq	(%rdi,%r8,4), %rbx
+      Line 190: leaq	(%rcx,%rax,4), %rsi
+      Line 193: leaq	(%rdi,%rax,4), %rax
+
+[43] Directory: true_o2_ARM/problem122_code.c
+    Input file: true_o2_ARM/problem122_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 53: leaq	(%rdx,%rdx), %r8
+      Line 92: leaq	(%rdi,%r8,4), %r8
+
+[44] Directory: true_o2_ARM/problem123_code.c
+    Input file: true_o2_ARM/problem123_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 45: leaq	-8(%rsi), %rax
+      Line 128: leal	99(%rdx), %ecx
+
+[45] Directory: true_o2_ARM/problem128_code.c
+    Input file: true_o2_ARM/problem128_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 20: leaq	L_.str(%rip), %rcx
+      Line 24: leaq	L_.str.1(%rip), %r8
+
+[46] Directory: true_o2_ARM/problem132_code.c
+    Input file: true_o2_ARM/problem132_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 26: leal	(%rsi,%rsi), %edx
+      Line 27: leal	(%rdx,%rdx,4), %r10d
+
+[47] Directory: true_o2_ARM/problem134_code.c
+    Input file: true_o2_ARM/problem134_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 31: leaq	-8(%rdx), %rax
+
+[48] Directory: true_o2_ARM/problem153_code.c
+    Input file: true_o2_ARM/problem153_code.c/input.txt
+    Total matching instructions found: 1
+    Instructions found:
+      Line 70: leaq	-8(%r11), %rax
+
+[49] Directory: true_o2_ARM/problem155_code.c
+    Input file: true_o2_ARM/problem155_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 49: leaq	(%r15,%rbx), %rsi
+      Line 53: leaq	(%r14,%r13), %rdi
+
+[50] Directory: true_o2_ARM/problem157_code.c
+    Input file: true_o2_ARM/problem157_code.c/input.txt
+    Total matching instructions found: 2
+    Instructions found:
+      Line 44: leaq	l___const.func0.num(%rip), %rax
+      Line 49: leaq	l_reltable.func0(%rip), %rax
+

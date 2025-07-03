@@ -1,0 +1,148 @@
+STANDARD ASSIGNMENT RECURRENCE REPORT
+======================================================================
+(Excluding lines with malloc/realloc)
+
+
+SUMMARY REPORT
+==================================================
+Base directory scanned: /home/moldir.azhimukhanbet/o2-to-o2/false_o2_ARM
+Problem directories found: 91
+Problems with matches (standard recurrences): 14
+
+Analysis of Matched Files:
+- Total C++ files with matches: 14
+- Total standard assignment recurrences found: 21
+
+All problem directories found:
+[6, 7, 8, 9, 10, 11, 15, 18, 19, 20, 21, 22, 23, 27, 28, 29, 33, 35, 36, 37, 38, 40, 41, 44, 45, 47, 50, 51, 60, 63, 64, 65, 66, 68, 71, 72, 76, 77, 81, 82, 85, 86, 87, 89, 90, 91, 92, 93, 96, 99, 101, 105, 106, 107, 109, 112, 113, 116, 117, 118, 119, 120, 124, 125, 126, 127, 129, 130, 131, 133, 136, 137, 140, 141, 142, 143, 144, 145, 146, 148, 149, 150, 152, 154, 156, 158, 159, 161, 162, 163, 164]
+
+Problems with matches:
+[18, 33, 37, 40, 45, 50, 76, 77, 105, 109, 124, 140, 146, 156]
+
+Problems with directories but no matches:
+[6, 7, 8, 9, 10, 11, 15, 19, 20, 21, 22, 23, 27, 28, 29, 35, 36, 38, 41, 44, 47, 51, 60, 63, 64, 65, 66, 68, 71, 72, 81, 82, 85, 86, 87, 89, 90, 91, 92, 93, 96, 99, 101, 106, 107, 112, 113, 116, 117, 118, 119, 120, 125, 126, 127, 129, 130, 131, 133, 136, 137, 141, 142, 143, 144, 145, 148, 149, 150, 152, 154, 158, 159, 161, 162, 163, 164]
+
+
+======================================================================
+DETAILED RESULTS
+======================================================================
+
+
+PROBLEM 18
+--------------------------------------------------
+Directory: false_o2_ARM/problem18_code.c
+File: problem18_code.cpp
+Standard Recurrences Found: 3
+  Line   20: capacity = capacity > 0 ? 2 * capacity : 4;
+  Line   27: capacity = capacity > 0 ? 2 * capacity : 4;
+  Line   34: capacity = capacity > 0 ? 2 * capacity : 4;
+
+
+PROBLEM 33
+--------------------------------------------------
+Directory: false_o2_ARM/problem33_code.c
+File: problem33_code.cpp
+Standard Recurrences Found: 1
+  Line   27: ans = ans - value / driv;
+
+
+PROBLEM 37
+--------------------------------------------------
+Directory: false_o2_ARM/problem37_code.c
+File: problem37_code.cpp
+Standard Recurrences Found: 1
+  Line   10: q = q / 10;
+
+
+PROBLEM 40
+--------------------------------------------------
+Directory: false_o2_ARM/problem40_code.c
+File: problem40_code.cpp
+Standard Recurrences Found: 2
+  Line    7: f1 = f1 + f2;
+  Line    8: m = f1; f1 = f2; f2 = m;
+
+
+PROBLEM 45
+--------------------------------------------------
+Directory: false_o2_ARM/problem45_code.c
+File: problem45_code.cpp
+Standard Recurrences Found: 1
+  Line   10: x = x / base;
+
+
+PROBLEM 50
+--------------------------------------------------
+Directory: false_o2_ARM/problem50_code.c
+File: problem50_code.cpp
+Standard Recurrences Found: 1
+  Line    6: out = (out * 2) % p;
+
+
+PROBLEM 76
+--------------------------------------------------
+Directory: false_o2_ARM/problem76_code.c
+File: problem76_code.cpp
+Standard Recurrences Found: 1
+  Line    9: a = a / i;
+
+
+PROBLEM 77
+--------------------------------------------------
+Directory: false_o2_ARM/problem77_code.c
+File: problem77_code.cpp
+Standard Recurrences Found: 1
+  Line    7: p = p * n; count += 1;
+
+
+PROBLEM 105
+--------------------------------------------------
+Directory: false_o2_ARM/problem105_code.c
+File: problem105_code.cpp
+Standard Recurrences Found: 1
+  Line   16: num = num / 10;
+
+
+PROBLEM 109
+--------------------------------------------------
+Directory: false_o2_ARM/problem109_code.c
+File: problem109_code.cpp
+Standard Recurrences Found: 1
+  Line   14: w = w / 10;
+
+
+PROBLEM 124
+--------------------------------------------------
+Directory: false_o2_ARM/problem124_code.c
+File: problem124_code.cpp
+Standard Recurrences Found: 3
+  Line   16: n = n * 3 + 1;
+  Line   18: n = n / 2;
+  Line   28: j = j - 1;
+
+
+PROBLEM 140
+--------------------------------------------------
+Directory: false_o2_ARM/problem140_code.c
+File: problem140_code.cpp
+Standard Recurrences Found: 2
+  Line    6: fact = fact * i;
+  Line    7: bfact = bfact * fact;
+
+
+PROBLEM 146
+--------------------------------------------------
+Directory: false_o2_ARM/problem146_code.c
+File: problem146_code.cpp
+Standard Recurrences Found: 2
+  Line   21: m = sumdigit[j]; sumdigit[j] = sumdigit[j - 1]; sumdigit[j - 1] = m;
+  Line   22: m = nums[j]; nums[j] = nums[j - 1]; nums[j - 1] = m;
+
+
+PROBLEM 156
+--------------------------------------------------
+Directory: false_o2_ARM/problem156_code.c
+File: problem156_code.cpp
+Standard Recurrences Found: 1
+  Line    6: num = abs(num);
+
